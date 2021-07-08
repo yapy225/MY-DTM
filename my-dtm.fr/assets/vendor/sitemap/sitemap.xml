@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9"> 
+<url>
+  <loc>https://my-dtm.fr/</loc>
+  <priority>1.0</priority>
+  <changefreq>always</changefreq>
+  <lastmod>2020-08-04</lastmod>
+</url>
+<url>
+  <loc>https://my-dtm.fr/audit-seo</loc>
+  <priority>1.0</priority>
+  <changefreq>always</changefreq>
+  <lastmod>2020-08-04</lastmod>
+</url>
+<url>
+  <loc>https://my-dtm.fr/marketing-digital</loc>
+  <priority>1.0</priority>
+  <changefreq>always</changefreq>
+  <lastmod>2020-08-04</lastmod>
+</url>
+<url>
+  <loc>https://my-dtm.fr/creation-site-web</loc>
+  <priority>1.0</priority>
+  <changefreq>always</changefreq>
+  <lastmod>2020-08-04</lastmod>
+</url>
+<url>
+  <loc>https://my-dtm.fr/contacte-us.html</loc>
+  <priority>1.0</priority>
+  <changefreq>always</changefreq>
+  <lastmod>2020-08-04</lastmod>
+</url>
+<url>
+  <loc>https://my-dtm.fr/a-propos</loc>
+  <priority>1.0</priority>
+  <changefreq>always</changefreq>
+  <lastmod>2020-08-04</lastmod>
+</url>
+</urlset>
