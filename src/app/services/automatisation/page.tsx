@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     "integration Stripe paiement",
     "workflow automatisation e-commerce",
   ],
-  alternates: { canonical: "https://my-dtm.com/services/automatisation" },
+  alternates: { canonical: "https://my-dtm.fr/services/automatisation" },
 };
 
 const INTEGRATIONS = [

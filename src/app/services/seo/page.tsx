@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     title: "Agence SEO Paris — My-DTM",
     description: "Audit SEO, referencement naturel, indexation Google. +8000 clics/mois recuperes. Audit gratuit.",
   },
-  alternates: { canonical: "https://my-dtm.com/services/seo" },
+  alternates: { canonical: "https://my-dtm.fr/services/seo" },
 };
 
 const OFFERS = [

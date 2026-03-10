@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     title: "Creation Site Web Paris — My-DTM Agency",
     description: "Sites vitrines, e-commerce, plateformes sur mesure. Devis gratuit sous 48h.",
   },
-  alternates: { canonical: "https://my-dtm.com/services/creation-site-web" },
+  alternates: { canonical: "https://my-dtm.fr/services/creation-site-web" },
 };
 
 const OFFERS = [
@@ -46,7 +46,7 @@ export default function CreationSiteWebPage() {
     "@context": "https://schema.org",
     "@type": "Service",
     name: "Creation Site Web Paris",
-    provider: { "@type": "Organization", name: "My-DTM Digital Agency", url: "https://my-dtm.com" },
+    provider: { "@type": "Organization", name: "My-DTM Digital Agency", url: "https://my-dtm.fr" },
     description: "Agence creation site web a Paris. Sites vitrines, e-commerce, plateformes sur mesure.",
     areaServed: { "@type": "City", name: "Paris" },
     offers: { "@type": "AggregateOffer", lowPrice: "1500", highPrice: "10000", priceCurrency: "EUR" },

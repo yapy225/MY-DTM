@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     "community management Paris",
     "campagne marketing digital prix",
   ],
-  alternates: { canonical: "https://my-dtm.com/services/marketing-digital" },
+  alternates: { canonical: "https://my-dtm.fr/services/marketing-digital" },
 };
 
 const OFFERS = [

@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     description: "On configure votre WhatsApp Business API en 48h. Chatbot, templates, webhooks. Devis gratuit.",
     type: "website",
   },
-  alternates: { canonical: "https://my-dtm.com/services/whatsapp-business" },
+  alternates: { canonical: "https://my-dtm.fr/services/whatsapp-business" },
 };
 
 const FEATURES = [
@@ -79,7 +79,7 @@ export default function WhatsAppBusinessPage() {
     provider: {
       "@type": "Organization",
       name: "My-DTM Digital Agency",
-      url: "https://my-dtm.com",
+      url: "https://my-dtm.fr",
     },
     description: "Configuration complete de WhatsApp Business API pour entreprises. Chatbot, templates, webhooks, multi-agents.",
     areaServed: { "@type": "Country", name: "France" },

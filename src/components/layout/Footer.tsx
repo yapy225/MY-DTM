@@ -69,7 +69,7 @@ export default function Footer() {
                 Contact
               </h4>
               <ul className="space-y-2.5 text-sm text-white/50">
-                <li>contact@my-dtm.com</li>
+                <li>contact@my-dtm.fr</li>
                 <li>+33 7 43 53 75 51</li>
                 <li>Paris, France</li>
               </ul>
@@ -78,7 +78,11 @@ export default function Footer() {
 
           <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/[0.08] pt-8 text-xs text-white/30 sm:flex-row">
             <span>&copy; {new Date().getFullYear()} My-DTM Digital Agency. Tous droits reserves.</span>
-            <span>Mentions legales | CGV | Confidentialite</span>
+            <span className="flex gap-4">
+              <Link href="/mentions-legales" className="transition-colors hover:text-violet-light">Mentions legales</Link>
+              <span>|</span>
+              <Link href="/politique-de-confidentialite" className="transition-colors hover:text-violet-light">Confidentialite</Link>
+            </span>
           </div>
         </div>
       </footer>

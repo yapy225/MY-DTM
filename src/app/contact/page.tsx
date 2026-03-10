@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { Phone, Mail, MapPin, Send } from "lucide-react";
+import { useState, type FormEvent } from "react";
+import { Phone, Mail, MapPin, Send, Loader2 } from "lucide-react";
 
 const SERVICES = [
   "Developpement Web",
@@ -14,6 +14,38 @@ const SERVICES = [
 
 export default function ContactPage() {
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+
+    const form = e.currentTarget;
+    const data = {
+      name: (form.elements.namedItem("name") as HTMLInputElement).value,
+      email: (form.elements.namedItem("email") as HTMLInputElement).value,
+      phone: (form.elements.namedItem("phone") as HTMLInputElement).value,
+      service: (form.elements.namedItem("service") as HTMLSelectElement).value,
+      message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) throw new Error("Erreur serveur");
+      setSent(true);
+    } catch {
+      setError("Une erreur est survenue. Reessayez ou contactez-nous sur WhatsApp.");
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <>
@@ -48,13 +80,7 @@ export default function ContactPage() {
                 </p>
               </div>
             ) : (
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  setSent(true);
-                }}
-                className="space-y-6"
-              >
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                   <div>
                     <label className="mb-2 block text-sm font-semibold text-dark">
@@ -62,6 +88,7 @@ export default function ContactPage() {
                     </label>
                     <input
                       required
+                      name="name"
                       type="text"
                       className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm text-dark outline-none transition-colors focus:border-violet"
                       placeholder="Votre nom"
@@ -73,6 +100,7 @@ export default function ContactPage() {
                     </label>
                     <input
                       required
+                      name="email"
                       type="email"
                       className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm text-dark outline-none transition-colors focus:border-violet"
                       placeholder="votre@email.com"
@@ -85,6 +113,7 @@ export default function ContactPage() {
                     Telephone (optionnel)
                   </label>
                   <input
+                    name="phone"
                     type="tel"
                     className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm text-dark outline-none transition-colors focus:border-violet"
                     placeholder="+33 7 ..."
@@ -95,7 +124,7 @@ export default function ContactPage() {
                   <label className="mb-2 block text-sm font-semibold text-dark">
                     Service souhaite
                   </label>
-                  <select className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm text-dark outline-none transition-colors focus:border-violet">
+                  <select name="service" className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm text-dark outline-none transition-colors focus:border-violet">
                     <option value="">Selectionnez un service</option>
                     {SERVICES.map((s) => (
                       <option key={s} value={s}>{s}</option>
@@ -109,18 +138,24 @@ export default function ContactPage() {
                   </label>
                   <textarea
                     required
+                    name="message"
                     rows={5}
                     className="w-full resize-none rounded-xl border border-border bg-white px-4 py-3 text-sm text-dark outline-none transition-colors focus:border-violet"
                     placeholder="Parlez-nous de votre projet, vos objectifs, votre budget approximatif..."
                   />
                 </div>
 
+                {error && (
+                  <p className="text-sm text-red-500">{error}</p>
+                )}
+
                 <button
                   type="submit"
-                  className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet to-gold px-10 py-4 text-base font-bold text-white transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-violet/30"
+                  disabled={loading}
+                  className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet to-gold px-10 py-4 text-base font-bold text-white transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-violet/30 disabled:opacity-60 disabled:hover:translate-y-0"
                 >
-                  <Send size={18} />
-                  Envoyer
+                  {loading ? <Loader2 size={18} className="animate-spin" /> : <Send size={18} />}
+                  {loading ? "Envoi..." : "Envoyer"}
                 </button>
               </form>
             )}
@@ -132,11 +167,11 @@ export default function ContactPage() {
               <h3 className="font-serif text-lg font-bold text-dark">Coordonnees</h3>
               <div className="mt-6 space-y-4">
                 <a
-                  href="mailto:contact@my-dtm.com"
+                  href="mailto:contact@my-dtm.fr"
                   className="flex items-center gap-3 text-sm text-muted transition-colors hover:text-violet"
                 >
                   <Mail size={18} className="text-violet" />
-                  contact@my-dtm.com
+                  contact@my-dtm.fr
                 </a>
                 <a
                   href="tel:+33743537551"

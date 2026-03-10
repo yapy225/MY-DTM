@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     "tarif WhatsApp Business API",
     "prix marketing digital agence",
   ],
-  alternates: { canonical: "https://my-dtm.com/tarifs" },
+  alternates: { canonical: "https://my-dtm.fr/tarifs" },
 };
 
 const CATEGORIES = [
