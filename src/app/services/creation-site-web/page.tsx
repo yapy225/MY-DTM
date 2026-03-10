@@ -55,6 +55,15 @@ export default function CreationSiteWebPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Accueil", item: "https://my-dtm.fr" },
+          { "@type": "ListItem", position: 2, name: "Services", item: "https://my-dtm.fr/services" },
+          { "@type": "ListItem", position: 3, name: "Creation Site Web", item: "https://my-dtm.fr/services/creation-site-web" },
+        ],
+      }) }} />
 
       <section className="bg-gradient-to-b from-white to-surface px-4 pt-32 pb-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">

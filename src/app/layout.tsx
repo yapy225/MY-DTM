@@ -55,6 +55,69 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body className={`${playfair.variable} ${dmSans.variable} antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "My-DTM Digital Agency",
+              url: "https://my-dtm.fr",
+              logo: "https://my-dtm.fr/icon.svg",
+              description: "Agence de marketing digital a Paris specialisee dans la creation d'ecosystemes numeriques complets.",
+              foundingDate: "2024",
+              areaServed: { "@type": "Country", name: "France" },
+              contactPoint: {
+                "@type": "ContactPoint",
+                contactType: "Customer Service",
+                telephone: "+33743537551",
+                email: "contact@my-dtm.fr",
+                areaServed: "FR",
+                availableLanguage: ["French"],
+              },
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Paris",
+                addressCountry: "FR",
+              },
+              knowsAbout: [
+                "Web Development",
+                "SEO",
+                "Marketing Automation",
+                "WhatsApp Business API",
+                "Digital Strategy",
+              ],
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              name: "My-DTM Digital Agency",
+              image: "https://my-dtm.fr/opengraph-image",
+              description: "Agence de marketing digital a Paris. Developpement web, SEO, automatisation, marketing multi-canal.",
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Paris",
+                addressCountry: "FR",
+              },
+              telephone: "+33743537551",
+              email: "contact@my-dtm.fr",
+              url: "https://my-dtm.fr",
+              priceRange: "€€",
+              areaServed: ["Paris", "Ile-de-France", "France"],
+              openingHoursSpecification: {
+                "@type": "OpeningHoursSpecification",
+                dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                opens: "09:00",
+                closes: "18:00",
+              },
+            }),
+          }}
+        />
         <Navbar />
         {children}
         <Footer />

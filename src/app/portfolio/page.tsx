@@ -2,8 +2,23 @@ import type { Metadata } from "next";
 import CTA from "@/components/sections/CTA";
 
 export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "Decouvrez nos realisations : ecosystemes digitaux, plateformes evenementielles, journaux en ligne et plus.",
+  title: "Portfolio — Nos Realisations Web, SEO et Marketing Digital",
+  description:
+    "Decouvrez nos realisations : ecosystemes digitaux, plateformes evenementielles, journaux en ligne. +8 000 clics/mois, 99% uptime. Resultats concrets.",
+  keywords: [
+    "portfolio agence web Paris",
+    "realisations agence digitale",
+    "exemples sites web",
+    "etudes de cas marketing digital",
+  ],
+  alternates: { canonical: "https://my-dtm.fr/portfolio" },
+  openGraph: {
+    title: "Portfolio — My-DTM Digital Agency",
+    description: "Nos realisations : ecosystemes digitaux, plateformes evenementielles, resultats concrets.",
+    url: "https://my-dtm.fr/portfolio",
+    type: "website",
+    locale: "fr_FR",
+  },
 };
 
 const PROJECTS = [

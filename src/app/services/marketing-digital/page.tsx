@@ -27,9 +27,33 @@ const OFFERS = [
   { name: "Newsletter & Fidelisation", price: "A partir de 400 \u20AC/mois", desc: "Template, segmentation, envois reguliers, A/B testing.", features: ["Setup template responsive", "Segmentation base contacts", "2-4 envois/mois", "A/B testing sujets", "Suivi taux ouverture/clics"] },
 ];
 
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Marketing Digital Multi-Canal",
+    provider: { "@type": "Organization", name: "My-DTM Digital Agency", url: "https://my-dtm.fr" },
+    description: "Acquisition 360 : SEO + WhatsApp + Facebook Ads + Email. Resultats mesurables, rapport mensuel.",
+    areaServed: { "@type": "Country", name: "France" },
+    offers: { "@type": "AggregateOffer", lowPrice: "400", highPrice: "2000", priceCurrency: "EUR" },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Accueil", item: "https://my-dtm.fr" },
+      { "@type": "ListItem", position: 2, name: "Services", item: "https://my-dtm.fr/services" },
+      { "@type": "ListItem", position: 3, name: "Marketing Digital", item: "https://my-dtm.fr/services/marketing-digital" },
+    ],
+  },
+];
+
 export default function MarketingDigitalPage() {
   return (
     <>
+      {jsonLd.map((ld, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
+      ))}
       <section className="bg-gradient-to-b from-white to-surface px-4 pt-32 pb-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <nav className="mb-8 text-sm text-muted">

@@ -3,8 +3,23 @@ import Link from "next/link";
 import CTA from "@/components/sections/CTA";
 
 export const metadata: Metadata = {
-  title: "A propos",
-  description: "Decouvrez My-DTM, agence de marketing digital a Paris specialisee dans les ecosystemes numeriques.",
+  title: "A propos — My-DTM, Agence Digitale Paris",
+  description:
+    "Decouvrez My-DTM, agence de marketing digital a Paris. Nee du projet Dream Team Africa, on cree des ecosystemes numeriques complets pour PME et startups.",
+  keywords: [
+    "agence digitale Paris",
+    "equipe marketing digital",
+    "agence web valeurs",
+    "My-DTM agence",
+  ],
+  alternates: { canonical: "https://my-dtm.fr/a-propos" },
+  openGraph: {
+    title: "A propos — My-DTM Digital Agency",
+    description: "Agence de marketing digital a Paris. Resultats concrets, rapidite, transparence.",
+    url: "https://my-dtm.fr/a-propos",
+    type: "website",
+    locale: "fr_FR",
+  },
 };
 
 const VALUES = [

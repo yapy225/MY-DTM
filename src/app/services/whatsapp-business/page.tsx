@@ -95,6 +95,15 @@ export default function WhatsAppBusinessPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Accueil", item: "https://my-dtm.fr" },
+          { "@type": "ListItem", position: 2, name: "Services", item: "https://my-dtm.fr/services" },
+          { "@type": "ListItem", position: 3, name: "WhatsApp Business API", item: "https://my-dtm.fr/services/whatsapp-business" },
+        ],
+      }) }} />
 
       {/* Hero */}
       <section className="relative overflow-hidden bg-gradient-to-br from-[#075E54] via-[#128C7E] to-[#25D366] px-4 pt-32 pb-20 sm:px-6 lg:px-8">

@@ -29,9 +29,33 @@ const INTEGRATIONS = [
   { name: "CRM & Google Sheets", desc: "Synchronisation contacts, export automatique, reporting." },
 ];
 
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Automatisation Marketing & API",
+    provider: { "@type": "Organization", name: "My-DTM Digital Agency", url: "https://my-dtm.fr" },
+    description: "Integration WhatsApp Business API, Facebook Leads, Stripe, emails automatiques. On connecte vos outils pour tout automatiser.",
+    areaServed: { "@type": "Country", name: "France" },
+    offers: { "@type": "AggregateOffer", lowPrice: "500", highPrice: "3000", priceCurrency: "EUR" },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Accueil", item: "https://my-dtm.fr" },
+      { "@type": "ListItem", position: 2, name: "Services", item: "https://my-dtm.fr/services" },
+      { "@type": "ListItem", position: 3, name: "Automatisation", item: "https://my-dtm.fr/services/automatisation" },
+    ],
+  },
+];
+
 export default function AutomatisationPage() {
   return (
     <>
+      {jsonLd.map((ld, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
+      ))}
       <section className="bg-gradient-to-b from-white to-surface px-4 pt-32 pb-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <nav className="mb-8 text-sm text-muted">

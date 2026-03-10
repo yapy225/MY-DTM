@@ -3,8 +3,25 @@ import Link from "next/link";
 import CTA from "@/components/sections/CTA";
 
 export const metadata: Metadata = {
-  title: "Services",
-  description: "Developpement web, SEO technique, automatisation API et marketing multi-canal. Decouvrez nos offres.",
+  title: "Services — Developpement Web, SEO, Automatisation, Marketing Digital",
+  description:
+    "Tous nos services : creation site web, SEO technique, automatisation API, marketing multi-canal. 16 offres adaptees aux PME et startups. Devis gratuit.",
+  keywords: [
+    "services agence digitale Paris",
+    "creation site web prix",
+    "SEO technique agence",
+    "automatisation marketing",
+    "marketing digital PME",
+    "agence web full-stack",
+  ],
+  alternates: { canonical: "https://my-dtm.fr/services" },
+  openGraph: {
+    title: "Services — My-DTM Digital Agency",
+    description: "Developpement web, SEO, automatisation et marketing digital. 16 offres adaptees.",
+    url: "https://my-dtm.fr/services",
+    type: "website",
+    locale: "fr_FR",
+  },
 };
 
 const OFFERS = [
