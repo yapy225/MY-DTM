@@ -64,6 +64,11 @@ export default function RootLayout({
               name: "My-DTM Digital Agency",
               url: "https://my-dtm.fr",
               logo: "https://my-dtm.fr/icon.svg",
+              sameAs: [
+                "https://www.instagram.com/mydreamteammedia/",
+                "https://www.facebook.com/mydreamteammedia/",
+                "https://x.com/DreamTeamAfriQ",
+              ],
               description: "Agence de marketing digital a Paris specialisee dans la creation d'ecosystemes numeriques complets.",
               foundingDate: "2024",
               areaServed: { "@type": "Country", name: "France" },
