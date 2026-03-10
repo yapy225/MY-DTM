@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Playfair_Display, DM_Sans } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -32,11 +33,17 @@ export const metadata: Metadata = {
     "automatisation API",
     "agence web Paris",
   ],
+  metadataBase: new URL("https://my-dtm.fr"),
   openGraph: {
     title: "My-DTM — Agence Digitale Paris",
     description: "Developpement web, SEO, automatisation et marketing digital. Audit gratuit.",
+    url: "https://my-dtm.fr",
+    siteName: "My-DTM Digital Agency",
     type: "website",
     locale: "fr_FR",
+  },
+  twitter: {
+    card: "summary_large_image",
   },
 };
 
@@ -52,6 +59,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <WhatsAppButton />
+        <Analytics />
       </body>
     </html>
   );
