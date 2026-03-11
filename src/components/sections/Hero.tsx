@@ -1,168 +1,260 @@
 "use client";
 
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import { ArrowRight, Star } from "lucide-react";
+import { useState, useEffect } from "react";
 
-const ROTATING_WORDS = ["sites web", "SEO", "marketing", "automatisation"];
+const WORDS = ["sites web", "le SEO", "l'automatisation", "WhatsApp Business"];
 
 export default function Hero() {
   const [wordIndex, setWordIndex] = useState(0);
-  const [fade, setFade] = useState(true);
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setFade(false);
+      setVisible(false);
       setTimeout(() => {
-        setWordIndex((i) => (i + 1) % ROTATING_WORDS.length);
-        setFade(true);
-      }, 300);
+        setWordIndex((i) => (i + 1) % WORDS.length);
+        setVisible(true);
+      }, 500);
     }, 3000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden bg-gradient-to-br from-dark via-charcoal to-dark px-4 pt-24 pb-20 sm:px-6 lg:px-8">
-      {/* Background effects */}
-      <div className="pointer-events-none absolute -right-[20%] top-[10%] h-[600px] w-[600px] animate-blob bg-primary/10 blur-3xl" />
-      <div className="pointer-events-none absolute -left-[10%] bottom-[10%] h-[500px] w-[500px] animate-blob bg-secondary/10 blur-3xl" style={{ animationDelay: "4s" }} />
-      <div className="pointer-events-none absolute left-[40%] top-[20%] h-[300px] w-[300px] animate-blob bg-accent/8 blur-3xl" style={{ animationDelay: "2s" }} />
+    <section className="eight-banner-section" style={{ position: "relative" }}>
+      {/* Background shape overlay (CSS-only replacement for bl-shape.png) */}
+      <div style={{
+        position: "absolute",
+        content: "",
+        top: 0,
+        left: 0,
+        height: "100%",
+        width: "100%",
+        backgroundRepeat: "no-repeat",
+        backgroundImage: "radial-gradient(circle at 30% 50%, rgba(255,255,255,0.08) 0%, transparent 50%)",
+        zIndex: 1,
+      }} />
 
-      {/* Grid pattern overlay */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
-      />
+      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 15px", position: "relative", zIndex: 5 }}>
+        <div>
+          <div style={{ width: "100%" }}>
+            <div className="eight-banner-content" style={{ position: "relative", zIndex: 5 }}>
+              <div className="banner-content-box appeight-headline pera-content" style={{ maxWidth: "650px" }}>
+                {/* Headline with rotating words */}
+                <h1 className="cd-headline clip is-full-width" style={{
+                  color: "#fff",
+                  fontSize: "72px",
+                  fontWeight: 700,
+                  lineHeight: 1.083,
+                  paddingBottom: "20px",
+                  fontFamily: "Poppins",
+                  margin: 0,
+                }}>
+                  Votre agence digitale pour{" "}
+                  <span className="cd-words-wrapper" style={{
+                    display: "inline-block",
+                    position: "relative",
+                    textAlign: "left",
+                    verticalAlign: "top",
+                  }}>
+                    <b className="is-visible" style={{
+                      opacity: visible ? 1 : 0,
+                      transition: "opacity 0.5s ease-in-out",
+                      color: "#000",
+                      position: "relative",
+                      display: "inline-block",
+                      fontWeight: 700,
+                    }}>
+                      {WORDS[wordIndex]}
+                    </b>
+                  </span>
+                </h1>
 
-      <div className="relative z-10 mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
-          {/* Left — Content */}
-          <div>
-            {/* Badge */}
-            <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm font-medium text-white/70 backdrop-blur-sm">
-              <span className="h-2 w-2 rounded-full bg-green" style={{ animation: "pulse-dot 2s infinite" }} />
-              Agence digitale Paris
-            </div>
-
-            <h1 className="text-4xl font-extrabold leading-[1.1] text-white sm:text-5xl lg:text-6xl">
-              L&apos;agence qui booste votre{" "}
-              <span
-                className={`text-gradient inline-block transition-all duration-300 ${
-                  fade ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
-                }`}
-              >
-                {ROTATING_WORDS[wordIndex]}
-              </span>
-            </h1>
-
-            <p className="mt-6 max-w-lg text-lg leading-relaxed text-white/60">
-              My-DTM est l&apos;agence de marketing digital qui cree des ecosystemes
-              numeriques complets. Du site web a l&apos;acquisition client, on
-              s&apos;occupe de tout.
-            </p>
-
-            <div className="mt-10 flex flex-wrap items-center gap-4">
-              <Link
-                href="/contact"
-                className="group inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-primary to-secondary px-8 py-4 text-base font-bold text-white transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/30"
-              >
-                Lancer mon projet
-                <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
-              </Link>
-              <Link
-                href="/portfolio"
-                className="rounded-lg border border-white/15 px-8 py-4 text-base font-semibold text-white transition-all hover:border-white/30 hover:bg-white/5"
-              >
-                Voir nos realisations
-              </Link>
-            </div>
-
-            {/* Social proof */}
-            <div className="mt-10 flex items-center gap-4">
-              <div className="flex -space-x-2">
-                {["AK", "FD", "MN", "SB"].map((initials, i) => (
-                  <div
-                    key={initials}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-dark bg-gradient-to-br from-primary to-secondary text-[10px] font-bold text-white"
-                    style={{ zIndex: 4 - i }}
-                  >
-                    {initials}
-                  </div>
-                ))}
-              </div>
-              <div>
-                <div className="flex gap-0.5">
-                  {[1, 2, 3, 4, 5].map((s) => (
-                    <Star key={s} size={14} className="fill-amber-400 text-amber-400" />
-                  ))}
-                </div>
-                <p className="mt-0.5 text-xs text-white/40">
-                  Avis clients certifies
+                {/* Subtitle */}
+                <p style={{ fontSize: "19px", color: "#fff", marginBottom: 0 }}>
+                  My-DTM est la meilleure agence de marketing digital a Paris. Sites web, SEO, automatisation et WhatsApp Business pour booster votre croissance.
                 </p>
-              </div>
-            </div>
-          </div>
 
-          {/* Right — Visual */}
-          <div className="relative hidden lg:block">
-            <div className="animate-float relative mx-auto w-full max-w-md">
-              {/* Main card */}
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm">
-                <div className="space-y-4">
-                  {/* SEO metric */}
-                  <div className="rounded-xl bg-white/5 p-4">
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm text-white/50">Trafic SEO</span>
-                      <span className="text-xs font-bold text-green">+256%</span>
-                    </div>
-                    <p className="mt-1 text-2xl font-bold text-white">8,247</p>
-                    <div className="mt-3 flex gap-1">
-                      {[40, 55, 35, 70, 60, 85, 75, 95, 80, 100, 90, 110].map((h, i) => (
-                        <div
-                          key={i}
-                          className="flex-1 rounded-sm bg-gradient-to-t from-primary/60 to-primary"
-                          style={{ height: `${h * 0.5}px` }}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                  {/* Conversion */}
-                  <div className="grid grid-cols-2 gap-3">
-                    <div className="rounded-xl bg-white/5 p-4">
-                      <span className="text-xs text-white/40">Conversion</span>
-                      <p className="mt-1 text-xl font-bold text-white">12.8%</p>
-                      <span className="text-xs text-green">+3.2%</span>
-                    </div>
-                    <div className="rounded-xl bg-white/5 p-4">
-                      <span className="text-xs text-white/40">Leads/mois</span>
-                      <p className="mt-1 text-xl font-bold text-white">342</p>
-                      <span className="text-xs text-green">+89</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Floating badge */}
-              <div className="absolute -right-4 -top-4 rounded-xl border border-white/10 bg-charcoal/80 px-4 py-3 shadow-2xl backdrop-blur-sm">
-                <div className="flex items-center gap-2">
-                  <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-green to-green/60 p-1.5">
-                    <svg viewBox="0 0 24 24" className="h-full w-full text-white" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <polyline points="20 6 9 17 4 12" />
+                {/* CTA Buttons */}
+                <div className="ei-banner-btn" style={{ padding: "45px 0px 25px 0px" }}>
+                  <a
+                    href="/contact"
+                    style={{
+                      fontSize: "15px",
+                      fontWeight: 700,
+                      fontFamily: "Poppins",
+                      display: "inline-block",
+                      transition: "0.3s all ease-in-out",
+                      height: "55px",
+                      color: "#fff",
+                      width: "175px",
+                      lineHeight: "55px",
+                      textAlign: "center",
+                      borderRadius: "50px",
+                      marginRight: "20px",
+                      borderTopRightRadius: 0,
+                      backgroundColor: "#ff00d6",
+                      textDecoration: "none",
+                    }}
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#000"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      style={{ position: "relative", top: "4px", marginRight: "8px" }}
+                    >
+                      <path d="M18.36 6.64a9 9 0 1 1-12.73 0" />
+                      <line x1="12" y1="2" x2="12" y2="12" />
                     </svg>
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold text-white">Projet deploye</p>
-                    <p className="text-[10px] text-white/40">Il y a 2 min</p>
-                  </div>
+                    Commencer
+                  </a>
+                  <a
+                    href="/services"
+                    style={{
+                      fontSize: "15px",
+                      fontWeight: 700,
+                      fontFamily: "Poppins",
+                      display: "inline-block",
+                      transition: "0.3s all ease-in-out",
+                      color: "#4ce7f3",
+                      position: "relative",
+                      textDecoration: "none",
+                    }}
+                  >
+                    <span style={{ color: "#fff", marginRight: "2px" }}>ou</span> essai gratuit
+                  </a>
                 </div>
+
+                {/* Star rating review */}
+                <div className="ei-banner-review pera-content ul-li" style={{ display: "flex", alignItems: "center", flexWrap: "wrap" }}>
+                  <ul style={{ margin: 0, padding: 0, marginRight: "20px", display: "flex", gap: "3px" }}>
+                    {[1, 2, 3, 4, 5].map((s) => (
+                      <li key={s} style={{ listStyle: "none", display: "inline-block" }}>
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="#f6b91c">
+                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                      </li>
+                    ))}
+                  </ul>
+                  <p style={{ fontSize: "14px", color: "#fff", marginBottom: 0 }}>
+                    (base sur <span style={{ fontFamily: "Poppins", fontWeight: 700, color: "#000" }}>50+ avis clients</span>)
+                  </p>
+                </div>
+              </div>
+
+              {/* Phone mockup - hero image */}
+              <div className="ei-banner-mbl-mockup" style={{ position: "absolute", top: 0, right: 0 }}>
+                <img
+                  src="/img/hero-phone.png"
+                  alt="My-DTM App"
+                  style={{ maxHeight: "550px", width: "auto" }}
+                />
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Wave Animation - 3 SVG wave layers exactly like SaaSio */}
+      <div className="waveWrapper waveAnimation" style={{
+        overflow: "hidden",
+        position: "absolute",
+        left: 0,
+        right: 0,
+        bottom: 0,
+        top: 0,
+        zIndex: 0,
+        margin: "auto",
+      }}>
+        {/* Wave layer 1 - top (subtle) */}
+        <div className="waveWrapperInner bgTop" style={{
+          position: "absolute",
+          width: "100%",
+          overflow: "hidden",
+          height: "100%",
+          bottom: "-1px",
+          background: "linear-gradient(to right, #c12dd1, #6d8cf8)",
+          zIndex: 15,
+          opacity: 0.5,
+        }}>
+          <div className="wave waveTop" style={{
+            position: "absolute",
+            left: 0,
+            width: "200%",
+            height: "100%",
+            backgroundRepeat: "repeat no-repeat",
+            backgroundPosition: "0 bottom",
+            transformOrigin: "center bottom",
+            backgroundSize: "50% 100px",
+            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-36.69,206.8-37.69C438.64,35.22,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' fill='%23ffffff' opacity='.5'/%3E%3C/svg%3E")`,
+          }} />
+        </div>
+
+        {/* Wave layer 2 - middle */}
+        <div className="waveWrapperInner bgMiddle" style={{
+          position: "absolute",
+          width: "100%",
+          overflow: "hidden",
+          height: "100%",
+          bottom: "-1px",
+          background: "linear-gradient(to right, #c12dd1, #6d8cf8)",
+          zIndex: 10,
+          opacity: 0.75,
+        }}>
+          <div className="wave waveMiddle" style={{
+            position: "absolute",
+            left: 0,
+            width: "200%",
+            height: "100%",
+            backgroundRepeat: "repeat no-repeat",
+            backgroundPosition: "0 bottom",
+            transformOrigin: "center bottom",
+            backgroundSize: "50% 120px",
+            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z' fill='%23ffffff' opacity='.7'/%3E%3C/svg%3E")`,
+            animation: "move_wave 10s linear infinite",
+          }} />
+        </div>
+
+        {/* Wave layer 3 - bottom (solid) */}
+        <div className="waveWrapperInner bgBottom" style={{
+          position: "absolute",
+          width: "100%",
+          overflow: "hidden",
+          height: "100%",
+          bottom: "-1px",
+          background: "linear-gradient(to right, #c12dd1, #6d8cf8)",
+          zIndex: 5,
+        }}>
+          <div className="wave waveBottom" style={{
+            position: "absolute",
+            left: 0,
+            width: "200%",
+            height: "100%",
+            backgroundRepeat: "repeat no-repeat",
+            backgroundPosition: "0 bottom",
+            transformOrigin: "center bottom",
+            backgroundSize: "50% 100px",
+            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z' fill='%23ffffff'/%3E%3C/svg%3E")`,
+            animation: "move_wave 15s linear infinite",
+          }} />
+        </div>
+      </div>
+
+      {/* Responsive styles for phone mockup hide on mobile */}
+      <style jsx global>{`
+        @media screen and (max-width: 991px) {
+          .eight-banner-section .eight-banner-content .ei-banner-mbl-mockup {
+            position: static !important;
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+          }
+        }
+      `}</style>
     </section>
   );
 }

@@ -1,19 +1,20 @@
 import type { Metadata } from "next";
-import { DM_Sans, Inter } from "next/font/google";
+import { Poppins, Playfair_Display } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/layout/WhatsAppButton";
 
-const dmSans = DM_Sans({
+const poppins = Poppins({
   variable: "--font-sans",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
   display: "swap",
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const playfair = Playfair_Display({
+  variable: "--font-serif",
   subsets: ["latin"],
   display: "swap",
 });
@@ -54,7 +55,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body className={`${dmSans.variable} ${inter.variable} antialiased`}>
+      <body className={`${poppins.variable} ${playfair.variable} antialiased`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

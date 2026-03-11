@@ -1,102 +1,166 @@
-import Link from "next/link";
-import { Bot, Zap, Users, Shield, CheckCircle2 } from "lucide-react";
+"use client";
+
+import { useId } from "react";
+import { Shield, Code2, Headphones } from "lucide-react";
 
 const FEATURES = [
   {
-    icon: <Shield size={24} />,
-    title: "Sans bug",
-    desc: "Code propre, teste et deploye sur une infrastructure fiable. Garantie 99% uptime.",
+    icon: Shield,
+    title: "Zero Bug",
+    desc: "Sites performants, testes et optimises pour une experience sans accroc.",
   },
   {
-    icon: <CheckCircle2 size={24} />,
-    title: "Bien organise",
-    desc: "Architecture claire, documentation complete. Votre projet reste maintenable et evolutif.",
+    icon: Code2,
+    title: "Code Propre",
+    desc: "Architecture modulaire, maintenable et scalable.",
   },
   {
-    icon: <Zap size={24} />,
-    title: "Code performant",
-    desc: "Technologies modernes, optimisations SEO et temps de chargement ultra-rapides.",
+    icon: Headphones,
+    title: "Support Reactif",
+    desc: "Accompagnement continu et reponse sous 24h.",
   },
 ];
 
+function ServiceIcon({ icon: Icon }: { icon: typeof Shield }) {
+  const id = useId();
+  return (
+    <div className="ei-service-icon" style={{ float: "right", textAlign: "center" }}>
+      <svg width={0} height={0} style={{ position: "absolute" }}>
+        <defs>
+          <linearGradient id={`svc-grad-${id}`} x1="0%" y1="0%" x2="50%" y2="100%">
+            <stop offset="30%" stopColor="#ff00d7" />
+            <stop offset="67%" stopColor="#50c7f5" />
+            <stop offset="99%" stopColor="#72aaff" />
+          </linearGradient>
+        </defs>
+      </svg>
+      <Icon size={55} strokeWidth={1.5} stroke={`url(#svc-grad-${id})`} />
+    </div>
+  );
+}
+
 export default function WhatsAppShowcase() {
   return (
-    <section className="px-4 py-24 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
-          {/* Left — Visual card */}
-          <div className="relative">
-            <div className="rounded-2xl border border-border bg-gradient-to-br from-surface to-white p-8 shadow-xl shadow-primary/5">
-              {/* WhatsApp mockup */}
-              <div className="overflow-hidden rounded-xl border border-border bg-white shadow-lg">
-                <div className="flex items-center gap-3 bg-gradient-to-r from-[#075E54] to-[#128C7E] px-4 py-3">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white/20 text-xs font-bold text-white">BIZ</div>
-                  <div>
-                    <p className="text-sm font-bold text-white">Votre Business</p>
-                    <p className="text-[10px] text-white/60">en ligne</p>
+    <section id="eight-service" className="eight-service-section position-relative">
+      <div className="container" style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 15px" }}>
+        <div className="eight-service-slide clearfix">
+          <div className="ei-service-slide-btn ul-li-block clearfix">
+            <div className="banner-pager clearfix">
+              {FEATURES.map((f, i) => (
+                <a key={i} className="pager">
+                  <div className="ei-service-icon-text appeight-headline pera-content" style={{ textAlign: "right" }}>
+                    <ServiceIcon icon={f.icon} />
+                    <div className="ei-service-text">
+                      <h3>{f.title}</h3>
+                      <p>{f.desc}</p>
+                    </div>
                   </div>
-                </div>
-                <div className="space-y-2.5 bg-[#ECE5DD] p-3">
-                  <div className="ml-auto max-w-[80%] rounded-xl rounded-tr-sm bg-[#DCF8C6] px-3 py-2">
-                    <p className="text-xs text-[#303030]">Bonjour, je voudrais reserver pour ce soir</p>
-                    <p className="mt-0.5 text-right text-[9px] text-[#999]">18:32</p>
-                  </div>
-                  <div className="mr-auto max-w-[80%] rounded-xl rounded-tl-sm bg-white px-3 py-2">
-                    <p className="text-xs text-[#303030]">Bonjour ! Pour combien de personnes ?</p>
-                    <p className="text-[9px] font-semibold text-primary">Reponse auto</p>
-                  </div>
-                  <div className="ml-auto max-w-[80%] rounded-xl rounded-tr-sm bg-[#DCF8C6] px-3 py-2">
-                    <p className="text-xs text-[#303030]">4 personnes a 20h</p>
-                  </div>
-                  <div className="mr-auto max-w-[80%] rounded-xl rounded-tl-sm bg-white px-3 py-2">
-                    <p className="text-xs text-[#303030]">Reservation confirmee pour 4 ce soir a 20h !</p>
-                    <p className="text-[9px] font-semibold text-primary">Reponse auto</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* Floating stats card */}
-            <div className="absolute -bottom-6 -right-4 rounded-xl border border-border bg-white px-5 py-4 shadow-xl">
-              <p className="text-xs text-muted">Taux d&apos;ouverture</p>
-              <p className="text-2xl font-extrabold text-gradient">98%</p>
-            </div>
-          </div>
-
-          {/* Right — Content */}
-          <div>
-            <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary">
-              Qualite garantie
-            </span>
-            <h2 className="mt-5 text-3xl font-extrabold text-dark sm:text-4xl">
-              Pourquoi nous faire confiance ?
-            </h2>
-            <p className="mt-4 text-lg text-muted">
-              Nous construisons des solutions digitales robustes, performantes et pensees pour durer. Chaque projet est traite avec le plus grand soin.
-            </p>
-
-            <div className="mt-8 space-y-6">
-              {FEATURES.map((f) => (
-                <div key={f.title} className="flex gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary/10 to-secondary/10 text-primary">
-                    {f.icon}
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-dark">{f.title}</h3>
-                    <p className="mt-1 text-sm text-muted">{f.desc}</p>
-                  </div>
-                </div>
+                </a>
               ))}
             </div>
-
-            <Link
-              href="/contact"
-              className="mt-10 inline-flex rounded-lg bg-gradient-to-r from-primary to-secondary px-8 py-3.5 text-sm font-bold text-white transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/30"
-            >
-              Demarrer un projet
-            </Link>
           </div>
         </div>
+        <div className="eight-service-text position-relative appeight-headline">
+          {/* Phone mockup with background frame */}
+          <div
+            className="ei-service-slide-mbl"
+            style={{
+              backgroundImage: "url(/img/smu1.png)",
+              backgroundSize: "contain",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+              height: "549px",
+              width: "268px",
+              position: "relative",
+              margin: "0 auto",
+            }}
+          >
+            <div className="slide-inner" style={{
+              position: "absolute",
+              top: "62px",
+              left: "18px",
+              right: "18px",
+              bottom: "62px",
+              overflow: "hidden",
+              borderRadius: "20px",
+              background: "linear-gradient(135deg, #7c0dbe 0%, #a855f7 50%, #7c0dbe 100%)",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              padding: "30px 15px",
+            }}>
+              <p style={{ fontSize: "12px", fontWeight: 700, color: "rgba(255,255,255,0.9)", margin: 0 }}>My-DTM</p>
+              <p style={{ fontSize: "9px", color: "rgba(255,255,255,0.5)", marginTop: "4px", marginBottom: "16px" }}>Dashboard Client</p>
+              <div style={{ width: "64px", height: "64px", borderRadius: "50%", background: "linear-gradient(135deg, rgba(168,85,247,0.4), rgba(255,0,214,0.4))", marginBottom: "16px" }} />
+              <div style={{ width: "100%", display: "flex", flexDirection: "column", gap: "8px" }}>
+                <div style={{ borderRadius: "8px", backgroundColor: "rgba(124,13,190,0.5)", padding: "10px", fontSize: "9px", fontWeight: 600, color: "#fff" }}>Trafic SEO +256%</div>
+                <div style={{ borderRadius: "8px", backgroundColor: "rgba(255,0,214,0.4)", padding: "10px", fontSize: "9px", fontWeight: 600, color: "#fff" }}>342 leads ce mois</div>
+                <div style={{ borderRadius: "8px", backgroundColor: "rgba(76,231,243,0.3)", padding: "10px", fontSize: "9px", fontWeight: 600, color: "#fff" }}>99% uptime garanti</div>
+              </div>
+            </div>
+          </div>
+          <h2>
+            Pourquoi choisir{" "}
+            <span style={{ display: "block" }}>notre app ?</span>
+          </h2>
+        </div>
       </div>
+
+      {/* Decorative shapes */}
+      <div className="s-shape-bg1" style={{ position: "absolute", left: "-95px", bottom: "-15px", zIndex: -1 }}>
+        <img src="/img/s-shape3.png" alt="" />
+      </div>
+      <div className="s-shape-bg2" style={{ position: "absolute", top: "50%", left: 0, right: 0, zIndex: -2, transform: "translateY(-50%)", textAlign: "center" }}>
+        <img src="/img/s-shape4.png" alt="" />
+      </div>
+
+      {/* Responsive */}
+      <style jsx global>{`
+        @media (max-width: 991px) {
+          .eight-service-section .eight-service-slide {
+            width: 100% !important;
+            float: none !important;
+          }
+          .eight-service-section .eight-service-text {
+            width: 100% !important;
+            float: none !important;
+            padding: 40px 0 0 !important;
+          }
+          .eight-service-section .eight-service-text h2 {
+            margin: 0 auto;
+            color: #000;
+            max-width: 400px;
+            text-align: center;
+          }
+          .eight-service-section .eight-service-slide .ei-service-slide-btn {
+            max-width: 475px;
+            margin: 0 auto;
+          }
+          .eight-service-section .eight-service-slide a:nth-child(3) {
+            transform: translateX(0);
+          }
+          .eight-service-section:after,
+          .eight-service-section:before,
+          .eight-service-section .s-shape-bg2 {
+            display: none;
+          }
+        }
+        @media (max-width: 420px) {
+          .eight-service-section .eight-service-slide a:nth-child(1) {
+            margin-bottom: 30px;
+          }
+          .eight-service-section .eight-service-slide a:nth-child(2) {
+            margin-bottom: 30px;
+            transform: translateX(0);
+          }
+          .eight-service-section .eight-service-text {
+            padding-top: 40px;
+          }
+          .eight-service-section .eight-service-text h2 {
+            font-size: 30px;
+          }
+        }
+      `}</style>
     </section>
   );
 }
