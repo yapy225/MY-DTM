@@ -1,36 +1,54 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
 const NAV_LINKS = [
+  { href: "/", label: "Accueil" },
   { href: "/services", label: "Services" },
-  { href: "/tarifs", label: "Tarifs" },
   { href: "/portfolio", label: "Portfolio" },
+  { href: "/tarifs", label: "Tarifs" },
   { href: "/a-propos", label: "A propos" },
   { href: "/contact", label: "Contact" },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <nav className="fixed inset-x-0 top-0 z-50 border-b border-border bg-white/90 backdrop-blur-xl">
+    <nav
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-white/95 shadow-lg shadow-dark/5 backdrop-blur-xl"
+          : "bg-transparent"
+      }`}
+    >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         {/* Logo */}
-        <Link href="/" className="font-serif text-2xl font-black">
-          <span className="text-gradient-violet">My-DTM</span>
-          <span className="ml-1 font-sans text-sm font-normal text-muted">Agency</span>
+        <Link href="/" className="flex items-center gap-2">
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-secondary">
+            <span className="text-sm font-black text-white">M</span>
+          </div>
+          <span className="text-xl font-bold text-dark">
+            My-DTM
+          </span>
         </Link>
 
         {/* Desktop links */}
-        <ul className="hidden items-center gap-8 md:flex">
+        <ul className="hidden items-center gap-7 md:flex">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="text-sm font-medium text-muted transition-colors hover:text-violet"
+                className="text-sm font-medium text-muted transition-colors hover:text-primary"
               >
                 {link.label}
               </Link>
@@ -41,7 +59,7 @@ export default function Navbar() {
         {/* CTA */}
         <Link
           href="/contact"
-          className="hidden rounded-full bg-gradient-to-r from-violet to-gold px-6 py-2.5 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-violet/30 md:inline-flex"
+          className="hidden rounded-lg bg-gradient-to-r from-primary to-secondary px-6 py-2.5 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/30 md:inline-flex"
         >
           Audit gratuit
         </Link>
@@ -64,7 +82,7 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="block py-3 text-base font-medium text-dark transition-colors hover:text-violet"
+              className="block py-3 text-base font-medium text-dark transition-colors hover:text-primary"
             >
               {link.label}
             </Link>
@@ -72,7 +90,7 @@ export default function Navbar() {
           <Link
             href="/contact"
             onClick={() => setOpen(false)}
-            className="mt-4 block rounded-full bg-gradient-to-r from-violet to-gold py-3 text-center text-sm font-semibold text-white"
+            className="mt-4 block rounded-lg bg-gradient-to-r from-primary to-secondary py-3 text-center text-sm font-semibold text-white"
           >
             Audit gratuit
           </Link>

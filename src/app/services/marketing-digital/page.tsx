@@ -57,32 +57,30 @@ export default function MarketingDigitalPage() {
       <section className="bg-gradient-to-b from-white to-surface px-4 pt-32 pb-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <nav className="mb-8 text-sm text-muted">
-            <Link href="/" className="hover:text-violet">Accueil</Link><span className="mx-2">/</span>
-            <Link href="/services" className="hover:text-violet">Services</Link><span className="mx-2">/</span>
+            <Link href="/" className="hover:text-primary">Accueil</Link><span className="mx-2">/</span>
+            <Link href="/services" className="hover:text-primary">Services</Link><span className="mx-2">/</span>
             <span className="text-dark">Marketing Digital</span>
           </nav>
-          <h1 className="max-w-3xl font-serif text-4xl font-black leading-tight text-dark sm:text-5xl">
+          <h1 className="max-w-3xl font-sans text-4xl font-extrabold leading-tight text-dark sm:text-5xl">
             Marketing digital multi-canal — vos clients vous trouvent partout
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-muted">
             SEO, WhatsApp, Facebook Ads, email. On gere tous vos canaux d&apos;acquisition pour un maximum de resultats.
           </p>
-          <Link href="/contact" className="mt-8 inline-flex rounded-full bg-gradient-to-r from-violet to-gold px-8 py-4 text-base font-bold text-white transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-violet/30">
+          <Link href="/contact" className="mt-8 inline-flex rounded-lg bg-gradient-to-r from-primary to-secondary px-8 py-4 text-base font-bold text-white transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/30">
             Audit gratuit
           </Link>
         </div>
       </section>
 
-      <div className="accent-strip" />
-
       <section className="px-4 py-24 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <h2 className="text-center font-serif text-3xl font-black text-dark sm:text-4xl">Nos offres marketing</h2>
+          <h2 className="text-center font-sans text-3xl font-extrabold text-dark sm:text-4xl">Nos offres marketing</h2>
           <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2">
             {OFFERS.map((o) => (
               <div key={o.name} className="rounded-2xl border border-border bg-white p-8 transition-all hover:-translate-y-1 hover:shadow-lg">
                 <h3 className="text-xl font-bold text-dark">{o.name}</h3>
-                <div className="mt-2 font-serif text-3xl font-black text-gradient-violet">{o.price}</div>
+                <div className="mt-2 font-sans text-3xl font-extrabold text-gradient-primary">{o.price}</div>
                 <p className="mt-3 text-sm text-muted">{o.desc}</p>
                 <ul className="mt-6 space-y-2">
                   {o.features.map((f) => (
@@ -99,7 +97,7 @@ export default function MarketingDigitalPage() {
 
       <section className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <h2 className="font-serif text-2xl font-black text-dark">Nos autres services</h2>
+          <h2 className="font-sans text-2xl font-extrabold text-dark">Nos autres services</h2>
           <div className="mt-6 flex flex-wrap gap-3">
             {[
               { href: "/services/creation-site-web", label: "Creation site web" },
@@ -107,7 +105,7 @@ export default function MarketingDigitalPage() {
               { href: "/services/whatsapp-business", label: "WhatsApp Business" },
               { href: "/services/automatisation", label: "Automatisation" },
             ].map((l) => (
-              <Link key={l.href} href={l.href} className="flex items-center gap-1.5 rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-dark transition-all hover:border-violet hover:text-violet">
+              <Link key={l.href} href={l.href} className="flex items-center gap-1.5 rounded-lg border border-border px-5 py-2.5 text-sm font-semibold text-dark transition-all hover:border-primary hover:text-primary">
                 {l.label} <ArrowRight size={14} />
               </Link>
             ))}
@@ -116,9 +114,9 @@ export default function MarketingDigitalPage() {
       </section>
 
       <section className="relative overflow-hidden bg-gradient-to-br from-dark to-charcoal px-4 py-20 text-center">
-        <h2 className="relative font-serif text-3xl font-black text-white sm:text-4xl">Pret a booster votre acquisition ?</h2>
+        <h2 className="relative font-sans text-3xl font-extrabold text-white sm:text-4xl">Pret a booster votre acquisition ?</h2>
         <p className="relative mt-4 text-white/60">Audit gratuit. Resultats mesurables des le premier mois.</p>
-        <Link href="/contact" className="relative mt-8 inline-flex rounded-full bg-gradient-to-r from-violet to-gold px-10 py-4 text-base font-bold text-white transition-all hover:-translate-y-1 hover:shadow-xl">
+        <Link href="/contact" className="relative mt-8 inline-flex rounded-lg bg-gradient-to-r from-primary to-secondary px-10 py-4 text-base font-bold text-white transition-all hover:-translate-y-1 hover:shadow-xl">
           Lancer ma strategie
         </Link>
       </section>

@@ -118,7 +118,7 @@ export default function WhatsAppBusinessPage() {
 
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
             <div>
-              <h1 className="font-serif text-4xl font-black text-white sm:text-5xl">
+              <h1 className="font-sans text-4xl font-extrabold text-white sm:text-5xl">
                 Configuration WhatsApp Business API pour votre entreprise
               </h1>
               <p className="mt-6 max-w-lg text-lg leading-relaxed text-white/80">
@@ -126,10 +126,10 @@ export default function WhatsAppBusinessPage() {
                 Vos clients vous contactent, vous repondez automatiquement.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
-                <Link href="/contact" className="rounded-full bg-white px-8 py-4 text-base font-bold text-[#075E54] transition-all hover:-translate-y-1 hover:shadow-xl">
+                <Link href="/contact" className="rounded-lg bg-white px-8 py-4 text-base font-bold text-[#075E54] transition-all hover:-translate-y-1 hover:shadow-xl">
                   Audit gratuit
                 </Link>
-                <Link href="https://wa.me/33743537551?text=Bonjour%2C%20je%20souhaite%20configurer%20WhatsApp%20Business%20pour%20mon%20entreprise." target="_blank" className="rounded-full border border-white/30 px-8 py-4 text-base font-semibold text-white transition-all hover:bg-white/10">
+                <Link href="https://wa.me/33743537551?text=Bonjour%2C%20je%20souhaite%20configurer%20WhatsApp%20Business%20pour%20mon%20entreprise." target="_blank" className="rounded-lg border border-white/30 px-8 py-4 text-base font-semibold text-white transition-all hover:bg-white/10">
                   Discuter sur WhatsApp
                 </Link>
               </div>
@@ -144,7 +144,7 @@ export default function WhatsAppBusinessPage() {
                 { num: "48h", label: "Installation" },
               ].map((s) => (
                 <div key={s.label} className="rounded-2xl bg-white/10 px-6 py-6 text-center backdrop-blur-sm">
-                  <div className="font-serif text-4xl font-black text-white">{s.num}</div>
+                  <div className="font-sans text-4xl font-extrabold text-white">{s.num}</div>
                   <div className="mt-1 text-sm font-medium text-white/60">{s.label}</div>
                 </div>
               ))}
@@ -156,12 +156,12 @@ export default function WhatsAppBusinessPage() {
       {/* Features */}
       <section className="px-4 py-24 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <h2 className="text-center font-serif text-3xl font-black text-dark sm:text-4xl">
+          <h2 className="text-center font-sans text-3xl font-extrabold text-dark sm:text-4xl">
             Ce qu&apos;on configure pour vous
           </h2>
           <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {FEATURES.map((f) => (
-              <div key={f.title} className="group rounded-2xl border border-border bg-white p-8 transition-all hover:-translate-y-1 hover:border-violet/20 hover:shadow-lg">
+              <div key={f.title} className="group rounded-2xl border border-border bg-white p-8 transition-all hover:-translate-y-1 hover:border-primary/20 hover:shadow-lg">
                 <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-[#25D366]/10 text-[#25D366] transition-transform group-hover:scale-110">{f.icon}</div>
                 <h3 className="mt-5 text-lg font-bold text-dark">{f.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{f.desc}</p>
@@ -174,7 +174,7 @@ export default function WhatsAppBusinessPage() {
       {/* Use Cases */}
       <section className="bg-surface px-4 py-24 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <h2 className="text-center font-serif text-3xl font-black text-dark sm:text-4xl">
+          <h2 className="text-center font-sans text-3xl font-extrabold text-dark sm:text-4xl">
             WhatsApp Business pour chaque secteur
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-center text-muted">
@@ -194,7 +194,7 @@ export default function WhatsAppBusinessPage() {
       {/* Pricing */}
       <section className="px-4 py-24 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <h2 className="text-center font-serif text-3xl font-black text-dark sm:text-4xl">
+          <h2 className="text-center font-sans text-3xl font-extrabold text-dark sm:text-4xl">
             Tarifs WhatsApp Business API
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-center text-muted">
@@ -202,10 +202,10 @@ export default function WhatsAppBusinessPage() {
           </p>
           <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">
             {PRICING.map((p) => (
-              <div key={p.name} className={`relative rounded-2xl border p-8 ${p.popular ? "border-violet bg-violet/[0.02] shadow-lg shadow-violet/10" : "border-border bg-white"}`}>
-                {p.popular && <span className="absolute -top-3 left-6 rounded-full bg-violet px-4 py-1 text-xs font-bold text-white">Populaire</span>}
+              <div key={p.name} className={`relative rounded-2xl border p-8 ${p.popular ? "border-primary bg-primary/[0.02] shadow-lg shadow-primary/10" : "border-border bg-white"}`}>
+                {p.popular && <span className="absolute -top-3 left-6 rounded-full bg-primary px-4 py-1 text-xs font-bold text-white">Populaire</span>}
                 <h3 className="text-xl font-bold text-dark">{p.name}</h3>
-                <div className="mt-3 font-serif text-4xl font-black text-gradient-violet">{p.price}{p.price !== "Sur devis" && <span className="text-lg font-sans font-normal text-muted">&nbsp;&euro; HT</span>}</div>
+                <div className="mt-3 font-sans text-4xl font-extrabold text-gradient-primary">{p.price}{p.price !== "Sur devis" && <span className="text-lg font-sans font-normal text-muted">&nbsp;&euro; HT</span>}</div>
                 <p className="mt-2 text-sm text-muted">{p.desc}</p>
                 <ul className="mt-6 space-y-2.5">
                   {p.features.map((f) => (
@@ -214,7 +214,7 @@ export default function WhatsAppBusinessPage() {
                     </li>
                   ))}
                 </ul>
-                <Link href="/contact" className={`mt-8 block rounded-full py-3 text-center text-sm font-bold transition-all hover:-translate-y-0.5 ${p.popular ? "bg-gradient-to-r from-violet to-gold text-white hover:shadow-lg" : "border border-border text-dark hover:border-violet hover:text-violet"}`}>
+                <Link href="/contact" className={`mt-8 block rounded-lg py-3 text-center text-sm font-bold transition-all hover:-translate-y-0.5 ${p.popular ? "bg-gradient-to-r from-primary to-secondary text-white hover:shadow-lg" : "border border-border text-dark hover:border-primary hover:text-primary"}`}>
                   Choisir {p.name}
                 </Link>
               </div>
@@ -226,7 +226,7 @@ export default function WhatsAppBusinessPage() {
       {/* FAQ */}
       <section className="bg-surface px-4 py-24 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl">
-          <h2 className="text-center font-serif text-3xl font-black text-dark sm:text-4xl">
+          <h2 className="text-center font-sans text-3xl font-extrabold text-dark sm:text-4xl">
             Questions frequentes
           </h2>
           <div className="mt-14 space-y-6">
@@ -243,7 +243,7 @@ export default function WhatsAppBusinessPage() {
       {/* Internal links */}
       <section className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <h2 className="font-serif text-2xl font-black text-dark">Nos autres services</h2>
+          <h2 className="font-sans text-2xl font-extrabold text-dark">Nos autres services</h2>
           <div className="mt-6 flex flex-wrap gap-3">
             {[
               { href: "/services/creation-site-web", label: "Creation site web" },
@@ -251,7 +251,7 @@ export default function WhatsAppBusinessPage() {
               { href: "/services/automatisation", label: "Automatisation" },
               { href: "/services/marketing-digital", label: "Marketing Digital" },
             ].map((l) => (
-              <Link key={l.href} href={l.href} className="flex items-center gap-1.5 rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-dark transition-all hover:border-violet hover:text-violet">
+              <Link key={l.href} href={l.href} className="flex items-center gap-1.5 rounded-lg border border-border px-5 py-2.5 text-sm font-semibold text-dark transition-all hover:border-primary hover:text-primary">
                 {l.label} <ArrowRight size={14} />
               </Link>
             ))}
@@ -262,9 +262,9 @@ export default function WhatsAppBusinessPage() {
       {/* CTA */}
       <section className="relative overflow-hidden bg-gradient-to-br from-dark to-charcoal px-4 py-20 text-center sm:px-6 lg:px-8">
         <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(37,211,102,0.1)_0%,transparent_70%)]" />
-        <h2 className="relative font-serif text-3xl font-black text-white sm:text-4xl">Pret a automatiser votre WhatsApp ?</h2>
+        <h2 className="relative font-sans text-3xl font-extrabold text-white sm:text-4xl">Pret a automatiser votre WhatsApp ?</h2>
         <p className="relative mt-4 text-white/60">Audit gratuit. On vous repond sous 48h.</p>
-        <Link href="/contact" className="relative mt-8 inline-flex rounded-full bg-[#25D366] px-10 py-4 text-base font-bold text-white transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-[#25D366]/30">
+        <Link href="/contact" className="relative mt-8 inline-flex rounded-lg bg-[#25D366] px-10 py-4 text-base font-bold text-white transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-[#25D366]/30">
           Configurer mon WhatsApp Business
         </Link>
       </section>

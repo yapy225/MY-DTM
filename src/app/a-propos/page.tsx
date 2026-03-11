@@ -34,10 +34,10 @@ export default function AProposPage() {
     <>
       <section className="bg-gradient-to-b from-white to-surface px-4 pt-32 pb-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <p className="text-xs font-bold uppercase tracking-[3px] text-violet">
+          <p className="text-xs font-bold uppercase tracking-[3px] text-primary">
             A propos
           </p>
-          <h1 className="mt-4 max-w-3xl font-serif text-4xl font-black leading-tight text-dark sm:text-5xl">
+          <h1 className="mt-4 max-w-3xl font-sans text-4xl font-extrabold leading-tight text-dark sm:text-5xl">
             On ne fait pas que du marketing.
             <br />
             <span className="text-gradient">On construit des empires.</span>
@@ -45,12 +45,10 @@ export default function AProposPage() {
         </div>
       </section>
 
-      <div className="accent-strip" />
-
       <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         {/* Story */}
         <div className="mx-auto max-w-3xl">
-          <h2 className="font-serif text-3xl font-black text-dark">Notre histoire</h2>
+          <h2 className="font-sans text-3xl font-extrabold text-dark">Notre histoire</h2>
           <div className="mt-6 space-y-4 text-base leading-relaxed text-muted">
             <p>
               My-DTM est nee d&apos;un constat simple : les entreprises de la diaspora africaine
@@ -71,12 +69,12 @@ export default function AProposPage() {
 
         {/* Values */}
         <div className="mt-24">
-          <h2 className="text-center font-serif text-3xl font-black text-dark">Nos valeurs</h2>
+          <h2 className="text-center font-sans text-3xl font-extrabold text-dark">Nos valeurs</h2>
           <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2">
             {VALUES.map((v) => (
               <div
                 key={v.title}
-                className="rounded-2xl border border-border bg-white p-8 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-violet/[0.05]"
+                className="rounded-2xl border border-border bg-white p-8 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/[0.05]"
               >
                 <span className="text-5xl">{v.icon}</span>
                 <h3 className="mt-4 text-lg font-bold text-dark">{v.title}</h3>
@@ -88,11 +86,11 @@ export default function AProposPage() {
 
         {/* CTA inline */}
         <div className="mt-24 text-center">
-          <h2 className="font-serif text-3xl font-black text-dark">Envie de travailler ensemble ?</h2>
+          <h2 className="font-sans text-3xl font-extrabold text-dark">Envie de travailler ensemble ?</h2>
           <p className="mt-3 text-muted">Premier audit gratuit, sans engagement.</p>
           <Link
             href="/contact"
-            className="mt-8 inline-flex rounded-full bg-gradient-to-r from-violet to-gold px-10 py-4 text-base font-bold text-white transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-violet/30"
+            className="mt-8 inline-flex rounded-lg bg-gradient-to-r from-primary to-secondary px-10 py-4 text-base font-bold text-white transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/30"
           >
             Nous contacter
           </Link>

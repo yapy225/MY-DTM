@@ -27,7 +27,7 @@ const PROJECTS = [
     icon: "\u{1F30D}",
     title: "Dream Team Africa",
     badge: "Ecosysteme complet",
-    badgeClass: "bg-violet/10 text-violet",
+    badgeClass: "bg-primary/10 text-primary",
     desc: "Ecosysteme digital complet pour la diaspora africaine a Paris : journal en ligne, marketplace artisanat, billetterie evenementielle, annuaire professionnel.",
     results: [
       "+8 000 clics/mois recuperes via SEO",
@@ -57,7 +57,7 @@ const PROJECTS = [
     icon: "\u{1F4F0}",
     title: "L'Afropeen — Journal Digital",
     badge: "Journal & SEO",
-    badgeClass: "bg-gold/15 text-gold-dark",
+    badgeClass: "bg-secondary/15 text-amber-600",
     desc: "Journal en ligne de la diaspora africaine avec CMS custom, 9 rubriques, systeme de zones editoriales inspire de la presse traditionnelle.",
     results: [
       "40+ articles indexes sur Google",
@@ -74,16 +74,14 @@ export default function PortfolioPage() {
     <>
       <section className="bg-gradient-to-b from-white to-surface px-4 pt-32 pb-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <p className="text-xs font-bold uppercase tracking-[3px] text-violet">
+          <p className="text-xs font-bold uppercase tracking-[3px] text-primary">
             Portfolio
           </p>
-          <h1 className="mt-4 max-w-2xl font-serif text-4xl font-black leading-tight text-dark sm:text-5xl">
+          <h1 className="mt-4 max-w-2xl font-sans text-4xl font-extrabold leading-tight text-dark sm:text-5xl">
             Des projets concrets, des resultats mesurables.
           </h1>
         </div>
       </section>
-
-      <div className="accent-strip" />
 
       <div className="mx-auto max-w-7xl space-y-24 px-4 py-20 sm:px-6 lg:px-8">
         {PROJECTS.map((p, i) => (
@@ -93,7 +91,7 @@ export default function PortfolioPage() {
             className={`grid grid-cols-1 items-center gap-12 lg:grid-cols-2 ${i % 2 === 1 ? "lg:direction-rtl" : ""}`}
           >
             {/* Visual */}
-            <div className="flex aspect-[16/10] items-center justify-center rounded-3xl bg-gradient-to-br from-violet/10 to-gold/[0.06] text-8xl">
+            <div className="flex aspect-[16/10] items-center justify-center rounded-3xl bg-gradient-to-br from-primary/10 to-secondary/[0.06] text-8xl">
               {p.icon}
             </div>
 
@@ -102,10 +100,10 @@ export default function PortfolioPage() {
               <span className={`inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wide ${p.badgeClass}`}>
                 {p.badge}
               </span>
-              <h2 className="mt-4 font-serif text-3xl font-black text-dark">{p.title}</h2>
+              <h2 className="mt-4 font-sans text-3xl font-extrabold text-dark">{p.title}</h2>
               <p className="mt-3 leading-relaxed text-muted">{p.desc}</p>
 
-              <h3 className="mt-6 text-sm font-bold uppercase tracking-wide text-violet">
+              <h3 className="mt-6 text-sm font-bold uppercase tracking-wide text-primary">
                 Resultats
               </h3>
               <ul className="mt-3 space-y-2">
@@ -121,7 +119,7 @@ export default function PortfolioPage() {
                 {p.tech.map((t) => (
                   <span
                     key={t}
-                    className="rounded-full border border-violet/10 bg-violet/[0.05] px-3 py-1 text-xs font-semibold text-violet"
+                    className="rounded-full border border-primary/10 bg-primary/[0.05] px-3 py-1 text-xs font-semibold text-primary"
                   >
                     {t}
                   </span>

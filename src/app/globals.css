@@ -1,20 +1,21 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-dark: #1A1520;
-  --color-charcoal: #2A2235;
-  --color-surface: #F9F7FC;
-  --color-violet: #7C3AED;
-  --color-violet-light: #A78BFA;
-  --color-violet-dark: #5B21B6;
-  --color-gold: #C9A84C;
-  --color-gold-light: #E0C878;
-  --color-gold-dark: #A88B3A;
+  --color-dark: #0B1120;
+  --color-charcoal: #131B2E;
+  --color-surface: #F4F7FE;
+  --color-primary: #4F46E5;
+  --color-primary-light: #818CF8;
+  --color-primary-dark: #3730A3;
+  --color-secondary: #7C3AED;
+  --color-secondary-light: #A78BFA;
+  --color-accent: #06B6D4;
+  --color-accent-light: #67E8F9;
   --color-green: #10B981;
-  --color-cream: #FDFCFA;
-  --color-muted: #6B6878;
-  --color-border: #EAE6F0;
-  --font-serif: "Playfair Display", Georgia, serif;
+  --color-cream: #FFFFFF;
+  --color-muted: #64748B;
+  --color-border: #E2E8F0;
+  --font-serif: "DM Sans", system-ui, sans-serif;
   --font-sans: "DM Sans", system-ui, sans-serif;
 }
 
@@ -28,14 +29,14 @@ body {
 
 /* Gradient text utility */
 .text-gradient {
-  background: linear-gradient(135deg, var(--color-violet), var(--color-gold), var(--color-violet-light));
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary), var(--color-accent));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.text-gradient-violet {
-  background: linear-gradient(135deg, var(--color-violet), var(--color-gold));
+.text-gradient-primary {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -43,9 +44,9 @@ body {
 
 /* Accent strip */
 .accent-strip {
-  height: 4px;
+  height: 3px;
   width: 100%;
-  background: linear-gradient(90deg, var(--color-violet) 0%, var(--color-gold) 40%, var(--color-gold-light) 60%, var(--color-violet-light) 100%);
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-accent) 100%);
 }
 
 /* WhatsApp button */
@@ -57,4 +58,30 @@ body {
 @keyframes pulse-dot {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.3; }
+}
+
+/* Counter animation */
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Float animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Blob animation */
+@keyframes blob {
+  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+}
+
+.animate-blob {
+  animation: blob 8s ease-in-out infinite;
 }

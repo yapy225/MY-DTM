@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function PolitiqueConfidentialite() {
   return (
     <section className="mx-auto max-w-3xl px-4 pt-32 pb-20 sm:px-6 lg:px-8">
-      <h1 className="font-serif text-4xl font-black text-dark">Politique de confidentialite</h1>
+      <h1 className="font-sans text-4xl font-extrabold text-dark">Politique de confidentialite</h1>
       <p className="mt-4 text-sm text-muted">Derniere mise a jour : mars 2026</p>
 
       <div className="mt-10 space-y-8 text-sm leading-relaxed text-muted [&_h2]:mb-3 [&_h2]:mt-8 [&_h2]:text-lg [&_h2]:font-bold [&_h2]:text-dark">
@@ -96,7 +96,7 @@ export default function PolitiqueConfidentialite() {
           <h2>9. Contact</h2>
           <p>
             Pour toute question relative a cette politique, contactez-nous a{" "}
-            <a href="mailto:contact@my-dtm.fr" className="text-violet underline">
+            <a href="mailto:contact@my-dtm.fr" className="text-primary underline">
               contact@my-dtm.fr
             </a>.
           </p>

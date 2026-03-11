@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Hero from "@/components/sections/Hero";
 import Stats from "@/components/sections/Stats";
-import WhatsAppShowcase from "@/components/sections/WhatsAppShowcase";
 import Services from "@/components/sections/Services";
+import WhatsAppShowcase from "@/components/sections/WhatsAppShowcase";
 import Portfolio from "@/components/sections/Portfolio";
 import Process from "@/components/sections/Process";
+import FAQ from "@/components/sections/FAQ";
 import Testimonials from "@/components/sections/Testimonials";
 import CTA from "@/components/sections/CTA";
 
@@ -36,12 +37,12 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <div className="accent-strip" />
-      <Stats />
-      <WhatsAppShowcase />
       <Services />
-      <Portfolio />
+      <WhatsAppShowcase />
+      <Stats />
       <Process />
+      <Portfolio />
+      <FAQ />
       <Testimonials />
       <CTA />
     </>

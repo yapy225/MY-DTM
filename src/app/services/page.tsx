@@ -76,10 +76,10 @@ export default function ServicesPage() {
     <>
       <section className="bg-gradient-to-b from-white to-surface px-4 pt-32 pb-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <p className="text-xs font-bold uppercase tracking-[3px] text-violet">
+          <p className="text-xs font-bold uppercase tracking-[3px] text-primary">
             Nos services
           </p>
-          <h1 className="mt-4 max-w-2xl font-serif text-4xl font-black leading-tight text-dark sm:text-5xl">
+          <h1 className="mt-4 max-w-2xl font-sans text-4xl font-extrabold leading-tight text-dark sm:text-5xl">
             Des solutions pour chaque besoin digital.
           </h1>
           <p className="mt-4 max-w-xl text-lg text-muted">
@@ -88,25 +88,23 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <div className="accent-strip" />
-
       <div className="mx-auto max-w-7xl space-y-20 px-4 py-20 sm:px-6 lg:px-8">
         {OFFERS.map((cat) => (
           <section key={cat.id} id={cat.id}>
             <div className="flex items-center gap-4">
               <span className="text-5xl">{cat.icon}</span>
-              <h2 className="font-serif text-3xl font-black text-dark">{cat.title}</h2>
+              <h2 className="font-sans text-3xl font-extrabold text-dark">{cat.title}</h2>
             </div>
 
             <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
               {cat.items.map((item) => (
                 <div
                   key={item.name}
-                  className="group rounded-2xl border border-border bg-white p-8 transition-all hover:-translate-y-1 hover:border-violet/20 hover:shadow-lg hover:shadow-violet/[0.05]"
+                  className="group rounded-2xl border border-border bg-white p-8 transition-all hover:-translate-y-1 hover:border-primary/20 hover:shadow-lg hover:shadow-primary/[0.05]"
                 >
                   <h3 className="text-lg font-bold text-dark">{item.name}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">{item.desc}</p>
-                  <p className="mt-4 font-serif text-lg font-bold text-gradient-violet">
+                  <p className="mt-4 font-sans text-lg font-bold text-gradient-primary">
                     {item.price}
                   </p>
                 </div>
@@ -118,7 +116,7 @@ export default function ServicesPage() {
         <div className="text-center">
           <Link
             href="/contact"
-            className="inline-flex rounded-full bg-gradient-to-r from-violet to-gold px-10 py-4 text-base font-bold text-white transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-violet/30"
+            className="inline-flex rounded-lg bg-gradient-to-r from-primary to-secondary px-10 py-4 text-base font-bold text-white transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/30"
           >
             Demander un audit gratuit
           </Link>

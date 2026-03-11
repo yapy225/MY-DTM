@@ -73,7 +73,7 @@ export default function TarifsPage() {
     <>
       <section className="bg-gradient-to-b from-white to-surface px-4 pt-32 pb-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <h1 className="font-serif text-4xl font-black text-dark sm:text-5xl">
+          <h1 className="font-sans text-4xl font-extrabold text-dark sm:text-5xl">
             Tarifs clairs. Pas de surprises.
           </h1>
           <p className="mt-4 max-w-xl text-lg text-muted">
@@ -82,20 +82,18 @@ export default function TarifsPage() {
         </div>
       </section>
 
-      <div className="accent-strip" />
-
       <div className="mx-auto max-w-7xl space-y-20 px-4 py-20 sm:px-6 lg:px-8">
         {CATEGORIES.map((cat) => (
           <section key={cat.title}>
             <div className="flex items-center justify-between">
-              <h2 className="font-serif text-2xl font-black text-dark">{cat.title}</h2>
-              <Link href={cat.href} className="text-sm font-semibold text-violet hover:underline">Voir le detail</Link>
+              <h2 className="font-sans text-2xl font-extrabold text-dark">{cat.title}</h2>
+              <Link href={cat.href} className="text-sm font-semibold text-primary hover:underline">Voir le detail</Link>
             </div>
             <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {cat.items.map((item) => (
                 <div key={item.name} className="rounded-2xl border border-border bg-white p-6 transition-all hover:-translate-y-1 hover:shadow-lg">
                   <h3 className="text-base font-bold text-dark">{item.name}</h3>
-                  <div className="mt-2 font-serif text-2xl font-black text-gradient-violet">{item.price}</div>
+                  <div className="mt-2 font-sans text-2xl font-extrabold text-gradient-primary">{item.price}</div>
                   <p className="mt-2 text-sm text-muted">{item.desc}</p>
                 </div>
               ))}
@@ -103,10 +101,10 @@ export default function TarifsPage() {
           </section>
         ))}
 
-        <div className="rounded-2xl bg-gradient-to-br from-violet to-gold p-10 text-center text-white">
-          <h2 className="font-serif text-3xl font-black">Besoin d&apos;un devis sur mesure ?</h2>
+        <div className="rounded-2xl bg-gradient-to-br from-primary to-secondary p-10 text-center text-white">
+          <h2 className="font-sans text-3xl font-extrabold">Besoin d&apos;un devis sur mesure ?</h2>
           <p className="mt-3 text-white/80">Chaque projet est unique. On vous repond sous 48h.</p>
-          <Link href="/contact" className="mt-8 inline-flex rounded-full bg-white px-10 py-4 text-base font-bold text-violet transition-all hover:-translate-y-1 hover:shadow-xl">
+          <Link href="/contact" className="mt-8 inline-flex rounded-lg bg-white px-10 py-4 text-base font-bold text-primary transition-all hover:-translate-y-1 hover:shadow-xl">
             Demander un devis gratuit
           </Link>
         </div>

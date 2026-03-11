@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
-import { Playfair_Display, DM_Sans } from "next/font/google";
+import { DM_Sans, Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/layout/WhatsAppButton";
 
-const playfair = Playfair_Display({
-  variable: "--font-serif",
+const dmSans = DM_Sans({
+  variable: "--font-sans",
   subsets: ["latin"],
   display: "swap",
 });
 
-const dmSans = DM_Sans({
-  variable: "--font-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
 });
@@ -54,7 +54,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body className={`${playfair.variable} ${dmSans.variable} antialiased`}>
+      <body className={`${dmSans.variable} ${inter.variable} antialiased`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
