@@ -3,7 +3,7 @@ import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Tarifs — Prix Creation Site Web, SEO, WhatsApp Business, Marketing Digital",
+  title: "Tarifs — Site Web, SEO, WhatsApp, Marketing, Tracking & Securite",
   description:
     "Tarifs transparents : creation site web a partir de 1 500\u20AC, audit SEO 500\u20AC, WhatsApp Business 800\u20AC, marketing multi-canal 1 000\u20AC/mois. Devis gratuit.",
   keywords: [
@@ -64,6 +64,26 @@ const CATEGORIES = [
       { name: "Lancement Evenement", price: "2 000 \u20AC", desc: "Landing + Ads + WhatsApp + email" },
       { name: "Reseaux Sociaux", price: "800 \u20AC/mois", desc: "12 posts/mois + community management" },
       { name: "Newsletter", price: "400 \u20AC/mois", desc: "2-4 envois + segmentation + A/B" },
+    ],
+  },
+  {
+    title: "Tracking & Conformite",
+    href: "/services/tracking-conformite",
+    items: [
+      { name: "Audit Tracking", price: "500 \u20AC", desc: "Pixel + CAPI, doublons, score EMQ" },
+      { name: "Setup Pixel + CAPI", price: "800 \u20AC", desc: "Server-side, dedup, Advanced Matching" },
+      { name: "Conformite RGPD", price: "600 \u20AC", desc: "Consent Mode, conditionnement CNIL" },
+      { name: "Optimisation Match Quality", price: "700 \u20AC", desc: "Enrichissement + backfill + suivi EMQ" },
+    ],
+  },
+  {
+    title: "Securite & Infra",
+    href: "/services/securite-web",
+    items: [
+      { name: "Audit de Securite", price: "700 \u20AC", desc: "Headers, dependances, secrets, routes" },
+      { name: "Hardening Complet", price: "1 500 \u20AC", desc: "CSP, uploads, routes, webhooks signes" },
+      { name: "Rotation des Secrets", price: "500 \u20AC", desc: "Audit Git, rotation, coffre securise" },
+      { name: "Infra & Crons", price: "Sur devis", desc: "Cloudflare Workers, monitoring, couts" },
     ],
   },
 ];

@@ -1,457 +1,114 @@
-"use client";
-
 import Link from "next/link";
+import { Mail, Phone, MapPin } from "lucide-react";
 
-const USEFUL_LINKS = [
+const SERVICES = [
+  { href: "/services/creation-site-web", label: "Création web" },
+  { href: "/services/seo", label: "SEO technique" },
+  { href: "/services/whatsapp-business", label: "WhatsApp Business" },
+  { href: "/services/marketing-digital", label: "Marketing digital" },
+  { href: "/services/tracking-conformite", label: "Tracking & Conformité" },
+  { href: "/services/securite-web", label: "Sécurité web" },
+  { href: "/services/plateforme-evenementielle", label: "Plateforme événementielle" },
+];
+
+const LINKS = [
   { href: "/services", label: "Services" },
   { href: "/blog", label: "Blog" },
   { href: "/#faq", label: "FAQ" },
-  { href: "/contact", label: "Contact" },
   { href: "/tarifs", label: "Tarifs" },
-  { href: "/mentions-legales", label: "Mentions legales" },
+  { href: "/contact", label: "Contact" },
+  { href: "/mentions-legales", label: "Mentions légales" },
+];
+
+const SOCIALS = [
+  { href: "https://www.instagram.com/mydreamteammedia/", label: "Instagram", path: "M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 01-1.38-.9 3.7 3.7 0 01-.9-1.38c-.16-.43-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.3-1.46.72-2.13 1.38C1.35 2.68.93 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.3.79.72 1.46 1.38 2.13.67.66 1.34 1.08 2.13 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.7 5.7 0 002.13-1.38 5.7 5.7 0 001.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.7 5.7 0 00-1.38-2.13A5.7 5.7 0 0019.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zM12 16a4 4 0 110-8 4 4 0 010 8zm6.41-11.85a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z" },
+  { href: "https://www.facebook.com/mydreamteammedia/", label: "Facebook", path: "M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08v-3.47h3.05V9.43c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.69.24 2.69.24v2.95h-1.51c-1.49 0-1.96.93-1.96 1.87v2.25h3.33l-.53 3.47h-2.8v8.38C19.61 23.02 24 18.06 24 12.07z" },
+  { href: "https://x.com/DreamTeamAfriQ", label: "X", path: "M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.21-6.82-5.97 6.82H1.68l7.73-8.84L1.25 2.25h6.83l4.71 6.23zm-1.16 17.52h1.83L7.08 4.13H5.12z" },
 ];
 
 export default function Footer() {
   return (
-    <section
-      className="ei-footer-section"
-      style={{
-        paddingTop: "80px",
-        position: "relative",
-        overflow: "hidden",
-        backgroundColor: "#f8f9fc",
-      }}
-    >
-      {/* Decorative shapes */}
-      <div
-        className="ei-footer-shape1"
-        style={{
-          position: "absolute",
-          top: "120px",
-          right: "130px",
-          opacity: 0.5,
-          zIndex: -1,
-          width: "100px",
-          height: "100px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(124,13,190,0.1), transparent 70%)",
-        }}
-      />
-      <div
-        className="ei-footer-shape2"
-        style={{
-          position: "absolute",
-          top: "110px",
-          left: "-160px",
-          opacity: 0.5,
-          zIndex: -1,
-          width: "250px",
-          height: "250px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(124,13,190,0.08), transparent 70%)",
-        }}
-      />
-      <div
-        className="ei-footer-shape3"
-        style={{
-          position: "absolute",
-          left: "-50px",
-          right: 0,
-          opacity: 0.5,
-          zIndex: -1,
-          bottom: "100px",
-          margin: "0 auto",
-          textAlign: "center",
-          width: "200px",
-          height: "200px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(124,13,190,0.06), transparent 70%)",
-          animation: "leftRightMove 25s linear infinite",
-        }}
-      />
-
-      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 15px" }}>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "40px 0" }}>
-          {/* Brand column — col-lg-4 */}
-          <div style={{ flex: "0 0 33.333%", maxWidth: "33.333%", paddingRight: "15px" }} className="footer-col">
-            <div className="ei-footer-widget">
-              {/* Logo */}
-              <div className="ei-footer-logo" style={{ marginBottom: "25px" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                  <div
-                    style={{
-                      width: "40px",
-                      height: "40px",
-                      borderRadius: "12px",
-                      background: "linear-gradient(135deg, #7c0dbe, #ff00d6)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <span style={{ color: "#fff", fontSize: "14px", fontWeight: 900 }}>M</span>
-                  </div>
-                  <span style={{ fontSize: "20px", fontWeight: 700, color: "#373a5b" }}>My-DTM</span>
-                </div>
-              </div>
-              <p
-                style={{
-                  maxWidth: "220px",
-                  lineHeight: 1.875,
-                  fontSize: "14px",
-                  color: "#373a5b",
-                  marginBottom: 0,
-                }}
-              >
-                Agence de marketing digital specialisee dans la creation d&apos;ecosystemes numeriques complets.
-              </p>
-            </div>
+    <footer className="bg-dark px-4 pt-16 pb-8 text-white/70 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
+          {/* Brand */}
+          <div className="lg:pr-8">
+            <Link href="/" className="flex items-center gap-2.5">
+              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-pink text-sm font-black text-white">M</span>
+              <span className="text-lg font-bold text-white">My-DTM</span>
+            </Link>
+            <p className="mt-4 max-w-xs text-sm leading-relaxed">
+              Agence digitale à Paris : développement web, SEO, marketing, tracking et sécurité. Tout l&apos;écosystème digital sous un seul toit.
+            </p>
           </div>
 
-          {/* Useful Links — col-lg-4 */}
-          <div style={{ flex: "0 0 33.333%", maxWidth: "33.333%", paddingRight: "15px" }} className="footer-col">
-            <div className="ei-footer-widget">
-              <h3
-                className="ei-widget-title"
-                style={{
-                  fontSize: "16px",
-                  color: "#373a5b",
-                  fontWeight: 700,
-                  paddingBottom: "20px",
-                  margin: 0,
-                  fontFamily: "Poppins, sans-serif",
-                }}
-              >
-                Liens utiles :
-              </h3>
-              <ul style={{ margin: 0, padding: 0, listStyle: "none", display: "flex", flexWrap: "wrap" }}>
-                {USEFUL_LINKS.map((link) => (
-                  <li
-                    key={link.href + link.label}
-                    style={{
-                      width: "50%",
-                      fontSize: "14px",
-                      paddingLeft: "15px",
-                      marginBottom: "20px",
-                      fontFamily: "Poppins, sans-serif",
-                    }}
-                  >
-                    <Link
-                      href={link.href}
-                      className="footer-link"
-                      style={{
-                        color: "#373a5b",
-                        position: "relative",
-                        transition: "0.3s all ease-in-out",
-                        textDecoration: "none",
-                        display: "inline-block",
-                      }}
-                    >
-                      <span
-                        style={{
-                          position: "absolute",
-                          left: "-15px",
-                          top: "3px",
-                          fontSize: "10px",
-                        }}
-                      >
-                        &#9654;
-                      </span>
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {/* Services */}
+          <div>
+            <h3 className="text-sm font-bold uppercase tracking-wide text-white">Services</h3>
+            <ul className="mt-4 space-y-2.5">
+              {SERVICES.map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} className="text-sm transition-colors hover:text-accent-light">{l.label}</Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          {/* Contact — col-lg-4 */}
-          <div style={{ flex: "0 0 33.333%", maxWidth: "33.333%" }} className="footer-col">
-            <div className="ei-footer-widget">
-              <h3
-                className="ei-widget-title"
-                style={{
-                  fontSize: "16px",
-                  color: "#373a5b",
-                  fontWeight: 700,
-                  paddingBottom: "20px",
-                  margin: 0,
-                  fontFamily: "Poppins, sans-serif",
-                }}
-              >
-                Contact :
-              </h3>
+          {/* Liens */}
+          <div>
+            <h3 className="text-sm font-bold uppercase tracking-wide text-white">Liens</h3>
+            <ul className="mt-4 space-y-2.5">
+              {LINKS.map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} className="text-sm transition-colors hover:text-accent-light">{l.label}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-              {/* Phone + Address in SaaSio h4 style */}
-              <div style={{ display: "flex", flexWrap: "wrap", marginBottom: "15px" }}>
-                <div
-                  style={{
-                    width: "45%",
-                    fontSize: "14px",
-                    fontWeight: 700,
-                    paddingLeft: "28px",
-                    marginRight: "15px",
-                    position: "relative",
-                    display: "inline-block",
-                  }}
-                >
-                  <svg
-                    style={{ position: "absolute", left: 0, top: "2px", color: "#7b0dbd", width: "20px", height: "20px" }}
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                  <span style={{ color: "#373a5b" }}>Telephone</span>
-                  <span
-                    style={{
-                      fontWeight: 400,
-                      marginTop: "10px",
-                      display: "block",
-                      color: "#818181",
-                      fontSize: "13px",
-                    }}
-                  >
-                    +33 7 43 53 75 51
-                  </span>
-                </div>
-                <div
-                  style={{
-                    width: "45%",
-                    fontSize: "14px",
-                    fontWeight: 700,
-                    paddingLeft: "28px",
-                    position: "relative",
-                    display: "inline-block",
-                  }}
-                >
-                  <svg
-                    style={{ position: "absolute", left: 0, top: "2px", color: "#7b0dbd", width: "20px", height: "20px" }}
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  <span style={{ color: "#373a5b" }}>Adresse</span>
-                  <span
-                    style={{
-                      fontWeight: 400,
-                      marginTop: "10px",
-                      display: "block",
-                      color: "#818181",
-                      fontSize: "13px",
-                    }}
-                  >
-                    Paris, France
-                  </span>
-                </div>
-              </div>
-
-              {/* Email */}
-              <div
-                style={{
-                  fontSize: "14px",
-                  fontWeight: 700,
-                  paddingLeft: "28px",
-                  position: "relative",
-                  display: "inline-block",
-                  marginBottom: "15px",
-                }}
-              >
-                <svg
-                  style={{ position: "absolute", left: 0, top: "2px", color: "#7b0dbd", width: "20px", height: "20px" }}
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-                <span style={{ color: "#373a5b" }}>Email</span>
-                <span
-                  style={{
-                    fontWeight: 400,
-                    marginTop: "10px",
-                    display: "block",
-                    color: "#818181",
-                    fontSize: "13px",
-                  }}
-                >
-                  contact@my-dtm.fr
-                </span>
-              </div>
-
-              {/* Social icons */}
-              <div className="ei-footer-social" style={{ marginTop: "15px", display: "flex", gap: "5px" }}>
+          {/* Contact */}
+          <div>
+            <h3 className="text-sm font-bold uppercase tracking-wide text-white">Contact</h3>
+            <ul className="mt-4 space-y-3">
+              <li>
+                <a href="mailto:contact@my-dtm.fr" className="flex items-center gap-2.5 text-sm transition-colors hover:text-accent-light">
+                  <Mail size={16} className="text-primary-light" /> contact@my-dtm.fr
+                </a>
+              </li>
+              <li>
+                <a href="tel:+33743537551" className="flex items-center gap-2.5 text-sm transition-colors hover:text-accent-light">
+                  <Phone size={16} className="text-primary-light" /> +33 7 43 53 75 51
+                </a>
+              </li>
+              <li className="flex items-center gap-2.5 text-sm">
+                <MapPin size={16} className="text-primary-light" /> Paris, France
+              </li>
+            </ul>
+            <div className="mt-5 flex gap-3">
+              {SOCIALS.map((s) => (
                 <a
-                  href="https://www.instagram.com/mydreamteammedia/"
+                  key={s.label}
+                  href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Instagram"
-                  className="social-icon"
-                  style={{
-                    height: "30px",
-                    width: "30px",
-                    borderRadius: "100%",
-                    backgroundColor: "#fff",
-                    lineHeight: "30px",
-                    textAlign: "center",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    transition: "0.3s all ease-in-out",
-                    boxShadow: "0px 0px 9px 0px rgba(15,54,131,0.07)",
-                    color: "#ea4c89",
-                    textDecoration: "none",
-                  }}
+                  aria-label={s.label}
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-gradient-to-br hover:from-primary hover:to-pink"
                 >
-                  <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.97.24 2.43.403a4.08 4.08 0 011.47.96c.458.458.78.92.96 1.47.163.46.349 1.26.403 2.43.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.24 1.97-.403 2.43a4.08 4.08 0 01-.96 1.47 4.08 4.08 0 01-1.47.96c-.46.163-1.26.349-2.43.403-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.054-1.97-.24-2.43-.403a4.08 4.08 0 01-1.47-.96 4.08 4.08 0 01-.96-1.47c-.163-.46-.349-1.26-.403-2.43C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.054-1.17.24-1.97.403-2.43a4.08 4.08 0 01.96-1.47 4.08 4.08 0 011.47-.96c.46-.163 1.26-.349 2.43-.403C8.416 2.175 8.796 2.163 12 2.163zM12 0C8.741 0 8.333.014 7.053.072 5.775.13 4.902.333 4.14.63a5.88 5.88 0 00-2.126 1.384A5.88 5.88 0 00.63 4.14C.333 4.902.13 5.775.072 7.053.014 8.333 0 8.741 0 12s.014 3.667.072 4.947c.058 1.278.261 2.151.558 2.913a5.88 5.88 0 001.384 2.126A5.88 5.88 0 004.14 23.37c.762.297 1.635.5 2.913.558C8.333 23.986 8.741 24 12 24s3.667-.014 4.947-.072c1.278-.058 2.151-.261 2.913-.558a5.88 5.88 0 002.126-1.384 5.88 5.88 0 001.384-2.126c.297-.762.5-1.635.558-2.913.058-1.28.072-1.688.072-4.947s-.014-3.667-.072-4.947c-.058-1.278-.261-2.151-.558-2.913a5.88 5.88 0 00-1.384-2.126A5.88 5.88 0 0019.86.63C19.098.333 18.225.13 16.947.072 15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" /></svg>
+                  <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d={s.path} /></svg>
                 </a>
-                <a
-                  href="https://www.facebook.com/mydreamteammedia/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Facebook"
-                  className="social-icon"
-                  style={{
-                    height: "30px",
-                    width: "30px",
-                    borderRadius: "100%",
-                    backgroundColor: "#fff",
-                    lineHeight: "30px",
-                    textAlign: "center",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    transition: "0.3s all ease-in-out",
-                    boxShadow: "0px 0px 9px 0px rgba(15,54,131,0.07)",
-                    color: "#16599b",
-                    textDecoration: "none",
-                  }}
-                >
-                  <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" /></svg>
-                </a>
-                <a
-                  href="https://x.com/DreamTeamAfriQ"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="X (Twitter)"
-                  className="social-icon"
-                  style={{
-                    height: "30px",
-                    width: "30px",
-                    borderRadius: "100%",
-                    backgroundColor: "#fff",
-                    lineHeight: "30px",
-                    textAlign: "center",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    transition: "0.3s all ease-in-out",
-                    boxShadow: "0px 0px 9px 0px rgba(15,54,131,0.07)",
-                    color: "#03a9f4",
-                    textDecoration: "none",
-                  }}
-                >
-                  <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
-                </a>
-              </div>
+              ))}
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Copyright bar */}
-      <div
-        className="ei-footer-copyright"
-        style={{
-          marginTop: "40px",
-          fontSize: "14px",
-          fontFamily: "Poppins, sans-serif",
-        }}
-      >
-        <div
-          className="ei-footer-copyright-content"
-          style={{
-            padding: "25px 0 15px",
-            borderTop: "2px solid #dee2ef",
-            maxWidth: "1200px",
-            margin: "0 auto",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            flexWrap: "wrap",
-            gap: "10px",
-            paddingLeft: "15px",
-            paddingRight: "15px",
-          }}
-        >
-          <span style={{ color: "#373a5b" }}>&copy; 2025 My-DTM Digital Agency. Tous droits reserves.</span>
-          <div className="ei-copyright-menu" style={{ display: "flex", gap: "0" }}>
-            <Link
-              href="/mentions-legales"
-              style={{
-                marginLeft: "35px",
-                color: "#373a5b",
-                textDecoration: "none",
-                transition: "0.3s all ease-in-out",
-              }}
-              className="copyright-link"
-            >
-              Mentions legales
-            </Link>
-            <Link
-              href="/politique-de-confidentialite"
-              style={{
-                marginLeft: "35px",
-                color: "#373a5b",
-                textDecoration: "none",
-                transition: "0.3s all ease-in-out",
-              }}
-              className="copyright-link"
-            >
-              Confidentialite
-            </Link>
+        <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-sm sm:flex-row">
+          <span>&copy; 2026 My-DTM Digital Agency. Tous droits réservés.</span>
+          <div className="flex gap-6">
+            <Link href="/mentions-legales" className="transition-colors hover:text-accent-light">Mentions légales</Link>
+            <Link href="/politique-de-confidentialite" className="transition-colors hover:text-accent-light">Confidentialité</Link>
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes leftRightMove {
-          0% { transform: translateX(-100px); }
-          50% { transform: translateX(-10px); }
-          100% { transform: translateX(-100px); }
-        }
-        .footer-link:hover {
-          color: #0072fd !important;
-          margin-left: 10px !important;
-        }
-        .copyright-link:hover {
-          color: #0072fd !important;
-        }
-        .social-icon:hover {
-          background: linear-gradient(135deg, #7c0dbe, #ff00d6) !important;
-          color: #fff !important;
-        }
-        @media (max-width: 768px) {
-          .footer-col {
-            flex: 0 0 100% !important;
-            max-width: 100% !important;
-          }
-          .ei-footer-copyright-content {
-            flex-direction: column !important;
-            text-align: center;
-          }
-          .ei-copyright-menu a {
-            margin-left: 15px !important;
-          }
-        }
-      `}</style>
-    </section>
+    </footer>
   );
 }

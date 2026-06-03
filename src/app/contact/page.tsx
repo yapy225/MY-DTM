@@ -4,11 +4,15 @@ import { useState, type FormEvent } from "react";
 import { Phone, Mail, MapPin, Send, Loader2 } from "lucide-react";
 
 const SERVICES = [
-  "Developpement Web",
-  "SEO Technique",
-  "Automatisation API",
-  "Marketing Multi-Canal",
-  "Audit Gratuit",
+  "Creation site web",
+  "Plateforme evenementielle / billetterie",
+  "SEO technique",
+  "Automatisation & API",
+  "WhatsApp Business",
+  "Marketing digital",
+  "Tracking & Conformite RGPD",
+  "Securite web",
+  "Audit gratuit",
   "Autre",
 ];
 
