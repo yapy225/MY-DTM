@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import Hero from "@/components/sections/Hero";
 import Services from "@/components/sections/Services";
-import WhatsAppShowcase from "@/components/sections/WhatsAppShowcase";
 import Stats from "@/components/sections/Stats";
-import Process from "@/components/sections/Process";
-import Portfolio from "@/components/sections/Portfolio";
 import FAQ from "@/components/sections/FAQ";
 import Testimonials from "@/components/sections/Testimonials";
 import LatestPosts from "@/components/sections/LatestPosts";
@@ -39,10 +36,7 @@ export default function Home() {
     <>
       <Hero />
       <Services />
-      <WhatsAppShowcase />
       <Stats />
-      <Process />
-      <Portfolio />
       <FAQ />
       <Testimonials />
       <LatestPosts />
