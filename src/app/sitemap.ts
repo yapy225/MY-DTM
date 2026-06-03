@@ -1,8 +1,16 @@
 import type { MetadataRoute } from "next";
+import { getAllPosts } from "@/lib/blog/posts";
 
 const baseUrl = "https://my-dtm.fr";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const blogPosts: MetadataRoute.Sitemap = getAllPosts().map((p) => ({
+    url: `${baseUrl}/blog/${p.slug}`,
+    lastModified: new Date(p.date),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
   return [
     { url: baseUrl, lastModified: new Date(), changeFrequency: "weekly", priority: 1 },
     { url: `${baseUrl}/services`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
@@ -13,6 +21,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/services/marketing-digital`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
     { url: `${baseUrl}/services/tracking-conformite`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
     { url: `${baseUrl}/services/securite-web`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${baseUrl}/services/plateforme-evenementielle`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${baseUrl}/blog`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
+    ...blogPosts,
     { url: `${baseUrl}/tarifs`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/portfolio`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/a-propos`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },

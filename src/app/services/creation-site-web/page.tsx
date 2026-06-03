@@ -130,6 +130,7 @@ export default function CreationSiteWebPage() {
           <h2 className="font-sans text-2xl font-extrabold text-dark">Nos autres services</h2>
           <div className="mt-6 flex flex-wrap gap-3">
             {[
+              { href: "/services/plateforme-evenementielle", label: "Plateforme Evenementielle" },
               { href: "/services/seo", label: "SEO Technique" },
               { href: "/services/whatsapp-business", label: "WhatsApp Business" },
               { href: "/services/automatisation", label: "Automatisation" },
