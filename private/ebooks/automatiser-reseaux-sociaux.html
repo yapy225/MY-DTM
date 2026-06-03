@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Automatiser ses réseaux sociaux — Le système clé en main · My-DTM</title>
+<style>
+  :root { --primary:#7c0dbe; --secondary:#4d71ee; --dark:#0e0a1a; --muted:#52525b; --soft:#f5f2fb; --border:#e7e1f3; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; color: var(--dark); line-height: 1.6; margin: 0; font-size: 12pt; }
+  .page { max-width: 800px; margin: 0 auto; padding: 48px 56px; }
+  h1 { font-size: 30pt; line-height: 1.15; margin: 0 0 8px; }
+  h2 { font-size: 19pt; margin: 38px 0 12px; color: var(--primary); border-bottom: 2px solid var(--border); padding-bottom: 6px; }
+  h3 { font-size: 13.5pt; margin: 22px 0 6px; }
+  p { margin: 8px 0; }
+  ul, ol { margin: 8px 0; padding-left: 22px; }
+  li { margin: 4px 0; }
+  .lead { font-size: 13pt; color: var(--muted); }
+  .eyebrow { text-transform: uppercase; letter-spacing: 3px; font-size: 9pt; font-weight: 800; color: var(--primary); }
+  .cover { min-height: 88vh; display: flex; flex-direction: column; justify-content: center; }
+  .badge { display: inline-block; background: var(--soft); border:1px solid var(--border); border-radius: 999px; padding: 4px 14px; font-size: 9.5pt; font-weight: 700; color: var(--primary); }
+  .box { background: var(--soft); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; margin: 16px 0; }
+  .tip { border-left: 4px solid var(--secondary); background: #eef2fe; border-radius: 0 10px 10px 0; padding: 12px 18px; margin: 14px 0; }
+  .warn { border-left: 4px solid #e0a106; background: #fdf6e3; border-radius: 0 10px 10px 0; padding: 12px 18px; margin: 14px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 10.5pt; }
+  th, td { border: 1px solid var(--border); padding: 7px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--primary); color: #fff; font-weight: 700; }
+  tr:nth-child(even) td { background: #faf8fe; }
+  .tpl { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; margin: 10px 0; }
+  .tpl .label { font-weight: 700; color: var(--primary); font-size: 10pt; }
+  .tpl .body { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 10pt; white-space: pre-wrap; margin-top: 6px; color: #1f2937; }
+  code { font-family: "SF Mono", Menlo, Consolas, monospace; background: #f1edfa; padding: 1px 5px; border-radius: 4px; font-size: 10.5pt; }
+  .footer { margin-top: 16px; font-size: 9pt; color: var(--muted); text-align: center; }
+  .cta { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #fff; border-radius: 14px; padding: 24px 28px; margin: 28px 0; }
+  .cta h3 { color: #fff; margin-top: 0; }
+  .cta a { color: #fff; font-weight: 800; }
+  @media print {
+    h2 { page-break-after: avoid; }
+    h3 { page-break-after: avoid; }
+    .tpl, .box, .tip, .warn, table { page-break-inside: avoid; }
+    .page-break { page-break-before: always; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- COUVERTURE -->
+  <section class="cover">
+    <span class="eyebrow">Guide premium · My-DTM</span>
+    <h1>Automatiser ses réseaux sociaux</h1>
+    <p class="lead">Le système clé en main pour publier tous les jours sur Instagram, Facebook et LinkedIn — sans y passer ses soirées, et sans sonner comme un robot.</p>
+    <div style="margin-top:24px"><span class="badge">Calendrier 30 jours · 50 templates · Configs Metricool + Make · Prompts IA · Checklist</span></div>
+    <p style="margin-top:40px; color:var(--muted); font-size:10pt">© My-DTM — Agence digitale, Paris · my-dtm.fr · Usage personnel. Revente et redistribution interdites.</p>
+  </section>
+
+  <div class="page-break"></div>
+
+  <!-- INTRO -->
+  <h2>Avant de commencer : la promesse</h2>
+  <p>La plupart des entrepreneurs tiennent trois semaines sur les réseaux sociaux, puis abandonnent. Pas par manque d'idées — par manque de système. Publier manuellement chaque jour est un travail à temps plein que personne ne tient sur la durée.</p>
+  <p>Ce guide vous donne ce système. À la fin, vous aurez : un calendrier de contenus qui tourne, des publications programmées à l'avance, une production accélérée par l'IA, et des automatisations qui travaillent pendant que vous dormez. Comptez <strong>un week-end</strong> pour tout mettre en place.</p>
+  <div class="tip"><strong>La règle d'or à retenir :</strong> on automatise la <em>distribution</em> (programmer, recycler, publier partout), jamais la <em>conversation</em> (répondre, prendre position). C'est ce qui vous évite le shadowban et préserve votre marque.</div>
+
+  <!-- SYSTÈME EN 1 PAGE -->
+  <h2>Le système en une page</h2>
+  <p>Cinq briques qui s'enchaînent. Chacune supprime un point de friction qui, sinon, vous ferait décrocher.</p>
+  <table>
+    <tr><th>#</th><th>Brique</th><th>Ce qu'elle fait</th><th>Outil</th></tr>
+    <tr><td>1</td><td>Calendrier éditorial</td><td>Décider à l'avance quoi publier et quand</td><td>Le modèle 30 jours (ci-dessous)</td></tr>
+    <tr><td>2</td><td>Production en lot</td><td>Créer 1 mois de contenu en 2 h, pas au jour le jour</td><td>Templates + IA</td></tr>
+    <tr><td>3</td><td>Programmation</td><td>Publier partout, au bon format, au bon moment</td><td>Metricool</td></tr>
+    <tr><td>4</td><td>Recyclage</td><td>Republier automatiquement vos meilleurs contenus</td><td>Metricool / Make</td></tr>
+    <tr><td>5</td><td>Automatisation avancée</td><td>Un événement (article, produit) déclenche des posts</td><td>Make</td></tr>
+  </table>
+
+  <div class="page-break"></div>
+
+  <!-- ÉTAPE 1 : CALENDRIER -->
+  <h2>Étape 1 — Le calendrier éditorial 30 jours</h2>
+  <p>Quatre types de contenus en rotation, c'est le secret d'un fil vivant sans se répéter :</p>
+  <ul>
+    <li><strong>Valeur (V)</strong> : vous apprenez quelque chose à votre audience (conseil, astuce, erreur à éviter).</li>
+    <li><strong>Preuve (P)</strong> : vous montrez que ça marche (résultat, témoignage, avant/après, coulisses).</li>
+    <li><strong>Connexion (C)</strong> : vous créez du lien (histoire perso, opinion, question à l'audience).</li>
+    <li><strong>Offre (O)</strong> : vous vendez (produit, service, appel à l'action) — environ 1 post sur 5.</li>
+  </ul>
+  <table>
+    <tr><th>Jour</th><th>Type</th><th>Idée de post</th><th>Réseau prioritaire</th></tr>
+    <tr><td>1</td><td>V</td><td>« 3 erreurs que je vois tout le temps dans [ton domaine] »</td><td>LinkedIn / Insta</td></tr>
+    <tr><td>2</td><td>C</td><td>Pourquoi j'ai lancé [activité] (ton histoire)</td><td>Insta / FB</td></tr>
+    <tr><td>3</td><td>V</td><td>Tuto rapide : comment faire [tâche] en 3 étapes</td><td>Insta (carrousel)</td></tr>
+    <tr><td>4</td><td>P</td><td>Résultat client / avant-après</td><td>Tous</td></tr>
+    <tr><td>5</td><td>O</td><td>Présentation d'une offre + appel à l'action</td><td>Tous</td></tr>
+    <tr><td>6</td><td>C</td><td>Question ouverte à l'audience (engagement)</td><td>Stories / FB</td></tr>
+    <tr><td>7</td><td>V</td><td>Mythe vs réalité dans [ton secteur]</td><td>LinkedIn</td></tr>
+    <tr><td>8</td><td>P</td><td>Coulisses : une journée type / ton process</td><td>Stories / Reels</td></tr>
+    <tr><td>9</td><td>V</td><td>Check-list téléchargeable / mémo</td><td>Insta (carrousel)</td></tr>
+    <tr><td>10</td><td>C</td><td>Opinion tranchée sur une pratique du secteur</td><td>LinkedIn</td></tr>
+    <tr><td>11</td><td>V</td><td>« Si je débutais aujourd'hui, je ferais… »</td><td>Tous</td></tr>
+    <tr><td>12</td><td>P</td><td>Témoignage en citation + photo</td><td>Insta / LinkedIn</td></tr>
+    <tr><td>13</td><td>O</td><td>Offre limitée / rappel d'un service</td><td>Tous</td></tr>
+    <tr><td>14</td><td>C</td><td>Sondage / « cette semaine vous avez préféré… »</td><td>Stories</td></tr>
+    <tr><td>15</td><td>V</td><td>Glossaire : 5 termes de ton métier expliqués simplement</td><td>Carrousel</td></tr>
+    <tr><td>16</td><td>P</td><td>Étude de cas chiffrée</td><td>LinkedIn</td></tr>
+    <tr><td>17</td><td>V</td><td>Outil / ressource que tu recommandes</td><td>Tous</td></tr>
+    <tr><td>18</td><td>C</td><td>Erreur que tu as faite + leçon</td><td>LinkedIn / Insta</td></tr>
+    <tr><td>19</td><td>V</td><td>FAQ : la question qu'on te pose le plus</td><td>Reels / Stories</td></tr>
+    <tr><td>20</td><td>O</td><td>Témoignage + lien vers l'offre</td><td>Tous</td></tr>
+    <tr><td>21</td><td>C</td><td>Behind the scenes / équipe / lieu</td><td>Stories / Reels</td></tr>
+    <tr><td>22</td><td>V</td><td>« Voici comment éviter [problème courant] »</td><td>Carrousel</td></tr>
+    <tr><td>23</td><td>P</td><td>Capture d'un message / résultat reçu</td><td>Stories</td></tr>
+    <tr><td>24</td><td>V</td><td>Tendance du secteur + ton analyse</td><td>LinkedIn</td></tr>
+    <tr><td>25</td><td>C</td><td>« Pourquoi je fais ce métier » (émotion)</td><td>Insta / FB</td></tr>
+    <tr><td>26</td><td>O</td><td>Démonstration produit / service en action</td><td>Reels</td></tr>
+    <tr><td>27</td><td>V</td><td>Comparatif : option A vs option B</td><td>Carrousel</td></tr>
+    <tr><td>28</td><td>P</td><td>Bilan / chiffre clé du mois</td><td>Tous</td></tr>
+    <tr><td>29</td><td>C</td><td>Remerciement à la communauté</td><td>Stories</td></tr>
+    <tr><td>30</td><td>O</td><td>Récap des offres + appel à l'action fort</td><td>Tous</td></tr>
+  </table>
+  <div class="tip"><strong>Comment l'utiliser :</strong> recopiez ce tableau dans un Google Sheet, ajoutez une colonne « Statut » (à faire / prêt / programmé) et une colonne « Légende ». Vous tenez votre tableau de bord de production.</div>
+
+  <div class="page-break"></div>
+
+  <!-- ÉTAPE 2 : 50 TEMPLATES -->
+  <h2>Étape 2 — 50 templates de posts à copier-coller</h2>
+  <p>Remplacez les <code>[crochets]</code> par vos infos. Adaptez le ton à votre voix. Ne publiez jamais un template brut sans l'avoir personnalisé.</p>
+
+  <h3>A. Accroches / premières lignes (1–10)</h3>
+  <div class="tpl"><span class="label">1 · Erreur</span><div class="body">Arrêtez de faire [erreur courante]. Voici ce qu'il faut faire à la place 👇</div></div>
+  <div class="tpl"><span class="label">2 · Liste</span><div class="body">[Nombre] choses que j'aurais aimé savoir avant de [activité] :</div></div>
+  <div class="tpl"><span class="label">3 · Contre-intuitif</span><div class="body">Tout le monde dit [croyance répandue]. C'est faux. Voilà pourquoi.</div></div>
+  <div class="tpl"><span class="label">4 · Avant/après</span><div class="body">Il y a [durée], [situation de départ]. Aujourd'hui, [résultat]. La différence ? Une seule chose.</div></div>
+  <div class="tpl"><span class="label">5 · Question</span><div class="body">Vous galérez avec [problème] ? Vous n'êtes pas seul·e. Voici la méthode.</div></div>
+  <div class="tpl"><span class="label">6 · Promesse</span><div class="body">En 2 minutes, je vous montre comment [résultat désirable] sans [contrainte redoutée].</div></div>
+  <div class="tpl"><span class="label">7 · Histoire</span><div class="body">Un client m'a dit une phrase qui a tout changé : « [citation]. »</div></div>
+  <div class="tpl"><span class="label">8 · Chiffre choc</span><div class="body">[Statistique surprenante]. Et pourtant, presque personne n'en parle.</div></div>
+  <div class="tpl"><span class="label">9 · Confession</span><div class="body">J'ai longtemps cru que [croyance]. J'avais tort. Voici ce que j'ai appris.</div></div>
+  <div class="tpl"><span class="label">10 · Urgence douce</span><div class="body">Si vous faites encore [pratique dépassée] en 2026, lisez ceci.</div></div>
+
+  <h3>B. Posts de valeur (11–22)</h3>
+  <div class="tpl"><span class="label">11 · Tuto 3 étapes</span><div class="body">Comment [résultat] en 3 étapes :
+1) [étape] 2) [étape] 3) [étape]
+Enregistrez ce post pour plus tard 🔖</div></div>
+  <div class="tpl"><span class="label">12 · Erreurs à éviter</span><div class="body">Les [nombre] erreurs qui sabotent [objectif] :
+❌ [erreur 1]
+❌ [erreur 2]
+❌ [erreur 3]
+✅ Faites plutôt : [solution]</div></div>
+  <div class="tpl"><span class="label">13 · Mémo</span><div class="body">Gardez cette check-list pour [tâche] :
+☐ [point] ☐ [point] ☐ [point] ☐ [point]</div></div>
+  <div class="tpl"><span class="label">14 · Mythe vs réalité</span><div class="body">MYTHE : [idée reçue]
+RÉALITÉ : [ce qui est vrai]
+Pourquoi c'est important pour vous : [bénéfice].</div></div>
+  <div class="tpl"><span class="label">15 · Outil</span><div class="body">L'outil que j'utilise tous les jours pour [tâche] : [nom].
+Ce qu'il m'a fait gagner : [bénéfice concret].</div></div>
+  <div class="tpl"><span class="label">16 · Si je recommençais</span><div class="body">Si je relançais [activité] aujourd'hui, voici les 3 choses que je ferais dès le jour 1 : [liste].</div></div>
+  <div class="tpl"><span class="label">17 · Comparatif</span><div class="body">[Option A] vs [Option B] : laquelle choisir ?
+→ Choisissez A si [cas]. → Choisissez B si [cas].</div></div>
+  <div class="tpl"><span class="label">18 · FAQ</span><div class="body">« [Question fréquente] ? »
+La réponse courte : [réponse].
+La réponse longue : [détail].</div></div>
+  <div class="tpl"><span class="label">19 · Glossaire</span><div class="body">[Nombre] termes de [secteur] expliqués simplement :
+• [terme] = [définition simple]
+• [terme] = [définition simple]</div></div>
+  <div class="tpl"><span class="label">20 · Process</span><div class="body">Voici exactement comment je [livrable], de A à Z : [étapes]. Transparence totale.</div></div>
+  <div class="tpl"><span class="label">21 · Ressource offerte</span><div class="body">J'ai préparé [ressource gratuite] pour vous aider à [objectif]. Commentez « [mot-clé] » et je vous l'envoie.</div></div>
+  <div class="tpl"><span class="label">22 · Analyse de tendance</span><div class="body">[Tendance] arrive dans [secteur]. Voici ce que ça change concrètement pour vous : [analyse].</div></div>
+
+  <h3>C. Preuve & confiance (23–32)</h3>
+  <div class="tpl"><span class="label">23 · Résultat client</span><div class="body">Résultat d'un client : [chiffre / transformation] en [durée]. Voici comment on s'y est pris : [méthode].</div></div>
+  <div class="tpl"><span class="label">24 · Témoignage</span><div class="body">« [Citation client]. » — [Prénom], [activité]. Merci pour ta confiance 🙏</div></div>
+  <div class="tpl"><span class="label">25 · Avant/après</span><div class="body">AVANT : [situation]. APRÈS : [situation]. Swipez pour voir →</div></div>
+  <div class="tpl"><span class="label">26 · Coulisses</span><div class="body">Ce que vous ne voyez pas derrière [livrable] : [coulisses, effort réel].</div></div>
+  <div class="tpl"><span class="label">27 · Étude de cas</span><div class="body">Cas concret : [client] avait [problème]. On a fait [action]. Résultat : [chiffre].</div></div>
+  <div class="tpl"><span class="label">28 · Chiffre du mois</span><div class="body">Ce mois-ci : [chiffre clé]. Merci à toutes celles et ceux qui rendent ça possible.</div></div>
+  <div class="tpl"><span class="label">29 · Capture de message</span><div class="body">Reçu ce matin 👇 [capture d'un retour client]. Ce sont ces messages qui donnent envie de continuer.</div></div>
+  <div class="tpl"><span class="label">30 · Démonstration</span><div class="body">Regardez [produit/service] en action 👇 [vidéo/Reel]. Une question ? Posez-la en commentaire.</div></div>
+  <div class="tpl"><span class="label">31 · Récompense / certif</span><div class="body">Fier·e de partager : [reconnaissance, étape franchie]. La suite arrive 🚀</div></div>
+  <div class="tpl"><span class="label">32 · Comparatif honnête</span><div class="body">On n'est pas faits pour tout le monde. Choisissez-nous si [critère]. Sinon, [alternative honnête].</div></div>
+
+  <h3>D. Connexion & engagement (33–42)</h3>
+  <div class="tpl"><span class="label">33 · Histoire perso</span><div class="body">Il y a [durée], je [moment de vie]. Aujourd'hui, [situation]. Ce que ça m'a appris : [leçon].</div></div>
+  <div class="tpl"><span class="label">34 · Pourquoi je fais ça</span><div class="body">Je ne fais pas [activité] pour [raison évidente]. Je le fais pour [vraie raison, émotion].</div></div>
+  <div class="tpl"><span class="label">35 · Opinion tranchée</span><div class="body">Avis impopulaire : [opinion]. Je m'explique 👇 (et dites-moi si vous êtes d'accord).</div></div>
+  <div class="tpl"><span class="label">36 · Question ouverte</span><div class="body">Question pour vous : [question]. Je lis toutes les réponses en commentaire 👇</div></div>
+  <div class="tpl"><span class="label">37 · Sondage</span><div class="body">Team [option A] ou team [option B] ? Votez en story 👇</div></div>
+  <div class="tpl"><span class="label">38 · Vulnérabilité</span><div class="body">Je vais être honnête : [difficulté réelle]. Comment vous gérez ça de votre côté ?</div></div>
+  <div class="tpl"><span class="label">39 · Remerciement</span><div class="body">[Nombre] personnes nous suivent maintenant. Merci 🙏 Pour fêter ça : [petite action].</div></div>
+  <div class="tpl"><span class="label">40 · Valeurs</span><div class="body">Chez nous, on croit que [valeur]. C'est pour ça qu'on [action concrète].</div></div>
+  <div class="tpl"><span class="label">41 · Mini-débat</span><div class="body">[Affirmation]. Pour ? Contre ? Argumentez en commentaire, j'adore ces échanges.</div></div>
+  <div class="tpl"><span class="label">42 · Journée type</span><div class="body">À quoi ressemble une journée chez [activité] ? Spoiler : [détail surprenant]. 👇</div></div>
+
+  <h3>E. Offre & vente (43–50)</h3>
+  <div class="tpl"><span class="label">43 · Présentation d'offre</span><div class="body">Vous voulez [résultat] sans [contrainte] ? [Offre] est faite pour ça. Détails 👇</div></div>
+  <div class="tpl"><span class="label">44 · Problème → solution</span><div class="body">Si vous [problème], vous perdez [conséquence]. [Offre] règle ça en [délai].</div></div>
+  <div class="tpl"><span class="label">45 · Pour qui / pas pour qui</span><div class="body">[Offre], c'est pour vous si [critère]. Ce n'est PAS pour vous si [critère]. Clair, net.</div></div>
+  <div class="tpl"><span class="label">46 · Rareté honnête</span><div class="body">Je prends [nombre] [clients/places] ce mois-ci. Il en reste [nombre]. Pour réserver : [lien/DM].</div></div>
+  <div class="tpl"><span class="label">47 · Objection levée</span><div class="body">« C'est trop cher / trop tôt / pas pour moi. » Voici pourquoi ce n'est (souvent) pas le cas : [réponse].</div></div>
+  <div class="tpl"><span class="label">48 · Démonstration de valeur</span><div class="body">Ce que vous obtenez avec [offre] : [bénéfice 1], [bénéfice 2], [bénéfice 3]. Le tout pour [prix/format].</div></div>
+  <div class="tpl"><span class="label">49 · Appel direct</span><div class="body">Prêt·e à [résultat] ? Cliquez sur le lien en bio / envoyez « [mot-clé] » en DM. On s'occupe du reste.</div></div>
+  <div class="tpl"><span class="label">50 · Récap d'offres</span><div class="body">Vous débutez ? → [offre A]. Vous voulez aller plus vite ? → [offre B]. Vous voulez déléguer ? → [offre C].</div></div>
+
+  <div class="page-break"></div>
+
+  <!-- ÉTAPE 3 : METRICOOL -->
+  <h2>Étape 3 — Programmer avec Metricool (pas à pas)</h2>
+  <p>Metricool publie pour vous sur tous vos réseaux, au bon moment, et vous donne les statistiques. Gratuit pour démarrer, ~18 €/mois en version Premium.</p>
+  <ol>
+    <li>Créez un compte sur <code>metricool.com</code> et choisissez la marque (votre entreprise).</li>
+    <li><strong>Connectez vos réseaux</strong> : Instagram (via un compte Pro lié à une page Facebook), Facebook, LinkedIn, X, TikTok, Google Business…</li>
+    <li>Ouvrez le <strong>Planificateur</strong> → bouton « + » pour créer un post.</li>
+    <li>Rédigez la légende (un de vos 50 templates), ajoutez l'image/vidéo, cochez les réseaux cibles.</li>
+    <li><strong>Adaptez par réseau</strong> : Metricool permet de modifier le texte par plateforme. Un post LinkedIn n'est pas un post Instagram — profitez-en.</li>
+    <li>Choisissez l'heure. Utilisez les <strong>« meilleures heures »</strong> suggérées par Metricool (basées sur votre audience).</li>
+    <li>Cliquez « Programmer ». Répétez pour vos 10–15 posts du lot.</li>
+  </ol>
+  <div class="tip"><strong>Astuce lot :</strong> bloquez 2 h une fois par mois pour programmer 2 semaines d'un coup. C'est 10× plus efficace que de poster au jour le jour.</div>
+
+  <!-- ÉTAPE 4 : MAKE -->
+  <h2>Étape 4 — Automatiser avec Make (niveau avancé)</h2>
+  <p>Make (ex-Integromat) connecte vos outils et déclenche des actions automatiquement. L'automatisation la plus rentable : <strong>un nouvel article de blog → 3 posts adaptés</strong>.</p>
+  <ol>
+    <li>Créez un compte sur <code>make.com</code> (gratuit pour démarrer).</li>
+    <li>Nouveau scénario → module déclencheur <strong>« RSS · Watch RSS feed items »</strong> et collez l'URL du flux RSS de votre blog.</li>
+    <li>Ajoutez un module <strong>OpenAI / Claude</strong> (ou « Text » avec un prompt) pour transformer le titre + résumé en 3 légendes (1 par réseau). Voir les prompts plus bas.</li>
+    <li>Ajoutez les modules <strong>Metricool</strong> (ou directement « Facebook Pages », « LinkedIn ») pour publier/programmer chaque légende.</li>
+    <li>Activez le scénario. Désormais, chaque article génère et programme automatiquement vos posts.</li>
+  </ol>
+  <div class="warn"><strong>À surveiller :</strong> relisez les premières productions automatiques. L'IA doit proposer, vous validez. Une faute ou un ton à côté publié automatiquement, c'est votre image. Ajoutez une étape de validation (ex. envoi sur votre email avant publication) au début.</div>
+
+  <!-- ÉTAPE 5 : PROMPTS IA -->
+  <h2>Étape 5 — Les prompts IA (légendes & visuels)</h2>
+  <h3>Prompt « légende qui ne sonne pas faux »</h3>
+  <div class="tpl"><div class="body">Tu es [TON MÉTIER] et tu écris comme tu parles : [3 adjectifs de ton ton, ex. direct, chaleureux, sans jargon].
+Rédige une légende [réseau : Instagram/LinkedIn] à partir de cette idée : « [IDÉE] ».
+Contraintes :
+- Première ligne = accroche qui stoppe le scroll.
+- Phrases courtes, pas de mots creux ni de superlatifs vides.
+- Intègre cet exemple concret tiré de mon activité : [EXEMPLE].
+- Termine par un appel à l'action : [CTA].
+- 3 à 5 hashtags pertinents max.
+Donne-moi 2 variantes.</div></div>
+  <h3>Prompt « idées de contenu pour le mois »</h3>
+  <div class="tpl"><div class="body">Je suis [ACTIVITÉ], ma cible est [CIBLE], mon objectif est [OBJECTIF].
+Propose-moi 30 idées de posts réparties en 4 types : Valeur, Preuve, Connexion, Offre.
+Pour chaque idée : le type, le titre, et le format conseillé (carrousel, reel, photo, story).</div></div>
+  <h3>Prompt « visuel » (pour un générateur d'images)</h3>
+  <div class="tpl"><div class="body">Crée une image [format : carré 1:1 / story 9:16] pour un post sur [SUJET].
+Style : [épuré / coloré / corporate], palette [couleurs de ta marque].
+Ambiance : [pro / chaleureuse]. Sans texte intégré (le texte sera ajouté ensuite).</div></div>
+  <div class="tip"><strong>Règle anti-IA :</strong> l'IA fait gagner ~70 % du temps de rédaction, pas 100 %. Relisez, coupez les phrases génériques, ajoutez UN détail que seule une vraie personne de votre métier connaîtrait. C'est ce détail qui crée la confiance.</div>
+
+  <div class="page-break"></div>
+
+  <!-- CHECKLIST -->
+  <h2>Votre checklist de mise en route (7 étapes)</h2>
+  <table>
+    <tr><th>☐</th><th>Étape</th><th>Temps</th></tr>
+    <tr><td>☐</td><td>1. Recopier le calendrier 30 jours dans un Google Sheet</td><td>15 min</td></tr>
+    <tr><td>☐</td><td>2. Choisir 10 idées et rédiger les légendes (templates + prompt IA)</td><td>1 h</td></tr>
+    <tr><td>☐</td><td>3. Créer/choisir 10 visuels</td><td>1 h</td></tr>
+    <tr><td>☐</td><td>4. Créer le compte Metricool et connecter les réseaux</td><td>20 min</td></tr>
+    <tr><td>☐</td><td>5. Programmer les 10 posts sur 2 semaines</td><td>30 min</td></tr>
+    <tr><td>☐</td><td>6. Activer le recyclage des meilleurs posts</td><td>15 min</td></tr>
+    <tr><td>☐</td><td>7. (Avancé) Monter le scénario Make blog → posts</td><td>45 min</td></tr>
+  </table>
+  <p>Cochez au fur et à mesure. Une fois les 7 étapes faites, votre présence tourne quasiment seule — il ne vous reste que le plus important : <strong>répondre aux gens.</strong></p>
+
+  <!-- CTA FINAL -->
+  <div class="cta">
+    <h3>Vous voulez qu'on le mette en place ensemble ?</h3>
+    <p>L'accompagnement My-DTM : 90 minutes en visio où l'on configure VOTRE système sur VOS comptes (Metricool + Make), on adapte le calendrier à votre activité et on programme vos premiers posts en direct. Vous repartez avec la machine qui tourne.</p>
+    <p><a href="https://my-dtm.fr/guides/automatiser-reseaux-sociaux">→ Réserver mon accompagnement sur my-dtm.fr</a></p>
+  </div>
+
+  <p class="footer">© My-DTM — Agence digitale, Paris · my-dtm.fr · Cet ebook est destiné à un usage personnel. Toute revente ou redistribution est interdite.</p>
+
+</div>
+</body>
+</html>
