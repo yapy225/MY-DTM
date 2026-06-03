@@ -58,9 +58,20 @@ export default function SecuriteWebPage() {
     })),
   };
 
+  const serviceJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Securite Web (audit, hardening, rotation des secrets)",
+    provider: { "@type": "Organization", name: "My-DTM Digital Agency", url: "https://my-dtm.fr" },
+    description: "Audit de securite, hardening complet (CSP, headers, uploads, routes), rotation des secrets et monitoring pour applications web et plateformes.",
+    areaServed: { "@type": "Country", name: "France" },
+    offers: { "@type": "AggregateOffer", lowPrice: "500", highPrice: "1500", priceCurrency: "EUR" },
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",

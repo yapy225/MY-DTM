@@ -58,9 +58,20 @@ export default function TrackingConformitePage() {
     })),
   };
 
+  const serviceJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Tracking & Conformite RGPD (Meta Pixel + Conversions API)",
+    provider: { "@type": "Organization", name: "My-DTM Digital Agency", url: "https://my-dtm.fr" },
+    description: "Setup Meta Pixel + Conversions API server-side, deduplication, Advanced Matching et consentement RGPD pour fiabiliser vos conversions.",
+    areaServed: { "@type": "Country", name: "France" },
+    offers: { "@type": "AggregateOffer", lowPrice: "500", highPrice: "800", priceCurrency: "EUR" },
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",

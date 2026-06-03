@@ -35,6 +35,11 @@ export const metadata: Metadata = {
     "agence web Paris",
   ],
   metadataBase: new URL("https://my-dtm.fr"),
+  verification: {
+    // Token fourni par Google Search Console (methode "balise HTML").
+    // A definir dans Vercel > Settings > Environment Variables : GOOGLE_SITE_VERIFICATION
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+  },
   openGraph: {
     title: "My-DTM — Agence Digitale Paris",
     description: "Developpement web, SEO, automatisation et marketing digital. Audit gratuit.",

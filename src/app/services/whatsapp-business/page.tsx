@@ -3,9 +3,9 @@ import Link from "next/link";
 import { Bot, Zap, Users, MessageCircle, BarChart3, Clock, CheckCircle2, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Configuration WhatsApp Business API — Agence Chatbot WhatsApp Paris",
+  title: "Agence WhatsApp Business API — Integration & Configuration en 48h | Paris",
   description:
-    "Agence specialisee WhatsApp Business API a Paris. Configuration complete, chatbot automatique, templates, webhooks Facebook Leads. Installation en 48h. Devis gratuit.",
+    "Agence WhatsApp Business API a Paris : integration et configuration completes, chatbot automatique, templates, webhooks Facebook Leads. Installation en 48h. Devis gratuit.",
   keywords: [
     "WhatsApp Business API configuration",
     "agence chatbot WhatsApp France",
@@ -119,7 +119,7 @@ export default function WhatsAppBusinessPage() {
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
             <div>
               <h1 className="font-sans text-4xl font-extrabold text-white sm:text-5xl">
-                Configuration WhatsApp Business API pour votre entreprise
+                Integration & configuration WhatsApp Business API pour votre entreprise
               </h1>
               <p className="mt-6 max-w-lg text-lg leading-relaxed text-white/80">
                 98% de taux d&apos;ouverture. On configure votre chatbot, vos templates et vos automatisations en 48h.
