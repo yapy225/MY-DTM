@@ -169,11 +169,11 @@ export default function ContactPage() {
               <h3 className="font-sans text-lg font-bold text-dark">Coordonnees</h3>
               <div className="mt-6 space-y-4">
                 <a
-                  href="mailto:contact@my-dtm.fr"
+                  href="mailto:hello@my-dtm.fr"
                   className="flex items-center gap-3 text-sm text-muted transition-colors hover:text-primary"
                 >
                   <Mail size={18} className="text-primary" />
-                  contact@my-dtm.fr
+                  hello@my-dtm.fr
                 </a>
                 <a
                   href="tel:+33743537551"

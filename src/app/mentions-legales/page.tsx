@@ -19,7 +19,7 @@ export default function MentionsLegales() {
           </p>
           <ul className="mt-2 list-inside list-disc space-y-1">
             <li>Responsable de la publication : My-DTM Digital Agency</li>
-            <li>Email : contact@my-dtm.fr</li>
+            <li>Email : hello@my-dtm.fr</li>
             <li>Telephone : +33 7 43 53 75 51</li>
             <li>Adresse : Paris, France</li>
           </ul>
@@ -47,7 +47,7 @@ export default function MentionsLegales() {
           <p>
             Les informations recueillies via le formulaire de contact sont destinees exclusivement a My-DTM Digital Agency
             pour le traitement de votre demande. Conformement au RGPD, vous disposez d&apos;un droit d&apos;acces,
-            de rectification et de suppression de vos donnees en nous contactant a contact@my-dtm.fr.
+            de rectification et de suppression de vos donnees en nous contactant a hello@my-dtm.fr.
           </p>
           <p className="mt-2">
             Pour plus de details, consultez notre{" "}

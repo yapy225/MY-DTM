@@ -17,7 +17,7 @@ export default function PolitiqueConfidentialite() {
           <h2>1. Responsable du traitement</h2>
           <p>
             My-DTM Digital Agency, micro-entreprise basee a Paris, France.
-            Contact : contact@my-dtm.fr | +33 7 43 53 75 51.
+            Contact : hello@my-dtm.fr | +33 7 43 53 75 51.
           </p>
         </div>
 
@@ -72,7 +72,7 @@ export default function PolitiqueConfidentialite() {
             <li>Droit d&apos;opposition au traitement</li>
           </ul>
           <p className="mt-2">
-            Pour exercer ces droits, envoyez un email a contact@my-dtm.fr.
+            Pour exercer ces droits, envoyez un email a hello@my-dtm.fr.
           </p>
         </div>
 
@@ -96,8 +96,8 @@ export default function PolitiqueConfidentialite() {
           <h2>9. Contact</h2>
           <p>
             Pour toute question relative a cette politique, contactez-nous a{" "}
-            <a href="mailto:contact@my-dtm.fr" className="text-primary underline">
-              contact@my-dtm.fr
+            <a href="mailto:hello@my-dtm.fr" className="text-primary underline">
+              hello@my-dtm.fr
             </a>.
           </p>
         </div>

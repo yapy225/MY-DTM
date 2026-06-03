@@ -39,7 +39,7 @@ export async function GET(req: Request) {
     });
   } catch {
     return NextResponse.json(
-      { error: "Fichier indisponible. Contactez-nous à contact@my-dtm.fr." },
+      { error: "Fichier indisponible. Contactez-nous à hello@my-dtm.fr." },
       { status: 404 },
     );
   }

@@ -89,7 +89,7 @@ export default async function MerciPage({
           <>
             <Mail size={56} className="mx-auto text-muted" />
             <h1 className="mt-6 font-sans text-2xl font-extrabold text-dark">Commande introuvable</h1>
-            <p className="mt-4 text-muted">Nous n'avons pas pu retrouver votre commande. Si vous avez été débité, écrivez-nous à <a href="mailto:contact@my-dtm.fr" className="font-semibold text-primary">contact@my-dtm.fr</a> et nous vous enverrons votre accès.</p>
+            <p className="mt-4 text-muted">Nous n'avons pas pu retrouver votre commande. Si vous avez été débité, écrivez-nous à <a href="mailto:hello@my-dtm.fr" className="font-semibold text-primary">hello@my-dtm.fr</a> et nous vous enverrons votre accès.</p>
           </>
         )}
 

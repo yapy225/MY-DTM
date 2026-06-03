@@ -15,8 +15,8 @@ export async function POST(req: Request) {
     const resend = new Resend(process.env.RESEND_API_KEY);
 
     await resend.emails.send({
-      from: "My-DTM Contact <contact@my-dtm.fr>",
-      to: ["contact@my-dtm.fr"],
+      from: "My-DTM Contact <hello@my-dtm.fr>",
+      to: ["hello@my-dtm.fr"],
       replyTo: email,
       subject: `Nouveau message de ${name} — ${service || "Contact"}`,
       html: `

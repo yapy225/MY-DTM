@@ -71,8 +71,8 @@ export default function Footer() {
             <h3 className="text-sm font-bold uppercase tracking-wide text-white">Contact</h3>
             <ul className="mt-4 space-y-3">
               <li>
-                <a href="mailto:contact@my-dtm.fr" className="flex items-center gap-2.5 text-sm transition-colors hover:text-accent-light">
-                  <Mail size={16} className="text-primary-light" /> contact@my-dtm.fr
+                <a href="mailto:hello@my-dtm.fr" className="flex items-center gap-2.5 text-sm transition-colors hover:text-accent-light">
+                  <Mail size={16} className="text-primary-light" /> hello@my-dtm.fr
                 </a>
               </li>
               <li>
