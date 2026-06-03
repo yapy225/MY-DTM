@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# legacy PHP site (gardé en local, hors repo)
+/my-dtm.fr/
+# anciens mockups HTML scratch
+/design-preview.html
+/proposition-*.html
+/skills-preview.html
