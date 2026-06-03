@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
-const WORDS = ["sites web", "le SEO", "l'automatisation", "WhatsApp Business"];
+const WORDS = ["sites web", "le SEO", "l'automatisation", "WhatsApp Business", "le tracking", "la securite"];
 
 export default function Hero() {
   const [wordIndex, setWordIndex] = useState(0);
@@ -49,7 +50,7 @@ export default function Hero() {
                   fontFamily: "Poppins",
                   margin: 0,
                 }}>
-                  Votre agence digitale pour{" "}
+                  Votre agence digitale a Paris pour{" "}
                   <span className="cd-words-wrapper" style={{
                     display: "inline-block",
                     position: "relative",
@@ -71,12 +72,12 @@ export default function Hero() {
 
                 {/* Subtitle */}
                 <p style={{ fontSize: "19px", color: "#fff", marginBottom: 0 }}>
-                  My-DTM est la meilleure agence de marketing digital a Paris. Sites web, SEO, automatisation et WhatsApp Business pour booster votre croissance.
+                  Agence de marketing digital a Paris : developpement web, SEO, automatisation, WhatsApp Business, tracking et securite. Tout l&apos;ecosysteme digital sous un seul toit.
                 </p>
 
                 {/* CTA Buttons */}
                 <div className="ei-banner-btn" style={{ padding: "45px 0px 25px 0px" }}>
-                  <a
+                  <Link
                     href="/contact"
                     style={{
                       fontSize: "15px",
@@ -111,9 +112,9 @@ export default function Hero() {
                       <line x1="12" y1="2" x2="12" y2="12" />
                     </svg>
                     Commencer
-                  </a>
-                  <a
-                    href="/services"
+                  </Link>
+                  <Link
+                    href="/contact"
                     style={{
                       fontSize: "15px",
                       fontWeight: 700,
@@ -125,23 +126,17 @@ export default function Hero() {
                       textDecoration: "none",
                     }}
                   >
-                    <span style={{ color: "#fff", marginRight: "2px" }}>ou</span> essai gratuit
-                  </a>
+                    <span style={{ color: "#fff", marginRight: "2px" }}>ou</span> audit gratuit
+                  </Link>
                 </div>
 
-                {/* Star rating review */}
-                <div className="ei-banner-review pera-content ul-li" style={{ display: "flex", alignItems: "center", flexWrap: "wrap" }}>
-                  <ul style={{ margin: 0, padding: 0, marginRight: "20px", display: "flex", gap: "3px" }}>
-                    {[1, 2, 3, 4, 5].map((s) => (
-                      <li key={s} style={{ listStyle: "none", display: "inline-block" }}>
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="#f6b91c">
-                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                        </svg>
-                      </li>
-                    ))}
-                  </ul>
+                {/* Trust line — honest, verifiable proof */}
+                <div className="ei-banner-review pera-content" style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: "20px" }}>
                   <p style={{ fontSize: "14px", color: "#fff", marginBottom: 0 }}>
-                    (base sur <span style={{ fontFamily: "Poppins", fontWeight: 700, color: "#000" }}>50+ avis clients</span>)
+                    <span style={{ fontFamily: "Poppins", fontWeight: 700, color: "#000" }}>+8 000 clics/mois</span> recuperes pour nos clients
+                  </p>
+                  <p style={{ fontSize: "14px", color: "#fff", marginBottom: 0 }}>
+                    <span style={{ fontFamily: "Poppins", fontWeight: 700, color: "#000" }}>Audit gratuit</span> sous 48h
                   </p>
                 </div>
               </div>
@@ -150,7 +145,7 @@ export default function Hero() {
               <div className="ei-banner-mbl-mockup" style={{ position: "absolute", top: 0, right: 0 }}>
                 <img
                   src="/img/hero-phone.png"
-                  alt="My-DTM App"
+                  alt="My-DTM — agence digitale a Paris : web, SEO, marketing"
                   style={{ maxHeight: "550px", width: "auto" }}
                 />
               </div>

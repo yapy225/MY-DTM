@@ -49,10 +49,10 @@ function CounterCard({
 
 /* ── Stats data ── */
 const STATS = [
-  { target: 50, suffix: "+", label: "Projets livres", color: "#7c0dbe" },
-  { target: 120, suffix: "+", label: "Clients actifs", color: "#ff00d6" },
-  { target: 8000, suffix: "+", label: "Clics SEO / mois", color: "#4ce7f3" },
-  { target: 99, suffix: "%", label: "Uptime garanti", color: "#009cff" },
+  { target: 8000, suffix: "+", label: "Clics SEO/mois recuperes", color: "#7c0dbe" },
+  { target: 239, suffix: "", label: "Redirections 301 gerees", color: "#ff00d6" },
+  { target: 48, suffix: "h", label: "Delai d'audit", color: "#4ce7f3" },
+  { target: 99, suffix: "%", label: "Uptime (Vercel)", color: "#009cff" },
 ];
 
 export default function Stats() {
@@ -159,8 +159,8 @@ export default function Stats() {
                   <div style={{ padding: "12px 8px", height: "100%" }}>
                     <div style={{ textAlign: "center", fontSize: "8px", fontWeight: 700, color: "rgba(255,255,255,0.6)", marginBottom: "10px", paddingTop: "8px" }}>My-DTM</div>
                     <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-                      <div style={{ borderRadius: "6px", backgroundColor: "rgba(124,13,190,0.4)", padding: "8px", fontSize: "7px", color: "#fff", fontWeight: 600 }}>SEO +256%</div>
-                      <div style={{ borderRadius: "6px", backgroundColor: "rgba(255,0,214,0.3)", padding: "8px", fontSize: "7px", color: "#fff", fontWeight: 600 }}>342 leads</div>
+                      <div style={{ borderRadius: "6px", backgroundColor: "rgba(124,13,190,0.4)", padding: "8px", fontSize: "7px", color: "#fff", fontWeight: 600 }}>+8 000 clics/mois</div>
+                      <div style={{ borderRadius: "6px", backgroundColor: "rgba(255,0,214,0.3)", padding: "8px", fontSize: "7px", color: "#fff", fontWeight: 600 }}>239 redir. 301</div>
                       <div style={{ borderRadius: "6px", backgroundColor: "rgba(76,231,243,0.3)", padding: "8px", fontSize: "7px", color: "#fff", fontWeight: 600 }}>99% uptime</div>
                     </div>
                   </div>

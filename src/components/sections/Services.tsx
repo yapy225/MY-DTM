@@ -234,8 +234,8 @@ export default function Services() {
               margin: 0,
             }}
           >
-            Pourquoi vous allez choisir{" "}
-            <span style={{ fontWeight: 400 }}>notre agence ?</span>
+            Creation web, SEO, marketing,{" "}
+            <span style={{ fontWeight: 400 }}>tracking &amp; securite.</span>
           </h2>
           <p style={{ fontSize: 17, lineHeight: 1.647, color: "#6b7280", marginBottom: 0 }}>
             En tant qu&apos;experts en marketing digital, nous aidons les entreprises a se developper sur internet.

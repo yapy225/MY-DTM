@@ -76,7 +76,7 @@ export default function RootLayout({
                 "https://x.com/DreamTeamAfriQ",
               ],
               description: "Agence de marketing digital a Paris specialisee dans la creation d'ecosystemes numeriques complets.",
-              foundingDate: "2024",
+              foundingDate: "2026",
               areaServed: { "@type": "Country", name: "France" },
               contactPoint: {
                 "@type": "ContactPoint",

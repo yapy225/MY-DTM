@@ -25,6 +25,16 @@ const FAQS = [
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(0);
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQS.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+
   return (
     <section
       className="ei-faq-section"
@@ -36,6 +46,7 @@ export default function FAQ() {
         overflow: "hidden",
       }}
     >
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       {/* Decorative shapes */}
       <div
         className="ei-faq-shape fq-shape-style1"

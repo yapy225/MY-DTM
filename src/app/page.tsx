@@ -7,6 +7,7 @@ import Process from "@/components/sections/Process";
 import Portfolio from "@/components/sections/Portfolio";
 import FAQ from "@/components/sections/FAQ";
 import Testimonials from "@/components/sections/Testimonials";
+import LatestPosts from "@/components/sections/LatestPosts";
 import CTA from "@/components/sections/CTA";
 
 export const metadata: Metadata = {
@@ -44,6 +45,7 @@ export default function Home() {
       <Portfolio />
       <FAQ />
       <Testimonials />
+      <LatestPosts />
       <CTA />
     </>
   );

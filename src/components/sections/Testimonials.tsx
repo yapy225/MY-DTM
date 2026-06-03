@@ -1,26 +1,25 @@
 "use client";
 
 import { useState } from "react";
-import { Star } from "lucide-react";
 
 const TESTIMONIALS = [
   {
-    text: "Ils ont transforme notre simple site en une vraie machine a leads. Le WhatsApp automatique a change notre facon de gerer les clients.",
-    name: "Amadou K.",
-    role: "Restaurant Le Mafe d'Or",
-    initials: "AK",
+    text: "+8 000 clics/mois recuperes via le SEO technique : 239 redirections 301, indexation forcee (Indexing API) et donnees structurees Schema.org.",
+    name: "Dream Team Africa",
+    role: "Ecosysteme evenementiel",
+    initials: "DTA",
   },
   {
-    text: "Notre trafic a triple en 3 mois grace au SEO. Les redirections et l'indexation Google ont recupere tout ce qu'on perdait.",
-    name: "Fatou D.",
-    role: "Boutique Wax & Style",
-    initials: "FD",
+    text: "Billetterie en ligne sur mesure : billets QR code, paiement Stripe, reservation exposants et controle d'acces. Sans commission par billet.",
+    name: "Saison Culturelle",
+    role: "Billetterie evenementielle",
+    initials: "SC",
   },
   {
-    text: "La billetterie en ligne + les emails automatiques ont simplifie toute notre gestion evenementielle. Pro du debut a la fin.",
-    name: "Moussa N.",
-    role: "Festival Afro Vibes",
-    initials: "MN",
+    text: "Tracking Meta (Pixel + Conversions API) conforme RGPD, automatisation WhatsApp et annuaire optimise SEO pour la relation client et l'acquisition.",
+    name: "L'Afropeen",
+    role: "Media & annuaire",
+    initials: "LA",
   },
 ];
 
@@ -122,7 +121,7 @@ export default function Testimonials() {
               <i style={{ height: "17px", width: "17px", position: "absolute", top: 0, left: 0, backgroundColor: "#7c0dbe", display: "block" }} />
               <i style={{ height: "12px", width: "12px", position: "absolute", top: "10px", left: "10px", backgroundColor: "#ff00d6", display: "block" }} />
             </span>
-            Temoignages
+            Resultats clients
           </span>
           <h2
             style={{
@@ -134,11 +133,11 @@ export default function Testimonials() {
               fontFamily: "Poppins, sans-serif",
             }}
           >
-            L&apos;avis de nos clients{" "}
-            <span style={{ fontWeight: 400 }}>sur leur satisfaction.</span>
+            Des resultats concrets,{" "}
+            <span style={{ fontWeight: 400 }}>pas des promesses.</span>
           </h2>
           <p style={{ fontSize: "17px", lineHeight: 1.647, marginBottom: 0 }}>
-            Nous construisons des relations de confiance avec chacun de nos clients.
+            Quelques realisations de notre ecosysteme digital et leurs resultats mesurables.
           </p>
         </div>
 
@@ -241,11 +240,6 @@ export default function Testimonials() {
               >
                 {t.text}
               </p>
-              <div className="ei-testi-rate" style={{ display: "flex", gap: "2px" }}>
-                {[1, 2, 3, 4, 5].map((s) => (
-                  <Star key={s} size={18} fill="#ffba00" color="#ffba00" />
-                ))}
-              </div>
             </div>
           </div>
         </div>
