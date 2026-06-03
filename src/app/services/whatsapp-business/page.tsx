@@ -250,6 +250,8 @@ export default function WhatsAppBusinessPage() {
               { href: "/services/seo", label: "SEO Technique" },
               { href: "/services/automatisation", label: "Automatisation" },
               { href: "/services/marketing-digital", label: "Marketing Digital" },
+              { href: "/services/tracking-conformite", label: "Tracking & Conformite" },
+              { href: "/services/securite-web", label: "Securite Web" },
             ].map((l) => (
               <Link key={l.href} href={l.href} className="flex items-center gap-1.5 rounded-lg border border-border px-5 py-2.5 text-sm font-semibold text-dark transition-all hover:border-primary hover:text-primary">
                 {l.label} <ArrowRight size={14} />

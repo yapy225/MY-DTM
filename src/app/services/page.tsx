@@ -3,9 +3,9 @@ import Link from "next/link";
 import CTA from "@/components/sections/CTA";
 
 export const metadata: Metadata = {
-  title: "Services — Developpement Web, SEO, Automatisation, Marketing Digital",
+  title: "Services — Web, SEO, Marketing, Tracking & Securite | My-DTM Paris",
   description:
-    "Tous nos services : creation site web, SEO technique, automatisation API, marketing multi-canal. 16 offres adaptees aux PME et startups. Devis gratuit.",
+    "Tous nos services : creation site web, SEO technique, automatisation API, marketing multi-canal, tracking & conformite RGPD, securite & infra. 24 offres adaptees aux PME et startups. Devis gratuit.",
   keywords: [
     "services agence digitale Paris",
     "creation site web prix",
@@ -13,11 +13,13 @@ export const metadata: Metadata = {
     "automatisation marketing",
     "marketing digital PME",
     "agence web full-stack",
+    "tracking Meta Pixel Conversions API",
+    "securite web hardening CSP",
   ],
   alternates: { canonical: "https://my-dtm.fr/services" },
   openGraph: {
     title: "Services — My-DTM Digital Agency",
-    description: "Developpement web, SEO, automatisation et marketing digital. 16 offres adaptees.",
+    description: "Developpement web, SEO, automatisation, marketing, tracking et securite. 24 offres adaptees.",
     url: "https://my-dtm.fr/services",
     type: "website",
     locale: "fr_FR",
@@ -69,6 +71,28 @@ const OFFERS = [
       { name: "Newsletter & Fidelisation", desc: "Setup, templates, segmentation, A/B testing, suivi performance.", price: "A partir de 400\u00A0\u20AC/mois" },
     ],
   },
+  {
+    id: "tracking",
+    icon: "\u{1F4CA}",
+    title: "Tracking & Conformite",
+    items: [
+      { name: "Audit Tracking", desc: "Audit Pixel + CAPI, detection des doublons et evenements manquants, score EMQ.", price: "A partir de 500\u00A0\u20AC" },
+      { name: "Setup Pixel + Conversions API", desc: "Tracking server-side, deduplication, Advanced Matching, evenements e-commerce.", price: "A partir de 800\u00A0\u20AC" },
+      { name: "Mise en Conformite RGPD", desc: "Consent Mode, tracking conditionne au consentement, conformite CNIL.", price: "A partir de 600\u00A0\u20AC" },
+      { name: "Optimisation Match Quality", desc: "Enrichissement Advanced Matching, dedup, backfill CAPI, suivi EMQ avant/apres.", price: "A partir de 700\u00A0\u20AC" },
+    ],
+  },
+  {
+    id: "securite",
+    icon: "\u{1F6E1}\uFE0F",
+    title: "Securite & Infra",
+    items: [
+      { name: "Audit de Securite", desc: "Headers, dependances vulnerables, secrets exposes, routes non protegees. Rapport + remediation.", price: "A partir de 700\u00A0\u20AC" },
+      { name: "Hardening Complet", desc: "CSP avec nonce, headers, validation des uploads, protection des routes, webhooks signes.", price: "A partir de 1 500\u00A0\u20AC" },
+      { name: "Rotation des Secrets", desc: "Audit des secrets dans Git, rotation Stripe/DB/APIs, coffre securise, procedure documentee.", price: "A partir de 500\u00A0\u20AC" },
+      { name: "Infra & Orchestration Crons", desc: "Cloudflare Workers, jobs planifies, monitoring, optimisation des couts Vercel/Neon.", price: "Sur devis" },
+    ],
+  },
 ];
 
 export default function ServicesPage() {
@@ -83,7 +107,7 @@ export default function ServicesPage() {
             Des solutions pour chaque besoin digital.
           </h1>
           <p className="mt-4 max-w-xl text-lg text-muted">
-            4 piliers, des offres claires, des resultats mesurables.
+            6 piliers, des offres claires, des resultats mesurables.
           </p>
         </div>
       </section>

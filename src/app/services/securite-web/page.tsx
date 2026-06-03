@@ -3,52 +3,52 @@ import Link from "next/link";
 import { CheckCircle2, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Agence SEO Paris — Audit, Referencement Naturel, Indexation Google",
+  title: "Securite Web Paris — Audit, Hardening, CSP, Rotation des Secrets",
   description:
-    "Agence SEO technique a Paris. Audit complet, redirections 301, Schema.org JSON-LD, indexation Google forcee. +8000 clics/mois recuperes pour nos clients. Audit gratuit.",
+    "Agence securite web a Paris. Audit de securite, hardening complet (CSP, headers, secrets), protection des routes et des uploads. Blindez votre site et votre plateforme. Audit securite gratuit.",
   keywords: [
-    "agence SEO Paris",
-    "audit SEO gratuit",
-    "referencement naturel Paris",
-    "consultant SEO Paris",
-    "tarif agence SEO",
-    "prix referencement Google",
-    "agence SEO e-commerce",
-    "referencement local PME Paris",
-    "optimisation Google My Business",
-    "migration SEO WordPress Next.js",
-    "redirections 301 site web",
-    "Schema.org JSON-LD",
+    "securite site web Paris",
+    "audit securite web",
+    "hardening application web",
+    "Content Security Policy CSP",
+    "rotation des secrets",
+    "protection routes API",
+    "validation upload fichiers",
+    "securite Next.js",
+    "headers securite HTTP",
+    "audit OWASP PME",
+    "infogerance securite Paris",
+    "conformite securite donnees",
   ],
   openGraph: {
-    title: "Agence SEO Paris — My-DTM",
-    description: "Audit SEO, referencement naturel, indexation Google. +8000 clics/mois recuperes. Audit gratuit.",
+    title: "Securite Web — My-DTM",
+    description: "Audit securite, hardening CSP, rotation des secrets, protection des routes et uploads. Audit securite gratuit.",
   },
-  alternates: { canonical: "https://my-dtm.fr/services/seo" },
+  alternates: { canonical: "https://my-dtm.fr/services/securite-web" },
 };
 
 const OFFERS = [
-  { name: "Audit SEO Complet", price: "500 \u20AC", desc: "Analyse technique, mots-cles, concurrence, Search Console. Rapport PDF + call.", features: ["Analyse technique complete (vitesse, structure, erreurs)", "Audit mots-cles vs concurrence", "Analyse Search Console", "Rapport PDF actionnable", "Call de restitution 45min"] },
-  { name: "SEO Technique", price: "A partir de 1 500 \u20AC", desc: "Implementation complete : Schema.org, redirections, sitemap, Core Web Vitals.", features: ["Schema.org JSON-LD (FAQ, Event, Product, Article)", "Redirections 301 (migration WordPress)", "Sitemap XML dynamique", "Canonical URLs + OpenGraph", "Connexion Search Console + Indexing API", "Optimisation Core Web Vitals"] },
-  { name: "Recuperation Trafic Perdu", price: "A partir de 1 000 \u20AC", desc: "On recupere les clics que vous perdez depuis votre migration ou refonte.", features: ["Mapping ancien → nouveau site", "Redirections 301 en masse", "Nettoyage pages en erreur", "Indexation forcee Google Indexing API", "Suivi avant/apres"], popular: true },
-  { name: "SEO Contenu Mensuel", price: "A partir de 800 \u20AC/mois", desc: "Articles optimises, maillage interne, FAQ structurees. Croissance organique durable.", features: ["4 articles/mois optimises SEO", "Recherche mots-cles longue traine", "Maillage interne strategique", "FAQ avec schema FAQPage", "Rapport mensuel positions + trafic"] },
+  { name: "Audit de Securite", price: "A partir de 700 €", desc: "On identifie les failles avant les attaquants : headers, dependances, secrets exposes.", features: ["Analyse des headers de securite", "Scan des dependances vulnerables", "Detection des secrets exposes dans le code", "Verification des routes non protegees", "Rapport priorise + plan de remediation"] },
+  { name: "Hardening Complet", price: "A partir de 1 500 €", desc: "Mise en securite de bout en bout de votre application et de votre plateforme.", features: ["Content Security Policy (CSP) avec nonce", "Headers securite (HSTS, X-Frame, etc.)", "Validation stricte des uploads (magic bytes)", "Protection des routes admin (role, UUID)", "Securisation des webhooks (signature)", "Rate limiting et anti-bruteforce"], popular: true },
+  { name: "Rotation des Secrets", price: "A partir de 500 €", desc: "On purge les secrets exposes dans Git et on met en place une rotation propre.", features: ["Audit des secrets dans l'historique Git", "Rotation Stripe / base de donnees / APIs", "Mise en place d'un coffre (.env securise)", "Nettoyage de l'historique si necessaire", "Procedure de rotation documentee"] },
+  { name: "Monitoring & Maintenance", price: "Sur devis", desc: "Surveillance continue, mises a jour de securite et reaction aux incidents.", features: ["Surveillance des dependances (Dependabot)", "Alertes sur vulnerabilites critiques", "Mises a jour de securite regulieres", "Plan de reponse aux incidents", "Rapport de securite mensuel"] },
 ];
 
 const RESULTS = [
-  { number: "+8 000", label: "clics/mois recuperes", detail: "Via 239 redirections 301 sur Dream Team Africa" },
-  { number: "119", label: "URLs dans le sitemap", detail: "Pages dynamiques indexees automatiquement" },
-  { number: "11", label: "pages forcees via Indexing API", detail: "Indexation Google en quelques heures" },
-  { number: "100%", label: "score Schema.org", detail: "FAQPage, Event, NewsArticle, BreadcrumbList" },
+  { number: "50+", label: "correctifs de securite", detail: "Deployes sur une plateforme en production" },
+  { number: "100%", label: "routes admin protegees", detail: "Role + UUID + verification serveur" },
+  { number: "0", label: "secret expose", detail: "Apres rotation et nettoyage Git" },
+  { number: "A+", label: "score headers", detail: "CSP, HSTS, X-Frame-Options" },
 ];
 
 const FAQ = [
-  { q: "Combien coute le referencement SEO a Paris ?", a: "Un audit SEO complet coute a partir de 500\u20AC. L'optimisation technique complete demarre a 1 500\u20AC. Le suivi mensuel avec creation de contenu commence a 800\u20AC/mois. Chaque projet est different, on adapte notre offre a vos besoins et votre budget." },
-  { q: "Combien de temps pour voir des resultats SEO ?", a: "Les corrections techniques (redirections, indexation) montrent des resultats en 2 a 4 semaines. Le contenu SEO prend 3 a 6 mois pour atteindre son plein potentiel. Nos redirections 301 ont recupere +8000 clics/mois en quelques semaines." },
-  { q: "Quelle est la difference entre SEO technique et SEO contenu ?", a: "Le SEO technique optimise la structure de votre site (vitesse, indexation, schema, redirections). Le SEO contenu cree des articles et pages optimises pour des mots-cles cibles. Les deux sont complementaires : un bon contenu sur un site mal structure ne rankera pas." },
-  { q: "Vous travaillez avec quels types de sites ?", a: "Tous types : sites vitrines, e-commerce, plateformes evenementielles, blogs, annuaires. Que votre site soit sur WordPress, Shopify, Next.js ou autre, on s'adapte a votre stack technique." },
+  { q: "Pourquoi mon site a-t-il besoin d'un audit de securite ?", a: "La plupart des sites en production ont des failles invisibles : secrets exposes dans le code, routes admin accessibles, uploads non valides, headers manquants. Un audit identifie ces failles avant qu'un attaquant ne les exploite. C'est moins cher de prevenir que de gerer une fuite de donnees ou un site pirate." },
+  { q: "C'est quoi une Content Security Policy (CSP) ?", a: "La CSP est un en-tete HTTP qui indique au navigateur quelles ressources (scripts, styles, images) il a le droit de charger. Bien configuree avec un nonce, elle bloque la majorite des attaques XSS (injection de code malveillant), qui sont parmi les plus courantes sur le web." },
+  { q: "Que se passe-t-il si des secrets ont ete exposes dans Git ?", a: "Si une cle API ou un mot de passe est apparu dans l'historique Git, il faut le considerer comme compromis, meme s'il a ete supprime ensuite : l'historique reste accessible. On effectue une rotation de tous les secrets concernes (Stripe, base de donnees, APIs) et on met en place une procedure pour eviter que cela se reproduise." },
+  { q: "Vous intervenez sur quelles technologies ?", a: "On travaille principalement sur des applications web modernes (Next.js, React, Node.js) et leurs infrastructures (Vercel, Cloudflare, bases PostgreSQL/Neon). L'audit et le hardening s'adaptent a votre stack, que ce soit un site vitrine, un e-commerce ou une plateforme complete." },
 ];
 
-export default function SEOPage() {
+export default function SecuriteWebPage() {
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -67,7 +67,7 @@ export default function SEOPage() {
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Accueil", item: "https://my-dtm.fr" },
           { "@type": "ListItem", position: 2, name: "Services", item: "https://my-dtm.fr/services" },
-          { "@type": "ListItem", position: 3, name: "SEO Technique", item: "https://my-dtm.fr/services/seo" },
+          { "@type": "ListItem", position: 3, name: "Securite Web", item: "https://my-dtm.fr/services/securite-web" },
         ],
       }) }} />
 
@@ -76,16 +76,16 @@ export default function SEOPage() {
           <nav className="mb-8 text-sm text-muted">
             <Link href="/" className="hover:text-primary">Accueil</Link><span className="mx-2">/</span>
             <Link href="/services" className="hover:text-primary">Services</Link><span className="mx-2">/</span>
-            <span className="text-dark">SEO</span>
+            <span className="text-dark">Securite Web</span>
           </nav>
           <h1 className="max-w-3xl font-sans text-4xl font-extrabold leading-tight text-dark sm:text-5xl">
-            Agence SEO a Paris — on recupere le trafic que vous perdez
+            Securite web — blindez votre site avant qu'il ne soit trop tard
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-muted">
-            Audit technique, redirections 301, Schema.org, indexation Google forcee. Des resultats concrets, pas des promesses.
+            Audit, hardening complet (CSP, headers, secrets), protection des routes et des uploads. On securise votre application de bout en bout.
           </p>
           <Link href="/contact" className="mt-8 inline-flex rounded-lg bg-gradient-to-r from-primary to-secondary px-8 py-4 text-base font-bold text-white transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/30">
-            Audit SEO gratuit
+            Audit securite gratuit
           </Link>
         </div>
       </section>
@@ -106,7 +106,7 @@ export default function SEOPage() {
       {/* Offers */}
       <section className="px-4 py-24 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <h2 className="text-center font-sans text-3xl font-extrabold text-dark sm:text-4xl">Nos offres SEO</h2>
+          <h2 className="text-center font-sans text-3xl font-extrabold text-dark sm:text-4xl">Nos offres securite</h2>
           <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2">
             {OFFERS.map((o) => (
               <div key={o.name} className={`rounded-2xl border p-8 transition-all hover:-translate-y-1 hover:shadow-lg ${o.popular ? "border-primary bg-primary/[0.02] shadow-lg shadow-primary/10" : "border-border bg-white"}`}>
@@ -148,12 +148,10 @@ export default function SEOPage() {
           <h2 className="font-sans text-2xl font-extrabold text-dark">Nos autres services</h2>
           <div className="mt-6 flex flex-wrap gap-3">
             {[
-              { href: "/services/creation-site-web", label: "Creation site web" },
-              { href: "/services/whatsapp-business", label: "WhatsApp Business" },
-              { href: "/services/automatisation", label: "Automatisation" },
-              { href: "/services/marketing-digital", label: "Marketing Digital" },
               { href: "/services/tracking-conformite", label: "Tracking & Conformite" },
-              { href: "/services/securite-web", label: "Securite Web" },
+              { href: "/services/creation-site-web", label: "Creation site web" },
+              { href: "/services/automatisation", label: "Automatisation" },
+              { href: "/services/seo", label: "SEO Technique" },
             ].map((l) => (
               <Link key={l.href} href={l.href} className="flex items-center gap-1.5 rounded-lg border border-border px-5 py-2.5 text-sm font-semibold text-dark transition-all hover:border-primary hover:text-primary">
                 {l.label} <ArrowRight size={14} />
@@ -164,10 +162,10 @@ export default function SEOPage() {
       </section>
 
       <section className="relative overflow-hidden bg-gradient-to-br from-dark to-charcoal px-4 py-20 text-center">
-        <h2 className="relative font-sans text-3xl font-extrabold text-white sm:text-4xl">Pret a dominer Google ?</h2>
-        <p className="relative mt-4 text-white/60">Audit SEO gratuit sous 48h.</p>
+        <h2 className="relative font-sans text-3xl font-extrabold text-white sm:text-4xl">Votre plateforme est-elle vraiment securisee ?</h2>
+        <p className="relative mt-4 text-white/60">Audit securite gratuit sous 48h.</p>
         <Link href="/contact" className="relative mt-8 inline-flex rounded-lg bg-gradient-to-r from-primary to-secondary px-10 py-4 text-base font-bold text-white transition-all hover:-translate-y-1 hover:shadow-xl">
-          Audit SEO gratuit
+          Audit securite gratuit
         </Link>
       </section>
     </>

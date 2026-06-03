@@ -1,6 +1,6 @@
 "use client";
 
-import { Globe, Search, Zap, MessageCircle, Plus } from "lucide-react";
+import { Globe, Search, Zap, MessageCircle, Megaphone, BarChart3, ShieldCheck, Server, Plus } from "lucide-react";
 import { useId, useState } from "react";
 
 const SERVICES = [
@@ -23,6 +23,26 @@ const SERVICES = [
     icon: MessageCircle,
     title: "WhatsApp Business",
     desc: "Integration WhatsApp Business API pour la relation client et les notifications.",
+  },
+  {
+    icon: Megaphone,
+    title: "Marketing Digital",
+    desc: "Acquisition 360 : Facebook & Instagram Ads, reseaux sociaux et newsletters. Strategie multi-canal pilotee par la data.",
+  },
+  {
+    icon: BarChart3,
+    title: "Tracking & Conformite",
+    desc: "Meta Pixel + Conversions API, deduplication d'evenements, Advanced Matching et consentement RGPD.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Securite Web",
+    desc: "Hardening complet : CSP, rotation des secrets, validation des uploads, protection des routes.",
+  },
+  {
+    icon: Server,
+    title: "Infra & Cloud",
+    desc: "Orchestration de crons, Cloudflare Workers, optimisation des couts. Une infra qui tourne seule.",
   },
 ];
 
