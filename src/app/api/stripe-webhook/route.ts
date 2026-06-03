@@ -5,7 +5,7 @@ import { getProductById } from "@/lib/guides/guides";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://my-dtm.fr";
 const FROM = "My-DTM <hello@my-dtm.fr>";
-const INTERNAL_TO = "hello@my-dtm.fr";
+const INTERNAL_TO = process.env.CONTACT_NOTIFY_TO || "yapy.mambo@gmail.com";
 
 // Stripe a besoin du corps brut pour verifier la signature : pas de parsing JSON.
 export async function POST(req: Request) {

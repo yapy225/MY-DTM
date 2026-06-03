@@ -14,9 +14,14 @@ export async function POST(req: Request) {
     const { Resend } = await import("resend");
     const resend = new Resend(process.env.RESEND_API_KEY);
 
+    // Destinataire des notifications. LWS ne reçoit pas le courrier externe de
+    // my-dtm.fr (à régler côté LWS) → on route vers une boîte fiable, surchargeable
+    // par env CONTACT_NOTIFY_TO une fois la réception my-dtm.fr réparée.
+    const notifyTo = process.env.CONTACT_NOTIFY_TO || "yapy.mambo@gmail.com";
+
     await resend.emails.send({
       from: "My-DTM Contact <hello@my-dtm.fr>",
-      to: ["hello@my-dtm.fr"],
+      to: [notifyTo],
       replyTo: email,
       subject: `Nouveau message de ${name} — ${service || "Contact"}`,
       html: `
