@@ -1,6 +1,6 @@
 "use client";
 
-import { Globe, Search, Zap, MessageCircle, Megaphone, BarChart3, ShieldCheck, Server, Plus } from "lucide-react";
+import { Globe, Search, Zap, MessageCircle, Megaphone, BarChart3, ShieldCheck, Server, LayoutDashboard, Plus } from "lucide-react";
 import { useId, useState } from "react";
 
 const SERVICES = [
@@ -43,6 +43,11 @@ const SERVICES = [
     icon: Server,
     title: "Infra & Cloud",
     desc: "Orchestration de crons, Cloudflare Workers, optimisation des couts. Une infra qui tourne seule.",
+  },
+  {
+    icon: LayoutDashboard,
+    title: "Dashboards Analytics",
+    desc: "Tableaux de bord sur mesure, metriques temps reel et reporting fiable (fuseau Europe/Paris). Pilotez votre activite d'un coup d'oeil.",
   },
 ];
 
@@ -240,7 +245,7 @@ export default function Services() {
         {/* Feature cards */}
         <div
           className="services-grid"
-          style={{ paddingTop: 70, display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 30 }}
+          style={{ paddingTop: 70, display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 30 }}
         >
           {SERVICES.map((s, i) => (
             <FeatureCard key={i} icon={s.icon} title={s.title} desc={s.desc} />
