@@ -493,10 +493,6 @@ select:visited {
   .main-header-eight .appheader-content .h-eight-social {
     margin-left: 0;
   }
-  .ei-testimonial-section .ei-testimonial-img-text {
-    margin: 0 auto;
-    max-width: 500px;
-  }
 }
 @media screen and (max-width: 991px) {
   .main-header-eight .appheader-content .navigation-eight {
@@ -514,197 +510,15 @@ select:visited {
   .main-header-eight .appheader-content .sign-up-btn-eight {
     margin-right: 50px;
   }
-  .eight-banner-section .eight-banner-content .ei-banner-mbl-mockup {
-    position: static;
-    margin-top: 40px;
-  }
-  .eight-banner-section {
-    padding-bottom: 100px;
-  }
-  .feature-eight-section {
-    padding: 100px 0px;
-  }
-  .feature-eight-section .eight-feature-box {
-    margin-bottom: 50px;
-  }
-  .eight-service-section .eight-service-slide {
-    width: 100%;
-  }
-  .eight-service-section .eight-service-text {
-    width: 100%;
-  }
-  .eight-service-section .eight-service-text h2 {
-    margin: 0 auto;
-    color: #000;
-    max-width: 400px;
-    padding-top: 30px;
-    text-align: center;
-  }
-  .eg-fun-fact-section .eg-funfact-text {
-    float: none !important;
-  }
-  .testimonial-floatingimg {
-    display: none;
-  }
-  .ei-footer-section {
-    padding-top: 100px;
-  }
-  .ei-footer-widget {
-    margin-bottom: 30px;
-  }
-}
-@media screen and (max-width: 680px) {
-  .eight-banner-section .eight-banner-content h1 {
-    font-size: 65px;
-  }
-}
-@media screen and (max-width: 580px) {
-  .eight-banner-section .eight-banner-content h1 {
-    font-size: 60px;
-  }
-  .eg-how-work-section .ei-how-work-content-item {
-    padding-left: 50px;
-  }
-  .ei-newslatter-section .ei-newslatter-contnet {
-    margin-left: 0px;
-  }
-}
-@media screen and (max-width: 480px) {
-  .eight-banner-section .eight-banner-content h1 {
-    text-align: center;
-    font-size: 50px;
-  }
-  .cd-headline.clip .cd-words-wrapper::after {
-    height: 40px;
-  }
-  .eight-banner-section .eight-banner-content p {
-    text-align: center;
-  }
-  .eight-banner-section .eight-banner-content .banner-content-box .ei-banner-btn {
-    text-align: center;
-  }
-  .ei-banner-review {
-    text-align: center;
-    max-width: 320px;
-    margin: 0 auto;
-  }
-  .eight-banner-section .eight-banner-content .ei-banner-review ul {
-    float: none;
-    margin-right: 0;
-    margin-bottom: 10px;
-  }
-  .pera-content p {
-    overflow: hidden;
-  }
 }
 @media screen and (max-width: 420px) {
-  .eight-banner-section .eight-banner-content h1 {
-    font-size: 42px;
-  }
-  .cd-headline.clip .cd-words-wrapper::after {
-    height: 30px;
-  }
-  .feature-eight-section {
-    padding: 50px 0px;
-  }
-  .eight-section-title h2 {
-    font-size: 28px;
-  }
-  .eight-service-section {
-    padding: 65px 0px;
-  }
-  .eg-fun-fact-section {
-    padding: 60px 0px;
-  }
-  .eg-how-work-section .ei-how-work-content-item {
-    padding-left: 30px;
-  }
-  .eg-how-work-section .ei-how-work-content-item .eg-how-work-icon-text .eg-how-work-icon {
-    margin-right: 0;
-    margin-bottom: 15px;
-    float: none !important;
-  }
-  .eg-how-work-section {
-    padding-bottom: 30px;
-  }
-  .ei-app-down-text {
-    padding: 50px 0px;
-  }
-  .ei-faq-section .ei-faq-queans .ei-faq.faq_bg {
-    padding: 20px 30px;
-  }
-  .ei-faq-section .ei-faq-queans .ei-faq {
-    padding: 0px 30px;
-  }
-  .ei-faq-section {
-    padding: 60px 0px;
-  }
-  .ei-testimonial-section {
-    padding: 60px 0px;
-  }
-  .ei-testimonial-section .ei-testimonial-img-text {
-    padding: 25px 20px 25px 0px;
-  }
-  .ei-footer-widget {
-    margin-bottom: 30px;
-  }
-  .ei-footer-copyright .ei-copyright-menu {
-    float: left;
-  }
-  .ei-footer-copyright .ei-copyright-menu a {
-    margin-left: 0;
-    margin-right: 15px;
-  }
-  .eight-banner-section .eight-banner-content .banner-content-box .ei-banner-btn a:nth-child(1) {
-    height: 45px;
-    width: 150px;
-    line-height: 45px;
-  }
-  .eight-banner-section .eight-banner-content .banner-content-box .ei-banner-btn {
-    padding: 20px 0px 10px 0px;
-  }
   .main-header-eight .appheader-content .site-logo {
     margin-right: 30px;
-  }
-  .ei-footer-section {
-    padding-top: 60px;
-  }
-}
-@media screen and (max-width: 380px) {
-  .eight-banner-section .eight-banner-content h1 {
-    font-size: 36px;
-  }
-  .ei-newslatter-section .ei-newslatter-contnet .ei-newslatter-form form .nws-button button {
-    width: 150px;
-    margin: 0 auto;
-  }
-  .ei-newslatter-section .ei-newslatter-contnet .ei-newslatter-form form .nws-button {
-    position: static !important;
-    text-align: center;
-    margin-bottom: 20px;
   }
 }
 @media screen and (max-width: 320px) {
   .main-header-eight .appheader-content .sign-up-btn-eight {
     width: 80px;
-  }
-  .eight-banner-section .eight-banner-content h1 {
-    font-size: 33px;
-  }
-  .eight-section-title h2 {
-    font-size: 24px;
-  }
-  .eg-how-work-section .ei-how-work-content-item .eg-how-work-icon-text .scroller-no {
-    display: none;
-  }
-  .ei-testimonial-section .ei-testimonial-img-text {
-    border-radius: 0;
-    padding: 20px;
-  }
-  .ei-testimonial-section .ei-testimonial-img-text .ei-testimonial-img {
-    float: none !important;
-    top: 0;
-    margin-bottom: 15px;
   }
 }
 
