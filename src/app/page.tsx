@@ -3,7 +3,7 @@ import Hero from "@/components/sections/Hero";
 import Services from "@/components/sections/Services";
 import Stats from "@/components/sections/Stats";
 import FAQ from "@/components/sections/FAQ";
-import Testimonials from "@/components/sections/Testimonials";
+import Results from "@/components/sections/Results";
 import LatestPosts from "@/components/sections/LatestPosts";
 import CTA from "@/components/sections/CTA";
 
@@ -37,8 +37,8 @@ export default function Home() {
       <Hero />
       <Services />
       <Stats />
+      <Results />
       <FAQ />
-      <Testimonials />
       <LatestPosts />
       <CTA />
     </>
