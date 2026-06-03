@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/blog/posts";
+import { getAllGuides } from "@/lib/guides/guides";
 
 const baseUrl = "https://my-dtm.fr";
 
@@ -11,8 +12,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  const guides: MetadataRoute.Sitemap = getAllGuides().map((g) => ({
+    url: `${baseUrl}/guides/${g.slug}`,
+    lastModified: new Date(g.date),
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
   return [
     { url: baseUrl, lastModified: new Date(), changeFrequency: "weekly", priority: 1 },
+    { url: `${baseUrl}/guides`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
+    ...guides,
     { url: `${baseUrl}/services`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
     { url: `${baseUrl}/services/creation-site-web`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
     { url: `${baseUrl}/services/seo`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
