@@ -1,0 +1,42 @@
+name: GSC daily indexation audit
+
+on:
+  schedule:
+    # Tous les jours à 06:15 UTC = 08:15 Europe/Paris (été) / 07:15 (hiver)
+    - cron: "15 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "20"
+
+      - name: Write service account key
+        env:
+          GOOGLE_SA_JSON: ${{ secrets.GOOGLE_SA_JSON }}
+        run: |
+          mkdir -p .gsc
+          printf '%s' "$GOOGLE_SA_JSON" > .gsc/key.json
+          chmod 600 .gsc/key.json
+
+      - name: Audit indexation (tout le sitemap)
+        env:
+          GSC_KEY_FILE: ${{ github.workspace }}/.gsc/key.json
+        run: node scripts/gsc-crawled-not-indexed.mjs
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gsc-indexation-report-${{ github.run_id }}
+          path: gsc-indexation-report.json
+          retention-days: 30

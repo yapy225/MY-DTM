@@ -36,6 +36,11 @@ yarn-error.log*
 # vercel
 .vercel
 
+# GSC service account key + rapports d'audit (ne jamais committer)
+.gsc/
+gsc-indexation-report.json
+crawled-not-indexed.json
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
