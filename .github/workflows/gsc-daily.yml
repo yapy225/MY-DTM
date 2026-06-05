@@ -33,6 +33,11 @@ jobs:
           GSC_KEY_FILE: ${{ github.workspace }}/.gsc/key.json
         run: node scripts/gsc-crawled-not-indexed.mjs
 
+      - name: Pousse les URLs non indexées via Indexing API (--all)
+        env:
+          GSC_KEY_FILE: ${{ github.workspace }}/.gsc/key.json
+        run: node scripts/push-unknown-urls.mjs --all
+
       - name: Upload report
         if: always()
         uses: actions/upload-artifact@v4
