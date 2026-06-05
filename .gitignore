@@ -40,6 +40,8 @@ yarn-error.log*
 .gsc/
 gsc-indexation-report.json
 crawled-not-indexed.json
+deindex-report.json
+old-urls.json
 
 # typescript
 *.tsbuildinfo

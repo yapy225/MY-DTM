@@ -38,6 +38,11 @@ jobs:
           GSC_KEY_FILE: ${{ github.workspace }}/.gsc/key.json
         run: node scripts/push-unknown-urls.mjs --all
 
+      - name: Désindexe les vieilles URLs en 404 (URL_DELETED, garde-fou 404)
+        env:
+          GSC_KEY_FILE: ${{ github.workspace }}/.gsc/key.json
+        run: node scripts/gsc-deindex-old-urls.mjs
+
       - name: Upload report
         if: always()
         uses: actions/upload-artifact@v4
