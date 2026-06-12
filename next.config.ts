@@ -6,6 +6,23 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     "/api/download": ["./private/ebooks/**/*"],
   },
+  // Vestiges de l'ancien contenu dreamteam hébergé sur my-dtm.fr (pages /lafropeen
+  // et /saison-culturelle-africaine, aujourd'hui en 404) → 301/308 vers leur
+  // équivalent sur dreamteamafrica.com. Le site de services my-dtm reste intact.
+  async redirects() {
+    return [
+      {
+        source: "/lafropeen/:path*",
+        destination: "https://dreamteamafrica.com/lafropeen/:path*",
+        permanent: true,
+      },
+      {
+        source: "/saison-culturelle-africaine/:path*",
+        destination: "https://dreamteamafrica.com/saison-culturelle-africaine/:path*",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
