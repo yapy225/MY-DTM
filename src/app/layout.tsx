@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import { Poppins, Playfair_Display } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
-import WhatsAppButton from "@/components/layout/WhatsAppButton";
+import SiteChrome from "@/components/layout/SiteChrome";
 
 const poppins = Poppins({
   variable: "--font-sans",
@@ -129,10 +127,7 @@ export default function RootLayout({
             }),
           }}
         />
-        <Navbar />
-        {children}
-        <Footer />
-        <WhatsAppButton />
+        <SiteChrome>{children}</SiteChrome>
         <Analytics />
       </body>
     </html>
