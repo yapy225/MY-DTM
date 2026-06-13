@@ -3,6 +3,9 @@ import { redirect } from "next/navigation";
 import { isAuthenticated } from "@/lib/pilotage/auth";
 import { getStripeMetrics } from "@/lib/pilotage/stripe-metrics";
 import { getGscPerformance, getIndexStatus } from "@/lib/pilotage/gsc";
+import { getLeadsMetrics } from "@/lib/pilotage/leads";
+import { getCalMetrics } from "@/lib/pilotage/cal";
+import { getVercelTraffic } from "@/lib/pilotage/vercel";
 import {
   Card,
   Kpi,
@@ -41,10 +44,13 @@ export default async function PilotagePage({
   const { j } = await searchParams;
   const days = PERIODS.includes(Number(j) as (typeof PERIODS)[number]) ? Number(j) : 30;
 
-  const [stripe, gsc, index] = await Promise.all([
+  const [stripe, gsc, index, leads, cal, traffic] = await Promise.all([
     getStripeMetrics(days),
     getGscPerformance(days),
     getIndexStatus(),
+    getLeadsMetrics(days),
+    getCalMetrics(days),
+    getVercelTraffic(days),
   ]);
 
   const gscOk = gsc.ok;
@@ -54,6 +60,8 @@ export default async function PilotagePage({
     resend: Boolean(process.env.RESEND_API_KEY),
     gsc: Boolean(process.env.GOOGLE_SA_JSON || process.env.GSC_KEY_FILE),
     cal: Boolean(process.env.NEXT_PUBLIC_CAL_LINK),
+    calApi: Boolean(process.env.CAL_API_KEY),
+    vercel: Boolean(process.env.VERCEL_API_TOKEN && process.env.VERCEL_PROJECT_ID),
   };
 
   return (
@@ -161,6 +169,24 @@ export default async function PilotagePage({
             tone={index.indexed / index.total < 0.5 ? "bad" : index.indexed / index.total < 0.85 ? "warn" : "good"}
           />
         )}
+        {leads.ok && (
+          <Kpi label="Leads contact" value={fmtNum(leads.total)} sub={`${fmtNum(leads.totalAll)} au total`} />
+        )}
+        {cal.ok && (
+          <Kpi
+            label="RDV accompagnement"
+            value={fmtNum(cal.total)}
+            sub={`${cal.upcoming} à venir`}
+            tone={cal.upcoming > 0 ? "good" : "default"}
+          />
+        )}
+        {traffic.ok && (
+          <Kpi
+            label="Trafic"
+            value={fmtNum(traffic.pageviews)}
+            sub={traffic.visitors != null ? `${fmtNum(traffic.visitors)} visiteurs` : "pages vues"}
+          />
+        )}
       </div>
 
       {/* ---- Revenus ---- */}
@@ -265,6 +291,81 @@ export default async function PilotagePage({
         </Card>
       </div>
 
+      {/* ---- Leads / RDV / Trafic (V2) ---- */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 16, marginBottom: 16 }}>
+        <Card
+          title="Leads (formulaire contact)"
+          right={leads.ok ? <Badge tone="muted">{leads.total} / {days}j</Badge> : undefined}
+        >
+          {leads.ok ? (
+            <>
+              <BarChart data={leads.byDay.map((d) => ({ label: d.label, value: d.count }))} />
+              <div style={{ marginTop: 12 }}>
+                <Table
+                  head={["Date", "Nom", "Email"]}
+                  rows={leads.recent.map((l) => [
+                    new Date(l.date).toLocaleDateString("fr-FR", {
+                      timeZone: "Europe/Paris",
+                      day: "2-digit",
+                      month: "2-digit",
+                    }),
+                    <span key="n" style={{ fontSize: 12 }}>{l.name}</span>,
+                    <span key="e" style={{ fontSize: 12 }}>{l.email}</span>,
+                  ])}
+                />
+              </div>
+            </>
+          ) : (
+            <ErrorNote>{leads.reason}</ErrorNote>
+          )}
+        </Card>
+
+        <Card
+          title="RDV accompagnement (Cal.com)"
+          right={cal.ok ? <Badge tone={cal.upcoming > 0 ? "good" : "muted"}>{cal.upcoming} à venir</Badge> : undefined}
+        >
+          {cal.ok ? (
+            <Table
+              head={["Date", "Personne", "Statut"]}
+              rows={cal.recent.map((b) => [
+                b.date
+                  ? new Date(b.date).toLocaleString("fr-FR", {
+                      timeZone: "Europe/Paris",
+                      day: "2-digit",
+                      month: "2-digit",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })
+                  : "—",
+                <span key="w" style={{ fontSize: 12 }}>{b.who}</span>,
+                <Badge key="s" tone={b.status === "accepted" ? "good" : b.status === "cancelled" || b.status === "rejected" ? "bad" : "warn"}>
+                  {b.status || "?"}
+                </Badge>,
+              ])}
+            />
+          ) : (
+            <ErrorNote>{cal.reason}</ErrorNote>
+          )}
+        </Card>
+
+        <Card
+          title="Trafic (Vercel Analytics)"
+          right={traffic.ok ? <Badge tone="muted">{fmtNum(traffic.pageviews)} vues</Badge> : undefined}
+        >
+          {traffic.ok ? (
+            <Table
+              head={["Page", "Vues"]}
+              rows={traffic.topPages.map((p) => [
+                <span key="p" style={{ fontSize: 12 }}>{p.path || "/"}</span>,
+                fmtNum(p.views),
+              ])}
+            />
+          ) : (
+            <ErrorNote>{traffic.reason}</ErrorNote>
+          )}
+        </Card>
+      </div>
+
       {/* ---- Indexation ---- */}
       <div style={{ marginBottom: 16 }}>
         <Card
@@ -293,9 +394,11 @@ export default async function PilotagePage({
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: 12 }}>
           <EnvItem label="Stripe (clé)" ok={env.stripe} />
           <EnvItem label="Webhook Stripe" ok={env.webhook} />
-          <EnvItem label="Resend (emails)" ok={env.resend} />
+          <EnvItem label="Resend (emails/leads)" ok={env.resend} />
           <EnvItem label="GSC (service acct)" ok={env.gsc} />
           <EnvItem label="Lien Cal.com" ok={env.cal} />
+          <EnvItem label="Cal.com API (RDV)" ok={env.calApi} />
+          <EnvItem label="Vercel Analytics" ok={env.vercel} />
         </div>
       </Card>
     </main>

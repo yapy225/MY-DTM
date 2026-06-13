@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { recordLead } from "@/lib/pilotage/leads";
 
 export async function POST(req: Request) {
   try {
@@ -35,6 +36,9 @@ export async function POST(req: Request) {
         <p>${message.replace(/\n/g, "<br />")}</p>
       `,
     });
+
+    // Enregistre le lead dans l'audience Resend (best-effort, ne bloque pas).
+    await recordLead({ name, email, service });
 
     return NextResponse.json({ success: true });
   } catch (error) {
