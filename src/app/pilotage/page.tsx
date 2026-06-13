@@ -5,7 +5,6 @@ import { getStripeMetrics } from "@/lib/pilotage/stripe-metrics";
 import { getGscPerformance, getIndexStatus } from "@/lib/pilotage/gsc";
 import { getLeadsMetrics } from "@/lib/pilotage/leads";
 import { getCalMetrics } from "@/lib/pilotage/cal";
-import { getVercelTraffic } from "@/lib/pilotage/vercel";
 import {
   Card,
   Kpi,
@@ -44,13 +43,12 @@ export default async function PilotagePage({
   const { j } = await searchParams;
   const days = PERIODS.includes(Number(j) as (typeof PERIODS)[number]) ? Number(j) : 30;
 
-  const [stripe, gsc, index, leads, cal, traffic] = await Promise.all([
+  const [stripe, gsc, index, leads, cal] = await Promise.all([
     getStripeMetrics(days),
     getGscPerformance(days),
     getIndexStatus(),
     getLeadsMetrics(days),
     getCalMetrics(days),
-    getVercelTraffic(days),
   ]);
 
   const gscOk = gsc.ok;
@@ -61,7 +59,6 @@ export default async function PilotagePage({
     gsc: Boolean(process.env.GOOGLE_SA_JSON || process.env.GSC_KEY_FILE),
     cal: Boolean(process.env.NEXT_PUBLIC_CAL_LINK),
     calApi: Boolean(process.env.CAL_API_KEY),
-    vercel: Boolean(process.env.VERCEL_API_TOKEN && process.env.VERCEL_PROJECT_ID),
   };
 
   return (
@@ -180,11 +177,11 @@ export default async function PilotagePage({
             tone={cal.upcoming > 0 ? "good" : "default"}
           />
         )}
-        {traffic.ok && (
+        {gscOk && (
           <Kpi
-            label="Trafic"
-            value={fmtNum(traffic.pageviews)}
-            sub={traffic.visitors != null ? `${fmtNum(traffic.visitors)} visiteurs` : "pages vues"}
+            label="Visites recherche"
+            value={fmtNum(gsc.totals.clicks)}
+            sub="clics depuis Google"
           />
         )}
       </div>
@@ -349,19 +346,22 @@ export default async function PilotagePage({
         </Card>
 
         <Card
-          title="Trafic (Vercel Analytics)"
-          right={traffic.ok ? <Badge tone="muted">{fmtNum(traffic.pageviews)} vues</Badge> : undefined}
+          title="Trafic de recherche (GSC)"
+          right={gscOk ? <Badge tone="muted">{fmtNum(gsc.totals.clicks)} visites / {days}j</Badge> : undefined}
         >
-          {traffic.ok ? (
-            <Table
-              head={["Page", "Vues"]}
-              rows={traffic.topPages.map((p) => [
-                <span key="p" style={{ fontSize: 12 }}>{p.path || "/"}</span>,
-                fmtNum(p.views),
-              ])}
-            />
+          {gscOk ? (
+            gsc.trend.length ? (
+              <BarChart
+                data={gsc.trend.map((t) => ({
+                  label: `${t.date.slice(8)}/${t.date.slice(5, 7)}`,
+                  value: t.clicks,
+                }))}
+              />
+            ) : (
+              <div style={{ color: "#6b7280", fontSize: 13 }}>Pas encore de clics sur la période.</div>
+            )
           ) : (
-            <ErrorNote>{traffic.reason}</ErrorNote>
+            <ErrorNote>{gsc.reason}</ErrorNote>
           )}
         </Card>
       </div>
@@ -398,7 +398,6 @@ export default async function PilotagePage({
           <EnvItem label="GSC (service acct)" ok={env.gsc} />
           <EnvItem label="Lien Cal.com" ok={env.cal} />
           <EnvItem label="Cal.com API (RDV)" ok={env.calApi} />
-          <EnvItem label="Vercel Analytics" ok={env.vercel} />
         </div>
       </Card>
     </main>
