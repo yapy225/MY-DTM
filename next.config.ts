@@ -11,6 +11,10 @@ const nextConfig: NextConfig = {
   // équivalent sur dreamteamafrica.com. Le site de services my-dtm reste intact.
   async redirects() {
     return [
+      // Osature d'indexation : www → apex en 308 permanent (effectif une fois www passé de
+      // "Redirect" à "domaine assigné" dans Vercel ; aujourd'hui www est en 307 plateforme).
+      { source: "/", has: [{ type: "host", value: "www.my-dtm.fr" }], destination: "https://my-dtm.fr/", permanent: true },
+      { source: "/:path*", has: [{ type: "host", value: "www.my-dtm.fr" }], destination: "https://my-dtm.fr/:path*", permanent: true },
       {
         source: "/lafropeen/:path*",
         destination: "https://dreamteamafrica.com/lafropeen/:path*",
