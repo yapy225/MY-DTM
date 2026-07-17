@@ -186,6 +186,22 @@ export default async function PilotagePage({
         )}
       </div>
 
+      {stripe.ok && stripe.capped && (
+        <div
+          style={{
+            background: "#FEF3C7",
+            color: "#92400E",
+            fontSize: 13,
+            padding: "10px 14px",
+            borderRadius: 10,
+            marginBottom: 20,
+          }}
+        >
+          ⚠️ Volume de transactions au plafond d&apos;agrégation : les totaux affichés sont
+          <strong> sous-estimés</strong> (tronqués). Réduis la période pour un chiffre exact.
+        </div>
+      )}
+
       {/* ---- Revenus ---- */}
       <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 1.4fr) minmax(0, 1fr)", gap: 16, marginBottom: 16 }}>
         <Card title={`Chiffre d'affaires · ${days} jours`}>
