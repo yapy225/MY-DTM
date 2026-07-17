@@ -5,6 +5,11 @@ import { getAllGuides } from "@/lib/guides/guides";
 const baseUrl = "https://my-dtm.fr";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  // lastModified STABLE pour les pages statiques : ne pas utiliser new Date()
+  // (Google recrawlerait tout à chaque build → crawl budget gaspillé). Les
+  // articles/guides gardent leur vraie date. À bumper lors d'une vraie refonte.
+  const LAST_MODIFIED = "2026-07-09";
+
   const blogPosts: MetadataRoute.Sitemap = getAllPosts().map((p) => ({
     url: `${baseUrl}/blog/${p.slug}`,
     lastModified: new Date(p.date),
@@ -20,23 +25,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   return [
-    { url: baseUrl, lastModified: new Date(), changeFrequency: "weekly", priority: 1 },
-    { url: `${baseUrl}/guides`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
+    { url: baseUrl, lastModified: LAST_MODIFIED, changeFrequency: "weekly", priority: 1 },
+    { url: `${baseUrl}/guides`, lastModified: LAST_MODIFIED, changeFrequency: "weekly", priority: 0.8 },
     ...guides,
-    { url: `${baseUrl}/services`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
-    { url: `${baseUrl}/services/creation-site-web`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
-    { url: `${baseUrl}/services/seo`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
-    { url: `${baseUrl}/services/whatsapp-business`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
-    { url: `${baseUrl}/services/automatisation`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
-    { url: `${baseUrl}/services/marketing-digital`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
-    { url: `${baseUrl}/services/tracking-conformite`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
-    { url: `${baseUrl}/services/securite-web`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
-    { url: `${baseUrl}/services/plateforme-evenementielle`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
-    { url: `${baseUrl}/blog`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
+    { url: `${baseUrl}/services`, lastModified: LAST_MODIFIED, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${baseUrl}/services/creation-site-web`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${baseUrl}/services/seo`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${baseUrl}/services/whatsapp-business`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${baseUrl}/services/automatisation`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${baseUrl}/services/marketing-digital`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${baseUrl}/services/tracking-conformite`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${baseUrl}/services/securite-web`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${baseUrl}/services/plateforme-evenementielle`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${baseUrl}/blog`, lastModified: LAST_MODIFIED, changeFrequency: "weekly", priority: 0.8 },
     ...blogPosts,
-    { url: `${baseUrl}/tarifs`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${baseUrl}/contact`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${baseUrl}/mentions-legales`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
-    { url: `${baseUrl}/politique-de-confidentialite`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
+    { url: `${baseUrl}/tarifs`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${baseUrl}/contact`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${baseUrl}/mentions-legales`, lastModified: LAST_MODIFIED, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${baseUrl}/politique-de-confidentialite`, lastModified: LAST_MODIFIED, changeFrequency: "yearly", priority: 0.3 },
   ];
 }
