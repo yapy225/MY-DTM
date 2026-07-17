@@ -1,6 +1,7 @@
 import "server-only";
 import crypto from "crypto";
 import { cookies } from "next/headers";
+import { signingSecret } from "@/lib/secret";
 
 // --- Auth du dashboard /pilotage ------------------------------------------
 // Pas de systeme de comptes sur le site : on protege /pilotage par un mot de
@@ -10,18 +11,10 @@ import { cookies } from "next/headers";
 const COOKIE_NAME = "pilotage_session";
 const SESSION_TTL_SECONDS = 7 * 24 * 60 * 60; // 7 jours
 
-function secret(): string {
-  // Reutilise un secret existant si PILOTAGE_SECRET n'est pas defini.
-  return (
-    process.env.PILOTAGE_SECRET ||
-    process.env.DOWNLOAD_SIGNING_SECRET ||
-    process.env.STRIPE_SECRET_KEY ||
-    "dev-pilotage-secret-change-me"
-  );
-}
-
+// Cle HMAC partagee (voir @/lib/secret) : decouplee de la cle Stripe, jamais
+// de fallback code en dur. Echoue bruyamment si le secret est absent.
 function sign(payload: string): string {
-  return crypto.createHmac("sha256", secret()).update(payload).digest("hex");
+  return crypto.createHmac("sha256", signingSecret()).update(payload).digest("hex");
 }
 
 // Le mot de passe attendu. Si non configure, l'acces est verrouille (pas de

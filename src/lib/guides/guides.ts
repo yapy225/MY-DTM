@@ -399,6 +399,36 @@ export const GUIDES: Guide[] = [
   },
 ];
 
+// --- Garde-fou d'integrite du catalogue -----------------------------------
+// Verifie les invariants du tunnel de paiement au chargement du module (donc
+// au build et au demarrage). Une incoherence fait echouer le deploiement tot
+// plutot que de facturer un mauvais montant ou de livrer un PDF fantome.
+// Tient lieu de test unitaire sans dependance de test supplementaire.
+function validateCatalog(guides: Guide[]): void {
+  const productIds = new Set<string>();
+  const slugs = new Set<string>();
+  for (const guide of guides) {
+    if (slugs.has(guide.slug)) throw new Error(`Catalogue: slug de guide en double "${guide.slug}"`);
+    slugs.add(guide.slug);
+    for (const p of guide.products) {
+      if (productIds.has(p.id)) throw new Error(`Catalogue: id de produit en double "${p.id}"`);
+      productIds.add(p.id);
+      if (!Number.isInteger(p.priceCents) || p.priceCents <= 0) {
+        throw new Error(`Catalogue: priceCents invalide pour "${p.id}" (${p.priceCents})`);
+      }
+      if (p.priceCents !== Math.round(p.price * 100)) {
+        throw new Error(
+          `Catalogue: price/priceCents incoherents pour "${p.id}" (${p.price}€ vs ${p.priceCents}c)`,
+        );
+      }
+      if (p.type === "pdf" && !p.file) {
+        throw new Error(`Catalogue: produit PDF "${p.id}" sans fichier`);
+      }
+    }
+  }
+}
+validateCatalog(GUIDES);
+
 export function getAllGuides() {
   return [...GUIDES].sort((a, b) => (a.date < b.date ? 1 : -1));
 }

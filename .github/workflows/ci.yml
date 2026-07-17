@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Typecheck : filet contre les régressions de type / catalogue (le garde-fou
+      # validateCatalog s'exécute aussi à l'import, mais tsc attrape les ruptures
+      # d'API avant même l'exécution).
+      - name: Typecheck
+        run: npx tsc --noEmit
+
+      # Lint non bloquant : le dépôt traîne un backlog préexistant
+      # (react/no-unescaped-entities sur le contenu FR). Surfacé sans gater la CI,
+      # à résorber séparément. Les fichiers récents doivent rester clean.
+      - name: Lint (informatif)
+        run: npm run lint
+        continue-on-error: true

@@ -40,9 +40,16 @@ export type StripeMetrics = {
   byDay: DayPoint[];
   byProduct: ProductLine[];
   recent: Transaction[];
+  // true si la periode contient plus de transactions/remboursements que la
+  // limite d'agregation : les chiffres sont alors sous-estimes (tronques).
+  capped: boolean;
 };
 
 export type StripeMetricsError = { ok: false; reason: string };
+
+// Plafonds d'agregation (au-dela, les totaux seraient tronques silencieusement).
+const SESSIONS_LIMIT = 2000;
+const REFUNDS_LIMIT = 1000;
 
 function productLabel(productId: string | undefined): { label: string; type: ProductLine["type"] } {
   if (!productId) return { label: "Produit inconnu", type: "inconnu" };
@@ -64,12 +71,15 @@ export async function getStripeMetrics(days: number): Promise<StripeMetrics | St
     // Toutes les sessions de la periode (auto-pagination, plafonnee).
     const sessions = await stripe.checkout.sessions
       .list({ created: { gte }, limit: 100 })
-      .autoPagingToArray({ limit: 2000 });
+      .autoPagingToArray({ limit: SESSIONS_LIMIT });
 
     // Remboursements de la periode.
     const refunds = await stripe.refunds
       .list({ created: { gte }, limit: 100 })
-      .autoPagingToArray({ limit: 1000 });
+      .autoPagingToArray({ limit: REFUNDS_LIMIT });
+
+    // On a atteint un plafond => les totaux sont potentiellement tronques.
+    const capped = sessions.length >= SESSIONS_LIMIT || refunds.length >= REFUNDS_LIMIT;
 
     const currency = "eur";
     const paid = sessions.filter((s) => s.payment_status === "paid");
@@ -132,6 +142,7 @@ export async function getStripeMetrics(days: number): Promise<StripeMetrics | St
       byDay,
       byProduct,
       recent: recent.slice(0, 12),
+      capped,
     };
   } catch (err) {
     return { ok: false, reason: err instanceof Error ? err.message : "Erreur Stripe inconnue." };

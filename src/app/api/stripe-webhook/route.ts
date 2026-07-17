@@ -33,7 +33,9 @@ export async function POST(req: Request) {
 
     if (productId && email) {
       try {
-        await deliver(productId, email, buyerName);
+        // event.id est stable entre les re-tentatives Stripe du meme evenement :
+        // il sert de cle d'idempotence pour ne pas re-livrer en double.
+        await deliver(productId, email, buyerName, event.id);
       } catch (err) {
         // On loggue mais on renvoie 200 : Stripe ne doit pas re-tenter a l'infini
         // sur une erreur de livraison. La page de succes reste un filet de secours.
@@ -45,7 +47,7 @@ export async function POST(req: Request) {
   return NextResponse.json({ received: true });
 }
 
-async function deliver(productId: string, email: string, buyerName: string) {
+async function deliver(productId: string, email: string, buyerName: string, eventId: string) {
   const found = getProductById(productId);
   if (!found) return;
   const { guide, product } = found;
@@ -57,11 +59,12 @@ async function deliver(productId: string, email: string, buyerName: string) {
   if (product.type === "pdf") {
     const token = createDownloadToken(product.id, Math.floor(Date.now() / 1000));
     const link = `${SITE_URL}/api/download?token=${encodeURIComponent(token)}`;
-    await resend.emails.send({
-      from: FROM,
-      to: [email],
-      subject: `Votre ebook : ${guide.title}`,
-      html: `
+    await resend.emails.send(
+      {
+        from: FROM,
+        to: [email],
+        subject: `Votre ebook : ${guide.title}`,
+        html: `
         <p>${hello}</p>
         <p>Merci pour votre achat ! Voici votre accès à <strong>${guide.title}</strong>.</p>
         <p><a href="${link}" style="display:inline-block;background:#7c0dbe;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:bold;">Télécharger mon ebook (PDF)</a></p>
@@ -69,27 +72,37 @@ async function deliver(productId: string, email: string, buyerName: string) {
         <p>Une question ? Répondez simplement à cet email.</p>
         <p>— L'équipe My-DTM</p>
       `,
-    });
+      },
+      // Dedup Resend (fenetre 24h) : un retry Stripe du meme event ne renvoie
+      // pas un 2e email a l'acheteur.
+      { idempotencyKey: `deliver-${eventId}-buyer` },
+    );
   } else {
     const cal = getCalLink();
-    await resend.emails.send({
-      from: FROM,
-      to: [email],
-      subject: `Réservez votre accompagnement : ${guide.title}`,
-      html: `
+    await resend.emails.send(
+      {
+        from: FROM,
+        to: [email],
+        subject: `Réservez votre accompagnement : ${guide.title}`,
+        html: `
         <p>${hello}</p>
         <p>Merci ! Votre <strong>accompagnement</strong> est confirmé. Dernière étape : choisissez le créneau qui vous arrange.</p>
         <p><a href="${cal}" style="display:inline-block;background:#7c0dbe;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:bold;">Réserver mon créneau (visio 90 min)</a></p>
         <p style="color:#6b7280;font-size:13px;">L'ebook complet est inclus — on le déroulera ensemble en direct.</p>
         <p>À très vite,<br/>— L'équipe My-DTM</p>
       `,
-    });
+      },
+      { idempotencyKey: `deliver-${eventId}-buyer` },
+    );
     // Notification interne pour preparer la session.
-    await resend.emails.send({
-      from: FROM,
-      to: [INTERNAL_TO],
-      subject: `🗓️ Accompagnement vendu — ${email}`,
-      html: `<p>Nouvel accompagnement « ${product.name} » (${guide.title}) acheté par <strong>${email}</strong>${buyerName ? ` (${buyerName})` : ""}. En attente de réservation Cal.com.</p>`,
-    });
+    await resend.emails.send(
+      {
+        from: FROM,
+        to: [INTERNAL_TO],
+        subject: `🗓️ Accompagnement vendu — ${email}`,
+        html: `<p>Nouvel accompagnement « ${product.name} » (${guide.title}) acheté par <strong>${email}</strong>${buyerName ? ` (${buyerName})` : ""}. En attente de réservation Cal.com.</p>`,
+      },
+      { idempotencyKey: `deliver-${eventId}-internal` },
+    );
   }
 }

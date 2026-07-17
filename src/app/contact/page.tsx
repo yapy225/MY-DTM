@@ -4,14 +4,14 @@ import { useState, type FormEvent } from "react";
 import { Phone, Mail, MapPin, Send, Loader2 } from "lucide-react";
 
 const SERVICES = [
-  "Creation site web",
-  "Plateforme evenementielle / billetterie",
+  "Création site web",
+  "Plateforme événementielle / billetterie",
   "SEO technique",
   "Automatisation & API",
   "WhatsApp Business",
   "Marketing digital",
-  "Tracking & Conformite RGPD",
-  "Securite web",
+  "Tracking & Conformité RGPD",
+  "Sécurité web",
   "Audit gratuit",
   "Autre",
 ];
@@ -33,6 +33,8 @@ export default function ContactPage() {
       phone: (form.elements.namedItem("phone") as HTMLInputElement).value,
       service: (form.elements.namedItem("service") as HTMLSelectElement).value,
       message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+      // Honeypot anti-bot : doit rester vide (invisible pour l'humain).
+      company: (form.elements.namedItem("company") as HTMLInputElement)?.value ?? "",
     };
 
     try {
@@ -45,7 +47,7 @@ export default function ContactPage() {
       if (!res.ok) throw new Error("Erreur serveur");
       setSent(true);
     } catch {
-      setError("Une erreur est survenue. Reessayez ou contactez-nous sur WhatsApp.");
+      setError("Une erreur est survenue. Réessayez ou contactez-nous sur WhatsApp.");
     } finally {
       setLoading(false);
     }
@@ -75,14 +77,23 @@ export default function ContactPage() {
               <div className="rounded-2xl border border-green/20 bg-green/5 p-12 text-center">
                 <span className="text-6xl">&#10003;</span>
                 <h2 className="mt-4 font-sans text-2xl font-extrabold text-dark">
-                  Message envoye !
+                  Message envoyé !
                 </h2>
                 <p className="mt-2 text-muted">
-                  On vous repond sous 48h. Merci pour votre confiance.
+                  On vous répond sous 48h. Merci pour votre confiance.
                 </p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Honeypot anti-bot : masqué et exclu de la navigation clavier. */}
+                <input
+                  type="text"
+                  name="company"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  className="absolute left-[-9999px] h-0 w-0 opacity-0"
+                />
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                   <div>
                     <label className="mb-2 block text-sm font-semibold text-dark">
@@ -112,7 +123,7 @@ export default function ContactPage() {
 
                 <div>
                   <label className="mb-2 block text-sm font-semibold text-dark">
-                    Telephone (optionnel)
+                    Téléphone (optionnel)
                   </label>
                   <input
                     name="phone"
@@ -124,10 +135,10 @@ export default function ContactPage() {
 
                 <div>
                   <label className="mb-2 block text-sm font-semibold text-dark">
-                    Service souhaite
+                    Service souhaité
                   </label>
                   <select name="service" className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm text-dark outline-none transition-colors focus:border-primary">
-                    <option value="">Selectionnez un service</option>
+                    <option value="">Sélectionnez un service</option>
                     {SERVICES.map((s) => (
                       <option key={s} value={s}>{s}</option>
                     ))}
@@ -136,7 +147,7 @@ export default function ContactPage() {
 
                 <div>
                   <label className="mb-2 block text-sm font-semibold text-dark">
-                    Decrivez votre projet
+                    Décrivez votre projet
                   </label>
                   <textarea
                     required
@@ -166,7 +177,7 @@ export default function ContactPage() {
           {/* Sidebar */}
           <div className="space-y-6">
             <div className="rounded-2xl border border-border bg-white p-8">
-              <h3 className="font-sans text-lg font-bold text-dark">Coordonnees</h3>
+              <h3 className="font-sans text-lg font-bold text-dark">Coordonnées</h3>
               <div className="mt-6 space-y-4">
                 <a
                   href="mailto:hello@my-dtm.fr"
@@ -190,7 +201,7 @@ export default function ContactPage() {
             </div>
 
             <div className="rounded-2xl border border-border bg-white p-8">
-              <h3 className="font-sans text-lg font-bold text-dark">Reponse rapide</h3>
+              <h3 className="font-sans text-lg font-bold text-dark">Réponse rapide</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted">
                 Pour une reponse immediate, contactez-nous directement sur WhatsApp.
               </p>
