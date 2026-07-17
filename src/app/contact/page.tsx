@@ -33,6 +33,8 @@ export default function ContactPage() {
       phone: (form.elements.namedItem("phone") as HTMLInputElement).value,
       service: (form.elements.namedItem("service") as HTMLSelectElement).value,
       message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+      // Honeypot anti-bot : doit rester vide (invisible pour l'humain).
+      company: (form.elements.namedItem("company") as HTMLInputElement)?.value ?? "",
     };
 
     try {
@@ -83,6 +85,15 @@ export default function ContactPage() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Honeypot anti-bot : masqué et exclu de la navigation clavier. */}
+                <input
+                  type="text"
+                  name="company"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  className="absolute left-[-9999px] h-0 w-0 opacity-0"
+                />
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                   <div>
                     <label className="mb-2 block text-sm font-semibold text-dark">
