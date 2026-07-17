@@ -1,6 +1,7 @@
 import "server-only";
 import Stripe from "stripe";
 import crypto from "crypto";
+import { signingSecret } from "@/lib/secret";
 
 // Client Stripe instancie a la demande (cle dans Vercel > Env : STRIPE_SECRET_KEY).
 // Lazy pour ne pas crasher au build quand la cle n'est pas presente.
@@ -18,14 +19,13 @@ export function getStripe(): Stripe {
 // Permet de livrer un PDF sans base de donnees : on signe { produit, expiration }
 // avec un secret serveur, et la route /api/download verifie la signature.
 
-const SIGNING_SECRET =
-  process.env.DOWNLOAD_SIGNING_SECRET || process.env.STRIPE_SECRET_KEY || "dev-secret-change-me";
-
 // Duree de validite d'un lien de telechargement : 7 jours.
 const TOKEN_TTL_SECONDS = 7 * 24 * 60 * 60;
 
+// Cle HMAC partagee (voir @/lib/secret) : decouplee de la cle Stripe, jamais
+// de fallback code en dur. Resolue a l'appel (lazy) pour ne pas casser le build.
 function sign(payload: string): string {
-  return crypto.createHmac("sha256", SIGNING_SECRET).update(payload).digest("hex");
+  return crypto.createHmac("sha256", signingSecret()).update(payload).digest("hex");
 }
 
 // Cree un token autonome : "<productId>.<expiry>.<signature>"
