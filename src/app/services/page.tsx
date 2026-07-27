@@ -5,7 +5,7 @@ import CTA from "@/components/sections/CTA";
 export const metadata: Metadata = {
   title: "Services — Web, SEO, Marketing, Tracking & Securite | My-DTM Paris",
   description:
-    "Tous nos services : creation site web, SEO technique, automatisation API, marketing multi-canal, tracking & conformite RGPD, securite & infra. 24 offres adaptees aux PME et startups. Devis gratuit.",
+    "Tous nos services : creation site web, SEO, automatisation, marketing multi-canal, tracking RGPD et securite. Devis gratuit sous 48h.",
   keywords: [
     "services agence digitale Paris",
     "creation site web prix",

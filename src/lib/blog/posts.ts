@@ -24,7 +24,7 @@ export const POSTS: Post[] = [
     slug: "integrer-whatsapp-business-api-guide",
     title: "Comment intégrer l'API WhatsApp Business en 2026 (guide complet)",
     description:
-      "Guide pratique pour intégrer l'API WhatsApp Business : différence avec l'app, étapes, prix réels, cas d'usage et erreurs à éviter. Par une agence d'intégration.",
+      "Guide pratique pour intégrer l'API WhatsApp Business : différence avec l'app, étapes, prix réels, cas d'usage et erreurs à éviter.",
     date: "2026-06-03",
     readingTime: "6 min",
     category: "WhatsApp Business",
@@ -75,7 +75,7 @@ export const POSTS: Post[] = [
     slug: "conversions-api-meta-rgpd-guide",
     title: "Conversions API Meta & RGPD : le guide complet (2026)",
     description:
-      "Pourquoi vos conversions Facebook ne remontent plus, comment la Conversions API server-side les récupère, et comment rester 100 % conforme au RGPD et à la CNIL.",
+      "Pourquoi vos conversions Facebook ne remontent plus, comment la Conversions API server-side les récupère, et comment rester conforme au RGPD et à la CNIL.",
     date: "2026-06-03",
     readingTime: "7 min",
     category: "Tracking & Data",
@@ -118,7 +118,7 @@ export const POSTS: Post[] = [
     slug: "prix-plateforme-billetterie-evenementielle",
     title: "Combien coûte une plateforme de billetterie événementielle ?",
     description:
-      "Prix d'une billetterie en ligne sur mesure vs plateformes à commission (Billetweb, Weezevent), ce qui fait le coût, et quand le sur-mesure devient rentable.",
+      "Prix d'une billetterie en ligne sur mesure vs plateformes à commission (Billetweb), ce qui fait le coût, et quand le sur-mesure devient rentable.",
     date: "2026-06-03",
     readingTime: "6 min",
     category: "Événementiel",
@@ -165,7 +165,7 @@ export const POSTS: Post[] = [
     slug: "cout-whatsapp-business-api-france",
     title: "Combien coûte l'API WhatsApp Business en France ? (2026)",
     description:
-      "Le détail réel des coûts de l'API WhatsApp Business : tarifs Meta par conversation, coût d'intégration, abonnements BSP, et combien prévoir selon votre volume.",
+      "Le détail réel des coûts de l'API WhatsApp Business : tarifs Meta par conversation, coût d'intégration, BSP, et combien prévoir selon votre volume.",
     date: "2026-06-03",
     readingTime: "5 min",
     category: "WhatsApp Business",
@@ -209,7 +209,7 @@ export const POSTS: Post[] = [
     slug: "deduplication-evenements-pixel-capi",
     title: "Déduplication d'événements Pixel / CAPI : pourquoi et comment",
     description:
-      "Sans déduplication, Meta compte vos conversions deux fois et fausse vos chiffres. Voici comment fonctionne l'event_id et comment dédupliquer proprement Pixel et Conversions API.",
+      "Meta compte les conversions deux fois sans déduplication. Comment fonctionne l'event_id pour dédupliquer proprement Pixel et Conversions API.",
     date: "2026-06-03",
     readingTime: "6 min",
     category: "Tracking & Data",
@@ -251,7 +251,7 @@ export const POSTS: Post[] = [
     slug: "securiser-application-nextjs-checklist",
     title: "Sécuriser une application Next.js : la checklist 2026",
     description:
-      "Les points de sécurité essentiels d'une app Next.js en production : headers, CSP, protection des routes, validation des uploads, secrets et webhooks. Checklist actionnable.",
+      "Les points de sécurité essentiels d'une app Next.js en production : headers, CSP, protection des routes, validation des uploads, secrets et webhooks.",
     date: "2026-06-03",
     readingTime: "7 min",
     category: "Sécurité Web",
@@ -346,7 +346,7 @@ export const POSTS: Post[] = [
     slug: "migration-wordpress-nextjs-seo",
     title: "Migrer de WordPress à Next.js sans perdre son SEO",
     description:
-      "Une migration WordPress vers Next.js peut faire chuter votre trafic… ou le booster. La méthode pour tout migrer en préservant (et améliorant) votre référencement.",
+      "Une migration WordPress vers Next.js peut faire chuter votre trafic… ou le booster. La méthode pour migrer en préservant votre référencement.",
     date: "2026-06-03",
     readingTime: "7 min",
     category: "SEO & Web",
@@ -394,7 +394,7 @@ export const POSTS: Post[] = [
     slug: "chatbot-whatsapp-entreprise",
     title: "Chatbot WhatsApp pour entreprise : comment ça marche et combien ça coûte",
     description:
-      "Chatbot WhatsApp pour entreprise : les 3 niveaux (menu, IA, hybride), cas d'usage rentables, prix réels et erreurs à éviter. Par une agence d'intégration WhatsApp Business.",
+      "Chatbot WhatsApp pour entreprise : les 3 niveaux (menu, IA, hybride), cas d'usage rentables, prix réels et erreurs à éviter.",
     date: "2026-07-19",
     readingTime: "6 min",
     category: "WhatsApp Business",
@@ -442,7 +442,7 @@ export const POSTS: Post[] = [
     slug: "whatsapp-business-vs-whatsapp-classique",
     title: "WhatsApp, WhatsApp Business, API : quelles différences (et lequel choisir) ?",
     description:
-      "WhatsApp classique, application WhatsApp Business et API WhatsApp Business : les vraies différences, avantages et limites de chacun, et comment choisir selon votre entreprise.",
+      "WhatsApp classique, WhatsApp Business et API WhatsApp Business : différences, avantages et limites de chacun, et comment choisir selon votre entreprise.",
     date: "2026-07-19",
     readingTime: "5 min",
     category: "WhatsApp Business",
@@ -480,7 +480,7 @@ export const POSTS: Post[] = [
     slug: "consent-mode-v2-rgpd-cnil",
     title: "Consent Mode v2 & cookies : rester conforme RGPD/CNIL sans perdre ses conversions",
     description:
-      "Consent Mode v2 de Google, bandeau cookies conforme CNIL, et suivi des conversions : ce qui est obligatoire, ce que dit la CNIL, et comment mesurer sans enfreindre le RGPD.",
+      "Consent Mode v2 de Google, bandeau cookies conforme CNIL, suivi des conversions : ce qui est obligatoire et comment mesurer sans enfreindre le RGPD.",
     date: "2026-07-19",
     readingTime: "6 min",
     category: "Tracking & conformité",

@@ -5,7 +5,7 @@ import { Bot, Zap, Users, MessageCircle, BarChart3, Clock, CheckCircle2, ArrowRi
 export const metadata: Metadata = {
   title: "Agence WhatsApp Business API — Integration & Configuration en 48h | Paris",
   description:
-    "Agence WhatsApp Business API a Paris : integration et configuration completes, chatbot automatique, templates, webhooks Facebook Leads. Installation en 48h. Devis gratuit.",
+    "Agence WhatsApp Business API Paris : chatbot automatique, templates, webhooks Facebook Leads. Installation complete en 48h. Devis gratuit.",
   keywords: [
     "WhatsApp Business API configuration",
     "agence chatbot WhatsApp France",

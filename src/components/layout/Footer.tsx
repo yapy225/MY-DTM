@@ -17,6 +17,7 @@ const LINKS = [
   { href: "/#faq", label: "FAQ" },
   { href: "/tarifs", label: "Tarifs" },
   { href: "/contact", label: "Contact" },
+  { href: "/plan-du-site", label: "Plan du site" },
   { href: "/mentions-legales", label: "Mentions légales" },
 ];
 

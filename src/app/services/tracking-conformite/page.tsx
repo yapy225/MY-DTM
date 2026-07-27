@@ -5,7 +5,7 @@ import { CheckCircle2, ArrowRight } from "lucide-react";
 export const metadata: Metadata = {
   title: "Tracking & Conformite RGPD Paris — Meta Pixel, Conversions API, Consentement",
   description:
-    "Agence tracking a Paris. Meta Pixel + Conversions API server-side, deduplication, Advanced Matching, consentement RGPD. Recuperez vos conversions perdues par iOS et les bloqueurs. Audit tracking gratuit.",
+    "Agence tracking a Paris. Meta Pixel + Conversions API server-side, deduplication, Advanced Matching, consentement RGPD. Audit tracking gratuit.",
   keywords: [
     "tracking Meta Pixel Paris",
     "Conversions API Facebook",
