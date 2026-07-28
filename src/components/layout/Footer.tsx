@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Mail, Phone, MapPin } from "lucide-react";
+import BrandMark from "@/components/brand/BrandMark";
 
 const SERVICES = [
   { href: "/services/creation-site-web", label: "Création web" },
@@ -34,9 +35,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="lg:pr-8">
-            <Link href="/" className="flex items-center gap-2.5">
-              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-pink text-sm font-black text-white">M</span>
-              <span className="text-lg font-bold text-white">My-DTM</span>
+            <Link href="/" aria-label="My DTM Paris — accueil" className="flex items-center gap-2.5">
+              <BrandMark size={36} />
+              <span className="text-lg font-bold text-white">
+                My<span className="bg-gradient-to-r from-accent-light via-primary-light to-pink bg-clip-text text-transparent"> DTM</span> <span className="font-medium text-primary-light">Paris</span>
+              </span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed">
               Agence digitale à Paris : développement web, SEO, marketing, tracking et sécurité. Tout l&apos;écosystème digital sous un seul toit.

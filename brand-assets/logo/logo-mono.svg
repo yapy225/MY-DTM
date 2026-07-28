@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 200" width="780" height="200" role="img" aria-label="My DTM Paris">
+  <!-- Monochrome adaptatif : hérite de currentColor.
+       Fond clair : color:#17123a · fond sombre : color:#fff -->
+  <g fill="currentColor">
+    <g transform="translate(20 20) scale(0.8)">
+      <rect x="0" y="0" width="200" height="200" rx="46" fill="none" stroke="currentColor" stroke-width="6"/>
+      <g transform="translate(56 60)">
+        <rect x="0"  y="40" width="16" height="40" rx="4"/>
+        <rect x="24" y="12" width="16" height="68" rx="4"/>
+        <rect x="48" y="12" width="16" height="68" rx="4"/>
+        <rect x="72" y="40" width="16" height="40" rx="4"/>
+      </g>
+      <circle cx="144" cy="64" r="9"/>
+    </g>
+    <g font-family="'Poppins','Segoe UI',sans-serif">
+      <text x="208" y="118" font-size="64" font-weight="700" letter-spacing="-1">My</text>
+      <rect x="315" y="86" width="36" height="14" rx="7"/>
+      <text x="366" y="118" font-size="64" font-weight="700">DTM</text>
+      <text x="548" y="118" font-size="64" font-weight="500">Paris</text>
+    </g>
+  </g>
+</svg>
