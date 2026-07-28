@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import BrandMark from "@/components/brand/BrandMark";
 
 const NAV_LINKS = [
   { href: "/services", label: "Services" },
@@ -29,14 +30,15 @@ export default function Navbar() {
         <div className="appheader-content" style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           {/* Logo */}
           <div className="site-logo" style={{ marginRight: "40px" }}>
-            <Link href="/" style={{ fontSize: "22px", fontWeight: 700, color: "#fff", textDecoration: "none", fontFamily: "Poppins" }}>
-              <span style={{
-                background: "linear-gradient(to right, #fff, #4ce7f3)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}>
-                My-DTM
+            <Link href="/" aria-label="My DTM Paris — accueil" style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "21px", fontWeight: 700, color: "#fff", textDecoration: "none", fontFamily: "Poppins" }}>
+              <BrandMark size={34} />
+              <span style={{ letterSpacing: "-0.5px", lineHeight: 1 }}>
+                My<span style={{
+                  background: "linear-gradient(120deg, #29f5eb, #4d71ee, #e511e6)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}> DTM</span> <span style={{ color: "#9c6fdd", fontWeight: 500 }}>Paris</span>
               </span>
             </Link>
           </div>
@@ -114,8 +116,9 @@ export default function Navbar() {
             </svg>
           </div>
           <div className="m-brand-logo" style={{ textAlign: "center" }}>
-            <Link href="/" onClick={() => setMobileOpen(false)} style={{ fontSize: "20px", fontWeight: 700, color: "#7c0dbe", textDecoration: "none" }}>
-              My-DTM
+            <Link href="/" onClick={() => setMobileOpen(false)} aria-label="My DTM Paris — accueil" style={{ display: "inline-flex", alignItems: "center", gap: "9px", fontSize: "19px", fontWeight: 700, color: "#17123a", textDecoration: "none", fontFamily: "Poppins" }}>
+              <BrandMark size={30} />
+              <span>My<span style={{ color: "#7c0dbe" }}> DTM</span> <span style={{ color: "#9c6fdd", fontWeight: 500 }}>Paris</span></span>
             </Link>
           </div>
           <div className="appi-ei-mobile-main-navigation">
