@@ -121,4 +121,17 @@ Le blog n'existe pas → c'est ce qui rank sur la longue traîne et attire les b
 2. Outil de volume (Ahrefs/Semrush/Ubersuggest) pour remplacer les estimations ci-dessus par du réel.
 3. Revue mensuelle : positions Tier 1 → on double le budget contenu sur ce qui décolle.
 
-_Dernière mise à jour : 2026-06 — volumes à recalibrer dès que GSC + outil disponibles._
+---
+
+## Content-gap — articles ajoutés hors plan initial
+
+Au-delà des 8 articles du plan, des articles « content-gap » couvrent les mots-clés longue traîne restants des clusters :
+
+- ✅ `chatbot-whatsapp-entreprise`, `whatsapp-business-vs-whatsapp-classique`, `consent-mode-v2-rgpd-cnil` (Cluster A/B — moat WhatsApp + tracking)
+- ✅ `billetterie-qr-code-evenement` (kw *billetterie QR code événement*, ~140 — Cluster D)
+- ✅ `site-billetterie-association` (kw *site billetterie association*, ~170 — Cluster D, différenciateur asso)
+- ✅ `tracking-conversions-ios-att` (kw *tracking conversions iOS 14*, ~140 — Cluster B, moat tracking)
+
+**Restent à couvrir** (Tier 1 longue traîne) : *Advanced Matching Meta* (110), *Event Match Quality EMQ* (70), *rotation des secrets exposés Git* (40), *protéger routes admin Next.js* (50), *hardening site Next.js* (30).
+
+_Dernière mise à jour : 2026-07-28 — volumes à recalibrer dès que GSC + outil disponibles._
