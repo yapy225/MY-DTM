@@ -53,3 +53,4 @@ next-env.d.ts
 /design-preview.html
 /proposition-*.html
 /skills-preview.html
+.env*.local
