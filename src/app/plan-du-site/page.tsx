@@ -39,6 +39,9 @@ const SECTIONS = [
       { href: "/blog/chatbot-whatsapp-entreprise", label: "Chatbot WhatsApp pour entreprise" },
       { href: "/blog/whatsapp-business-vs-whatsapp-classique", label: "WhatsApp Business vs WhatsApp classique" },
       { href: "/blog/consent-mode-v2-rgpd-cnil", label: "Consent Mode v2 & cookies RGPD/CNIL" },
+      { href: "/blog/billetterie-qr-code-evenement", label: "Billetterie QR code : comment ça marche" },
+      { href: "/blog/site-billetterie-association", label: "Créer un site de billetterie pour une association" },
+      { href: "/blog/tracking-conversions-ios-att", label: "Tracking iOS & ATT : récupérer vos conversions Meta" },
     ],
   },
   {
