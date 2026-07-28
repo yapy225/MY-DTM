@@ -6,7 +6,7 @@ import { getAllGuides } from "@/lib/guides/guides";
 export const metadata: Metadata = {
   title: "Guides & ebooks — Automatisation, WhatsApp, réseaux sociaux",
   description:
-    "Des guides complets et des ebooks prêts à l'emploi pour automatiser votre activité : réseaux sociaux, WhatsApp Business, tracking. Méthode + modèles par une agence digitale.",
+    "Des guides et ebooks pour automatiser votre activité : réseaux sociaux, WhatsApp Business, tracking, marketing digital. Méthode + modèles gratuits.",
   keywords: ["guides automatisation", "ebook réseaux sociaux", "ebook WhatsApp Business", "guide marketing digital"],
   alternates: { canonical: "https://my-dtm.fr/guides" },
   openGraph: {

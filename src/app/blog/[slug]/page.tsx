@@ -39,6 +39,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     "@type": "BlogPosting",
     headline: post.title,
     description: post.description,
+    image: `https://my-dtm.fr/blog/${post.slug}/opengraph-image`,
     datePublished: post.date,
     dateModified: post.date,
     author: { "@type": "Organization", name: "My-DTM Digital Agency", url: "https://my-dtm.fr" },

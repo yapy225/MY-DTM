@@ -5,7 +5,7 @@ import { CheckCircle2, ArrowRight } from "lucide-react";
 export const metadata: Metadata = {
   title: "Securite Web Paris — Audit, Hardening, CSP, Rotation des Secrets",
   description:
-    "Agence securite web a Paris. Audit de securite, hardening complet (CSP, headers, secrets), protection des routes et des uploads. Blindez votre site et votre plateforme. Audit securite gratuit.",
+    "Agence securite web a Paris. Audit, hardening (CSP, headers, secrets), protection des routes et uploads. Blindez votre site avant qu'il soit trop tard.",
   keywords: [
     "securite site web Paris",
     "audit securite web",

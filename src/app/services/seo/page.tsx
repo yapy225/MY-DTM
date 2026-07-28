@@ -5,7 +5,7 @@ import { CheckCircle2, ArrowRight } from "lucide-react";
 export const metadata: Metadata = {
   title: "Agence SEO Paris — Audit, Referencement Naturel, Indexation Google",
   description:
-    "Agence SEO technique a Paris. Audit complet, redirections 301, Schema.org JSON-LD, indexation Google forcee. +8000 clics/mois recuperes pour nos clients. Audit gratuit.",
+    "Agence SEO technique a Paris. Audit, redirections 301, Schema.org, indexation Google. +8000 clics/mois recuperes pour nos clients. Audit gratuit.",
   keywords: [
     "agence SEO Paris",
     "audit SEO gratuit",

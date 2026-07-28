@@ -5,7 +5,7 @@ import { CheckCircle2, ArrowRight } from "lucide-react";
 export const metadata: Metadata = {
   title: "Plateforme Billetterie Sur Mesure — Création Site Événementiel | Paris",
   description:
-    "Agence qui crée votre plateforme de billetterie événementielle sur mesure : billets QR code, réservation exposants, paiement en ligne, dashboard admin. Sans commission par billet. Devis gratuit.",
+    "Plateforme de billetterie événementielle sur mesure : billets QR code, réservation exposants, dashboard admin. Sans commission par billet. Devis gratuit.",
   keywords: [
     "plateforme billetterie sur mesure",
     "creation site evenementiel",

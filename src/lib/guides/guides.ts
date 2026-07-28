@@ -46,7 +46,7 @@ export const GUIDES: Guide[] = [
     slug: "automatiser-reseaux-sociaux",
     title: "Automatiser ses réseaux sociaux : le guide complet (2026)",
     description:
-      "Comment automatiser ses posts sur Instagram, Facebook et LinkedIn sans perdre en authenticité : les outils, le calendrier éditorial, les erreurs à éviter. Guide d'agence + ebook prêt à l'emploi.",
+      "Comment automatiser ses posts sur Instagram, Facebook et LinkedIn sans perdre en authenticité : les outils, le calendrier éditorial, les erreurs à éviter.",
     date: "2026-06-03",
     readingTime: "9 min",
     category: "Automatisation",
@@ -157,7 +157,7 @@ export const GUIDES: Guide[] = [
     slug: "vendre-avec-whatsapp",
     title: "Vendre avec WhatsApp Business : le guide complet (2026)",
     description:
-      "Comment transformer WhatsApp Business en machine à vendre : profil, catalogue, messages automatiques, pipeline et tunnel de conversation qui convertit. Méthode d'agence + ebook prêt à l'emploi.",
+      "Comment transformer WhatsApp Business en machine à vendre : profil, catalogue, messages automatiques, pipeline et tunnel de conversation qui convertit.",
     date: "2026-06-04",
     readingTime: "8 min",
     category: "WhatsApp Business",
@@ -238,7 +238,7 @@ export const GUIDES: Guide[] = [
     slug: "publicite-facebook-instagram",
     title: "La Publicité Facebook & Instagram : le guide complet (2026)",
     description:
-      "Lancer des campagnes Facebook et Instagram qui vendent, même avec un petit budget : objectifs, Pixel, click-to-WhatsApp, KPI, audiences et retargeting. Méthode d'agence + ebook prêt à l'emploi.",
+      "Lancer des campagnes Facebook et Instagram qui vendent, même avec un petit budget : objectifs, Pixel, click-to-WhatsApp, KPI, audiences et retargeting.",
     date: "2026-06-04",
     readingTime: "9 min",
     category: "Marketing digital",
@@ -319,7 +319,7 @@ export const GUIDES: Guide[] = [
     slug: "referencement-naturel-seo",
     title: "Le référencement naturel (SEO) : le guide complet (2026)",
     description:
-      "Comment faire venir des clients depuis Google sans payer la publicité : mots-clés, optimisation des pages, SEO technique, contenu, local et netlinking. Méthode d'agence + ebook prêt à l'emploi.",
+      "Comment faire venir des clients depuis Google sans payer la publicité : mots-clés, optimisation des pages, SEO technique, contenu, local et netlinking.",
     date: "2026-06-05",
     readingTime: "9 min",
     category: "SEO",

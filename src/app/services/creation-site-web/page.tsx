@@ -5,7 +5,7 @@ import { CheckCircle2, ArrowRight } from "lucide-react";
 export const metadata: Metadata = {
   title: "Creation Site Web Paris — Site Vitrine, E-commerce, Plateforme Sur Mesure",
   description:
-    "Agence creation site web a Paris. Sites vitrines, e-commerce Stripe, plateformes evenementielles. Next.js, React, performance et SEO integres. Devis gratuit.",
+    "Agence creation site web a Paris. Sites vitrines, e-commerce Stripe, plateformes evenementielles. Next.js, performance et SEO integres. Devis gratuit.",
   keywords: [
     "creation site web Paris",
     "agence creation site internet Paris",
