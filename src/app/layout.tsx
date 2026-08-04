@@ -37,6 +37,8 @@ export const metadata: Metadata = {
     // Token fourni par Google Search Console (methode "balise HTML").
     // A definir dans Vercel > Settings > Environment Variables : GOOGLE_SITE_VERIFICATION
     google: process.env.GOOGLE_SITE_VERIFICATION,
+    // Revendication du domaine sur Pinterest (compte My DTM Paris).
+    other: { "p:domain_verify": "306c7badd695acd557743f16d44701fa" },
   },
   openGraph: {
     title: "My-DTM — Agence Digitale Paris",
