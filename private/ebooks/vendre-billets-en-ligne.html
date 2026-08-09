@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Vendre ses billets en ligne — My-DTM</title>
+<style>
+  :root { --primary:#7c0dbe; --secondary:#4d71ee; --dark:#0e0a1a; --muted:#52525b; --soft:#f5f2fb; --border:#e7e1f3; --green:#10B981; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; color: var(--dark); line-height: 1.72; margin: 0; font-size: 12.5pt; }
+  .page { max-width: 800px; margin: 0 auto; padding: 56px 64px; }
+  h1 { font-size: 30pt; line-height: 1.12; margin: 0 0 8px; }
+  h2 { font-size: 19pt; margin: 36px 0 12px; color: var(--primary); border-bottom: 2px solid var(--border); padding-bottom: 6px; }
+  h3 { font-size: 13.5pt; margin: 22px 0 6px; }
+  p { margin: 8px 0; }
+  ul, ol { margin: 8px 0; padding-left: 22px; }
+  li { margin: 4px 0; }
+  .lead { font-size: 13pt; color: var(--muted); }
+  .eyebrow { text-transform: uppercase; letter-spacing: 3px; font-size: 9pt; font-weight: 800; color: var(--primary); }
+  .cover { min-height: 88vh; display: flex; flex-direction: column; justify-content: center; }
+  .badge { display: inline-block; background: var(--soft); border:1px solid var(--border); border-radius: 999px; padding: 4px 14px; font-size: 9.5pt; font-weight: 700; color: var(--primary); }
+  .box { background: var(--soft); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; margin: 16px 0; }
+  .tip { border-left: 4px solid var(--secondary); background: #eef2fe; border-radius: 0 10px 10px 0; padding: 12px 18px; margin: 14px 0; }
+  .warn { border-left: 4px solid #e0a106; background: #fdf6e3; border-radius: 0 10px 10px 0; padding: 12px 18px; margin: 14px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 10.5pt; }
+  th, td { border: 1px solid var(--border); padding: 7px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--primary); color: #fff; font-weight: 700; }
+  tr:nth-child(even) td { background: #faf8fe; }
+  .tpl { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; margin: 10px 0; }
+  .tpl .label { font-weight: 700; color: var(--primary); font-size: 10pt; }
+  .tpl .body { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 10pt; white-space: pre-wrap; margin-top: 6px; color: #1f2937; }
+  code { font-family: "SF Mono", Menlo, Consolas, monospace; background: #f1edfa; padding: 1px 5px; border-radius: 4px; font-size: 10.5pt; }
+  .footer { margin-top: 16px; font-size: 9pt; color: var(--muted); text-align: center; }
+  .cta { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #fff; border-radius: 14px; padding: 24px 28px; margin: 28px 0; }
+  .cta h3 { color: #fff; margin-top: 0; }
+  .cta a { color: #fff; font-weight: 800; }
+  .toc li { margin: 5px 0; }
+  @media print {
+    h2 { page-break-before: always; }
+    h2, h3 { page-break-after: avoid; }
+    .tpl, .box, .tip, .warn, table { page-break-inside: avoid; }
+    .page-break { page-break-before: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <section class="cover">
+    <span class="eyebrow">Guide premium · My-DTM</span>
+    <h1>Vendre ses billets en ligne</h1>
+    <p class="lead">De la page événement qui convertit au contrôle d'accès par QR code le jour J : la méthode complète pour encaisser vos billets en ligne, remplir votre salle et piloter votre billetterie sans stress — entrepreneurs, associations et organisateurs.</p>
+    <div style="margin-top:24px"><span class="badge">Plateforme &amp; commission · Page qui vend · Grille tarifaire · Stripe &amp; TVA · QR &amp; check-in · Spécificités asso · Modèles prêts</span></div>
+    <p style="margin-top:40px; color:var(--muted); font-size:10pt">© My-DTM — Agence digitale, Paris · my-dtm.fr · Usage personnel. Revente et redistribution interdites.</p>
+  </section>
+
+  <div class="page-break"></div>
+
+  <h2>Sommaire</h2>
+  <ol class="toc">
+    <li>Pourquoi vendre ses billets en ligne change tout</li>
+    <li>Choisir sa plateforme de billetterie (et lire les frais)</li>
+    <li>Créer une page événement qui convertit</li>
+    <li>La grille tarifaire qui vend (early-bird, paliers, quotas, codes promo)</li>
+    <li>Le paiement : Stripe, TVA, reçus, remboursements</li>
+    <li>Billets QR &amp; contrôle d'accès le jour J</li>
+    <li>Spécificités association &amp; non-lucratif (en détail)</li>
+    <li>Promouvoir : mailing J-4, réseaux, WhatsApp, Meta Ads</li>
+    <li>Le rétroplanning de vente sur 4 semaines</li>
+    <li>Le jour J : check-in, file d'attente, incidents</li>
+    <li>Après l'événement : relance, fidélisation, réédition</li>
+    <li>Piloter par les chiffres : recette, no-show, marge</li>
+    <li>Checklist de lancement complète</li>
+    <li>Erreurs à éviter · FAQ · Glossaire</li>
+  </ol>
+
+  <div class="page-break"></div>
+
+  <!-- 1 -->
+  <h2>1. Pourquoi vendre ses billets en ligne change tout</h2>
+  <p>Vendre à l'entrée ou par virement de la main à la main, c'est prendre trois risques : l'argent qui n'arrive jamais, la salle à moitié vide malgré les « oui je viens », et zéro donnée pour l'édition suivante. La billetterie en ligne supprime ces trois angles morts d'un coup. Elle transforme une intention (« j'aimerais bien venir ») en engagement (« j'ai payé, je viens »). Ce guide vous emmène du premier billet vendu au bilan chiffré du lendemain, avec des modèles à copier et des exemples réels.</p>
+  <h3>Le paiement immédiat sécurise votre budget</h3>
+  <p>Quand le billet est payé au moment de la réservation, votre trésorerie est constituée <em>avant</em> l'événement. Vous savez, une semaine à l'avance, combien vous avez encaissé — donc combien vous pouvez engager en logistique, en cachets d'artistes ou en communication. Fini l'avance de frais sur des recettes hypothétiques.</p>
+  <p>Prenons un cas concret. Vous organisez une soirée pour 200 personnes. Location de salle 900 €, technique 600 €, artistes 1 200 €, communication 300 € : 3 000 € de charges à engager. En vente à l'entrée, vous avancez ces 3 000 € sur votre trésorerie personnelle et vous priez pour que la salle se remplisse. En billetterie en ligne, à J-7 vous avez déjà encaissé 160 billets à 20 € = 3 200 € : vos charges sont couvertes <em>avant</em> même d'ouvrir les portes. Le risque financier passe de « énorme » à « nul ».</p>
+  <h3>Moins de no-show, plus de présents</h3>
+  <p>Un billet gratuit affiche en moyenne 40 à 60 % d'absentéisme. Un billet payé — même 5 € — fait chuter ce taux sous les 15 %. La raison est psychologique : on honore ce qu'on a payé. Même pour un événement gratuit, demander une réservation nominative (avec e-mail) crée un engagement et vous donne un canal de rappel.</p>
+  <table>
+    <tr><th>Type de billet</th><th>No-show moyen constaté</th><th>Sur 200 inscrits, présents attendus</th></tr>
+    <tr><td>Gratuit sans inscription</td><td>50 à 60 %</td><td>~80 à 100</td></tr>
+    <tr><td>Gratuit avec réservation nominative</td><td>30 à 40 %</td><td>~120 à 140</td></tr>
+    <tr><td>Payant symbolique (2-5 €)</td><td>15 à 20 %</td><td>~160 à 170</td></tr>
+    <tr><td>Payant plein tarif (15-25 €)</td><td>5 à 12 %</td><td>~176 à 190</td></tr>
+  </table>
+  <div class="tip"><strong>Astuce.</strong> Pour un événement « prix libre », mettez un plancher symbolique (2 ou 3 €). Vous gardez l'accessibilité tout en divisant le no-show par trois. Un événement affiché « gratuit sur réservation » avec 2 € de « frais de dossier » remplit mieux qu'un vrai gratuit.</div>
+  <h3>La donnée : votre actif le plus précieux</h3>
+  <p>Chaque billet vendu vous laisse un e-mail, un prénom, parfois un téléphone, et l'historique de ce que la personne a acheté. C'est la base de votre prochaine édition : au lieu de repartir de zéro, vous écrivez à des gens qui sont déjà venus. Un organisateur qui capitalise sa base remplit sa 3e édition en deux e-mails. Cette base vous appartient : ne la laissez jamais coincée dans une plateforme qui refuse l'export.</p>
+  <table>
+    <tr><th>Critère</th><th>Vente physique / virement</th><th>Billetterie en ligne</th></tr>
+    <tr><td>Encaissement</td><td>Le jour J, incertain</td><td>Immédiat, sécurisé</td></tr>
+    <tr><td>No-show</td><td>Élevé (40-60 %)</td><td>Faible (&lt;15 %)</td></tr>
+    <tr><td>Fichier clients</td><td>Inexistant</td><td>Constitué automatiquement</td></tr>
+    <tr><td>Contrôle d'accès</td><td>Liste papier</td><td>Scan QR instantané</td></tr>
+    <tr><td>Comptabilité</td><td>Reconstituée à la main</td><td>Export en un clic</td></tr>
+    <tr><td>Prévision de recette</td><td>Aveugle jusqu'au soir</td><td>Suivi en temps réel</td></tr>
+  </table>
+  <div class="box"><strong>Mini-checklist — état d'esprit de départ</strong>
+  <ul>
+    <li>☐ J'accepte de faire payer, même un montant symbolique, pour réduire le no-show.</li>
+    <li>☐ Je veux récupérer et garder la base de mes acheteurs (export garanti).</li>
+    <li>☐ Je décide dès maintenant que je piloterai par les chiffres, pas au feeling.</li>
+    <li>☐ Je vise à couvrir mes charges fixes <em>avant</em> le jour J.</li>
+  </ul></div>
+
+  <!-- 2 -->
+  <h2>2. Choisir sa plateforme de billetterie (et lire les frais)</h2>
+  <p>Le marché se divise en trois familles. Le bon choix dépend de votre volume, de votre image de marque et de votre besoin de contrôle.</p>
+  <ul>
+    <li><strong>Les places de marché grand public</strong> (type Billetweb, Weezevent, HelloAsso pour le non-lucratif) : rapides à lancer, elles hébergent votre page chez elles. Idéales pour un premier événement.</li>
+    <li><strong>Les solutions intégrées à votre site</strong> : la billetterie vit sur <em>votre</em> domaine, sous votre marque, avec votre design. Meilleure conversion, image pro, données 100 % à vous.</li>
+    <li><strong>Le sur-mesure</strong> : une plateforme événementielle taillée pour vos besoins (multi-événements, abonnements, contrôle d'accès personnalisé, reversements automatiques). C'est ce que nous construisons pour les organisateurs récurrents.</li>
+  </ul>
+  <h3>La grille de comparaison à remplir avant de signer</h3>
+  <table>
+    <tr><th>Critère</th><th>Ce qu'il faut vérifier</th><th>Idéal</th></tr>
+    <tr><td>Commission</td><td>% + part fixe par billet</td><td>≤ 3 % + 0,50 €, reportable sur l'acheteur</td></tr>
+    <tr><td>Frais bancaires</td><td>Inclus ou en plus de la commission ?</td><td>Stripe standard (1,5 % + 0,25 € EU)</td></tr>
+    <tr><td>Reversement</td><td>Avant ou après l'événement ?</td><td>En continu, J+2 à J+7</td></tr>
+    <tr><td>Marque</td><td>Page à votre nom ou à celui de la plateforme ?</td><td>Votre domaine, votre logo</td></tr>
+    <tr><td>Export données</td><td>CSV/Excel des acheteurs disponible ?</td><td>Export libre et illimité</td></tr>
+    <tr><td>Scan d'accès</td><td>App fournie ? Mode hors-ligne ?</td><td>App + scan local sans réseau</td></tr>
+    <tr><td>Support</td><td>Joignable le jour J (week-end) ?</td><td>Humain, réactif, le samedi</td></tr>
+  </table>
+  <h3>Comprendre la commission — le point qui coûte cher</h3>
+  <p>Toutes les plateformes prélèvent une commission, souvent autour de <strong>3 à 5 % + 0,50 € à 0,99 € par billet</strong>, en plus des frais bancaires (Stripe : 1,5 % + 0,25 € en Europe). La vraie question n'est pas « combien ça coûte » mais « qui paie ».</p>
+  <table>
+    <tr><th>Modèle</th><th>Effet sur le prix affiché</th><th>Quand l'utiliser</th></tr>
+    <tr><td>Frais à la charge de l'acheteur</td><td>Prix net pour vous ; l'acheteur voit +5 % au checkout</td><td>Événements payants standards : vous encaissez le plein tarif</td></tr>
+    <tr><td>Frais à la charge de l'organisateur</td><td>Prix rond affiché ; la commission sort de votre recette</td><td>Image premium, prix « psychologique » (ex. 20 € pile)</td></tr>
+  </table>
+  <h3>Simulation chiffrée : ce que vous touchez vraiment</h3>
+  <p>Hypothèse : billet à 20 €, commission plateforme 5 % + 0,50 €, frais Stripe 1,5 % + 0,25 €. Voici le net réel selon qui porte les frais, pour 200 billets.</p>
+  <table>
+    <tr><th>Ligne</th><th>Frais sur l'organisateur</th><th>Frais sur l'acheteur</th></tr>
+    <tr><td>Prix affiché</td><td>20,00 €</td><td>20,00 € (+ frais)</td></tr>
+    <tr><td>Total payé par l'acheteur</td><td>20,00 €</td><td>~21,55 €</td></tr>
+    <tr><td>Commission plateforme (5 % + 0,50 €)</td><td>−1,50 €</td><td>−1,50 € (payée par l'acheteur)</td></tr>
+    <tr><td>Frais Stripe (1,5 % + 0,25 €)</td><td>−0,55 €</td><td>−0,57 €</td></tr>
+    <tr><td><strong>Net organisateur / billet</strong></td><td><strong>~17,95 €</strong></td><td><strong>~20,00 €</strong></td></tr>
+    <tr><td><strong>Net sur 200 billets</strong></td><td><strong>~3 590 €</strong></td><td><strong>~4 000 €</strong></td></tr>
+  </table>
+  <div class="warn"><strong>Piège.</strong> Une commission « 0 % » cache presque toujours des frais reportés sur l'acheteur au dernier écran. Simulez toujours un panier réel avant de signer : c'est le montant final qui compte pour votre taux de conversion. Un acheteur qui découvre +18 % de frais au dernier clic abandonne son panier.</div>
+  <h3>Le reversement : quand touchez-vous l'argent ?</h3>
+  <p>Vérifiez le délai de reversement. Certaines plateformes vous versent après l'événement (pour couvrir les remboursements), d'autres en continu via Stripe Connect. Pour la trésorerie, un reversement rapide (J+2 à J+7) est un vrai avantage — surtout si vous avez des cachets à avancer. Un reversement « après l'événement » vous oblige à financer toute la logistique de votre poche : à volume égal, c'est un critère décisif.</p>
+  <div class="box"><strong>Mini-checklist — choix de plateforme</strong>
+  <ul>
+    <li>☐ J'ai simulé un panier réel et noté le montant final acheteur.</li>
+    <li>☐ Je sais qui porte la commission et j'ai calculé mon net par billet.</li>
+    <li>☐ Le reversement est en continu (ou J+7 max).</li>
+    <li>☐ L'export des acheteurs est garanti et libre.</li>
+    <li>☐ Le scan d'accès fonctionne hors-ligne.</li>
+  </ul></div>
+
+  <!-- 3 -->
+  <h2>3. Créer une page événement qui convertit</h2>
+  <p>Une page billetterie n'est pas une affiche : c'est un tunnel de vente. Chaque élément doit lever un doute et rapprocher du clic « Payer ». Voici l'ossature qui convertit.</p>
+  <ol>
+    <li><strong>Le visuel d'accroche.</strong> Une image nette, au bon format (1200×630 px pour le partage social), qui montre l'ambiance. Pas de flyer surchargé de texte illisible.</li>
+    <li><strong>Le titre + l'essentiel en 3 secondes.</strong> Quoi, quand, où, combien — visibles sans scroller. Une date lisible et une ville rassurent immédiatement.</li>
+    <li><strong>La description qui projette.</strong> Ne décrivez pas votre événement, faites vivre l'expérience : ce que la personne va ressentir, voir, apprendre, avec qui.</li>
+    <li><strong>La réassurance.</strong> Paiement sécurisé, e-billet immédiat, conditions de remboursement, contact. Trois logos et une phrase suffisent à débloquer les hésitants.</li>
+    <li><strong>Le bouton d'achat, toujours visible.</strong> Un CTA clair (« Réserver ma place ») qui suit le scroll sur mobile.</li>
+  </ol>
+  <div class="box"><strong>Structure de description qui vend :</strong>
+  <ul>
+    <li><strong>Accroche</strong> — une promesse en une phrase.</li>
+    <li><strong>Le déroulé</strong> — ce qui va se passer, dans l'ordre.</li>
+    <li><strong>Pour qui</strong> — « idéal si vous… ».</li>
+    <li><strong>Infos pratiques</strong> — accès, horaires, parking, accessibilité.</li>
+    <li><strong>Rappel du prix + rareté</strong> — « places limitées », « tarif early-bird jusqu'au… ».</li>
+  </ul></div>
+  <h3>Gabarit de description prêt à remplir</h3>
+  <div class="tpl">
+    <div class="label">Modèle de description événement</div>
+    <div class="body">[ACCROCHE — une promesse forte en une phrase]
+Ex. : « Une soirée où la culture africaine se raconte en musique, en images et en saveurs. »
+
+CE QUI VOUS ATTEND
+• [Temps fort 1 — ex. concert live]
+• [Temps fort 2 — ex. projection / talk]
+• [Temps fort 3 — ex. buffet, rencontre]
+
+C'EST POUR VOUS SI…
+• Vous [envie / curiosité / valeur].
+• Vous voulez [bénéfice concret].
+
+INFOS PRATIQUES
+📍 [Lieu + adresse] · 🕒 Ouverture [heure], début [heure]
+🚇 [Accès transport] · ♿ [Accessibilité]
+
+TARIFS
+🎟️ Early-bird [X] € (50 premières places) · Normal [Y] €
+Places limitées à [N]. Paiement sécurisé, e-billet immédiat.
+
+👉 [BOUTON : Réserver ma place]</div>
+  </div>
+  <h3>Les 7 leviers de réassurance</h3>
+  <table>
+    <tr><th>Doute de l'acheteur</th><th>Élément qui le lève</th></tr>
+    <tr><td>« Est-ce sécurisé ? »</td><td>Logo Stripe / cadenas + « Paiement sécurisé »</td></tr>
+    <tr><td>« Vais-je recevoir mon billet ? »</td><td>« E-billet envoyé immédiatement par e-mail »</td></tr>
+    <tr><td>« Et si je ne peux plus venir ? »</td><td>Politique de remboursement visible avant l'achat</td></tr>
+    <tr><td>« Est-ce que ça vaut le prix ? »</td><td>Programme détaillé + photos des éditions passées</td></tr>
+    <tr><td>« Y a-t-il encore de la place ? »</td><td>Compteur « plus que X places »</td></tr>
+    <tr><td>« À qui je m'adresse en cas de souci ? »</td><td>Contact e-mail / WhatsApp visible</td></tr>
+    <tr><td>« C'est bien sérieux ? »</td><td>Nom de l'organisateur, mentions légales, avis</td></tr>
+  </table>
+  <div class="tip"><strong>Mobile d'abord.</strong> 70 à 80 % des billets se vendent sur téléphone. Testez tout le parcours sur votre propre mobile : si payer prend plus de trois écrans, vous perdez des ventes. Chronométrez : de la page à la confirmation, visez moins de 60 secondes.</div>
+  <div class="box"><strong>Mini-checklist — page événement</strong>
+  <ul>
+    <li>☐ Visuel 1200×630, net, sans texte illisible.</li>
+    <li>☐ Quoi / quand / où / combien visibles sans scroller.</li>
+    <li>☐ Description qui projette l'expérience (pas un descriptif froid).</li>
+    <li>☐ 3 réassurances minimum + politique de remboursement.</li>
+    <li>☐ CTA collant sur mobile, parcours &lt; 60 s testé.</li>
+  </ul></div>
+
+  <!-- 4 -->
+  <h2>4. La grille tarifaire qui vend</h2>
+  <p>Le prix n'est pas qu'un chiffre : c'est un levier de vente. Une grille bien pensée crée de l'urgence, récompense les plus rapides et maximise la recette totale.</p>
+  <h3>L'early-bird (tarif lève-tôt)</h3>
+  <p>Proposez un tarif réduit sur les premiers billets (les 30 ou 50 premiers, ou jusqu'à une date). C'est le meilleur accélérateur de démarrage : il crée une vague d'achats immédiate qui, sur les réseaux, prouve que l'événement « prend ». Un événement qui vend dès l'ouverture rassure les indécis.</p>
+  <table>
+    <tr><th>Palier</th><th>Prix</th><th>Condition</th><th>Objectif</th></tr>
+    <tr><td>Early-bird</td><td>15 €</td><td>50 premiers billets</td><td>Amorcer, créer la preuve sociale</td></tr>
+    <tr><td>Tarif normal</td><td>20 €</td><td>Jusqu'à J-7</td><td>Volume principal</td></tr>
+    <tr><td>Dernière minute / sur place</td><td>25 €</td><td>J-6 au jour J</td><td>Marge sur les retardataires</td></tr>
+  </table>
+  <h3>Simulation de recette avec paliers</h3>
+  <p>Pour une salle de 200 places, une grille à paliers rapporte davantage qu'un prix unique — tout en démarrant plus vite.</p>
+  <table>
+    <tr><th>Scénario</th><th>Répartition</th><th>Recette brute</th></tr>
+    <tr><td>Prix unique 20 €</td><td>200 × 20 €</td><td>4 000 €</td></tr>
+    <tr><td>Grille à paliers</td><td>50 × 15 € + 120 × 20 € + 30 × 25 €</td><td>3 900 €</td></tr>
+    <tr><td>Grille à paliers (salle pleine plus tôt)</td><td>50 × 15 € + 150 × 20 €</td><td>3 750 € encaissés à J-7</td></tr>
+  </table>
+  <p>La recette brute est proche, mais la grille à paliers <em>vend plus vite</em> : la trésorerie arrive tôt et la preuve sociale de l'early-bird enclenche la dynamique. Sur un événement neuf, la vitesse de vente vaut plus que 150 € de marge théorique.</p>
+  <h3>Quotas et types de billets</h3>
+  <p>Créez plusieurs catégories (Standard, Réduit, VIP, Table de 6, Enfant) avec des <strong>quotas</strong> distincts. Le quota fait deux choses : il vous protège de la surréservation et il crée de la rareté visible (« plus que 8 places »).</p>
+  <table>
+    <tr><th>Catégorie</th><th>Prix</th><th>Quota</th><th>Intérêt</th></tr>
+    <tr><td>Standard</td><td>20 €</td><td>140</td><td>Cœur de recette</td></tr>
+    <tr><td>Réduit (étudiant, -26 ans)</td><td>12 €</td><td>30</td><td>Élargir l'audience, remplir</td></tr>
+    <tr><td>VIP (place assise + boisson)</td><td>40 €</td><td>20</td><td>Monter le panier moyen</td></tr>
+    <tr><td>Table de 6</td><td>108 € (18 €/pers.)</td><td>10 tables</td><td>Ventes groupées, remplissage rapide</td></tr>
+    <tr><td>Enfant (-12 ans)</td><td>Gratuit / 5 €</td><td>—</td><td>Événement familial</td></tr>
+  </table>
+  <h3>Les codes promo, avec méthode</h3>
+  <ul>
+    <li><strong>Codes partenaires</strong> : un code par partenaire/influenceur pour mesurer qui vous amène des ventes.</li>
+    <li><strong>Codes de relance</strong> : un code limité dans le temps pour réactiver les indécis à J-4.</li>
+    <li><strong>Codes internes</strong> : invitations, presse, bénévoles — traçables et plafonnés.</li>
+  </ul>
+  <table>
+    <tr><th>Code</th><th>Réduction</th><th>Plafond</th><th>Usage</th></tr>
+    <tr><td>PARTENAIRE-X</td><td>−10 %</td><td>50 billets</td><td>Mesurer un partenaire</td></tr>
+    <tr><td>MERCI48</td><td>−15 %</td><td>Valable 48 h</td><td>Relance à J-4</td></tr>
+    <tr><td>PRESSE</td><td>100 %</td><td>10 billets</td><td>Invitations traçables</td></tr>
+    <tr><td>BENEVOLE</td><td>100 %</td><td>Équipe</td><td>Accès staff</td></tr>
+  </table>
+  <div class="warn"><strong>Ne bradez jamais en façade.</strong> Un prix barré permanent détruit la valeur perçue. Le code promo doit rester discret et temporaire — c'est un levier, pas une politique de prix.</div>
+  <div class="box"><strong>Mini-checklist — grille tarifaire</strong>
+  <ul>
+    <li>☐ Early-bird plafonné (50 places ou date) créé.</li>
+    <li>☐ Au moins 2 catégories avec quotas distincts.</li>
+    <li>☐ Une offre groupée (table / duo) pour accélérer le remplissage.</li>
+    <li>☐ Codes promo nommés, plafonnés et traçables.</li>
+    <li>☐ Recette cible simulée pour chaque palier.</li>
+  </ul></div>
+
+  <!-- 5 -->
+  <h2>5. Le paiement : Stripe, TVA, reçus, remboursements</h2>
+  <p>C'est le cœur de la confiance. Un paiement fluide et carré transforme les curieux en acheteurs — et vous évite les mauvaises surprises comptables.</p>
+  <h3>Stripe, le standard</h3>
+  <p>La quasi-totalité des plateformes sérieuses reposent sur Stripe : carte bancaire, Apple Pay, Google Pay en un clic. Tarif Europe indicatif : <strong>1,5 % + 0,25 €</strong> par transaction. Assurez-vous que votre compte est bien en mode <em>live</em> (pas <em>test</em>) avant le lancement — c'est l'erreur n°1 qui bloque un go-live.</p>
+  <div class="warn"><strong>Vérification pré-lancement.</strong> Faites une vraie transaction de 1 € en conditions réelles, encaissée sur votre compte, avant d'ouvrir la vente. Un paiement en mode test ne crédite rien : la vente semble marcher mais aucun euro n'arrive. Vérifiez ensuite que la somme apparaît bien dans le solde Stripe <em>live</em>, pas dans l'environnement de test.</div>
+  <h3>Le tunnel de paiement qui ne perd personne</h3>
+  <ul>
+    <li><strong>Le moins de champs possible</strong> : e-mail, nom, carte. Chaque champ en trop coûte des ventes.</li>
+    <li><strong>Apple Pay / Google Pay activés</strong> : un clic sur mobile, où se font 70-80 % des ventes.</li>
+    <li><strong>Prix final clair dès le départ</strong> : pas de frais surprise au dernier écran.</li>
+    <li><strong>Confirmation immédiate</strong> : e-billet + reçu dans la minute, sinon l'acheteur doute d'avoir payé.</li>
+  </ul>
+  <h3>TVA et facturation</h3>
+  <p>Si votre structure est assujettie à la TVA, le prix affiché est TTC et vous devez pouvoir éditer une facture. Une association non assujettie vend en franchise. Dans tous les cas, l'acheteur doit recevoir un <strong>reçu ou une facture</strong> automatiquement par e-mail. Paramétrez vos mentions légales (SIRET/RNA, adresse) dès le départ.</p>
+  <table>
+    <tr><th>Structure</th><th>TVA</th><th>Ce que reçoit l'acheteur</th></tr>
+    <tr><td>Auto-entrepreneur (franchise en base)</td><td>Non facturée — mention « TVA non applicable, art. 293 B du CGI »</td><td>Facture sans TVA</td></tr>
+    <tr><td>Société assujettie</td><td>TTC, TVA à reverser</td><td>Facture avec TVA détaillée</td></tr>
+    <tr><td>Association non lucrative</td><td>Franchise (dans les seuils)</td><td>Reçu / billet</td></tr>
+  </table>
+  <div class="tip"><strong>Le spectacle a un taux réduit.</strong> Selon la nature de l'événement (spectacle vivant, concert), un taux de TVA réduit peut s'appliquer. Ne devinez pas : validez le taux exact avec votre expert-comptable avant de fixer vos prix TTC.</div>
+  <h3>La politique de remboursement</h3>
+  <p>Affichez-la clairement <em>avant</em> l'achat. Un billet d'événement daté n'ouvre pas de droit de rétractation légal automatique (exception spectacle/loisir), mais une politique lisible (« remboursable jusqu'à J-7 », « échangeable ») rassure et réduit les litiges.</p>
+  <table>
+    <tr><th>Cas</th><th>Politique recommandée</th></tr>
+    <tr><td>Annulation par vous</td><td>Remboursement intégral automatique</td></tr>
+    <tr><td>Report de date</td><td>Billet valable / remboursement au choix</td></tr>
+    <tr><td>Annulation par l'acheteur</td><td>Selon vos CGV (ex. remboursable jusqu'à J-7)</td></tr>
+    <tr><td>Billet nominatif / cession</td><td>Échange de nom autorisé jusqu'à J-2</td></tr>
+  </table>
+  <div class="tpl">
+    <div class="label">Clause de remboursement type (à afficher avant l'achat)</div>
+    <div class="body">Vos billets sont remboursables sur demande jusqu'au [J-7], à
+[email]. Passé cette date, les billets ne sont ni remboursables
+ni échangeables, sauf annulation ou report de l'événement. En cas
+d'annulation par l'organisateur, vous êtes remboursé intégralement
+sous [X] jours. Un billet peut être cédé (changement de nom
+jusqu'à J-2 sur simple demande).</div>
+  </div>
+  <div class="box"><strong>Mini-checklist — paiement</strong>
+  <ul>
+    <li>☐ Stripe en mode <em>live</em>, transaction test 1 € encaissée puis remboursée.</li>
+    <li>☐ Apple Pay / Google Pay activés.</li>
+    <li>☐ Mentions légales (SIRET/RNA, adresse, TVA) paramétrées.</li>
+    <li>☐ Reçu/facture automatique par e-mail vérifié.</li>
+    <li>☐ Politique de remboursement affichée avant l'achat.</li>
+  </ul></div>
+
+  <!-- 6 -->
+  <h2>6. Billets QR &amp; contrôle d'accès le jour J</h2>
+  <p>Le QR code, c'est ce qui sépare l'amateur du pro à l'entrée. Chaque billet vendu génère un e-billet avec un QR unique, à usage unique. À l'entrée, on le scanne : valide (vert), déjà utilisé (rouge), ou invalide (contrefaçon).</p>
+  <h3>Comment ça marche concrètement</h3>
+  <ul>
+    <li>L'acheteur reçoit son e-billet par e-mail (PDF ou lien) avec le QR.</li>
+    <li>À l'entrée, un smartphone avec l'app de scan (ou un lecteur) lit le code.</li>
+    <li>Le système marque le billet comme « entré » en temps réel, sur tous les points de contrôle synchronisés.</li>
+    <li>Un même billet ne peut pas passer deux fois : anti-fraude intégré.</li>
+  </ul>
+  <table>
+    <tr><th>Résultat du scan</th><th>Signification</th><th>Que fait le bénévole</th></tr>
+    <tr><td>✅ Vert</td><td>Billet valide, jamais utilisé</td><td>Laisse entrer, billet marqué « entré »</td></tr>
+    <tr><td>🔴 Rouge « déjà scanné »</td><td>Le billet est déjà passé</td><td>Vérifie nom/e-mail, écarte le doublon</td></tr>
+    <tr><td>⚠️ Orange « introuvable »</td><td>Code inconnu / capture d'écran d'un autre</td><td>Recherche par nom dans la liste, référent tranche</td></tr>
+    <tr><td>Catégorie affichée (VIP, Réduit)</td><td>Oriente le placement</td><td>Dirige vers la bonne zone</td></tr>
+  </table>
+  <div class="tip"><strong>Prévoyez le hors-ligne.</strong> Une salle sans réseau, ça arrive. Choisissez une solution qui télécharge la liste des billets à l'avance et scanne en local, puis se resynchronise. Testez-le la veille.</div>
+  <h3>Le poste de contrôle</h3>
+  <ul>
+    <li>2 smartphones chargés + batteries externes.</li>
+    <li>La liste des billets exportée en PDF/CSV (secours papier).</li>
+    <li>Un bénévole formé par point de scan, un référent qui tranche les litiges.</li>
+    <li>Une signalétique « Billets ici / Retrait ici » pour fluidifier.</li>
+  </ul>
+  <h3>Script de scan à afficher au poste d'entrée</h3>
+  <div class="tpl">
+    <div class="label">Aide-mémoire scan (à imprimer et scotcher au poste)</div>
+    <div class="body">1. « Bonjour ! Votre billet, sur l'écran ou en papier. »
+2. Je scanne le QR.
+3. VERT → « Bienvenue, c'est par là. » ✅
+4. ROUGE (déjà scanné) → « Ce billet est déjà passé.
+   Vous pouvez me redonner votre nom ? » → je vérifie la liste.
+   Si doublon : « Je vous mets de côté avec le référent. »
+5. ORANGE (introuvable) → je cherche par NOM dans la liste.
+   Toujours rien → référent.
+6. RÈGLE D'OR : je ne bloque JAMAIS la file. Cas litigieux →
+   sur le côté, la file continue.</div>
+  </div>
+  <div class="box"><strong>Mini-checklist — contrôle d'accès</strong>
+  <ul>
+    <li>☐ App de scan installée et connectée sur 2 téléphones.</li>
+    <li>☐ Mode hors-ligne testé la veille.</li>
+    <li>☐ Liste exportée (PDF/CSV) imprimée en secours.</li>
+    <li>☐ Batteries externes chargées.</li>
+    <li>☐ Bénévoles briefés + un référent litiges désigné.</li>
+  </ul></div>
+
+  <!-- 7 -->
+  <h2>7. Spécificités association &amp; non-lucratif (en détail)</h2>
+  <p>Une association peut tout à fait vendre des billets — mais la question du <em>qui vend</em> et du <em>cadre</em> mérite attention pour ne pas fragiliser le caractère non-lucratif ni les subventions.</p>
+  <h3>Qui encaisse ?</h3>
+  <p>Une association loi 1901 peut organiser des manifestations payantes (dans la limite de la règle des activités lucratives accessoires et des franchises applicables). Mais dès qu'une activité devient franchement commerciale et récurrente, il est souvent plus sain de la porter via une structure dédiée (une société), pour <strong>protéger le non-lucratif de l'association et sécuriser ses subventions</strong>. La billetterie de vos événements strictement associatifs reste sur l'association ; l'activité commerciale récurrente peut passer par la société.</p>
+  <div class="tip"><strong>Règle de bon sens.</strong> Événement militant, culturel, adhérents → l'association. Programmation commerciale régulière, revente, prestations → une société dédiée. En cas de doute, un expert-comptable tranche en 15 minutes.</div>
+  <h3>Les 6 manifestations de soutien exonérées</h3>
+  <p>La loi permet à une association d'organiser <strong>jusqu'à 6 manifestations de soutien par an</strong> exonérées d'impôts commerciaux (TVA, IS, CET), sous conditions. Au-delà, ou pour une activité qui devient habituelle, on entre dans le champ lucratif. Cette règle des « 6 manifestations » est votre garde-fou : au-delà, faites le point avec un professionnel.</p>
+  <table>
+    <tr><th>Nature de l'activité</th><th>Portée par</th><th>Pourquoi</th></tr>
+    <tr><td>Fête associative, gala annuel</td><td>Association</td><td>Manifestation de soutien exonérée</td></tr>
+    <tr><td>Concert de collecte (≤ 6/an)</td><td>Association</td><td>Dans le cadre des 6 manifestations</td></tr>
+    <tr><td>Programmation régulière de spectacles</td><td>Société dédiée</td><td>Activité habituelle → lucrative</td></tr>
+    <tr><td>Billetterie revendue à des tiers</td><td>Société dédiée</td><td>Prestation commerciale</td></tr>
+    <tr><td>Adhésions, dons, cotisations</td><td>Association</td><td>Cœur non-lucratif</td></tr>
+  </table>
+  <h3>Les plateformes non-lucratives</h3>
+  <p>Des solutions comme HelloAsso sont sans commission pour l'association (elles proposent un pourboire à l'acheteur). C'est parfait pour les adhésions, dons et petits événements associatifs. Pour une image de marque forte ou du multi-événements, une billetterie sur votre propre site reste préférable.</p>
+  <h3>Reçus, dons et défiscalisation</h3>
+  <p>Distinguez bien <strong>billet</strong> (contrepartie = accès) et <strong>don</strong> (sans contrepartie, éligible au reçu fiscal si l'association y est habilitée). Ne mélangez pas les deux dans un même paiement sans les séparer clairement dans votre outil, sous peine de complications comptables.</p>
+  <table>
+    <tr><th>Paiement</th><th>Contrepartie</th><th>Traitement</th><th>Reçu fiscal ?</th></tr>
+    <tr><td>Billet 20 €</td><td>Accès à l'événement</td><td>Recette de manifestation</td><td>Non</td></tr>
+    <tr><td>Don 20 €</td><td>Aucune</td><td>Libéralité</td><td>Oui, si habilitée</td></tr>
+    <tr><td>Billet 20 € + don libre 10 €</td><td>Accès + soutien</td><td>Séparer les 2 lignes</td><td>Sur la part don uniquement</td></tr>
+  </table>
+  <div class="warn"><strong>Attention aux subventions.</strong> Une activité commerciale trop visible portée par l'association peut être requalifiée et fragiliser vos subventions publiques. Si votre programmation devient un vrai « business », isolez-la dans une société : vous protégez à la fois le non-lucratif et les financeurs.</div>
+  <div class="box"><strong>Mini-checklist — association</strong>
+  <ul>
+    <li>☐ Je compte mes manifestations de soutien (≤ 6/an).</li>
+    <li>☐ Je distingue clairement billets et dons dans l'outil.</li>
+    <li>☐ Mentions RNA / adresse paramétrées sur les reçus.</li>
+    <li>☐ Programmation commerciale récurrente → société dédiée envisagée.</li>
+    <li>☐ Point validé avec l'expert-comptable en cas de doute.</li>
+  </ul></div>
+
+  <!-- 8 -->
+  <h2>8. Promouvoir : mailing J-4, réseaux, WhatsApp, Meta Ads</h2>
+  <p>Une belle billetterie ne se remplit pas toute seule. La vente suit une courbe en U : un pic à l'ouverture, un creux au milieu, un gros pic dans les derniers jours. Votre plan de com doit alimenter les trois moments.</p>
+  <h3>L'e-mail d'ouverture (jour du lancement)</h3>
+  <p>Le premier e-mail à votre base chaude déclenche l'early-bird et donne le coup d'envoi. Envoyé à ceux qui sont déjà venus, c'est souvent le meilleur taux de conversion de toute la campagne.</p>
+  <div class="tpl">
+    <div class="label">E-mail d'ouverture (jour J du lancement)</div>
+    <div class="body">Objet : 🎟️ [Événement] revient — tarif lève-tôt ouvert
+
+Bonjour [Prénom],
+
+C'est officiel : [Événement] revient le [date] à [lieu].
+
+Pour vous qui étiez là l'an dernier, on ouvre d'abord le tarif
+early-bird : [X] € au lieu de [Y] €, dans la limite des 50
+premières places.
+
+👉 Je réserve au tarif lève-tôt : [LIEN]
+
+Ces places partent vite — à très vite,
+[Signature]</div>
+  </div>
+  <h3>Le mailing J-4 (votre meilleur levier)</h3>
+  <p>La majorité des billets se vendent dans les 96 dernières heures. Un e-mail bien calé à J-4, avec une raison d'agir <em>maintenant</em>, peut représenter 30 à 40 % des ventes.</p>
+  <div class="tpl">
+    <div class="label">Objet e-mail J-4</div>
+    <div class="body">Plus que quelques places pour [Événement] — samedi</div>
+  </div>
+  <div class="tpl">
+    <div class="label">Corps e-mail J-4</div>
+    <div class="body">Bonjour [Prénom],
+
+Samedi, c'est [Événement] — et il ne reste que [X] places.
+
+Au programme : [1 phrase qui fait envie].
+📍 [Lieu] · 🕒 [Heure] · 🎟️ à partir de [Prix]
+
+👉 Je réserve ma place : [LIEN]
+
+À samedi,
+[Signature]</div>
+  </div>
+  <h3>Le calendrier d'e-mails de la campagne</h3>
+  <table>
+    <tr><th>Moment</th><th>E-mail</th><th>Angle</th></tr>
+    <tr><td>Jour du lancement</td><td>Ouverture + early-bird</td><td>Accès prioritaire, tarif lève-tôt</td></tr>
+    <tr><td>J-14</td><td>Rappel programme</td><td>Contenu, têtes d'affiche, preuve sociale</td></tr>
+    <tr><td>J-4</td><td>Urgence</td><td>« Plus que X places »</td></tr>
+    <tr><td>J-1</td><td>Infos pratiques</td><td>Accès, horaires, « on vous attend »</td></tr>
+    <tr><td>J+1</td><td>Remerciement</td><td>Merci + photos + avis</td></tr>
+  </table>
+  <h3>Les réseaux &amp; le click-to-WhatsApp</h3>
+  <ul>
+    <li><strong>Stories à compte à rebours</strong> : J-7, J-4, J-2, « ce soir ! ».</li>
+    <li><strong>Preuve sociale</strong> : « déjà 120 inscrits », photos des éditions passées.</li>
+    <li><strong>Bouton WhatsApp</strong> : un lien <code>wa.me</code> pour répondre aux questions et pousser le lien de billetterie en privé — le canal qui closse le mieux.</li>
+  </ul>
+  <div class="tpl">
+    <div class="label">Message WhatsApp de relance (à personnaliser)</div>
+    <div class="body">Salut [Prénom] 👋 Tu m'avais dit que [Événement] te tentait —
+il reste quelques places pour samedi. Je te mets le lien direct
+pour réserver : [LIEN]. Dis-moi si tu as une question 🙂</div>
+  </div>
+  <h3>Meta Ads, si budget</h3>
+  <p>Une petite campagne (5 à 15 €/jour) ciblée sur votre ville et vos centres d'intérêt, back-loadée sur les 10 derniers jours, remplit les dernières places. Installez le pixel/API de conversion pour mesurer les billets vendus, pas juste les clics.</p>
+  <table>
+    <tr><th>Indicateur</th><th>Repère à viser</th><th>Si dérive</th></tr>
+    <tr><td>Coût par lead (clic vers billetterie)</td><td>0,20 à 0,80 €</td><td>Changer le visuel / l'audience</td></tr>
+    <tr><td>Coût par billet vendu</td><td>2 à 5 € (si billet à 20 €)</td><td>Revoir la page, pas la pub</td></tr>
+    <tr><td>Répartition du budget</td><td>70 % sur les 10 derniers jours</td><td>Ne pas cramer tôt</td></tr>
+  </table>
+  <div class="box"><strong>Mini-checklist — promotion</strong>
+  <ul>
+    <li>☐ E-mail d'ouverture prêt pour le jour du lancement.</li>
+    <li>☐ Calendrier d'e-mails programmé (ouverture, J-14, J-4, J-1, J+1).</li>
+    <li>☐ Stories compte à rebours planifiées.</li>
+    <li>☐ Lien <code>wa.me</code> en place pour closer en privé.</li>
+    <li>☐ Pixel/conversion installé si Meta Ads.</li>
+  </ul></div>
+
+  <!-- 9 -->
+  <h2>9. Le rétroplanning de vente sur 4 semaines</h2>
+  <p>Un événement se vend rarement « au fil de l'eau » : il se pilote. Voici un rétroplanning de 4 semaines, semaine par semaine, avec l'objectif de remplissage à atteindre à chaque étape pour une salle de 200 places. Adaptez les volumes à votre jauge.</p>
+  <h3>La courbe de vente type</h3>
+  <p>Attendez-vous à une courbe en U : ~25 % des ventes à l'ouverture (early-bird), un creux au milieu, puis ~45 % dans les 5 derniers jours. Ne paniquez pas au creux : c'est normal. Le pic final se déclenche avec le mailing J-4 et les stories d'urgence.</p>
+  <table>
+    <tr><th>Semaine</th><th>Objectif cumulé (sur 200)</th><th>Actions clés</th></tr>
+    <tr><td>S-4 (ouverture)</td><td>50 (25 %) — early-bird écoulé</td><td>E-mail d'ouverture, annonce réseaux, page live</td></tr>
+    <tr><td>S-3</td><td>90 (45 %)</td><td>Contenu programme, preuve sociale, partenaires activés</td></tr>
+    <tr><td>S-2</td><td>120 (60 %)</td><td>Témoignages, stories régulières, Meta Ads démarre</td></tr>
+    <tr><td>S-1 (semaine J)</td><td>190 (95 %)</td><td>Mailing J-4, urgence, WhatsApp, budget pub max</td></tr>
+    <tr><td>Jour J</td><td>200 + sur place</td><td>Dernière minute au tarif haut</td></tr>
+  </table>
+  <div class="warn"><strong>Le piège du démarrage lent.</strong> Si à S-3 vous êtes à 20 % au lieu de 45 %, ne subissez pas : ajoutez un code de relance à durée limitée, relancez les partenaires, et injectez un peu de budget pub plus tôt. Un événement qui ne décolle pas à mi-parcours ne se rattrape jamais tout seul le jour J.</div>
+  <h3>Le tableau de bord hebdomadaire</h3>
+  <p>Chaque lundi, remplissez trois chiffres : billets vendus cette semaine, cumul, et % de la jauge. Comparez au rétroplanning. Un écart de plus de 15 % en dessous de l'objectif = action corrective immédiate.</p>
+  <table>
+    <tr><th>Semaine</th><th>Vendus semaine</th><th>Cumul</th><th>% jauge</th><th>vs objectif</th></tr>
+    <tr><td>S-4</td><td>___</td><td>___</td><td>___ %</td><td>___</td></tr>
+    <tr><td>S-3</td><td>___</td><td>___</td><td>___ %</td><td>___</td></tr>
+    <tr><td>S-2</td><td>___</td><td>___</td><td>___ %</td><td>___</td></tr>
+    <tr><td>S-1</td><td>___</td><td>___</td><td>___ %</td><td>___</td></tr>
+  </table>
+  <div class="box"><strong>Mini-checklist — pilotage de la vente</strong>
+  <ul>
+    <li>☐ Objectifs de remplissage fixés par semaine.</li>
+    <li>☐ Tableau de bord rempli chaque lundi.</li>
+    <li>☐ Plan B (code relance, pub, partenaires) prêt si retard.</li>
+    <li>☐ Budget pub concentré sur la dernière semaine.</li>
+  </ul></div>
+
+  <!-- 10 -->
+  <h2>10. Le jour J : check-in, file d'attente, incidents</h2>
+  <p>Une entrée fluide, c'est la première impression de votre événement. Anticipez le flux et les couacs.</p>
+  <h3>Dimensionner l'entrée</h3>
+  <ul>
+    <li>1 point de scan pour 150-200 personnes attendues sur le créneau de pointe.</li>
+    <li>Ouvrez 30 à 45 min avant l'heure officielle pour lisser l'arrivée.</li>
+    <li>File « déjà payé / QR prêt » séparée de la file « achat sur place ».</li>
+  </ul>
+  <table>
+    <tr><th>Jauge</th><th>Points de scan</th><th>Bénévoles entrée</th><th>Ouverture avant</th></tr>
+    <tr><td>≤ 100</td><td>1</td><td>2</td><td>30 min</td></tr>
+    <tr><td>100-250</td><td>2</td><td>3-4</td><td>45 min</td></tr>
+    <tr><td>250-500</td><td>3</td><td>5-6</td><td>45-60 min</td></tr>
+    <tr><td>&gt; 500</td><td>4+</td><td>8+</td><td>60 min</td></tr>
+  </table>
+  <h3>Le déroulé horaire du jour J</h3>
+  <table>
+    <tr><th>Heure</th><th>Action</th></tr>
+    <tr><td>J-1 soir</td><td>Charger les téléphones, tester le scan hors-ligne, exporter la liste</td></tr>
+    <tr><td>H-2</td><td>Installation signalétique, poste d'entrée, files</td></tr>
+    <tr><td>H-1</td><td>Brief bénévoles (10 min), test scan à blanc</td></tr>
+    <tr><td>H-45 min</td><td>Ouverture des portes, premiers scans</td></tr>
+    <tr><td>H</td><td>Début, un référent reste à l'entrée pour les retardataires</td></tr>
+    <tr><td>H+30 min</td><td>Basculer un bénévole entrée vers l'intérieur</td></tr>
+  </table>
+  <h3>Les incidents fréquents et leur réponse</h3>
+  <table>
+    <tr><th>Incident</th><th>Réponse</th></tr>
+    <tr><td>Billet déjà scanné</td><td>Vérifier l'identité/e-mail ; si doublon frauduleux, refuser poliment</td></tr>
+    <tr><td>Personne sans e-billet</td><td>Rechercher par nom/e-mail dans la liste exportée</td></tr>
+    <tr><td>Plus de réseau</td><td>Basculer sur le scan hors-ligne + liste papier</td></tr>
+    <tr><td>Paiement sur place</td><td>Lien de paiement / TPE dédié, hors de la file principale</td></tr>
+    <tr><td>Téléphone de scan à plat</td><td>Batterie externe / téléphone de secours pré-connecté</td></tr>
+  </table>
+  <div class="tip"><strong>Brief bénévoles.</strong> 10 minutes avant l'ouverture : qui scanne, qui oriente, qui tranche les litiges, où est le référent. Un mot d'ordre : rester souriant, ne jamais bloquer la file pour un cas isolé — on met de côté et on résout à part.</div>
+  <div class="box"><strong>Mini-checklist — jour J</strong>
+  <ul>
+    <li>☐ Points de scan dimensionnés à la jauge.</li>
+    <li>☐ Files « payé » / « sur place » balisées.</li>
+    <li>☐ Déroulé horaire affiché, brief fait.</li>
+    <li>☐ Solution de paiement sur place prête (hors file).</li>
+    <li>☐ Référent litiges identifié par tous.</li>
+  </ul></div>
+
+  <!-- 11 -->
+  <h2>11. Après l'événement : relance, fidélisation, réédition</h2>
+  <p>L'événement est fini, mais votre travail de billetterie, non. Les 72 heures qui suivent valent de l'or pour votre prochaine édition.</p>
+  <ul>
+    <li><strong>E-mail de remerciement (J+1)</strong> : merci + photos + un lien pour laisser un avis. Chaleur maximale, zéro vente.</li>
+    <li><strong>Sondage court (J+2)</strong> : 3 questions. Ce que les gens ont aimé alimente votre argumentaire de la prochaine fois.</li>
+    <li><strong>Contenu souvenir (J+3 à J+7)</strong> : aftermovie, album photo. C'est votre meilleure pub pour la suite.</li>
+    <li><strong>Pré-annonce de la prochaine édition</strong> : proposez à vos participants un accès prioritaire ou un early-bird réservé. Votre base chaude remplit vos premiers rangs.</li>
+  </ul>
+  <div class="tpl">
+    <div class="label">E-mail de remerciement J+1</div>
+    <div class="body">Objet : Merci d'être venu à [Événement] 🙏
+
+Bonjour [Prénom],
+
+Merci d'avoir fait partie de [Événement] hier — sans vous, rien de tout ça.
+📸 Les photos sont ici : [LIEN]
+💬 Un mot sur votre expérience ? [LIEN AVIS]
+
+On remet ça bientôt — vous serez les premiers prévenus.
+[Signature]</div>
+  </div>
+  <div class="tpl">
+    <div class="label">Sondage 3 questions (J+2)</div>
+    <div class="body">1. Sur 10, à quel point recommanderiez-vous [Événement] ?
+2. Qu'avez-vous préféré ?
+3. Une chose à améliorer pour la prochaine fois ?
+(Bonus : votre e-mail pour être prévenu en avant-première ✅)</div>
+  </div>
+  <div class="box"><strong>Le cercle vertueux.</strong> Édition 1 : vous partez de zéro. Édition 2 : vous écrivez à vos participants. Édition 3 : votre base fait la moitié du travail. C'est exactement pour ça que la billetterie <em>en ligne</em> — qui capture la donnée — bat la vente à l'entrée sur le long terme.</div>
+  <div class="box"><strong>Mini-checklist — après l'événement</strong>
+  <ul>
+    <li>☐ E-mail de remerciement J+1 envoyé.</li>
+    <li>☐ Sondage 3 questions J+2.</li>
+    <li>☐ Aftermovie / album J+7.</li>
+    <li>☐ Base exportée et sauvegardée pour la prochaine édition.</li>
+    <li>☐ Pré-annonce édition suivante avec early-bird réservé.</li>
+  </ul></div>
+
+  <!-- 12 -->
+  <h2>12. Piloter par les chiffres : recette, no-show, marge</h2>
+  <p>Un organisateur qui progresse est un organisateur qui mesure. Après chaque édition, calculez quelques chiffres simples : ils vous disent quoi améliorer et combien vous gagnez réellement.</p>
+  <h3>Le bilan financier de l'édition</h3>
+  <p>Exemple pour 200 billets vendus à 20 € (frais à la charge de l'organisateur), commission 5 % + 0,50 € et Stripe 1,5 % + 0,25 €.</p>
+  <table>
+    <tr><th>Ligne</th><th>Montant</th></tr>
+    <tr><td>Recette brute (200 × 20 €)</td><td>4 000 €</td></tr>
+    <tr><td>Commission plateforme (200 × 1,50 €)</td><td>−300 €</td></tr>
+    <tr><td>Frais Stripe (200 × 0,55 €)</td><td>−110 €</td></tr>
+    <tr><td><strong>Recette nette encaissée</strong></td><td><strong>3 590 €</strong></td></tr>
+    <tr><td>Charges (salle, technique, artistes, com)</td><td>−3 000 €</td></tr>
+    <tr><td><strong>Résultat</strong></td><td><strong>+590 €</strong></td></tr>
+  </table>
+  <div class="tip"><strong>Reportez les frais sur l'acheteur</strong> et cette même édition passe de 3 590 € à 4 000 € de recette nette, soit +410 € de résultat sans rien changer d'autre. C'est souvent le levier le plus rentable de tout l'événement.</div>
+  <h3>Les indicateurs à suivre d'une édition à l'autre</h3>
+  <table>
+    <tr><th>Indicateur</th><th>Calcul</th><th>Ce qu'il révèle</th></tr>
+    <tr><td>Taux de remplissage</td><td>Billets vendus / jauge</td><td>Attractivité + effort com</td></tr>
+    <tr><td>Taux de no-show</td><td>Absents / billets vendus</td><td>Qualité de l'engagement</td></tr>
+    <tr><td>Panier moyen</td><td>Recette / nb d'acheteurs</td><td>Effet des VIP / offres groupées</td></tr>
+    <tr><td>Part des ventes J-4 à J</td><td>Ventes derniers jours / total</td><td>Poids du sprint final</td></tr>
+    <tr><td>Coût d'acquisition</td><td>Budget pub / billets issus de la pub</td><td>Rentabilité de la promo</td></tr>
+    <tr><td>Taux de réachat</td><td>Acheteurs déjà venus / total</td><td>Force de votre base</td></tr>
+  </table>
+  <div class="warn"><strong>Un chiffre trompeur : la recette brute.</strong> Ne jugez jamais un événement à sa recette brute. Regardez la recette <em>nette</em> après frais, puis le <em>résultat</em> après charges. Un événement « à 4 000 € » qui coûte 4 200 € vous a fait perdre de l'argent, aussi rempli soit-il.</div>
+  <div class="box"><strong>Mini-checklist — pilotage chiffré</strong>
+  <ul>
+    <li>☐ Bilan financier net (pas brut) calculé après chaque édition.</li>
+    <li>☐ Taux de remplissage et de no-show notés.</li>
+    <li>☐ Coût d'acquisition par canal comparé.</li>
+    <li>☐ Décision de report des frais sur l'acheteur tranchée.</li>
+    <li>☐ Chiffres archivés pour comparer d'une édition à l'autre.</li>
+  </ul></div>
+
+  <!-- 13 -->
+  <h2>13. Checklist de lancement complète</h2>
+  <h3>4 semaines avant</h3>
+  <ul>
+    <li>Plateforme choisie et compte Stripe en mode <em>live</em> vérifié.</li>
+    <li>Page événement en ligne : visuel, description, réassurance, CTA mobile.</li>
+    <li>Grille tarifaire créée : early-bird, tarif normal, quotas, catégories.</li>
+    <li>Codes promo partenaires/presse générés.</li>
+    <li>CGV, politique de remboursement et mentions légales affichées.</li>
+    <li>E-mail d'ouverture prêt, base chaude importée.</li>
+  </ul>
+  <h3>2 semaines avant</h3>
+  <ul>
+    <li>Test d'achat réel de bout en bout (1 €) encaissé et remboursé.</li>
+    <li>E-billet reçu vérifié : QR lisible, infos correctes.</li>
+    <li>Plan de com calé (ouverture, J-14, J-7, J-4, J-2, jour J).</li>
+    <li>Pixel/conversion installé si Meta Ads.</li>
+    <li>Rétroplanning de vente affiché, objectifs par semaine fixés.</li>
+  </ul>
+  <h3>La semaine J</h3>
+  <ul>
+    <li>Mailing J-4 programmé.</li>
+    <li>Poste de scan préparé : téléphones, batteries, app installée, liste exportée.</li>
+    <li>Bénévoles briefés, rôles distribués.</li>
+    <li>Scan hors-ligne testé la veille.</li>
+    <li>Solution de paiement sur place prête.</li>
+  </ul>
+  <h3>Jour J &amp; après</h3>
+  <ul>
+    <li>Ouverture des portes 30-45 min avant.</li>
+    <li>Files séparées « payé » / « sur place ».</li>
+    <li>E-mail de remerciement J+1, sondage J+2, aftermovie J+7.</li>
+    <li>Export comptable et bilan chiffré (recette, no-show, canal d'acquisition).</li>
+    <li>Base sauvegardée + pré-annonce de la prochaine édition.</li>
+  </ul>
+
+  <!-- 14 -->
+  <h2>14. Erreurs à éviter · FAQ · Glossaire</h2>
+  <h3>Les 10 erreurs qui plombent une billetterie</h3>
+  <ul>
+    <li>Rester en mode <em>test</em> Stripe le jour du lancement — aucun euro n'arrive.</li>
+    <li>Une page lente ou illisible sur mobile : 3 écrans de trop = ventes perdues.</li>
+    <li>Ne pas afficher la politique de remboursement : source n°1 de litiges.</li>
+    <li>Oublier l'early-bird : pas de vague de démarrage, pas de preuve sociale.</li>
+    <li>Ne pas envoyer le mailing J-4 : vous ratez 30-40 % des ventes.</li>
+    <li>Un seul point de scan pour 400 personnes : file d'attente et mauvaise première impression.</li>
+    <li>Pas de plan hors-ligne : une coupure réseau bloque toute l'entrée.</li>
+    <li>Ne pas exploiter la base après l'événement : vous repartez de zéro chaque fois.</li>
+    <li>Juger l'événement à la recette brute au lieu du résultat net.</li>
+    <li>Pour une asso : dépasser les 6 manifestations sans arbitrage, au risque de fragiliser les subventions.</li>
+  </ul>
+  <h3>FAQ</h3>
+  <p><strong>Puis-je vendre des billets sans site web ?</strong> Oui, via une place de marché billetterie qui héberge votre page. Mais une billetterie sur votre propre domaine convertit mieux et vous garde vos données.</p>
+  <p><strong>Qui paie la commission ?</strong> Vous choisissez : soit l'acheteur (vous encaissez le plein tarif), soit vous (prix affiché « rond »). Pour la plupart des événements payants, la charge à l'acheteur est la norme.</p>
+  <p><strong>Une association peut-elle vendre des billets ?</strong> Oui, dans le cadre de ses activités et de ses 6 manifestations de soutien annuelles exonérées. Pour une programmation commerciale récurrente, il est plus sûr de la porter via une société dédiée afin de protéger le non-lucratif.</p>
+  <p><strong>Comment éviter la fraude aux billets ?</strong> Le QR à usage unique, scanné à l'entrée, marque chaque billet comme utilisé : un doublon est refusé automatiquement.</p>
+  <p><strong>Combien de temps avant l'événement faut-il ouvrir la vente ?</strong> Quatre à six semaines est idéal : assez pour créer l'attente et lancer l'early-bird, sans laisser retomber l'intérêt. Au-delà de deux mois, le creux du milieu s'étire trop.</p>
+  <p><strong>Que faire si les ventes démarrent lentement ?</strong> Ne subissez pas : code de relance à durée limitée, réactivation des partenaires, budget pub injecté un peu plus tôt. Vérifiez aussi le prix final affiché à l'acheteur — des frais surprises tuent la conversion.</p>
+  <h3>Glossaire</h3>
+  <table>
+    <tr><th>Terme</th><th>Définition</th></tr>
+    <tr><td>Early-bird</td><td>Tarif réduit sur les premiers billets, pour amorcer les ventes.</td></tr>
+    <tr><td>No-show</td><td>Personne inscrite qui ne se présente pas.</td></tr>
+    <tr><td>QR à usage unique</td><td>Code du billet, valable une seule fois au contrôle.</td></tr>
+    <tr><td>Stripe Connect</td><td>Système de reversement des recettes vers votre compte.</td></tr>
+    <tr><td>Quota</td><td>Nombre maximum de billets d'une catégorie.</td></tr>
+    <tr><td>Reversement</td><td>Versement de vos recettes, avant ou après l'événement.</td></tr>
+    <tr><td>Recette nette</td><td>Recette après commission et frais bancaires.</td></tr>
+    <tr><td>Panier moyen</td><td>Recette totale divisée par le nombre d'acheteurs.</td></tr>
+    <tr><td>Manifestation de soutien</td><td>Événement associatif exonéré (≤ 6 par an sous conditions).</td></tr>
+    <tr><td>Taux de conversion</td><td>Part des visiteurs de la page qui achètent un billet.</td></tr>
+  </table>
+
+  <div class="cta">
+    <h3>Vous préférez déléguer entièrement ?</h3>
+    <p>Chez My-DTM, nous installons votre billetterie sur <strong>votre</strong> domaine, à votre marque : page qui convertit, paiement Stripe, e-billets QR, contrôle d'accès le jour J et exports comptables. Vous vous concentrez sur votre événement, on s'occupe de la machine.</p>
+    <p><a href="https://my-dtm.fr/services/plateforme-evenementielle">Découvrir notre plateforme événementielle → my-dtm.fr/services/plateforme-evenementielle</a></p>
+  </div>
+
+  <p class="footer">© My-DTM — Agence digitale, Paris · my-dtm.fr · Ce guide est fourni pour un usage personnel. Revente et redistribution interdites. Les informations juridiques et fiscales sont données à titre indicatif et ne remplacent pas l'avis d'un professionnel.</p>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Créer un site web qui vend — My-DTM</title>
+<style>
+  :root { --primary:#7c0dbe; --secondary:#4d71ee; --dark:#0e0a1a; --muted:#52525b; --soft:#f5f2fb; --border:#e7e1f3; --green:#10B981; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; color: var(--dark); line-height: 1.72; margin: 0; font-size: 12.5pt; }
+  .page { max-width: 800px; margin: 0 auto; padding: 56px 64px; }
+  h1 { font-size: 30pt; line-height: 1.12; margin: 0 0 8px; }
+  h2 { font-size: 19pt; margin: 36px 0 12px; color: var(--primary); border-bottom: 2px solid var(--border); padding-bottom: 6px; }
+  h3 { font-size: 13.5pt; margin: 22px 0 6px; }
+  p { margin: 8px 0; }
+  ul, ol { margin: 8px 0; padding-left: 22px; }
+  li { margin: 4px 0; }
+  .lead { font-size: 13pt; color: var(--muted); }
+  .eyebrow { text-transform: uppercase; letter-spacing: 3px; font-size: 9pt; font-weight: 800; color: var(--primary); }
+  .cover { min-height: 88vh; display: flex; flex-direction: column; justify-content: center; }
+  .badge { display: inline-block; background: var(--soft); border:1px solid var(--border); border-radius: 999px; padding: 4px 14px; font-size: 9.5pt; font-weight: 700; color: var(--primary); }
+  .box { background: var(--soft); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; margin: 16px 0; }
+  .tip { border-left: 4px solid var(--secondary); background: #eef2fe; border-radius: 0 10px 10px 0; padding: 12px 18px; margin: 14px 0; }
+  .warn { border-left: 4px solid #e0a106; background: #fdf6e3; border-radius: 0 10px 10px 0; padding: 12px 18px; margin: 14px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 10.5pt; }
+  th, td { border: 1px solid var(--border); padding: 7px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--primary); color: #fff; font-weight: 700; }
+  tr:nth-child(even) td { background: #faf8fe; }
+  .tpl { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; margin: 10px 0; }
+  .tpl .label { font-weight: 700; color: var(--primary); font-size: 10pt; }
+  .tpl .body { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 10pt; white-space: pre-wrap; margin-top: 6px; color: #1f2937; }
+  code { font-family: "SF Mono", Menlo, Consolas, monospace; background: #f1edfa; padding: 1px 5px; border-radius: 4px; font-size: 10.5pt; }
+  .footer { margin-top: 16px; font-size: 9pt; color: var(--muted); text-align: center; }
+  .cta { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #fff; border-radius: 14px; padding: 24px 28px; margin: 28px 0; }
+  .cta h3 { color: #fff; margin-top: 0; }
+  .cta a { color: #fff; font-weight: 800; }
+  .toc li { margin: 5px 0; }
+  @media print {
+    h2 { page-break-before: always; }
+    h2, h3 { page-break-after: avoid; }
+    .tpl, .box, .tip, .warn, table { page-break-inside: avoid; }
+    .page-break { page-break-before: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <section class="cover">
+    <span class="eyebrow">Guide premium · My-DTM</span>
+    <h1>Créer un site web qui vend</h1>
+    <p class="lead">La méthode complète pour transformer un site vitrine dormant en machine à générer des demandes de devis, des rendez-vous et des ventes. Sans jargon, avec des modèles à copier.</p>
+    <div style="margin-top:24px"><span class="badge">Édition 2026 · 14 chapitres · Modèles inclus</span></div>
+    <p style="margin-top:40px; color:var(--muted); font-size:10pt">© My-DTM — Agence digitale, Paris · my-dtm.fr · Usage personnel. Revente et redistribution interdites.</p>
+  </section>
+
+  <div class="page-break"></div>
+  <h2>Sommaire</h2>
+  <ol class="toc">
+    <li>Pourquoi un site qui vend n'est pas un joli site</li>
+    <li>Les 3 rôles d'un site : capter, convaincre, convertir</li>
+    <li>L'anatomie d'une page qui convertit</li>
+    <li>Rédiger des textes qui vendent (copywriting)</li>
+    <li>Les pages essentielles et l'arborescence</li>
+    <li>Mobile-first et vitesse : les Core Web Vitals</li>
+    <li>Le tunnel de conversion et les appels à l'action</li>
+    <li>Réassurance et preuve sociale en détail</li>
+    <li>La confiance : avis, mentions légales, HTTPS, RGPD</li>
+    <li>Le SEO de base, dès la conception</li>
+    <li>Mesurer et optimiser : GA4, cartes de chaleur, A/B tests</li>
+    <li>Vitrine, e-commerce ou sur-mesure : que choisir</li>
+    <li>Votre plan de mise en ligne en 30 jours</li>
+    <li>Erreurs fréquentes · FAQ · Glossaire</li>
+  </ol>
+
+  <div class="page-break"></div>
+  <h2>1. Pourquoi un site qui vend n'est pas un joli site</h2>
+  <p>La plupart des sites d'entreprise sont conçus comme des plaquettes : une belle couverture, un menu, une page « Qui sommes-nous », un formulaire perdu tout en bas. Ils sont élégants et ne vendent rien, parce que la beauté n'est pas un objectif commercial, mais un moyen. L'objectif d'un site qui vend, c'est de faire passer un inconnu de « je découvre » à « je vous contacte » (ou « je paie »).</p>
+  <p>Il part toujours d'une question simple : <strong>quelle action unique voulez-vous que le visiteur accomplisse ?</strong> Demander un devis ? Réserver un créneau ? Ajouter au panier ? Tant que cette action n'est pas décidée et placée au centre de chaque page, le design ne fait que décorer le vide.</p>
+  <div class="box">
+    <strong>Le renversement mental à opérer.</strong> On ne conçoit pas un site « sur soi » (notre histoire, nos valeurs, notre équipe) mais « sur le client » : son problème, ce qu'il gagne, la preuve que ça marche, le chemin le plus court pour agir. Votre histoire ne l'intéresse qu'une fois qu'il est convaincu que vous pouvez résoudre <em>son</em> problème.
+  </div>
+
+  <h3>La conversion, la seule variable qui change tout</h3>
+  <p>La différence se mesure. Deux sites au même trafic peuvent avoir un rapport de 1 à 10 sur les contacts générés. La variable n'est presque jamais le nombre de visiteurs, mais le <strong>taux de conversion</strong>. Le faire passer de 1 % à 3 %, c'est tripler vos demandes sans un euro de plus en publicité.</p>
+  <p>Prenons un cas chiffré. Un artisan reçoit 1 000 visiteurs par mois. À 1 % de conversion, il obtient 10 demandes de devis ; à 3 %, il en obtient 30 — sans un euro de publicité en plus, en réécrivant son hero, en ajoutant des avis et en raccourcissant son formulaire. C'est le point le plus contre-intuitif du web : on dépense des budgets considérables pour attirer plus de monde, alors que le plus grand gisement de croissance est déjà là. Avant d'ouvrir le robinet du trafic, il faut colmater le seau.</p>
+  <table>
+    <tr><th>Levier</th><th>Site plaquette</th><th>Site qui vend</th><th>Impact</th></tr>
+    <tr><td>Visiteurs / mois</td><td>1 000</td><td>1 000</td><td>Identique</td></tr>
+    <tr><td>Taux de conversion</td><td>1 %</td><td>3 %</td><td>×3</td></tr>
+    <tr><td>Demandes / mois</td><td>10</td><td>30</td><td>+20</td></tr>
+    <tr><td>Chantiers signés (30 %)</td><td>3</td><td>9</td><td>+6</td></tr>
+    <tr><td>CA annuel (panier 4 000 €)</td><td>144 000 €</td><td>432 000 €</td><td>+288 000 €</td></tr>
+  </table>
+
+  <h3>Plaquette contre site qui vend : le tableau des différences</h3>
+  <table>
+    <tr><th>Le site plaquette</th><th>Le site qui vend</th></tr>
+    <tr><td>Parle de l'entreprise</td><td>Parle du problème du client</td></tr>
+    <tr><td>Formulaire caché en bas</td><td>Appel à l'action visible partout</td></tr>
+    <tr><td>Aucune preuve, ou logos décoratifs</td><td>Avis, chiffres, cas concrets</td></tr>
+    <tr><td>« Bienvenue sur notre site »</td><td>Une promesse claire en 5 secondes</td></tr>
+    <tr><td>On ne mesure rien</td><td>On mesure et on améliore chaque mois</td></tr>
+    <tr><td>Design décoratif</td><td>Design au service de l'action</td></tr>
+  </table>
+  <h3>Un exemple qui parle : deux boulangers, un seul qui vend</h3>
+  <p>Deux boulangers du même quartier, même savoir-faire. Le premier affiche « Bienvenue à la Boulangerie Durand, artisan depuis 1998 » : joli, inutile. Le second affiche « Commandez votre pain en 2 clics, retrait dès 7 h — et pour vos événements, un devis traiteur sous 24 h ». Le premier informe ; le second vend. La différence n'est ni le métier ni le budget : c'est une décision de posture — parler de soi, ou parler au client — qui se prend avant la première ligne de code.</p>
+  <div class="tip"><strong>Le test des 5 secondes.</strong> Montrez votre page d'accueil 5 secondes à une personne qui ne connaît pas votre activité, puis cachez l'écran et demandez-lui : que vend cette entreprise, à qui, et qu'êtes-vous censé faire ? Si elle hésite, votre hero échoue à sa mission.</div>
+  <div class="box">
+    <strong>À retenir de ce chapitre</strong>
+    <ul>
+      <li>Décidez de <em>l'action unique</em> avant de penser au design.</li>
+      <li>Écrivez du point de vue du client ; le taux de conversion, pas le trafic, est votre premier levier.</li>
+      <li>Faites passer le test des 5 secondes à votre page d'accueil dès aujourd'hui.</li>
+    </ul>
+  </div>
+
+  <div class="page-break"></div>
+  <h2>2. Les 3 rôles d'un site : capter, convaincre, convertir</h2>
+  <p>Un site performant remplit trois missions distinctes, dans cet ordre. Si l'une manque, la chaîne casse : trafic énorme et zéro vente (on capte sans convaincre), ou page magnifiquement écrite que personne ne trouve (on convainc sans capter). Les trois rôles se travaillent ensemble.</p>
+  <p>Cette grille est aussi un outil de diagnostic. Quand un site « ne marche pas », le réflexe est de tout refaire — erreur coûteuse. Identifiez d'abord <em>quel rôle</em> défaille : beaucoup de visiteurs mais peu de contacts, le problème est dans « convaincre » ou « convertir » ; une page excellente mais quasi aucune visite, c'est « capter » (SEO, notoriété) qu'il faut travailler. Un bon diagnostic évite de dépenser au mauvais endroit.</p>
+
+  <h3>Capter — être trouvé et retenir l'attention</h3>
+  <p>Un visiteur décide en 3 à 5 secondes s'il reste. Capter, c'est répondre instantanément à trois questions muettes : <em>Où suis-je ? Est-ce pour moi ? Qu'est-ce que j'y gagne ?</em> Cela se joue dans le « hero » et dépend aussi du canal d'arrivée, qui amène chaque visiteur avec un état d'esprit différent à respecter.</p>
+  <table>
+    <tr><th>Canal d'arrivée</th><th>État d'esprit du visiteur</th><th>Ce que la page doit faire</th></tr>
+    <tr><td>Recherche Google (SEO)</td><td>Cherche activement une solution</td><td>Confirmer vite qu'on répond à sa recherche</td></tr>
+    <tr><td>Publicité payante</td><td>Curieux, pas encore décidé</td><td>Tenir la promesse de l'annonce, rassurer</td></tr>
+    <tr><td>Réseaux sociaux</td><td>Distrait, en mode découverte</td><td>Accrocher fort, sans exiger d'effort</td></tr>
+    <tr><td>Bouche-à-oreille</td><td>Déjà en confiance</td><td>Faciliter le contact immédiatement</td></tr>
+  </table>
+
+  <h3>Convaincre — lever les doutes</h3>
+  <p>Une fois l'attention captée, le visiteur doute. « Est-ce sérieux ? À mon budget ? Vont-ils vraiment m'aider ? » Convaincre, c'est répondre à ces objections <strong>avant</strong> qu'elles ne deviennent des raisons de partir : preuve sociale, garanties, cas clients, réponses claires sur prix et délai. Chaque doute non traité est une porte de sortie laissée ouverte.</p>
+  <div class="box"><strong>Faites la liste de vos objections.</strong> Notez les 10 questions que vos prospects posent le plus souvent au téléphone (« c'est quoi le délai ? », « vous faites un devis gratuit ? »). Ces dix questions sont exactement le contenu qui manque à votre site. Répondez-y et vous convertissez pendant que vous dormez.</div>
+
+  <h3>Convertir — provoquer l'action</h3>
+  <p>Convertir, c'est rendre l'action évidente, sans friction : un bouton clair, un formulaire court, un choix simple. La plupart des sites perdent ici — ils convainquent puis laissent le visiteur se débrouiller. Un visiteur convaincu qui ne trouve pas comment agir en trois secondes repart pour toujours.</p>
+  <h3>Le fil rouge entre les trois rôles : la clarté</h3>
+  <p>Un dénominateur commun relie les trois : la clarté. Le visiteur ne reste que s'il comprend vite, n'est convaincu que si l'argument est limpide, n'agit que si l'action est évidente. La confusion tue à chaque étape — menu à quinze entrées, jargon métier, trois offres en même temps, formulaire ambigu. Quand vous hésitez sur un choix de conception, tranchez pour la version la plus simple : la simplicité est un cadeau fait au visiteur — et à votre chiffre d'affaires.</p>
+  <div class="tpl">
+    <div class="label">Auto-diagnostic des 3 rôles</div>
+    <div class="body">CAPTER   → En 5 s, sait-on QUOI, POUR QUI, POURQUOI ?   [ ] oui  [ ] non
+CONVAINCRE → A-t-on preuve + prix + réponses aux objections ?  [ ] oui  [ ] non
+CONVERTIR → L'action est-elle visible et sans friction ?     [ ] oui  [ ] non</div>
+  </div>
+  <div class="box">
+    <strong>Checklist du chapitre</strong>
+    <ul>
+      <li>Mon hero répond aux trois questions muettes en 5 secondes.</li>
+      <li>J'ai listé mes 10 objections clients et j'y réponds sur le site ; chaque page a une action évidente, atteignable en un clic.</li>
+    </ul>
+  </div>
+
+  <div class="page-break"></div>
+  <h2>3. L'anatomie d'une page qui convertit</h2>
+  <p>Une page de conversion (accueil, page de service, landing page) suit une ossature éprouvée : non pas une recette rigide, mais un ordre logique qui accompagne la décision du visiteur, du haut vers le bas. Chaque bloc prépare le suivant.</p>
+  <p>Pensez à cette ossature comme à une conversation de vente : vous accrochez l'attention, montrez que vous comprenez le besoin, prouvez que vous savez faire, levez les objections, puis proposez la suite. Une page qui convertit reproduit cette dynamique dans le bon ordre ; inverser les blocs casse la logique de décision et fait fuir.</p>
+  <ol>
+    <li><strong>Le hero (promesse).</strong> Titre-bénéfice, sous-titre qui précise pour qui, bouton, et image qui illustre le résultat (pas un décor abstrait).</li>
+    <li><strong>La preuve sociale immédiate.</strong> Logos, note moyenne, nombre de clients, un avis fort — juste sous le hero pour rassurer tout de suite.</li>
+    <li><strong>Le problème et la promesse.</strong> On nomme la douleur du client, puis on montre la transformation offerte.</li>
+    <li><strong>Comment ça marche.</strong> 3 étapes simples, pour réduire la peur de l'inconnu.</li>
+    <li><strong>L'offre et le prix.</strong> Le silence sur le prix fait fuir : donnez un repère, même « à partir de ».</li>
+    <li><strong>Les objections (FAQ).</strong> Chaque question anticipée est un frein retiré.</li>
+    <li><strong>L'appel à l'action final.</strong> On répète l'action principale, avec une phrase de réassurance.</li>
+  </ol>
+
+  <h3>Le hero, le bloc qui décide de tout</h3>
+  <p>Le hero occupe le premier écran, celui qu'on voit sans défiler ; c'est là que 80 % des visiteurs décident de rester ou de partir. Il tient en quatre éléments : titre-bénéfice, sous-titre de précision, bouton d'action, ligne de réassurance sous le bouton.</p>
+  <div class="tpl">
+    <div class="label">Modèle de hero — à adapter</div>
+    <div class="body">Titre : [Résultat concret que vous apportez] pour [votre cible]
+Sous-titre : [En combien de temps / comment], sans [la douleur habituelle].
+Bouton : [Verbe d'action + bénéfice]  →  ex. « Recevoir mon devis gratuit »
+Réassurance sous le bouton : Réponse sous 24 h · Sans engagement</div>
+  </div>
+  <div class="tpl">
+    <div class="label">Exemple concret (artisan cuisiniste)</div>
+    <div class="body">Titre : Une cuisine sur-mesure posée en 4 semaines, sans mauvaise surprise
+Sous-titre : Pour les propriétaires de la région parisienne qui veulent du solide, pas du montage express.
+Bouton : Demander mon devis gratuit
+Réassurance : Devis sous 48 h · Visite à domicile offerte</div>
+  </div>
+  <h3>Les blocs suivants, dans l'ordre de la décision</h3>
+  <table>
+    <tr><th>Bloc</th><th>Question du visiteur</th><th>Ce qu'on montre</th></tr>
+    <tr><td>Preuve sociale</td><td>« Puis-je vous faire confiance ? »</td><td>Avis, note, logos, chiffres</td></tr>
+    <tr><td>Problème / promesse</td><td>« Comprenez-vous mon besoin ? »</td><td>La douleur nommée, la transformation</td></tr>
+    <tr><td>Comment ça marche</td><td>« Comment ça se passe ? »</td><td>3 étapes claires</td></tr>
+    <tr><td>Offre / prix</td><td>« Est-ce dans mon budget ? »</td><td>Fourchette, « à partir de »</td></tr>
+    <tr><td>FAQ</td><td>« Et si… ? »</td><td>Réponses aux objections</td></tr>
+    <tr><td>CTA final</td><td>« Comment je commence ? »</td><td>Bouton + réassurance</td></tr>
+  </table>
+  <h3>Le « comment ça marche » qui désamorce la peur</h3>
+  <p>Entre l'envie et l'action se glisse la peur de l'inconnu : « Vais-je être harcelé au téléphone ? Suis-je engagé ? » Le bloc « comment ça marche » y répond en montrant le chemin, étape par étape. Trois étapes suffisent, formulées du point de vue du client. Le saut dans le vide devient un premier pas balisé, la friction tombe et le clic devient facile.</p>
+  <div class="tpl">
+    <div class="label">Modèle « Comment ça se passe » (3 étapes)</div>
+    <div class="body">1. Vous demandez votre devis en 2 minutes (formulaire ou téléphone).
+2. On échange 15 min pour cadrer votre besoin — sans engagement.
+3. Vous recevez une proposition claire sous 48 h. Vous décidez.</div>
+  </div>
+  <div class="warn"><strong>Erreur classique.</strong> Un titre « Bienvenue » ou « Votre partenaire de confiance depuis 2010 » ne dit rien. Un bon titre serait lu par votre client idéal comme <em>« oui, c'est exactement ce que je cherche »</em>.</div>
+  <div class="box">
+    <strong>Checklist d'une page qui convertit</strong>
+    <ul>
+      <li>Mon hero contient titre-bénéfice, sous-titre, bouton et réassurance.</li>
+      <li>La preuve sociale apparaît dès le deuxième bloc ; le prix (ou une fourchette) est indiqué.</li>
+      <li>Une FAQ traite mes objections fréquentes et l'action principale est répétée en bas de page.</li>
+    </ul>
+  </div>
+
+  <div class="page-break"></div>
+  <h2>4. Rédiger des textes qui vendent (copywriting)</h2>
+  <p>Sur un site, ce ne sont pas les images qui vendent : ce sont les mots. Le design attire l'œil, mais c'est le texte qui déclenche la décision. Pourtant, la plupart des entreprises soignent leur logo et bâclent leurs textes. Le copywriting — l'art d'écrire pour convaincre et faire agir — est souvent le levier le plus rentable à activer.</p>
+  <p>Bonne nouvelle : bien écrire pour vendre n'a rien à voir avec le talent littéraire. Il ne s'agit pas de belles phrases, mais de dire la bonne chose, dans le bon ordre, avec des mots simples. Si vous savez expliquer votre offre à un ami autour d'un café, vous savez écrire un bon texte de vente — il suffit d'appliquer quelques règles.</p>
+
+  <h3>La règle d'or : « vous », pas « nous »</h3>
+  <p>Comptez les « nous », « notre », « nos » sur votre page d'accueil, puis les « vous », « votre », « vos ». Si le premier score dépasse le second, votre texte parle de vous alors que le client veut qu'on lui parle de lui. Réécrivez chaque phrase en commençant par le client.</p>
+  <table>
+    <tr><th>Version « nous » (faible)</th><th>Version « vous » (vend)</th></tr>
+    <tr><td>Nous proposons des cuisines de qualité.</td><td>Vous obtenez une cuisine qui dure, posée sans stress.</td></tr>
+    <tr><td>Notre équipe est expérimentée.</td><td>Vous êtes suivi par un artisan qui a posé 400 cuisines.</td></tr>
+    <tr><td>Nous sommes réactifs.</td><td>Vous recevez votre devis sous 48 h, garanti.</td></tr>
+  </table>
+
+  <h3>Vendre le bénéfice, pas la caractéristique</h3>
+  <p>Une caractéristique décrit votre produit ; un bénéfice, ce que le client y gagne. Il n'achète jamais la caractéristique, mais la vie meilleure qu'elle lui promet. La formule : « caractéristique <em>+ ce qui vous permet de +</em> bénéfice ».</p>
+  <div class="tpl">
+    <div class="label">Traduire une caractéristique en bénéfice</div>
+    <div class="body">Caractéristique : « Site optimisé pour le mobile »
++ ce qui vous permet de +
+Bénéfice : « ...pour capter les 6 clients sur 10 qui vous cherchent depuis leur téléphone »
+
+Caractéristique : « Livraison en 48 h »
+Bénéfice : « ...pour recevoir votre commande avant le week-end »</div>
+  </div>
+
+  <h3>Écrire des titres qui accrochent</h3>
+  <p>Le titre est lu cinq fois plus que le reste. Quatre structures éprouvées fonctionnent presque partout.</p>
+  <ol>
+    <li><strong>Résultat + délai :</strong> « Une cuisine posée en 4 semaines, sans mauvaise surprise ».</li>
+    <li><strong>La question du client :</strong> « Marre d'un site qui ne rapporte aucun client ? »</li>
+    <li><strong>Le « comment » :</strong> « Comment tripler vos demandes de devis sans plus de publicité ».</li>
+    <li><strong>La transformation « de… à… » :</strong> « De site vitrine dormant à machine à contacts ».</li>
+  </ol>
+
+  <h3>La structure PAS : Problème, Agitation, Solution</h3>
+  <p>Pour une page de service ou un email, la trame PAS accompagne la décision : on nomme le <strong>problème</strong>, on <strong>agite</strong> ses conséquences, puis on présente la <strong>solution</strong>. Elle crée de l'urgence sans exagérer, en rendant visible ce que le client vit déjà.</p>
+  <div class="tpl">
+    <div class="label">Gabarit PAS</div>
+    <div class="body">PROBLÈME : Votre site est joli mais ne génère aucune demande.
+AGITATION : Chaque mois, des dizaines de visiteurs partent sans laisser leurs coordonnées — autant de devis perdus au profit d'un concurrent mieux organisé.
+SOLUTION : Nous restructurons votre site autour d'une action claire, avec des textes qui convertissent. Résultat attendu : 2 à 3× plus de demandes à trafic égal.</div>
+  </div>
+  <h3>Parler la langue du client, pas la vôtre</h3>
+  <p>Vous connaissez votre métier de l'intérieur ; votre client, non. Un cuisiniste qui parle de « caissons » et de « plans stratifiés » perd un propriétaire qui pense simplement « une belle cuisine solide et pas chère à entretenir ». Écrivez avec les mots que votre client emploie : reprenez ses phrases au téléphone, ses questions, ses craintes. Il se reconnaît alors — « ils parlent comme moi, donc ils me comprennent ». Bonus décisif : ces mots sont exactement ceux qu'il tape dans Google. Un même effort sert la conversion et le SEO.</p>
+  <h3>Le rythme et la lisibilité à l'écran</h3>
+  <p>On ne lit pas un site comme un livre : on le survole. Écrivez pour ce comportement : une idée par paragraphe, trois lignes maximum, les mots importants en gras, des listes plutôt que de longs pavés. Relisez à voix haute — si vous butez sur une phrase, votre lecteur bute aussi ; si une tournure sonne « corporate », supprimez-la. Un bon texte de vente sonne juste, humain, direct.</p>
+  <div class="warn"><strong>Bannissez le jargon et les mots creux.</strong> « Innovant », « leader », « solutions sur-mesure », « à l'écoute de vos besoins » : ces formules sont invisibles à force d'être répétées partout. Remplacez chaque mot vague par un fait concret, un chiffre, un exemple.</div>
+  <div class="box">
+    <strong>Checklist copywriting</strong>
+    <ul>
+      <li>Il y a plus de « vous » que de « nous », et chaque caractéristique est traduite en bénéfice.</li>
+      <li>Mon titre suit une des quatre structures qui accrochent.</li>
+      <li>J'ai supprimé tous les mots creux et le jargon ; mes textes sonnent comme je parlerais à un client.</li>
+    </ul>
+  </div>
+
+  <div class="page-break"></div>
+  <h2>5. Les pages essentielles et l'arborescence</h2>
+  <p>Un petit site bien pensé vend mieux qu'un gros site touffu : commencez par le minimum qui vend, puis étoffez. Voici l'arborescence de base d'un site PME orienté conversion.</p>
+  <table>
+    <tr><th>Page</th><th>Rôle</th><th>Action principale</th></tr>
+    <tr><td>Accueil</td><td>Résumer l'offre, orienter</td><td>Vers une page de service ou le contact</td></tr>
+    <tr><td>Service / Produit</td><td>Convaincre en profondeur</td><td>Devis / achat / réservation</td></tr>
+    <tr><td>Réalisations / Cas clients</td><td>Prouver</td><td>Vers la page de service</td></tr>
+    <tr><td>Avis / Témoignages</td><td>Rassurer</td><td>Vers le contact</td></tr>
+    <tr><td>À propos</td><td>Créer le lien humain</td><td>Vers le contact</td></tr>
+    <tr><td>Contact</td><td>Convertir</td><td>Formulaire / téléphone / agenda</td></tr>
+    <tr><td>Mentions légales · Confidentialité</td><td>Conformité et confiance</td><td>—</td></tr>
+  </table>
+  <p>La règle d'or : chaque page a <strong>un objectif d'action unique</strong> et un chemin évident vers l'étape suivante. Un visiteur ne devrait jamais arriver dans un cul-de-sac, une page sans bouton ni lien vers l'action.</p>
+  <p>Résistez à la tentation d'ajouter des pages « parce que ça fait sérieux » : chacune est à rédiger, à maintenir, et distrait. Un site de cinq pages excellentes bat un site de vingt pages moyennes. Le rôle de l'accueil n'est pas de tout dire, mais d'orienter vite vers la page de service qui concerne chaque visiteur.</p>
+
+  <h3>Bâtir chaque page de service comme une vente</h3>
+  <p>La page de service est votre meilleur vendeur. Ne la traitez pas comme un paragraphe descriptif, mais comme une page de conversion complète, avec sa promesse, sa preuve et son appel à l'action.</p>
+  <div class="tpl">
+    <div class="label">Squelette d'une page de service qui vend</div>
+    <div class="body">1. Hero : promesse spécifique à CE service
+2. Pour qui c'est (et pour qui ce n'est pas)
+3. Le problème résolu, en détail
+4. Ce qui est inclus (livrables concrets)
+5. Comment ça se passe (3 à 4 étapes)
+6. Preuve : 1 cas client + 2 avis
+7. Prix ou fourchette « à partir de »
+8. FAQ (4 à 6 objections)
+9. CTA final + réassurance</div>
+  </div>
+
+  <h3>L'arborescence : plate plutôt que profonde</h3>
+  <p>Une bonne arborescence est <strong>plate</strong> : toute page importante est atteignable en 2 clics depuis l'accueil. Plus un contenu est enfoui, moins il est vu — par les visiteurs comme par Google. Réservez la profondeur aux pages secondaires.</p>
+  <div class="tip"><strong>Une page de service par offre.</strong> Une page dédiée par service se positionne mieux sur Google (ex. « création site web Paris ») et parle plus précisément à chaque besoin.</div>
+  <div class="box">
+    <strong>Checklist arborescence</strong>
+    <ul>
+      <li>Une page dédiée par service principal, chacune avec une action unique et un lien vers l'étape suivante.</li>
+      <li>Aucune page « cul-de-sac » sans bouton ; toute page clé est à 2 clics maximum de l'accueil.</li>
+      <li>Mentions légales et confidentialité présentes en pied de page.</li>
+    </ul>
+  </div>
+
+  <div class="page-break"></div>
+  <h2>6. Mobile-first et vitesse : les Core Web Vitals</h2>
+  <p>Plus de 6 visiteurs sur 10 arrivent depuis un téléphone. Si votre site est pensé pour l'ordinateur puis « adapté » au mobile, vous perdez la majorité de votre audience. Concevez d'abord pour le mobile : contenu vertical, boutons larges (44 px min.), textes lisibles sans zoomer, formulaires courts.</p>
+  <p>Concevoir mobile-first ne veut pas dire « faire une version mobile », mais partir de la contrainte la plus dure — petit écran, main occupée, connexion faible, distraction. Ce qui y survit fonctionne partout : un site conçu pour le mobile est naturellement plus clair, plus rapide et plus concentré sur l'essentiel, y compris sur ordinateur.</p>
+  <p>La vitesse est un facteur de vente autant que de référencement. Un site qui met plus de 3 secondes à s'afficher perd une part importante de ses visiteurs avant même le premier écran. Google mesure trois indicateurs, les <strong>Core Web Vitals</strong>.</p>
+  <table>
+    <tr><th>Indicateur</th><th>Ce qu'il mesure</th><th>Bon score</th></tr>
+    <tr><td>LCP</td><td>Temps d'affichage du plus gros élément</td><td>&lt; 2,5 s</td></tr>
+    <tr><td>INP</td><td>Réactivité aux interactions</td><td>&lt; 200 ms</td></tr>
+    <tr><td>CLS</td><td>Stabilité visuelle (rien ne « saute »)</td><td>&lt; 0,1</td></tr>
+  </table>
+
+  <h3>Le coût réel de la lenteur</h3>
+  <p>La lenteur n'est pas un détail technique : c'est une fuite d'argent. À chaque seconde de chargement supplémentaire, une part des visiteurs abandonne. Un site qui charge en 5 secondes au lieu de 2 peut perdre un tiers de son audience — donc un tiers de ses ventes — sans que vous ne le voyiez jamais.</p>
+  <table>
+    <tr><th>Temps de chargement</th><th>Abandon estimé</th><th>Ressenti visiteur</th></tr>
+    <tr><td>1 s</td><td>Faible</td><td>Instantané</td></tr>
+    <tr><td>3 s</td><td>Notable</td><td>Acceptable</td></tr>
+    <tr><td>5 s</td><td>Élevé</td><td>« C'est lent »</td></tr>
+    <tr><td>7 s et +</td><td>Massif</td><td>Départ</td></tr>
+  </table>
+
+  <h3>Les images, premier poids mort à traiter</h3>
+  <p>Dans l'immense majorité des cas, ce qui ralentit un site, ce sont les images. Une photo de smartphone pèse 5 à 8 Mo et fait 4 000 pixels de large, alors qu'elle s'affiche dans un cadre de 800 : le navigateur télécharge toute la masse pour n'en montrer qu'une fraction. Redimensionnez chaque image à sa taille réelle et convertissez-la en WebP : vous divisez souvent son poids par dix sans perte visible, et réglez la moitié des problèmes de lenteur. Le deuxième coupable, ce sont les scripts externes empilés au fil du temps (chat, pixel publicitaire, outil d'avis, carrousel) : chacun paraît anodin, mais leur addition étrangle le chargement. Tout script sans valeur mesurable doit sauter — la vitesse est un budget, dépensez-le sur ce qui vend.</p>
+  <h3>Les gestes concrets pour accélérer</h3>
+  <ul>
+    <li>Compressez les images (WebP, dimensions justes — pas une photo de 4000 px pour une vignette).</li>
+    <li>Limitez les scripts externes (chatbots, pixels, polices lourdes) : chacun ralentit le chargement.</li>
+    <li>Réservez l'espace des images pour éviter les sauts de mise en page (CLS).</li>
+    <li>Activez le cache et la compression côté serveur (gzip / Brotli) ; chargez en priorité l'image du hero, différez le reste.</li>
+    <li>Testez avec PageSpeed Insights et corrigez le premier écran en priorité.</li>
+  </ul>
+  <div class="tip"><strong>La règle du pouce.</strong> Sur mobile, tout élément cliquable doit se toucher facilement au pouce, sans zoomer ni viser : boutons d'au moins 44 px, espacés, et action principale dans la moitié basse de l'écran, là où le pouce se pose.</div>
+  <div class="box">
+    <strong>Checklist mobile &amp; vitesse</strong>
+    <ul>
+      <li>Page conçue d'abord pour mobile, pas « adaptée » ; PageSpeed mobile &gt; 80.</li>
+      <li>LCP &lt; 2,5 s, INP &lt; 200 ms, CLS &lt; 0,1.</li>
+      <li>Images en WebP aux bonnes dimensions ; boutons ≥ 44 px, faciles à toucher au pouce.</li>
+    </ul>
+  </div>
+
+  <div class="page-break"></div>
+  <h2>7. Le tunnel de conversion et les appels à l'action</h2>
+  <p>Le tunnel, c'est le chemin qu'emprunte un visiteur, de son arrivée jusqu'à l'action. Chaque étape perd une partie du monde : c'est normal. Votre travail est de réduire les fuites une par une, et visualiser son tunnel avec des chiffres révèle immédiatement où l'argent s'échappe.</p>
+  <p>L'intérêt du raisonnement en tunnel est qu'il ordonne les priorités. On ne cherche pas à « tout améliorer », mais à repérer l'étape où l'on perd le plus de monde et à agir uniquement là. Une fois cette fuite colmatée, on recalcule et une autre étape devient prioritaire. On avance goutte à goutte, mais chaque goutte se transforme en euros.</p>
+  <table>
+    <tr><th>Étape du tunnel</th><th>Visiteurs</th><th>Perte</th><th>Où agir</th></tr>
+    <tr><td>Arrivée sur la page</td><td>1 000</td><td>—</td><td>Titre, promesse</td></tr>
+    <tr><td>Défilent au-delà du hero</td><td>600</td><td>-40 %</td><td>Clarté du hero</td></tr>
+    <tr><td>Cliquent sur le CTA</td><td>120</td><td>-80 %</td><td>Preuve, offre</td></tr>
+    <tr><td>Commencent le formulaire</td><td>60</td><td>-50 %</td><td>Friction du formulaire</td></tr>
+    <tr><td>Envoient</td><td>30</td><td>-50 %</td><td>Longueur du formulaire</td></tr>
+  </table>
+  <p>Ici, la plus grosse fuite se situe entre l'arrivée et le clic sur le CTA : c'est donc là qu'il faut agir en priorité (améliorer le hero, ajouter de la preuve). Inutile d'optimiser le formulaire tant que les visiteurs n'y arrivent pas.</p>
+
+  <h3>Les quatre principes d'un CTA qui convertit</h3>
+  <p>Un appel à l'action (CTA) efficace respecte quatre principes :</p>
+  <ol>
+    <li><strong>Visible.</strong> Contraste fort, taille suffisante, présent dès le premier écran et répété.</li>
+    <li><strong>Orienté bénéfice.</strong> « Recevoir mon devis » vaut mieux que « Envoyer » ; « Réserver ma visite gratuite » mieux que « Contact ».</li>
+    <li><strong>Unique par page.</strong> Une seule action principale : trop de choix = paralysie.</li>
+    <li><strong>Sans friction.</strong> Formulaire court (nom, email/téléphone, message) : chaque champ retiré augmente les envois.</li>
+  </ol>
+  <table>
+    <tr><th>CTA faible</th><th>CTA fort</th></tr>
+    <tr><td>Envoyer</td><td>Recevoir mon devis sous 24 h</td></tr>
+    <tr><td>Contact</td><td>Réserver ma visite gratuite</td></tr>
+    <tr><td>En savoir plus</td><td>Voir les tarifs</td></tr>
+    <tr><td>Soumettre</td><td>Obtenir mon audit offert</td></tr>
+  </table>
+
+  <h3>Le formulaire, dernier obstacle avant la vente</h3>
+  <div class="tpl">
+    <div class="label">Formulaire de contact minimal (qui convertit)</div>
+    <div class="body">Prénom
+Email OU téléphone (un seul requis)
+Votre projet en une phrase
+[ Bouton ] Recevoir ma réponse sous 24 h
+Ligne de réassurance : Vos données ne sont jamais revendues.</div>
+  </div>
+  <div class="warn"><strong>Le tueur silencieux de conversions</strong> : demander trop d'informations. Adresse, budget, société, « comment nous avez-vous connus »… Chaque champ non essentiel fait chuter le taux d'envoi. Récoltez le strict nécessaire pour rappeler, le reste se demande ensuite.</div>
+  <h3>Le micro-engagement plutôt que la grande demande</h3>
+  <p>Demander « Achetez maintenant » à un visiteur qui vous découvre, c'est demander en mariage au premier rendez-vous. Quand l'offre est chère ou implique une décision réfléchie, proposez une première marche facile — devis gratuit, audit offert, guide à télécharger, échange de 15 minutes. Ce micro-engagement ne coûte rien et initie la relation. C'est aussi une question de moment : sur cent visiteurs, une poignée seulement est prête à agir aujourd'hui. Un site malin capture les deux populations — une action forte (« Demander mon devis ») pour les prêts, une action douce (« Recevoir le guide gratuit ») pour les hésitants. Ne laissez pas repartir les mains vides les 95 % pas encore mûrs.</p>
+  <div class="tip"><strong>Offrez plusieurs portes de sortie.</strong> Tout le monde ne veut pas remplir un formulaire. À côté du bouton, proposez un numéro de téléphone cliquable et, si possible, un lien de prise de rendez-vous en ligne. On multiplie les contacts en respectant les préférences de chacun.</div>
+  <div class="box">
+    <strong>Checklist tunnel &amp; CTA</strong>
+    <ul>
+      <li>J'ai chiffré mon tunnel et identifié la plus grosse fuite.</li>
+      <li>Mon CTA est orienté bénéfice, pas « Envoyer » ; une seule action principale par page.</li>
+      <li>Mon formulaire ne demande que le strict nécessaire ; je propose aussi le téléphone ou la prise de rendez-vous.</li>
+    </ul>
+  </div>
+
+  <div class="page-break"></div>
+  <h2>8. Réassurance et preuve sociale en détail</h2>
+  <p>La preuve sociale est le raccourci mental le plus puissant du web : quand on hésite, on regarde ce que les autres ont fait. Un site qui affiche des preuves concrètes convertit deux à trois fois mieux qu'un site qui se contente d'affirmer sa qualité.</p>
+  <p>Pourquoi pèse-t-elle autant ? Parce qu'acheter, c'est prendre un risque, et que le cerveau réduit le risque en imitant ses semblables. Quand vous affirmez que vous êtes bon, c'est suspect ; quand un client le dit, c'est crédible. Toute la valeur de la preuve sociale tient dans ce déplacement de la parole, de vous vers vos clients.</p>
+
+  <h3>Les types de preuve, du plus faible au plus fort</h3>
+  <table>
+    <tr><th>Type de preuve</th><th>Force</th><th>Exemple</th></tr>
+    <tr><td>Affirmation autoproclamée</td><td>Faible</td><td>« Nous sommes les meilleurs »</td></tr>
+    <tr><td>Logo client sans contexte</td><td>Moyenne</td><td>Une rangée de logos</td></tr>
+    <tr><td>Chiffre vérifiable</td><td>Forte</td><td>« 400 cuisines posées depuis 2015 »</td></tr>
+    <tr><td>Avis précis et signé</td><td>Forte</td><td>« Posée en 3 jours, chantier nickel — Julie, Vincennes »</td></tr>
+    <tr><td>Cas client avec résultat</td><td>Très forte</td><td>« +32 % de devis en 3 mois »</td></tr>
+    <tr><td>Vidéo témoignage</td><td>Maximale</td><td>Un client qui raconte face caméra</td></tr>
+  </table>
+
+  <h3>Anatomie d'un avis qui convainc</h3>
+  <p>Un avis vague (« Super, je recommande ») ne convainc personne. Un avis efficace contient un contexte, un problème initial, un résultat concret et une identité.</p>
+  <div class="tpl">
+    <div class="label">Gabarit de témoignage à collecter</div>
+    <div class="body">Situation de départ : « Notre ancien site ne générait aucun contact. »
+Ce qui a été fait : « My-DTM a tout repensé autour d'un formulaire clair. »
+Résultat chiffré : « On est passé de 2 à 9 demandes par mois. »
+Identité : Sophie M., gérante — Institut de beauté, Boulogne</div>
+  </div>
+  <p>Pour l'obtenir, posez trois questions à vos clients satisfaits : quel était votre problème avant de faire appel à nous ? Qu'est-ce qui a changé concrètement depuis ? À qui nous recommanderiez-vous, et pourquoi ?</p>
+
+  <h3>La réassurance, ces micro-phrases qui débloquent l'action</h3>
+  <p>La réassurance est la petite sœur discrète de la preuve sociale : de courtes phrases placées au point exact de la décision, sous un bouton ou à côté d'un champ, qui lèvent la dernière hésitation. « Sans engagement », « Réponse sous 24 h », « Vos données ne sont jamais revendues ». La règle : la bonne réassurance au bon endroit — l'engagement et le délai sous un bouton de devis, la confidentialité à côté d'un champ email, le paiement et la garantie sur une page de tarif. Elles ne coûtent rien à écrire et font une différence mesurable sur le taux d'envoi.</p>
+  <h3>Où placer la preuve sur la page</h3>
+  <p>La preuve ne se relègue pas dans une page « Avis » que personne ne visite : on la sème tout au long du parcours, aux moments de doute — sous le hero (rassurer d'emblée), à côté du prix (justifier la valeur), avant le CTA final (lever le dernier frein).</p>
+  <h3>Constituer sa preuve quand on démarre de zéro</h3>
+  <p>« Mais je débute, je n'ai pas encore d'avis. » La preuve ne se limite pas aux témoignages : mettez en avant votre expérience passée (« 12 ans en cuisine avant de m'installer »), vos certifications, vos garanties (« satisfait ou refait »), des photos réelles de vos réalisations, votre transparence (prix affichés, visage, adresse). Puis instaurez dès le premier client un rituel de collecte : après chaque prestation réussie, demandez un avis avec un lien direct vers votre fiche Google. Trois avis par mois, c'est trente-six par an — la preuve sociale n'est pas un acquis de départ, c'est un actif qui se construit.</p>
+  <div class="warn"><strong>Jamais de faux avis.</strong> Inventer des témoignages est illégal (pratique commerciale trompeuse) et se repère vite : un avis lisse, sans nom ni contexte, éveille plus de méfiance que d'absence d'avis. Mieux vaut trois vrais avis imparfaits que dix faux parfaits.</div>
+  <div class="box">
+    <strong>Checklist preuve sociale</strong>
+    <ul>
+      <li>J'affiche au moins 3 avis précis, signés et contextualisés, plus un chiffre vérifiable.</li>
+      <li>J'ai un vrai cas client avec un résultat ; la preuve apparaît près du hero, du prix et du CTA.</li>
+      <li>Un système collecte les avis après chaque prestation réussie.</li>
+    </ul>
+  </div>
+
+  <div class="page-break"></div>
+  <h2>9. La confiance : avis, mentions légales, HTTPS, RGPD</h2>
+  <p>Personne n'achète — ni ne laisse ses coordonnées — sur un site qui « sent l'arnaque ». La confiance se construit avec des signaux concrets, répartis sur tout le parcours : certains commerciaux, d'autres légaux et obligatoires en France.</p>
+  <p>La confiance ne se décrète pas, elle s'accumule. Chaque détail rassurant en ajoute une couche : un vrai numéro, une adresse physique, une photo de l'équipe, des avis vérifiables, un cadenas, des mentions légales complètes. À l'inverse, un seul détail douteux — une faute grossière, un « http » sans « s », des images génériques, une absence de coordonnées — fait tout basculer dans la méfiance. Sur le web, l'inconnu est présumé suspect ; levez le doute avant qu'il ne s'installe.</p>
+  <ul>
+    <li><strong>Les avis clients.</strong> Le signal le plus puissant : vrais avis avec prénom, contexte et source vérifiable (Google, Trustpilot). Un avis spécifique (« posé en 3 jours, chantier nickel ») convainc plus qu'un « super, je recommande ».</li>
+    <li><strong>La réassurance au point de décision.</strong> Sous chaque bouton : garantie, délai, « sans engagement », paiement sécurisé.</li>
+    <li><strong>Mentions légales et politique de confidentialité.</strong> Obligatoires, rassurantes, et leur absence vous expose juridiquement (RGPD).</li>
+    <li><strong>Le HTTPS (cadenas).</strong> Indispensable : un site en « http:// » affiche un avertissement « non sécurisé » qui fait fuir.</li>
+    <li><strong>Les coordonnées réelles.</strong> Adresse, téléphone, un vrai visage : la transparence rassure.</li>
+  </ul>
+
+  <h3>Ce que la loi française impose</h3>
+  <p>Au-delà du commercial, plusieurs éléments sont juridiquement obligatoires. Leur absence n'expose pas qu'à une sanction : elle signale un amateurisme qui fait fuir les prospects sérieux.</p>
+  <table>
+    <tr><th>Élément</th><th>Obligatoire ?</th><th>Pourquoi</th></tr>
+    <tr><td>Mentions légales</td><td>Oui</td><td>Identité de l'éditeur, hébergeur</td></tr>
+    <tr><td>Politique de confidentialité</td><td>Oui (RGPD)</td><td>Usage des données personnelles</td></tr>
+    <tr><td>Bandeau cookies</td><td>Oui si traceurs</td><td>Consentement avant dépôt</td></tr>
+    <tr><td>HTTPS</td><td>De fait</td><td>Sécurité, confiance, SEO</td></tr>
+    <tr><td>CGV</td><td>Oui si vente en ligne</td><td>Conditions de vente</td></tr>
+  </table>
+
+  <h3>Le RGPD sans se compliquer la vie</h3>
+  <p>Pour un site vitrine avec un simple formulaire, le RGPD se résume à quelques réflexes : ne collecter que les données utiles, expliquer à quoi elles servent, ne pas les revendre, permettre leur suppression. Une phrase sous le formulaire et une page « Confidentialité » suffisent le plus souvent. Loin d'être une contrainte, cette rigueur est un argument de vente : afficher « vos données restent chez nous et ne sont jamais revendues » rassure un visiteur méfiant. Dernier réflexe : ne pré-cochez jamais une case de consentement (il doit être libre et explicite) et gardez la trace de ce qui a été accepté.</p>
+  <div class="box">
+    <strong>Checklist confiance &amp; conformité</strong>
+    <ul>
+      <li>Mentions légales et confidentialité en ligne ; HTTPS actif (cadenas) sur toutes les pages.</li>
+      <li>Bandeau cookies conforme si vous utilisez des traceurs ; coordonnées réelles visibles (adresse, téléphone).</li>
+      <li>Réassurance affichée à chaque point de décision.</li>
+    </ul>
+  </div>
+
+  <div class="page-break"></div>
+  <h2>10. Le SEO de base, dès la conception</h2>
+  <p>Le référencement naturel (SEO) attire des visiteurs qui cherchent déjà ce que vous vendez — le trafic le plus qualifié qui existe. On ne le « rajoute » pas à la fin : on le construit dès la structure. Distinguons deux temps. Le SEO « de conception » — structure, balises, URL, contenu de base, fiche Google — se pose une fois pour toutes dès la création. Le SEO « de contenu » — publier régulièrement des pages utiles pour se positionner sur des requêtes concurrentielles — est un travail de fond sur des mois. Ce chapitre se concentre sur le premier : les fondations que tout site devrait poser dès le départ.</p>
+
+  <h3>Les fondations à poser dès le départ</h3>
+  <ul>
+    <li><strong>Une page par intention de recherche.</strong> Une page = un mot-clé principal (ex. « création site web PME Paris »).</li>
+    <li><strong>Des balises soignées.</strong> Chaque page a un title (55-60 caractères) et une meta description (150 caractères) qui donnent envie de cliquer.</li>
+    <li><strong>Un seul H1 par page</strong>, puis des H2/H3 logiques : la structure aide Google à comprendre.</li>
+    <li><strong>Des URL propres et lisibles</strong> : <code>/services/creation-site-web</code>, pas <code>/page?id=42</code>.</li>
+    <li><strong>Le contenu local.</strong> Citez votre zone (« Paris et Île-de-France ») et créez une fiche Google Business Profile.</li>
+    <li><strong>Des images nommées et décrites</strong> (attribut alt) : bon pour le SEO et l'accessibilité.</li>
+  </ul>
+
+  <h3>Comprendre l'intention de recherche</h3>
+  <p>Tous les mots-clés ne se valent pas : certains traduisent une intention d'achat (« devis plombier Paris 15 »), d'autres une simple curiosité (« comment déboucher un évier »). Priorisez l'intention commerciale : elle convertit, même avec peu de volume.</p>
+  <table>
+    <tr><th>Type de requête</th><th>Exemple</th><th>Intention</th><th>Priorité PME</th></tr>
+    <tr><td>Transactionnelle</td><td>« devis cuisine sur-mesure Paris »</td><td>Prêt à acheter</td><td>Haute</td></tr>
+    <tr><td>Commerciale</td><td>« meilleur cuisiniste Paris »</td><td>Compare</td><td>Haute</td></tr>
+    <tr><td>Informationnelle</td><td>« comment choisir sa cuisine »</td><td>Se renseigne</td><td>Moyenne (blog)</td></tr>
+    <tr><td>Navigationnelle</td><td>« [nom de votre marque] »</td><td>Vous cherche</td><td>À sécuriser</td></tr>
+  </table>
+
+  <h3>Le modèle title / meta description</h3>
+  <div class="tpl">
+    <div class="label">Gabarit de balises SEO</div>
+    <div class="body">Title (55-60 car.) : Création site web PME à Paris | My-DTM
+Meta description (≈150 car.) : Un site qui génère des demandes de devis, pas juste une vitrine. Stratégie, textes qui vendent et SEO. Devis gratuit sous 24 h.</div>
+  </div>
+  <h3>Le SEO local, l'arme des PME</h3>
+  <p>Pour une entreprise qui travaille sur une zone géographique — artisan, commerce, cabinet, restaurant —, le SEO local est souvent plus rentable et plus accessible que le national. Se battre pour « plombier » est perdu d'avance ; se positionner sur « plombier Vincennes » est jouable. Concrètement : remplissez votre fiche Google Business Profile à 100 %, publiez-y des actualités, et surtout collectez des avis — c'est le premier critère de classement local. Sur le site, citez votre ville dans les titres, créez une page par zone si besoin, affichez une adresse réelle. Ce travail modeste vous fait apparaître dans le « pack local », ces trois résultats avec carte qui captent l'essentiel des clics de proximité.</p>
+  <div class="box"><strong>Le SEO est un investissement, pas une dépense.</strong> Contrairement à la publicité qui s'arrête dès que vous coupez le budget, une page bien positionnée vous amène des visiteurs gratuitement, mois après mois — au prix de contenu utile et de patience.</div>
+  <div class="box">
+    <strong>Checklist SEO de conception</strong>
+    <ul>
+      <li>Une page par mot-clé principal, orientée intention commerciale ; title et meta description uniques.</li>
+      <li>Un seul H1, hiérarchie H2/H3 cohérente ; URL propres et lisibles.</li>
+      <li>Fiche Google Business Profile remplie ; toutes les images ont un attribut alt descriptif.</li>
+    </ul>
+  </div>
+
+  <div class="page-break"></div>
+  <h2>11. Mesurer et optimiser : GA4, cartes de chaleur, A/B tests</h2>
+  <p>« On ne peut pas améliorer ce qu'on ne mesure pas. » Un site qui vend s'observe et s'ajuste ; il ne se livre pas puis s'oublie.</p>
+  <p>Attention à ne pas confondre mesurer et se noyer. Le nombre de visiteurs flatte l'ego mais ne paie pas les factures : mieux vaut 200 visiteurs qui génèrent 6 devis que 2 000 qui n'en génèrent aucun. Ne suivez que les indicateurs sur lesquels vous pouvez agir, et surtout ceux qui touchent à l'argent — les conversions.</p>
+
+  <h3>Les 3 outils gratuits à installer</h3>
+  <ul>
+    <li><strong>Google Analytics 4 (GA4).</strong> D'où viennent vos visiteurs, quelles pages ils voient, où ils partent. Configurez surtout les <em>conversions</em> (envoi de formulaire, clic téléphone) : c'est le seul chiffre qui compte.</li>
+    <li><strong>Google Search Console.</strong> Quels mots-clés vous amènent du trafic, votre position, vos erreurs techniques.</li>
+    <li><strong>Une carte de chaleur (heatmap).</strong> Microsoft Clarity (gratuit) montre où les visiteurs cliquent, jusqu'où ils défilent, où ils bloquent.</li>
+  </ul>
+
+  <h3>Les indicateurs qui comptent vraiment</h3>
+  <p>Trois indicateurs suffisent à piloter la performance commerciale d'un site vitrine. Le reste est du bruit tant que ces trois-là ne sont pas bons.</p>
+  <table>
+    <tr><th>Indicateur</th><th>Ce qu'il révèle</th><th>Repère</th></tr>
+    <tr><td>Taux de conversion</td><td>Efficacité de la page</td><td>Viser 2-5 % (vitrine)</td></tr>
+    <tr><td>Coût par contact</td><td>Rentabilité du trafic payant</td><td>&lt; marge d'un client</td></tr>
+    <tr><td>Taux de rebond mobile</td><td>Pertinence du hero</td><td>Le plus bas possible</td></tr>
+  </table>
+
+  <h3>Le cycle d'optimisation</h3>
+  <p>Chaque mois : regardez votre taux de conversion, identifiez la plus grosse fuite, formulez une hypothèse, testez, mesurez. Un <strong>A/B test</strong> montre deux versions d'un élément (deux titres, deux boutons) à deux moitiés de visiteurs et garde la gagnante.</p>
+  <div class="tpl">
+    <div class="label">Fiche d'expérimentation A/B</div>
+    <div class="body">Constat : Le taux de clic sur le CTA du hero est faible (5 %).
+Hypothèse : Un titre orienté bénéfice augmentera les clics.
+Test : Version A « Nos services » vs Version B « Triplez vos devis ».
+Durée : 2 semaines. Indicateur : clics sur le CTA.
+Décision : garder la version qui dépasse l'autre de façon nette.</div>
+  </div>
+  <h3>Lire une heatmap : ce que les visiteurs vous cachent</h3>
+  <p>Vos visiteurs ne vous diront jamais pourquoi ils sont partis ; la carte de chaleur, elle, le montre. Trois observations reviennent souvent. La « ligne de flottaison » — jusqu'où l'on défile : si 70 % s'arrêtent avant votre bouton, remontez-le. Les « faux boutons » — éléments cliqués alors qu'ils ne sont pas cliquables : le visiteur vous dit où il attend une action, donnez-la-lui. Les zones de rage-clic, signe d'un blocage ou d'un lien mort. La heatmap remplace les suppositions par des faits : une demi-heure d'observation par mois suffit souvent à repérer la prochaine amélioration à tester.</p>
+  <div class="tip"><strong>Commencez petit.</strong> Pas besoin d'un outil d'A/B testing sophistiqué : changez une chose à la fois (titre du hero, texte du bouton), attendez deux semaines, comparez. La méthode compte plus que l'outil.</div>
+  <div class="box">
+    <strong>Checklist mesure</strong>
+    <ul>
+      <li>GA4 installé avec conversions configurées ; Search Console vérifiée.</li>
+      <li>Une heatmap active sur les pages clés.</li>
+      <li>Je suis mon taux de conversion chaque mois et teste une amélioration à la fois.</li>
+    </ul>
+  </div>
+
+  <div class="page-break"></div>
+  <h2>12. Vitrine, e-commerce ou sur-mesure : que choisir</h2>
+  <p>Le bon type de site dépend de votre objectif commercial, pas de la mode. La question n'est jamais « quelle technologie est la meilleure ? » mais « quel est le chemin le plus court entre un visiteur et un euro dans ma poche ? ». Pour la majorité des PME, ce chemin passe par un échange humain — devis, appel, rendez-vous. C'est pourquoi la vitrine reste, de loin, le choix le plus rentable pour commencer.</p>
+  <table>
+    <tr><th>Type</th><th>Pour qui</th><th>Objectif</th><th>Budget indicatif</th></tr>
+    <tr><td>Vitrine</td><td>Artisans, services, professions libérales</td><td>Générer des contacts / devis</td><td>500 – 3 000 €</td></tr>
+    <tr><td>E-commerce</td><td>Vente de produits en ligne</td><td>Vendre 24 h/24</td><td>2 000 – 15 000 €</td></tr>
+    <tr><td>Sur-mesure</td><td>Besoins spécifiques (réservation, espace client, plateforme)</td><td>Automatiser un métier</td><td>5 000 € et +</td></tr>
+  </table>
+  <ul>
+    <li><strong>La vitrine</strong> si la vente se conclut par un échange humain (devis, rendez-vous) — le cas de la majorité des PME.</li>
+    <li><strong>L'e-commerce</strong> si vous vendez des produits en ligne avec paiement immédiat.</li>
+    <li><strong>Le sur-mesure</strong> si votre activité a une logique propre (rendez-vous complexe, calcul de devis, abonnés) qu'aucun modèle standard ne couvre.</li>
+  </ul>
+
+  <h3>Comment lire un budget de site</h3>
+  <p>Un devis de site web n'est pas qu'une ligne de prix : c'est un ensemble de postes. En comprendre la répartition vous aide à comparer les devis. La part « stratégie et textes » — souvent négligée — est pourtant celle qui détermine si le site vendra.</p>
+  <table>
+    <tr><th>Poste</th><th>Part indicative</th><th>Ce que ça couvre</th></tr>
+    <tr><td>Stratégie &amp; contenu</td><td>25-35 %</td><td>Positionnement, textes, structure</td></tr>
+    <tr><td>Design</td><td>20-25 %</td><td>Maquette, identité visuelle</td></tr>
+    <tr><td>Intégration / dev</td><td>30-40 %</td><td>Montage, formulaires, responsive</td></tr>
+    <tr><td>SEO &amp; mise en ligne</td><td>10-15 %</td><td>Balises, vitesse, indexation</td></tr>
+  </table>
+
+  <h3>Le vrai calcul : le retour sur investissement</h3>
+  <p>Ne raisonnez pas en coût, mais en retour. Un site vitrine à 1 500 € qui génère 3 devis par mois, dont 1 signé à 3 000 €, se rembourse dès le premier mois. La bonne question n'est pas « combien ça coûte ? » mais « en combien de temps ça se rembourse, et combien ça rapporte ensuite chaque année ? »</p>
+  <p>Anticipez aussi les coûts récurrents, souvent oubliés : nom de domaine et hébergement (quelques dizaines d'euros par an), maintenance, et surtout le temps d'animation (nouveaux avis, mises à jour d'offres, éventuel blog). Un site « livré puis abandonné » se dégrade. Prévoyez dès le budget une petite enveloppe pour le faire vivre : c'est cet entretien qui transforme un investissement ponctuel en actif durable.</p>
+  <div class="box">
+    <strong>Simulation de retour sur investissement</strong>
+    <ul>
+      <li>Coût : 1 500 € (une fois) + 300 €/an d'entretien.</li>
+      <li>Résultat : 3 demandes/mois, 1 client signé, panier 3 000 € → 36 000 € de CA la 1re année pour ~1 800 € engagés.</li>
+      <li>Point mort atteint dès le 1er client signé, soit ~1 mois.</li>
+    </ul>
+  </div>
+  <div class="warn"><strong>Le piège du « tout en un » trop tôt.</strong> Vouloir d'emblée une boutique, un blog, un espace membre et un chatbot mène à un projet cher, long, jamais fini. Lancez d'abord la version qui vend le plus vite, puis ajoutez.</div>
+  <div class="box">
+    <strong>Checklist du choix de site</strong>
+    <ul>
+      <li>Mon objectif principal est clair (contact, vente en ligne, automatisation) et je pars du plus petit périmètre qui vend.</li>
+      <li>Je compare les devis poste par poste, pas seulement le prix total ; j'ai estimé le temps de retour sur investissement.</li>
+    </ul>
+  </div>
+
+  <div class="page-break"></div>
+  <h2>13. Votre plan de mise en ligne en 30 jours</h2>
+  <p>Un site ne doit pas prendre six mois. La plupart des projets s'enlisent non par manque de temps, mais par manque de cadre : on repousse les décisions, on cherche la perfection, on ajoute des fonctionnalités « tant qu'on y est ». Le remède est un calendrier serré qui force à trancher. Voici un plan réaliste pour livrer un site vitrine qui vend en un mois. L'idée directrice : livrer d'abord une version qui vend, puis améliorer en continu — jamais l'inverse.</p>
+  <table>
+    <tr><th>Semaine</th><th>Objectif</th><th>Actions clés</th></tr>
+    <tr><td>1</td><td>Stratégie</td><td>Action principale, cible, offre, mots-clés, avis et photos.</td></tr>
+    <tr><td>2</td><td>Contenu</td><td>Textes orientés client (hero, service, FAQ, à propos) et CTA.</td></tr>
+    <tr><td>3</td><td>Design &amp; intégration</td><td>Maquette mobile-first, montage, formulaire, mentions légales, HTTPS.</td></tr>
+    <tr><td>4</td><td>Mesure &amp; lancement</td><td>GA4 + Search Console, tests vitesse/mobile, corrections, mise en ligne.</td></tr>
+  </table>
+
+  <h3>Le détail jour par jour</h3>
+  <div class="tpl">
+    <div class="label">Semaine 1 — Stratégie</div>
+    <div class="body">J1  Définir l'action principale unique du site
+J2  Décrire le client idéal et ses 3 grandes objections
+J3  Formuler l'offre et la fourchette de prix
+J4  Lister 5 à 10 mots-clés d'intention commerciale
+J5  Solliciter 3 avis clients + rassembler les photos réelles</div>
+  </div>
+  <div class="tpl">
+    <div class="label">Semaine 2 — Contenu</div>
+    <div class="body">J6  Écrire le hero (titre, sous-titre, CTA, réassurance)
+J7  Rédiger la page de service principale (squelette complet)
+J8  Écrire la FAQ (6 objections traitées)
+J9  Rédiger « À propos » orienté bénéfice client
+J10 Écrire tous les CTA et lignes de réassurance</div>
+  </div>
+  <div class="tpl">
+    <div class="label">Semaine 3 — Design &amp; intégration</div>
+    <div class="body">J11 Maquette mobile-first de l'accueil
+J12 Maquette de la page de service
+J13 Intégration des pages + navigation
+J14 Formulaire de contact + test de réception
+J15 Mentions légales, confidentialité, HTTPS, images WebP</div>
+  </div>
+  <div class="tpl">
+    <div class="label">Semaine 4 — Mesure &amp; lancement</div>
+    <div class="body">J16 Installer GA4 + configurer les conversions
+J17 Installer Search Console + soumettre le sitemap
+J18 Tester la vitesse (PageSpeed) et corriger le hero
+J19 Relecture mobile complète + test des 5 secondes
+J20 Mise en ligne + fiche Google Business Profile</div>
+  </div>
+
+  <h3>La checklist avant de publier</h3>
+  <ul>
+    <li>L'action principale est claire et cliquable dès le premier écran (mobile compris).</li>
+    <li>Chaque page a un title et une meta description uniques ; le formulaire fonctionne.</li>
+    <li>Mentions légales et confidentialité en ligne, site en HTTPS (cadenas visible).</li>
+    <li>Vitesse correcte (PageSpeed &gt; 80 mobile) ; GA4 et Search Console vérifiés.</li>
+    <li>Au moins 3 avis clients réels visibles, et aucun texte ne parle uniquement de vous.</li>
+  </ul>
+  <h3>Le piège du perfectionnisme, et comment l'éviter</h3>
+  <p>La raison numéro un pour laquelle un site ne sort jamais n'est pas technique : c'est le perfectionnisme. On veut la photo parfaite, le texte ciselé, la fonctionnalité en plus. Pendant ce temps, le site n'est pas en ligne, donc il ne rapporte rien. Une méthode efficace : distinguer le « bloquant » de l'« améliorable ». Est bloquant ce qui empêche de vendre — formulaire cassé, absence de mentions légales, site non sécurisé, hero incompréhensible. Tout le reste — une meilleure photo, un huitième avis, une animation — peut attendre. On ne retarde jamais un lancement pour de l'améliorable : cette discipline, à elle seule, fait gagner des mois et des ventes.</p>
+  <div class="tip"><strong>Après le lancement, le travail commence.</strong> Bloquez une heure par mois pour regarder vos chiffres, repérer la plus grosse fuite et tester une amélioration. Un site vivant surpasse toujours un site parfait mais figé.</div>
+
+  <div class="page-break"></div>
+  <h2>14. Erreurs fréquentes · FAQ · Glossaire</h2>
+  <h3>Les 7 erreurs qui coûtent des ventes</h3>
+  <ol>
+    <li>Un hero qui parle de vous, pas du client.</li>
+    <li>Aucune preuve sociale (ou des logos décoratifs sans contexte).</li>
+    <li>Le prix caché : le visiteur veut un repère, même « à partir de ».</li>
+    <li>Un formulaire trop long qui décourage l'envoi.</li>
+    <li>Un site lent, surtout sur mobile.</li>
+    <li>Plusieurs actions concurrentes par page (paralysie du choix).</li>
+    <li>Aucune mesure : on ne sait pas ce qui marche, donc on n'améliore rien.</li>
+  </ol>
+  <table>
+    <tr><th>Erreur</th><th>Symptôme</th><th>Correctif rapide</th></tr>
+    <tr><td>Hero égocentré</td><td>Beaucoup de « nous »</td><td>Réécrire côté « vous »</td></tr>
+    <tr><td>Zéro preuve</td><td>Aucun avis visible</td><td>Ajouter 3 avis signés</td></tr>
+    <tr><td>Prix caché</td><td>Appels « c'est combien ? »</td><td>Afficher « à partir de »</td></tr>
+    <tr><td>Formulaire long</td><td>Peu d'envois</td><td>Réduire à 3 champs</td></tr>
+    <tr><td>Site lent</td><td>Rebond mobile élevé</td><td>Compresser les images</td></tr>
+  </table>
+
+  <h3>FAQ</h3>
+  <p><strong>Combien coûte un site qui vend ?</strong> Un site vitrine professionnel démarre autour de 500 € et monte selon les pages et fonctionnalités. Le prix compte moins que le retour : un site qui génère 5 devis par mois se rembourse vite.</p>
+  <p><strong>Combien de temps pour être visible sur Google ?</strong> Quelques jours pour être indexé ; comptez 3 à 6 mois de contenu régulier pour bien se positionner sur des mots-clés concurrentiels.</p>
+  <p><strong>Faut-il un blog ?</strong> Pas obligatoire au lancement, mais très utile pour le SEO à moyen terme — à condition de tenir un rythme régulier et un contenu vraiment utile.</p>
+  <p><strong>Puis-je le faire seul ?</strong> Oui pour un site simple, avec un outil no-code. Mais la partie qui vend — stratégie, textes, structure de conversion, SEO — est là où un accompagnement fait la différence.</p>
+  <p><strong>WordPress, no-code ou sur-mesure ?</strong> Pour une vitrine, un no-code ou WordPress bien configuré suffit ; le sur-mesure ne se justifie que pour des besoins spécifiques (réservation, espace client). L'outil compte moins que la stratégie et les textes.</p>
+  <p><strong>Mon site ne convertit pas, dois-je tout refaire ?</strong> Pas toujours. Souvent, réécrire le hero, ajouter des avis et raccourcir le formulaire suffit à doubler les demandes. Mesurez d'abord, refondez ensuite si nécessaire.</p>
+
+  <h3>Glossaire express</h3>
+  <ul>
+    <li><strong>CTA</strong> : appel à l'action (bouton ou lien qui provoque l'étape suivante).</li>
+    <li><strong>Hero</strong> : premier écran visible d'une page, sans défilement.</li>
+    <li><strong>Taux de conversion</strong> : part des visiteurs qui font l'action voulue.</li>
+    <li><strong>Copywriting</strong> : rédaction orientée persuasion et passage à l'action.</li>
+    <li><strong>Core Web Vitals</strong> : indicateurs Google de vitesse et de stabilité.</li>
+    <li><strong>SEO</strong> : référencement naturel, l'art d'être trouvé sur Google sans payer.</li>
+    <li><strong>GA4</strong> : Google Analytics 4, l'outil de mesure d'audience.</li>
+    <li><strong>Heatmap</strong> : carte de chaleur des clics et du défilement.</li>
+    <li><strong>Landing page</strong> : page dédiée à une seule offre ou campagne.</li>
+    <li><strong>Preuve sociale</strong> : signaux (avis, chiffres, cas) qui rassurent par l'exemple.</li>
+  </ul>
+
+  <div class="cta">
+    <h3>Vous préférez déléguer et aller vite ?</h3>
+    <p>My-DTM conçoit des sites pensés pour vendre : stratégie, textes qui convertissent, structure orientée conversion, SEO dès la conception. À partir de 500 €.</p>
+    <p><a href="https://my-dtm.fr/services/creation-site-web">Découvrir le service Création de site web →</a></p>
+  </div>
+
+  <p class="footer">© My-DTM — Agence digitale, Paris · my-dtm.fr · Ce guide est fourni pour un usage personnel. Toute revente ou redistribution est interdite. Les fourchettes de prix et repères sont indicatifs et peuvent évoluer.</p>
+</div>
+</body>
+</html>

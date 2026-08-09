@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Tracking &amp; RGPD — My-DTM</title>
+<style>
+  :root { --primary:#7c0dbe; --secondary:#4d71ee; --dark:#0e0a1a; --muted:#52525b; --soft:#f5f2fb; --border:#e7e1f3; --green:#10B981; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; color: var(--dark); line-height: 1.72; margin: 0; font-size: 12.5pt; }
+  .page { max-width: 800px; margin: 0 auto; padding: 56px 64px; }
+  h1 { font-size: 30pt; line-height: 1.12; margin: 0 0 8px; }
+  h2 { font-size: 19pt; margin: 36px 0 12px; color: var(--primary); border-bottom: 2px solid var(--border); padding-bottom: 6px; }
+  h3 { font-size: 13.5pt; margin: 22px 0 6px; }
+  p { margin: 8px 0; }
+  ul, ol { margin: 8px 0; padding-left: 22px; }
+  li { margin: 4px 0; }
+  .lead { font-size: 13pt; color: var(--muted); }
+  .eyebrow { text-transform: uppercase; letter-spacing: 3px; font-size: 9pt; font-weight: 800; color: var(--primary); }
+  .cover { min-height: 88vh; display: flex; flex-direction: column; justify-content: center; }
+  .badge { display: inline-block; background: var(--soft); border:1px solid var(--border); border-radius: 999px; padding: 4px 14px; font-size: 9.5pt; font-weight: 700; color: var(--primary); }
+  .box { background: var(--soft); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; margin: 16px 0; }
+  .tip { border-left: 4px solid var(--secondary); background: #eef2fe; border-radius: 0 10px 10px 0; padding: 12px 18px; margin: 14px 0; }
+  .warn { border-left: 4px solid #e0a106; background: #fdf6e3; border-radius: 0 10px 10px 0; padding: 12px 18px; margin: 14px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 10.5pt; }
+  th, td { border: 1px solid var(--border); padding: 7px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--primary); color: #fff; font-weight: 700; }
+  tr:nth-child(even) td { background: #faf8fe; }
+  .tpl { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; margin: 10px 0; }
+  .tpl .label { font-weight: 700; color: var(--primary); font-size: 10pt; }
+  .tpl .body { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 10pt; white-space: pre-wrap; margin-top: 6px; color: #1f2937; }
+  code { font-family: "SF Mono", Menlo, Consolas, monospace; background: #f1edfa; padding: 1px 5px; border-radius: 4px; font-size: 10.5pt; }
+  .footer { margin-top: 16px; font-size: 9pt; color: var(--muted); text-align: center; }
+  .cta { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #fff; border-radius: 14px; padding: 24px 28px; margin: 28px 0; }
+  .cta h3 { color: #fff; margin-top: 0; }
+  .cta a { color: #fff; font-weight: 800; }
+  .toc li { margin: 5px 0; }
+  @media print {
+    h2 { page-break-before: always; }
+    h2, h3 { page-break-after: avoid; }
+    .tpl, .box, .tip, .warn, table { page-break-inside: avoid; }
+    .page-break { page-break-before: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <section class="cover">
+    <span class="eyebrow">Guide premium · My-DTM</span>
+    <h1>Tracking &amp; RGPD</h1>
+    <p class="lead">Mesurer vos conversions sans être hors-la-loi : Consent Mode v2, Conversions API Meta, déduplication serveur et conformité CNIL. Le guide complet pour concilier vie privée et performance publicitaire en 2026.</p>
+    <div style="margin-top:24px"><span class="badge">Consent Mode v2 · CAPI · CNIL · sGTM</span></div>
+    <p style="margin-top:40px; color:var(--muted); font-size:10pt">© My-DTM — Agence digitale, Paris · my-dtm.fr · Usage personnel. Revente et redistribution interdites.</p>
+  </section>
+
+  <div class="page-break"></div>
+  <h2>Sommaire</h2>
+  <ol class="toc">
+    <li>Le dilemme : mesurer vs respecter la vie privée</li>
+    <li>Le cadre RGPD / CNIL &amp; ce qu’est vraiment le consentement</li>
+    <li>La bannière cookies conforme (CMP)</li>
+    <li>Google Consent Mode v2 : basic, advanced et modélisation</li>
+    <li>GA4 : configuration conforme pas à pas</li>
+    <li>Le Pixel Meta et ses limites (navigateur, ITP, adblock)</li>
+    <li>La Conversions API (CAPI) côté serveur</li>
+    <li>La déduplication navigateur + serveur (event_id)</li>
+    <li>iOS ATT &amp; la perte de signal : reconstruire la mesure</li>
+    <li>Server-side tagging (sGTM) en détail</li>
+    <li>Le plan de taggage &amp; le dataLayer : la fondation oubliée</li>
+    <li>Mesurer la qualité (EMQ, taux de consentement, écart d’attribution)</li>
+    <li>Recette de test &amp; débogage : valider avant de se fier aux chiffres</li>
+    <li>Checklist conformité · FAQ · Glossaire</li>
+  </ol>
+
+  <div class="page-break"></div>
+  <h2>1. Le dilemme : mesurer vs respecter la vie privée</h2>
+  <p>Tout annonceur vit la même tension. D’un côté, savoir ce que rapporte chaque euro de publicité : quelle campagne vend, où couper le budget. De l’autre, la réglementation européenne et les navigateurs verrouillent le suivi des internautes. Résultat : de nombreux tableaux de bord affichent 20 à 40 % de conversions en moins que la réalité. Ce ne sont pas des ventes perdues — ce sont des ventes <em>invisibles</em>, et cette cécité coûte cher. Un algorithme publicitaire (Meta Advantage+, Google Performance Max) apprend des conversions que vous lui remontez : lui en cacher 30 %, c’est le laisser cibler moins bien et faire grimper votre coût d’acquisition. La conformité mal faite ne protège pas mieux les données — elle sabote votre rentabilité.</p>
+
+  <h3>Anatomie d’une fuite de mesure</h3>
+  <p>Suivons une seule vente. Un internaute clique sur votre publicité Meta depuis Instagram sur son iPhone, arrive sur votre site, refuse une partie des cookies, navigue, ferme l’onglet, puis revient trois jours plus tard depuis son ordinateur pour acheter. Combien de « murs » entre cette vente et votre tableau de bord ? Le refus partiel bloque une partie des traceurs ; l’ITP de Safari a expiré le cookie d’attribution ; le changement d’appareil casse le lien clic-achat ; et si un bloqueur est actif, le pixel n’a même pas chargé. Chacun de ces obstacles est réel, cumulatif et documenté.</p>
+  <table>
+    <thead><tr><th>Cause de perte</th><th>Population touchée (ordre de grandeur)</th><th>Effet sur la mesure</th></tr></thead>
+    <tbody>
+      <tr><td>Refus / consentement partiel</td><td>30 à 50 % des visiteurs EEE</td><td>Traceurs non déclenchés côté navigateur</td></tr>
+      <tr><td>ITP Safari (cookies plafonnés à 7 j, voire 24 h)</td><td>~30 % du trafic mobile FR</td><td>Attribution perdue au-delà de la fenêtre</td></tr>
+      <tr><td>Bloqueurs de pub / anti-tracking</td><td>25 à 40 % selon l’audience</td><td>Pixel jamais chargé, zéro événement</td></tr>
+      <tr><td>iOS ATT (refus du suivi in-app)</td><td>~75 à 85 % de refus sur iOS</td><td>Signal in-app effondré</td></tr>
+      <tr><td>Pertes réseau / onglet fermé</td><td>Quelques %</td><td>Événements navigateur perdus</td></tr>
+    </tbody>
+  </table>
+  <div class="box">
+    <p style="margin:0"><strong>L’idée directrice de ce guide :</strong> conformité CNIL et performance publicitaire ne s’opposent pas — sauf quand le tracking est mal conçu. Bien fait, un dispositif conforme récupère une grande partie du signal perdu, légalement.</p>
+  </div>
+
+  <h3>Le système à trois étages</h3>
+  <p>Les trois leviers de ce guide forment un système cohérent : une <strong>bannière de consentement conforme</strong> (la porte d’entrée légale), le <strong>Consent Mode v2</strong> (qui traduit le choix de l’internaute en signaux pour Google), et la <strong>mesure côté serveur</strong> — <strong>Conversions API</strong> et <strong>server-side tagging</strong> — qui reconstruit le signal là où le navigateur le bloque. Aucun ne trace les gens sans leur accord : ils évitent de perdre ce que vous avez le droit de mesurer. Passer d’un pixel seul (≈ 65 % des conversions remontées) à un dispositif complet récupère couramment 20 à 30 points de taux de remontée, améliorant souvent le CPA de 10 à 20 %.</p>
+
+  <h3>Pourquoi l’algorithme dépend autant de votre mesure</h3>
+  <p>Une campagne Meta Advantage+ ou Google Performance Max est pilotée non par un humain qui choisit des audiences, mais par un modèle qui apprend en continu à reconnaître les profils susceptibles de convertir. Sa seule fenêtre sur le monde : les événements de conversion que <em>vous</em> lui renvoyez. Un signal partiel — 65 % des ventes, avec des trous non aléatoires (acheteurs Safari et iOS sous-représentés) — lui fait apprendre une image <em>faussée</em> de votre clientèle. C’est pourquoi deux comptes au même budget divergent : celui qui remonte 90 % de ses conversions entraîne un algorithme lucide ; celui qui en remonte 60 %, un algorithme myope qui gaspille. Restaurer le signal enclenche un cercle vertueux : plus de conversions → algorithme mieux entraîné → CPA plus bas → plus de ventes → encore plus de signal. Beaucoup d’annonceurs qui croient avoir un « problème de créa » ont en réalité un problème de mesure non diagnostiqué.</p>
+  <div class="tip">
+    <p style="margin:0"><strong>À retenir.</strong> Vos chiffres « en baisse » reflètent presque toujours une baisse de la <em>mesure</em>, pas des ventes. Le premier réflexe n’est pas de couper le budget, mais de vérifier ce que vous mesurez encore.</p>
+  </div>
+  <h3>Mini-checklist — diagnostic express</h3>
+  <ul>
+    <li>☐ Comparer les ventes back-office (Shopify/Stripe) aux conversions remontées à Meta et Google</li>
+    <li>☐ Repérer si l’écart dépasse 20 à 30 % (seuil d’alerte)</li>
+    <li>☐ Vérifier la part de trafic iOS / Safari dans l’audience</li>
+    <li>☐ Estimer le taux de consentement actuel dans la CMP</li>
+  </ul>
+
+  <div class="page-break"></div>
+  <h2>2. Le cadre RGPD / CNIL &amp; ce qu’est vraiment le consentement</h2>
+  <p>Deux textes gouvernent le sujet. Le <strong>RGPD</strong> (règlement 2016/679) encadre le traitement de toute donnée personnelle. La <strong>directive ePrivacy</strong>, transposée en France et déclinée par les <strong>lignes directrices de la CNIL</strong>, encadre le dépôt de traceurs (cookies, pixels, identifiants) sur le terminal. C’est ePrivacy — pas le RGPD seul — qui impose le consentement <em>avant</em> tout cookie publicitaire ou de mesure. D’où l’obligation de recueillir le consentement avant le pixel Meta (traceur = ePrivacy) tout en documentant la base légale du traitement (RGPD). Deux régimes, une seule bannière bien conçue pour les satisfaire.</p>
+
+  <h3>Ce qu’un consentement valable exige</h3>
+  <ul>
+    <li><strong>Libre</strong> : pas de cookie wall abusif, pas de case pré-cochée, pas de chantage à l’accès.</li>
+    <li><strong>Spécifique</strong> : le consentement porte sur des finalités distinctes (mesure d’audience, publicité ciblée, personnalisation…), pas sur un bloc « tout ou rien ».</li>
+    <li><strong>Éclairé</strong> : l’internaute sait qui dépose quoi, pour quoi faire, et pour combien de temps.</li>
+    <li><strong>Univoque</strong> : un acte positif clair. Le simple fait de continuer à naviguer ne vaut pas consentement.</li>
+    <li><strong>Révocable</strong> : retirer son accord doit être aussi simple que de le donner (un lien « Gérer les cookies » accessible en permanence).</li>
+  </ul>
+  <div class="warn">
+    <p style="margin:0"><strong>La preuve du consentement est obligatoire.</strong> En cas de contrôle, vous devez démontrer <em>qui</em> a consenti, <em>à quoi</em> et <em>quand</em>. Une CMP sérieuse horodate et archive chaque choix (« consent log »). Sans preuve, un consentement est réputé inexistant.</p>
+  </div>
+
+  <h3>Finalités : le vocabulaire à maîtriser</h3>
+  <p>Une bannière conforme ne demande pas « acceptez-vous les cookies ? » mais décompose par finalité. La correspondance entre langage juridique et déclenchement concret :</p>
+  <table>
+    <thead><tr><th>Finalité (CNIL / TCF)</th><th>Base légale usuelle</th><th>Ce qu’elle autorise en pratique</th></tr></thead>
+    <tbody>
+      <tr><td>Mesure d’audience</td><td>Consentement (ou exemption si anonyme)</td><td>GA4, Matomo standard</td></tr>
+      <tr><td>Publicité personnalisée</td><td>Consentement</td><td>Pixel Meta, remarketing Google Ads</td></tr>
+      <tr><td>Stockage &amp; accès à l’information sur le terminal</td><td>Consentement</td><td>Dépôt de tout cookie non essentiel</td></tr>
+      <tr><td>Cookies strictement nécessaires</td><td>Exemptés</td><td>Panier, session, sécurité, CMP elle-même</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Durée et périmètre</h3>
+  <p>La CNIL recommande de ne pas conserver le choix de l’internaute au-delà de <strong>6 mois</strong> : passé ce délai, il faut redemander. Les cookies de mesure ont eux-mêmes une durée plafonnée (13 mois pour le cookie, 25 mois pour les données). Seule exception : la <strong>mesure d’audience strictement anonyme</strong> et limitée à votre seul site peut être exemptée de consentement sous conditions strictes — le détail des critères est en section 5.</p>
+
+  <h3>Transferts hors UE, DPO et registre</h3>
+  <p>Envoyer des données à Meta ou Google, c’est les transmettre à des acteurs dont l’infrastructure dépasse l’Union européenne. Depuis 2023, le <strong>Data Privacy Framework</strong> (accord d’adéquation UE–États-Unis) fournit une base légale aux transferts vers les entreprises américaines certifiées, mais cet équilibre reste politiquement fragile. Deux réflexes : pseudonymiser avant transfert (le server-side, section 10, excelle ici) et documenter les transferts dans votre <strong>registre des traitements</strong> (finalité, données, destinataires, durées, base légale), obligatoire car le tracking est un traitement de données personnelles. Un DPO, s’il existe, valide la CMP et les durées ; sinon ces responsabilités reviennent au responsable de traitement — vous. La validation formelle des mentions relève d’une revue juridique.</p>
+  <h3>Le risque de sanction, concrètement</h3>
+  <p>La CNIL a fait des cookies un axe prioritaire de contrôle. Manquements les plus sanctionnés : « Tout refuser » absent ou moins accessible que « Tout accepter », traceurs déposés avant tout choix, absence de preuve. Au-delà de l’amende, l’enjeu est l’obligation de tout reconstruire dans l’urgence — souvent en coupant le tracking, donc en perdant toute mesure pendant la remise en conformité.</p>
+  <div class="tip">
+    <p style="margin:0"><strong>Le bon état d’esprit.</strong> La conformité n’est pas une contrainte à subir au dernier moment : c’est l’assurance de garder votre mesure allumée. Un dispositif propre ne craint pas le contrôle et ne se coupe jamais lui-même.</p>
+  </div>
+  <h3>Mini-checklist — cadre légal</h3>
+  <ul>
+    <li>☐ Distinguer les cookies exemptés (essentiels) des cookies soumis au consentement</li>
+    <li>☐ Documenter la base légale de chaque traitement (registre RGPD)</li>
+    <li>☐ Conserver un journal de consentement horodaté (preuve)</li>
+    <li>☐ Reposer la question du consentement au moins tous les 6 mois</li>
+    <li>☐ Publier une page « Politique cookies » listant traceurs et durées</li>
+  </ul>
+
+  <div class="page-break"></div>
+  <h2>3. La bannière cookies conforme (CMP)</h2>
+  <p>La bannière — ou <strong>CMP</strong> (Consent Management Platform) — est la brique légale sans laquelle tout le reste est illégal. Ce n’est pas un cache-misère : c’est elle qui déclenche (ou non) vos pixels et transmet le signal de consentement à toute la chaîne.</p>
+
+  <h3>Ce qui est obligatoire</h3>
+  <ul>
+    <li>Aucun traceur non essentiel ne se déclenche <strong>avant</strong> le choix (pas de pixel Meta ni GA4 au chargement de la page).</li>
+    <li>Le bouton <strong>« Tout refuser »</strong> aussi visible et accessible que <strong>« Tout accepter »</strong> — même niveau, même taille, même écran. Exigence explicite de la CNIL, régulièrement sanctionnée.</li>
+    <li>Un troisième choix « Personnaliser » par finalité, et un moyen permanent de revenir sur son choix.</li>
+    <li>Un journal de consentement horodaté et conservé comme preuve.</li>
+  </ul>
+  <div class="tip">
+    <p style="margin:0"><strong>Le piège le plus courant.</strong> Beaucoup de sites déposent le pixel Meta ou GA4 dès le chargement « pour ne pas perdre de données », et n’affichent la bannière qu’ensuite : c’est exactement l’infraction que la CNIL sanctionne. La bonne architecture bloque tout par défaut et ne libère les tags qu’après le clic.</p>
+  </div>
+
+  <h3>L’architecture qui fonctionne : CMP → dataLayer → GTM</h3>
+  <p>La bonne séquence est toujours la même : la CMP se charge en premier (cookie exempté) et fixe l’état de consentement par défaut à <code>denied</code> avec un <code>wait_for_update</code> ; tant que l’utilisateur n’a pas cliqué, aucun tag marketing ne se déclenche. Au clic, elle appelle <code>gtag('consent','update', …)</code> et pousse un événement dans le <code>dataLayer</code> ; Google Tag Manager, qui écoute cet événement, libère alors <em>uniquement</em> les tags dont la finalité est accordée.</p>
+
+  <h3>Ergonomie : le taux de consentement se pilote</h3>
+  <p>À conformité égale, deux bannières obtiennent des taux très différents. Une bannière hostile (mur de texte, boutons ternes) descend sous 40 % ; une bannière claire, honnête sur la valeur, avec des boutons lisibles et cohérente avec la marque, atteint couramment 55 à 70 %. Les leviers autorisés : clarté du wording, hiérarchie visuelle équilibrée (jamais « refuser » grisé), rapidité d’affichage, second niveau « Personnaliser ». L’enjeu est concret : sur un site à 100 000 visiteurs mensuels, passer de 45 % à 62 % de consentement rend consentants 17 000 visiteurs de plus chaque mois — autant de parcours mesurables par le pixel et exploitables pour le remarketing. Aucune ligne de code ne produit ce gain : c’est le meilleur rapport effort/résultat, et pourtant le plus souvent négligé.</p>
+  <table>
+    <thead><tr><th>Facteur de la bannière</th><th>Effet sur le taux de consentement</th></tr></thead>
+    <tbody>
+      <tr><td>Wording orienté bénéfice (vs juridique brut)</td><td>+5 à +10 pts</td></tr>
+      <tr><td>Affichage rapide, sans blocage visuel agressif</td><td>+3 à +8 pts</td></tr>
+      <tr><td>Design intégré à la marque (vs pop-up générique)</td><td>+3 à +6 pts</td></tr>
+      <tr><td>Deux niveaux clairs (Accepter / Personnaliser)</td><td>Stabilise, rassure</td></tr>
+      <tr><td>« Refuser » caché ou grisé</td><td>Interdit + contre-productif (dark pattern vérifié en priorité par la CNIL)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Le câblage CMP → Consent Mode, en pratique</h3>
+  <p>Une CMP certifiée Google transmet le choix nativement : au clic, elle appelle elle-même <code>gtag('consent','update', …)</code> avec les bons signaux. Si votre CMP n’est pas intégrée, faites le pont manuellement dans GTM en écoutant l’événement de consentement poussé dans le dataLayer. La clé : <em>rien</em> ne se déclenche tant que l’état par défaut « denied » n’a pas été explicitement mis à jour.</p>
+  <div class="tpl">
+    <div class="label">Gabarit — pont CMP → Consent Mode (câblage manuel)</div>
+    <div class="body">// Au retour de la CMP (callback ou event dataLayer) :
+window.addEventListener('cmp_choice', function (e) {
+  var c = e.detail; // { analytics:true, ads:false, ... }
+  gtag('consent', 'update', {
+    'analytics_storage':  c.analytics ? 'granted' : 'denied',
+    'ad_storage':         c.ads       ? 'granted' : 'denied',
+    'ad_user_data':       c.ads       ? 'granted' : 'denied',
+    'ad_personalization': c.ads       ? 'granted' : 'denied'
+  });
+  dataLayer.push({ event: 'cmp_consent_update' });
+});</div>
+  </div>
+  <h3>Choisir sa CMP</h3>
+  <p>Solutions courantes : Axeptio, Didomi, Cookiebot, Osano, ou la CMP native de Google. Les critères décisifs ne sont pas la marque mais la certification Google (Consent Mode v2 natif, obligatoire pour Ads dans l’EEE), le TCF v2.2 de l’IAB (interopérabilité RTB), un consent log exportable (preuve), le blocage réel des tags avant choix et une UX personnalisable (taux de consentement).</p>
+  <h3>Mini-checklist — CMP</h3>
+  <ul>
+    <li>☐ Aucun traceur non essentiel avant le choix</li>
+    <li>☐ « Tout refuser » aussi accessible que « Tout accepter »</li>
+    <li>☐ Choix « Personnaliser » par finalité</li>
+    <li>☐ Lien permanent de gestion du consentement</li>
+    <li>☐ CMP certifiée Google + TCF v2.2, consent log exportable</li>
+  </ul>
+
+  <div class="page-break"></div>
+  <h2>4. Google Consent Mode v2 : basic, advanced et modélisation</h2>
+  <p>Le <strong>Consent Mode</strong> est le langage par lequel votre CMP dit à Google ce que l’internaute a autorisé. Depuis mars 2024, sa version <strong>v2</strong> est <em>obligatoire</em> pour continuer à alimenter les audiences et le remarketing Google Ads dans l’EEE : sans lui, vos audiences de reciblage se vident. Il repose sur des « signaux de consentement » que la CMP met à jour ; les quatre principaux :</p>
+  <table>
+    <thead><tr><th>Signal</th><th>Rôle</th></tr></thead>
+    <tbody>
+      <tr><td><code>analytics_storage</code></td><td>Autorise (ou non) le stockage pour la mesure GA4.</td></tr>
+      <tr><td><code>ad_storage</code></td><td>Autorise le stockage des cookies publicitaires.</td></tr>
+      <tr><td><code>ad_user_data</code></td><td>Autorise l’envoi des données utilisateur à Google à des fins publicitaires (ajout v2).</td></tr>
+      <tr><td><code>ad_personalization</code></td><td>Autorise la publicité personnalisée / le remarketing (ajout v2).</td></tr>
+    </tbody>
+  </table>
+  <p>Les deux signaux ajoutés en v2 — <code>ad_user_data</code> et <code>ad_personalization</code> — distinguent l’<em>envoi</em> de données à Google (pour la mesure) de leur <em>usage</em> pour personnaliser la publicité. Une CMP à jour doit piloter ces quatre signaux, sans quoi Google considère le consentement comme incomplet.</p>
+
+  <h3>Basic vs Advanced</h3>
+  <ul>
+    <li><strong>Basic mode</strong> : les tags Google ne se chargent <em>pas du tout</em> tant que le consentement n’est pas donné. Aucun ping n’est envoyé en cas de refus. C’est plus strict, mais Google n’a alors aucune donnée pour modéliser.</li>
+    <li><strong>Advanced mode</strong> : les tags Google se chargent mais, en l’absence de consentement, envoient des <strong>pings anonymes et sans cookie</strong> (pas d’identifiant, pas de stockage). Ces pings permettent à Google de <strong>modéliser statistiquement</strong> les conversions non consenties à partir des utilisateurs consentis. En pratique, l’advanced mode récupère une part significative des conversions perdues au refus — c’est le réglage recommandé pour la performance.</li>
+  </ul>
+  <div class="tpl">
+    <div class="label">Gabarit — état par défaut du Consent Mode (avant tout choix)</div>
+    <div class="body">gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+// Puis, après clic « Accepter » dans la CMP :
+gtag('consent', 'update', {
+  'ad_storage': 'granted',
+  'ad_user_data': 'granted',
+  'ad_personalization': 'granted',
+  'analytics_storage': 'granted'
+});</div>
+  </div>
+  <p>Le paramètre <code>wait_for_update</code> (ici 500 ms) laisse à la CMP le temps de mettre à jour l’état avant l’exécution des tags : sans lui, un tag pourrait partir en « denied » alors que l’utilisateur vient d’accepter, faussant la mesure.</p>
+  <div class="warn">
+    <p style="margin:0">La <strong>modélisation</strong> nécessite un volume minimum (Google exige typiquement ~700 clics publicitaires sur 7 jours par pays et domaine). En dessous, pas de modélisation : les petits sites voient surtout l’effet du taux de consentement brut — une raison de plus de soigner sa bannière.</p>
+  </div>
+
+  <h3>Comment fonctionne la modélisation, sans jargon</h3>
+  <p>Le principe est statistique. Sur les utilisateurs <em>consentants</em>, Google observe la relation entre des signaux disponibles sans cookie (type d’appareil, moment, campagne, ping anonyme de l’advanced mode) et la probabilité de conversion, puis applique ce modèle aux <em>non consentants</em> pour estimer combien ont probablement converti. Personne n’est ré-identifié : le résultat est une estimation agrégée. Sans les pings anonymes de l’advanced mode, Google n’a rien pour calibrer le modèle. Google Ads signale ensuite les conversions modélisées dans ses rapports ; n’en voir <em>aucune</em> trahit souvent un défaut d’implémentation ou un volume insuffisant.</p>
+  <div class="box">
+    <p style="margin:0"><strong>Basic ou Advanced ?</strong> Optez pour l’<strong>advanced</strong> si votre priorité est la performance et que votre volume dépasse les seuils de modélisation — le cas de la majorité des e-commerçants actifs. Réservez le <strong>basic</strong> aux secteurs sensibles (santé, données particulières) qui préfèrent qu’aucun tag ne se charge sans consentement explicite, quitte à perdre la modélisation. L’advanced ne « triche » pas : il n’envoie aucune donnée identifiante en cas de refus.</p>
+  </div>
+  <h3>Mini-checklist — Consent Mode v2</h3>
+  <ul>
+    <li>☐ Les 4 signaux pilotés par la CMP (dont ad_user_data et ad_personalization)</li>
+    <li>☐ État par défaut à « denied » avec wait_for_update</li>
+    <li>☐ Mode advanced activé (sauf posture ultra-prudente justifiée)</li>
+    <li>☐ Vérification de la modélisation dans Google Ads</li>
+  </ul>
+
+  <div class="page-break"></div>
+  <h2>5. GA4 : configuration conforme pas à pas</h2>
+  <p>GA4 peut être conforme, à condition de le configurer correctement. Beaucoup d’installations restent dans une zone grise faute de trois ou quatre réglages simples. Voici la marche à suivre, poste par poste.</p>
+
+  <h3>Étape 1 — Consentement en amont</h3>
+  <p>GA4 ne se déclenche qu’après accord, via le Consent Mode. En cas de refus, seuls les pings anonymes de l’advanced mode partent. Le tag de configuration GA4 dans GTM doit respecter le statut <code>analytics_storage</code> : Google le fait nativement dès lors que le Consent Mode est correctement câblé.</p>
+
+  <h3>Étape 2 — Rétention et anonymisation</h3>
+  <p>L’adresse IP n’est plus stockée par défaut dans GA4 : c’est déjà acquis. Réglez la <strong>durée de conservation</strong> des données utilisateur sur 2 ou 14 mois selon le besoin (Admin → Conservation des données). Désactivez <strong>Google Signals</strong> si vous n’exploitez ni rapports démographiques ni remarketing cross-device : c’est une source de risque et d’échantillonnage inutile.</p>
+  <table>
+    <thead><tr><th>Réglage GA4</th><th>Valeur conforme recommandée</th></tr></thead>
+    <tbody>
+      <tr><td>Conservation des données utilisateur</td><td>2 mois (ou 14 mois si analyse de cohortes nécessaire)</td></tr>
+      <tr><td>Google Signals</td><td>Désactivé si non exploité</td></tr>
+      <tr><td>Collecte des données granulaires de localisation/appareil</td><td>Restreindre pour l’EEE si besoin</td></tr>
+      <tr><td>Consent Mode</td><td>Advanced, piloté par la CMP</td></tr>
+      <tr><td>User-ID</td><td>Uniquement avec base légale claire (compte client)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Étape 3 — Localisation des données</h3>
+  <p>Depuis l’accord transatlantique (Data Privacy Framework), le transfert de données GA4 vers les serveurs Google aux États-Unis est de nouveau encadré, mais reste sensible et politiquement instable. Pour une conformité maximale, un modèle server-side (section 10) permet de filtrer et pseudonymiser avant tout envoi — retirer l’IP, tronquer des paramètres, restreindre les champs transmis.</p>
+
+  <h3>Étape 4 — Définir les événements clés</h3>
+  <p>GA4 fonctionne par événements. Alignez-vous sur les événements e-commerce <em>recommandés</em> (<code>view_item</code>, <code>add_to_cart</code>, <code>begin_checkout</code>, <code>purchase</code>) plutôt que d’inventer vos noms : les rapports natifs et les intégrations Ads en dépendent. Marquez ensuite <code>purchase</code> (et vos leads) comme <strong>événement clé</strong> (ex-« conversion »).</p>
+  <div class="tpl">
+    <div class="label">Gabarit — événement d’achat GA4 (dataLayer e-commerce)</div>
+    <div class="body">dataLayer.push({
+  event: 'purchase',
+  ecommerce: {
+    transaction_id: 'CMD-10482',
+    value: 149.00,
+    currency: 'EUR',
+    items: [
+      { item_id: 'SKU-231', item_name: 'Sac cuir', price: 149.00, quantity: 1 }
+    ]
+  }
+});</div>
+  </div>
+  <h3>L’exemption de consentement : conditions exactes</h3>
+  <p>La CNIL admet qu’une mesure d’audience soit exemptée de consentement, mais seulement sous conditions cumulatives : finalité limitée à la mesure et à l’amélioration du site (aucun usage publicitaire), pas de recoupement avec d’autres traitements, données non transmises à des tiers, pas de suivi cross-site, IP tronquée, durée du traceur plafonnée. GA4 standard échoue sur plusieurs critères (transmission à Google, usages croisés, IP partiellement anonymisée), d’où sa soumission au consentement. Matomo auto-hébergé ou Piwik PRO proposent un mode conçu pour cocher toutes ces cases — d’où l’intérêt de les faire cohabiter avec GA4.</p>
+  <div class="tip">
+    <p style="margin:0">Si votre besoin est <strong>uniquement</strong> la mesure d’audience de votre site (pas de reciblage), envisagez <strong>Matomo</strong> ou <strong>Piwik PRO</strong> en configuration exemptée : vous mesurez 100 % du trafic <em>sans bannière</em> pour cette finalité. Beaucoup d’annonceurs combinent les deux : Matomo exempté pour l’audience globale, GA4 + Ads consentis pour la performance.</p>
+  </div>
+  <h3>Mini-checklist — GA4</h3>
+  <ul>
+    <li>☐ Consent Mode advanced respecté par le tag GA4</li>
+    <li>☐ Conservation des données réglée (2 / 14 mois)</li>
+    <li>☐ Google Signals désactivé si non exploité</li>
+    <li>☐ Événements e-commerce recommandés + purchase en événement clé</li>
+    <li>☐ Envisager Matomo exempté pour l’audience 100 %</li>
+  </ul>
+
+  <div class="page-break"></div>
+  <h2>6. Le Pixel Meta et ses limites (navigateur, ITP, adblock)</h2>
+  <p>Le <strong>Pixel Meta</strong> (Facebook / Instagram) est un morceau de JavaScript qui s’exécute dans le navigateur et remonte les événements (PageView, ViewContent, AddToCart, Purchase…) à Meta. C’est le suivi historique — et il fuit de partout.</p>
+
+  <h3>Pourquoi le pixel seul ne suffit plus</h3>
+  <ul>
+    <li><strong>ITP (Intelligent Tracking Prevention)</strong> de Safari : plafonne les cookies first-party posés par script à 7 jours, voire 24 h. Une conversion 10 jours après le clic devient invisible.</li>
+    <li><strong>Bloqueurs de publicité</strong> : 25 à 40 % des internautes bloquent le chargement du pixel. Zéro événement.</li>
+    <li><strong>Refus de consentement</strong> : sans accord, le pixel ne doit pas se déclencher.</li>
+    <li><strong>Fiabilité réseau</strong> : onglet fermé trop vite, connexion instable, erreurs JavaScript… le navigateur perd des événements même quand tout est autorisé.</li>
+  </ul>
+  <p>Additionnées, ces pertes font qu’un pixel seul ne remonte souvent que 60 à 70 % des vraies conversions — d’où la nécessité d’une seconde source de vérité, côté serveur.</p>
+
+  <h3>Le cas concret de l’ITP, chiffré</h3>
+  <p>Un produit à 200 € dont le cycle de décision moyen est de 9 jours. Sur Safari — environ un tiers du trafic mobile en France — le cookie d’attribution du pixel expire après 7 jours (Firefox bloque en plus les traceurs tiers connus ; Chrome, historiquement plus permissif, évolue). Résultat : toutes les ventes qui se concrétisent au-delà du 7ᵉ jour deviennent orphelines. L’achat a eu lieu, mais son lien avec la publicité est rompu : Meta ne l’attribue pas, le ROAS affiché baisse, et vous risquez de couper une campagne pourtant rentable. La CAPI, qui ne dépend pas du cookie navigateur, recolle ces ventes tardives à leur origine dès lors que vous disposez d’un identifiant de correspondance (email haché, par exemple).</p>
+
+  <h3>Ce que fait (encore bien) le pixel</h3>
+  <p>Le pixel n’est pas à jeter : il reste la meilleure source pour les signaux <em>navigateur</em> précieux à la correspondance — le cookie <code>_fbp</code>, le paramètre de clic <code>fbc</code> (issu du <code>fbclid</code>), le <code>user-agent</code>, le contexte de la page. Croisés avec la CAPI, ils font grimper la qualité de correspondance. La bonne architecture n’oppose donc pas pixel et CAPI : elle les fait travailler ensemble, avec un même <code>event_id</code> pour dédupliquer (section 8).</p>
+  <table>
+    <thead><tr><th>Source</th><th>Résiste à l’adblock ?</th><th>Résiste à l’ITP ?</th><th>Survit à l’onglet fermé ?</th><th>Signaux navigateur (fbp/fbc)</th></tr></thead>
+    <tbody>
+      <tr><td>Pixel (navigateur)</td><td>Non</td><td>Partiellement</td><td>Non</td><td>Oui, source native</td></tr>
+      <tr><td>CAPI (serveur)</td><td>Oui</td><td>Oui</td><td>Oui</td><td>Seulement si le pixel les a transmis</td></tr>
+    </tbody>
+  </table>
+  <div class="warn">
+    <p style="margin:0">Un piège fréquent : croire que la CAPI « remplace » le pixel et le retirer. On perd alors les signaux navigateur (<code>fbp</code>, <code>fbc</code>) et la qualité de correspondance chute. Gardez les deux et dédupliquez.</p>
+  </div>
+  <h3>Mini-checklist — Pixel Meta</h3>
+  <ul>
+    <li>☐ Pixel déclenché seulement après consentement</li>
+    <li>☐ Transmission de fbp / fbc vers le serveur (pour la CAPI)</li>
+    <li>☐ eventID passé sur chaque événement clé (déduplication)</li>
+    <li>☐ Ne pas retirer le pixel au profit de la seule CAPI</li>
+  </ul>
+
+  <div class="page-break"></div>
+  <h2>7. La Conversions API (CAPI) côté serveur</h2>
+  <p>La <strong>Conversions API</strong> (CAPI) de Meta envoie les événements <em>depuis votre serveur</em> directement à Meta, sans dépendre du navigateur. Un adblock ne peut pas la bloquer, l’ITP ne l’affecte pas, elle survit aux onglets fermés. C’est le canal robuste qui complète — et ne remplace pas — le pixel.</p>
+  <div class="box">
+    <p style="margin:0"><strong>Point de conformité essentiel :</strong> la CAPI ne dispense pas du consentement. Elle transmet des données personnelles (email, téléphone…) à Meta et exige donc, elle aussi, l’accord de l’internaute. Ce n’est pas une porte dérobée pour tracer ceux qui ont refusé : c’est une voie <em>plus fiable</em> pour mesurer ceux qui ont accepté.</p>
+  </div>
+
+  <h3>Ce qu’on envoie (et comment)</h3>
+  <p>La CAPI accepte des <strong>paramètres de correspondance</strong> (matching) qui permettent à Meta de relier l’événement à un compte. Les identifiants directs (email, téléphone) doivent être <strong>hachés en SHA-256</strong> avant l’envoi — jamais en clair — après normalisation (email en minuscules sans espaces, téléphone au format international sans séparateurs). Plus vous fournissez de paramètres de qualité, plus l’EMQ (section 12) monte.</p>
+  <table>
+    <thead><tr><th>Paramètre</th><th>Traitement avant envoi</th><th>Impact sur la correspondance</th></tr></thead>
+    <tbody>
+      <tr><td><code>em</code> (email)</td><td>Minuscules, trim, SHA-256</td><td>Très élevé</td></tr>
+      <tr><td><code>ph</code> (téléphone)</td><td>Format E.164 sans « + », SHA-256</td><td>Élevé</td></tr>
+      <tr><td><code>fbc</code> / <code>fbp</code></td><td>Repris du navigateur, non hachés</td><td>Élevé (déterministe)</td></tr>
+      <tr><td><code>client_ip_address</code> / <code>client_user_agent</code></td><td>Non hachés, requis</td><td>Moyen</td></tr>
+      <tr><td><code>fn</code>, <code>ln</code>, <code>ct</code>, <code>zp</code></td><td>Normalisés puis SHA-256</td><td>Complémentaire</td></tr>
+    </tbody>
+  </table>
+  <div class="tpl">
+    <div class="label">Gabarit — événement CAPI côté serveur (structure)</div>
+    <div class="body">{
+  "event_name": "Purchase",
+  "event_time": 1754732400,
+  "event_id": "purch_8f2a1c9e-2026",   // même valeur que le pixel : voir §8
+  "action_source": "website",
+  "event_source_url": "https://exemple.fr/merci",
+  "user_data": {
+    "em": ["&lt;sha256(email)&gt;"],         // haché, jamais en clair
+    "ph": ["&lt;sha256(telephone)&gt;"],
+    "client_ip_address": "…",
+    "client_user_agent": "…",
+    "fbc": "fb.1.&lt;timestamp&gt;.&lt;fbclid&gt;", // clic Meta
+    "fbp": "fb.1.&lt;timestamp&gt;.&lt;id&gt;"      // cookie navigateur
+  },
+  "custom_data": { "value": 149.00, "currency": "EUR" }
+}</div>
+  </div>
+
+  <h3>Le principe de la double remontée</h3>
+  <p>La CAPI est un second chemin indépendant vers Meta. Le pixel emprunte la route « navigateur » : rapide et riche en contexte, mais exposée aux blocages. La CAPI emprunte la route « serveur » : robuste, insensible aux adblocks et à l’ITP, mais qui ne connaît que ce que votre serveur sait. Pour la même conversion, les deux partent en parallèle : là où le pixel échoue (bloqué, expiré, onglet fermé), la CAPI passe quand même ; là où le pixel réussit, il apporte les signaux navigateur que le serveur n’a pas. Avec la déduplication qui empêche le double comptage (section 8), cette complémentarité — pas la CAPI seule — restaure le signal.</p>
+  <h3>Où faire tourner la CAPI</h3>
+  <p>Trois implémentations coexistent, du plus simple au plus contrôlé : l’<strong>intégration native e-commerce</strong> (Shopify, WooCommerce, module — effort faible, paramètres limités) ; une <strong>CAPI Gateway / partenaire</strong> (effort moyen, peu de code) ; le <strong>sGTM</strong> (serveur GTM, section 10 — effort élevé, contrôle maximal : déduplication, enrichissement, filtrage).</p>
+  <div class="warn">
+    <p style="margin:0">Le <code>event_time</code> doit être proche de l’instant réel de l’événement : Meta rejette les événements trop anciens (fenêtre de quelques jours). En envoi différé (batch nocturne), conservez l’horodatage d’origine, pas celui de l’envoi.</p>
+  </div>
+
+  <h3>Les erreurs de mise en œuvre les plus fréquentes</h3>
+  <p>Quelques fautes reviennent constamment et sabotent une CAPI pourtant « installée » : l’email haché <em>sans</em> normalisation préalable (correspondance perdue, EMQ bas → minuscules + trim avant SHA-256) ; l’envoi de données même en cas de refus (infraction RGPD → conditionner au consentement) ; un <code>event_id</code> absent ou différent du pixel (double comptage → dériver du <code>transaction_id</code>) ; les <code>fbp</code>/<code>fbc</code> jamais transmis au serveur (correspondance faible → lire les cookies et les passer au backend) ; la <code>value</code> manquante sur Purchase (ROAS incalculable → toujours envoyer <code>value</code> + <code>currency</code>).</p>
+  <h3>Mini-checklist — CAPI</h3>
+  <ul>
+    <li>☐ CAPI conditionnée au consentement, comme le pixel</li>
+    <li>☐ Email / téléphone normalisés puis hachés SHA-256</li>
+    <li>☐ fbp / fbc transmis pour la correspondance déterministe</li>
+    <li>☐ event_id présent et identique au pixel</li>
+    <li>☐ event_time proche de l’instant réel de la conversion</li>
+  </ul>
+
+  <div class="page-break"></div>
+  <h2>8. La déduplication navigateur + serveur (event_id)</h2>
+  <p>Si vous envoyez le même achat par le <strong>pixel</strong> (navigateur) <em>et</em> par la <strong>CAPI</strong> (serveur), Meta risque de compter deux conversions. La <strong>déduplication</strong> évite ce double comptage — le point techniquement le plus raté sur le terrain. La règle est simple : les deux envois doivent partager le <strong>même identifiant d’événement</strong>, et Meta n’en garde alors qu’un. La correspondance repose sur deux clés :</p>
+  <ul>
+    <li><strong><code>event_id</code></strong> : un identifiant unique par événement, <em>identique</em> côté pixel et côté serveur.</li>
+    <li><strong><code>event_name</code></strong> : le nom de l’événement, qui doit lui aussi correspondre (Purchase = Purchase).</li>
+  </ul>
+  <div class="tpl">
+    <div class="label">Gabarit — un event_id partagé entre pixel et CAPI</div>
+    <div class="body">// 1) Générez l'identifiant UNE seule fois côté page :
+const eventId = "purch_" + crypto.randomUUID();
+
+// 2) Pixel (navigateur) — on passe eventID :
+fbq('track', 'Purchase',
+    { value: 149.00, currency: 'EUR' },
+    { eventID: eventId });
+
+// 3) Envoyez CE MÊME eventId au serveur (dataLayer / fetch),
+//    qui le place dans le champ "event_id" de la CAPI.
+//    → Meta déduplique : 1 achat compté, pas 2.</div>
+  </div>
+
+  <h3>Pourquoi le double comptage est si insidieux</h3>
+  <p>Le double comptage ne provoque aucune alerte : les chiffres montent, donnant l’illusion d’un meilleur résultat. Un compte qui compte chaque achat deux fois affiche un ROAS artificiellement doublé, et l’annonceur gonfle les budgets sur des campagnes deux fois moins performantes qu’il ne croit. À l’inverse, une déduplication trop agressive (<code>event_id</code> réutilisé pour plusieurs achats) fait <em>disparaître</em> des ventes réelles. Le bon <code>event_id</code> est donc unique par événement <em>et</em> stable pour un même événement. La règle qui évite 90 % des bugs : le générer <em>une seule fois</em>, en amont, en le dérivant du <code>transaction_id</code>, puis le propager à l’identique vers le pixel <em>et</em> le serveur — jamais le régénérer entre les deux. Dérivé de l’ID de commande, il reste stable même si la page de remerciement est rechargée.</p>
+  <table>
+    <thead><tr><th>Symptôme observé dans Meta</th><th>Cause probable</th></tr></thead>
+    <tbody>
+      <tr><td>Conversions ~ ×2 par rapport au back-office</td><td>event_id différent (ou absent) entre pixel et CAPI</td></tr>
+      <tr><td>« Dédupliqué » n’apparaît jamais</td><td>event_name ou event_id non concordants</td></tr>
+      <tr><td>Achats page de merci rechargée comptés plusieurs fois</td><td>event_id régénéré à chaque chargement (utiliser transaction_id)</td></tr>
+    </tbody>
+  </table>
+  <div class="tip">
+    <p style="margin:0"><strong>Vérification terrain.</strong> Dans le <em>Gestionnaire d’événements Meta</em>, ouvrez un Purchase récent : la ligne doit indiquer qu’il a été reçu par le pixel <em>et</em> la CAPI, avec la mention « dédupliqué ». Sinon, votre budget est optimisé sur des chiffres gonflés.</p>
+  </div>
+  <div class="warn">
+    <p style="margin:0">La déduplication de Meta s’appuie prioritairement sur la paire <code>event_id</code> + <code>event_name</code>. Sans <code>event_id</code>, Meta tente une déduplication de secours sur <code>fbp</code> + horodatage, bien moins fiable. Fournissez toujours un <code>event_id</code>.</p>
+  </div>
+  <h3>Mini-checklist — Déduplication</h3>
+  <ul>
+    <li>☐ event_id généré une seule fois, dérivé de transaction_id</li>
+    <li>☐ Même event_id et même event_name côté pixel et CAPI</li>
+    <li>☐ Mention « dédupliqué » vérifiée dans le Gestionnaire d’événements</li>
+    <li>☐ Comparaison au back-office : pas de doublement des chiffres</li>
+  </ul>
+
+  <div class="page-break"></div>
+  <h2>9. iOS ATT &amp; la perte de signal : reconstruire la mesure</h2>
+  <p>Depuis iOS 14.5, le cadre <strong>ATT (App Tracking Transparency)</strong> d’Apple impose une invite : « Autorisez-vous l’app à vous suivre ? » La majorité des utilisateurs refuse (souvent 75 à 85 %), et le signal issu des utilisateurs iPhone provenant d’une app (Instagram, Facebook) s’effondre. On ne « contourne » pas ATT — c’est le choix légitime de l’utilisateur. On <strong>reconstruit</strong> la mesure autrement :</p>
+  <ul>
+    <li><strong>CAPI + correspondance avancée</strong> : en remontant des identifiants hachés côté serveur (email, téléphone), Meta relie davantage d’événements même quand le navigateur / l’app est muet.</li>
+    <li><strong>Aggregated Event Measurement (AEM)</strong> : le système d’événements agrégés de Meta, où vous priorisez jusqu’à 8 événements par domaine. Il faut <strong>vérifier son domaine</strong> dans le Business Manager et configurer cette priorisation, sinon l’optimisation post-ATT est bridée.</li>
+    <li><strong>Modélisation</strong> : Meta comme Google comblent statistiquement une partie du trou à partir des utilisateurs mesurables.</li>
+  </ul>
+
+  <h3>AEM : prioriser ses 8 événements</h3>
+  <p>Post-ATT, Meta n’optimise que sur un nombre restreint d’événements par domaine, classés par priorité — à vous de décider l’ordre. Pour un e-commerce, l’achat en haut ; pour un site de leads, le lead qualifié.</p>
+  <div class="tpl">
+    <div class="label">Gabarit — priorisation AEM (exemple e-commerce)</div>
+    <div class="body">Priorité 1 : Purchase
+Priorité 2 : InitiateCheckout
+Priorité 3 : AddToCart
+Priorité 4 : ViewContent
+Priorité 5 : Lead / Newsletter
+… jusqu'à 8 événements max, par domaine vérifié</div>
+  </div>
+  <div class="warn">
+    <p style="margin:0">Sans domaine vérifié ni CAPI, un compte publicitaire post-ATT « pilote à l’aveugle » sur le trafic iOS. C’est souvent l’explication d’un ROAS qui semble s’être effondré sans raison : ce n’est pas la performance qui a chuté, c’est la <em>mesure</em>.</p>
+  </div>
+  <p>La fenêtre d’attribution rétrécit aussi : post-ATT, les fenêtres par défaut se sont resserrées (souvent 7 jours au clic, 1 jour à la vue), donc les ventes à cycle long apparaissent encore moins — la CAPI, en fiabilisant la correspondance, aide à en récupérer une partie.</p>
+
+  <h3>ATT vs consentement web : ne pas confondre</h3>
+  <p>L’invite ATT concerne le suivi <em>in-app</em> : elle s’affiche dans les applications (dont Facebook et Instagram) et régit leur capacité à relier votre activité à d’autres apps et sites. Le consentement cookies de votre site relève, lui, de la CMP et du RGPD/ePrivacy. Deux mécanismes distincts. Un utilisateur peut avoir refusé l’ATT dans Instagram <em>et</em> accepté vos cookies sur votre site : votre CAPI, alimentée par ce consentement web valide, reste alors parfaitement légitime pour mesurer sa conversion. C’est là que la CAPI reprend le relais du signal in-app effondré : le trafic est arrivé sur votre terrain (le web), où c’est votre consentement qui fait foi.</p>
+  <div class="box">
+    <p style="margin:0"><strong>La leçon stratégique.</strong> Post-ATT, la valeur se déplace vers les données que <em>vous</em> collectez en propre avec consentement : email de compte client, historique d’achat, CRM. Hachées et envoyées via CAPI, ces données first-party deviennent votre meilleur actif de mesure — celui qu’aucune plateforme tierce ne peut vous retirer. Construire sa base opt-in n’est plus seulement une action CRM : c’est une stratégie de mesure.</p>
+  </div>
+  <h3>Mini-checklist — iOS ATT</h3>
+  <ul>
+    <li>☐ Domaine vérifié dans le Business Manager</li>
+    <li>☐ 8 événements AEM priorisés (achat/lead en tête)</li>
+    <li>☐ CAPI avec correspondance avancée activée</li>
+    <li>☐ Fenêtres d’attribution comprises et communiquées en interne</li>
+  </ul>
+
+  <div class="page-break"></div>
+  <h2>10. Server-side tagging (sGTM) en détail</h2>
+  <p>Le <strong>server-side tagging</strong> (Google Tag Manager en mode serveur, dit <strong>sGTM</strong>) déplace la collecte du navigateur vers un conteneur que <em>vous</em> hébergez, sur votre propre sous-domaine. Le navigateur envoie une seule requête à votre serveur, qui redistribue ensuite vers GA4, la CAPI Meta, Google Ads, etc.</p>
+
+  <h3>Comment ça marche, concrètement</h3>
+  <p>Vous déployez un conteneur GTM « serveur » (sur Google Cloud ou chez un hébergeur spécialisé) et le rattachez à un sous-domaine de <em>votre</em> site — par exemple <code>sgtm.exemple.fr</code>. Le navigateur n’envoie plus ses données directement à Google et Meta, mais à ce sous-domaine perçu comme first-party. Le conteneur reçoit la requête, l’enrichit ou la nettoie, puis la relaie vers chaque destination via des <em>clients</em> et <em>tags</em> serveur.</p>
+  <div class="tpl">
+    <div class="label">Gabarit — flux server-side</div>
+    <div class="body">Navigateur ──► sgtm.exemple.fr (votre sous-domaine, 1st party)
+                 │
+                 ├─► GA4 (Measurement Protocol)
+                 ├─► Meta CAPI (avec event_id partagé)
+                 └─► Google Ads (conversions)
+      (filtrage, pseudonymisation, cookies HTTP posés ici)</div>
+  </div>
+
+  <h3>Les vrais bénéfices</h3>
+  <ul>
+    <li><strong>Contrôle des données</strong> : vous décidez ce qui part, où et sous quelle forme — pseudonymiser, filtrer, retirer des champs avant tout envoi à un tiers. Un vrai atout de conformité.</li>
+    <li><strong>Cookies first-party robustes</strong> : posés côté serveur (en-tête HTTP <code>Set-Cookie</code>), ils échappent au plafond de 7 jours de l’ITP.</li>
+    <li><strong>Résistance aux adblocks</strong> : la collecte transite par votre domaine, moins ciblé par les listes de blocage.</li>
+    <li><strong>Performance de page</strong> : moins de scripts tiers dans le navigateur, donc un site plus rapide (bon pour le SEO et la conversion).</li>
+  </ul>
+
+  <h3>Le point de vigilance : le consentement voyage aussi</h3>
+  <div class="warn">
+    <p style="margin:0">Passer en server-side ne dispense JAMAIS du consentement : son statut doit être transmis au conteneur serveur et respecté par chaque tag. Un sGTM qui enverrait à Meta des données d’utilisateurs ayant refusé serait une infraction aggravée — invisible pour l’utilisateur, donc particulièrement scrutée.</p>
+  </div>
+
+  <h3>Quand ça ne vaut pas (encore) le coup</h3>
+  <p>Le sGTM a un coût : hébergement du conteneur (quelques dizaines d’euros par mois au minimum), mise en place, maintenance. En dessous d’un certain volume (petit e-commerce, faible budget média), le gain de signal ne rentabilise pas toujours l’effort.</p>
+  <table>
+    <thead><tr><th>Situation</th><th>sGTM justifié ?</th></tr></thead>
+    <tbody>
+      <tr><td>Budget média &lt; 5 000 €/mois, faible trafic Safari</td><td>Rarement — priorité au trio bannière + Consent Mode + CAPI native</td></tr>
+      <tr><td>E-commerce établi, budget &gt; 15–20 000 €/mois</td><td>Souvent oui, le gain de signal est rentable</td></tr>
+      <tr><td>Exigence forte de contrôle/localisation des données</td><td>Oui, quel que soit le volume</td></tr>
+      <tr><td>Site très pénalisé par ITP/adblock</td><td>Oui</td></tr>
+    </tbody>
+  </table>
+  <p>La bonne séquence est presque toujours : <strong>1)</strong> bannière conforme, <strong>2)</strong> Consent Mode v2 advanced, <strong>3)</strong> CAPI avec déduplication, <strong>4)</strong> puis, si le volume le justifie, migration vers le sGTM.</p>
+
+  <div class="tip">
+    <p style="margin:0"><strong>Migration sans casse.</strong> Ne basculez jamais tout d’un coup : dédoublez d’abord (le tag continue en client-side pendant que le serveur monte en charge), comparez les volumes une à deux semaines, puis basculez une fois la parité vérifiée. Une recette complète (section 13) est indispensable avant de couper l’ancien chemin.</p>
+  </div>
+  <h3>Mini-checklist — sGTM</h3>
+  <ul>
+    <li>☐ Conteneur serveur sur un sous-domaine first-party</li>
+    <li>☐ Statut de consentement transmis et respecté par chaque tag serveur</li>
+    <li>☐ Cookies posés en HTTP (Set-Cookie) pour contourner l’ITP</li>
+    <li>☐ Filtrage / pseudonymisation avant envoi aux tiers</li>
+    <li>☐ Décision fondée sur le volume et le ROI, pas sur la mode</li>
+  </ul>
+
+  <div class="page-break"></div>
+  <h2>11. Le plan de taggage &amp; le dataLayer : la fondation oubliée</h2>
+  <p>Avant tout pixel, avant toute CAPI, une couche invisible commande tout : le <strong>dataLayer</strong> et le <strong>plan de taggage</strong>. C’est le contrat qui décrit, événement par événement, quelles données le site expose à GTM. Un tracking mal mesuré vient neuf fois sur dix d’un dataLayer bâclé, pas d’un mauvais réglage de plateforme.</p>
+
+  <h3>Qu’est-ce qu’un plan de taggage ?</h3>
+  <p>C’est un document (souvent un tableur) qui liste chaque événement à mesurer, son nom exact, ses paramètres, son déclencheur et ses destinations. Il aligne le marketing, la technique et l’analyse autour d’un vocabulaire commun. Sans lui, chaque intervenant nomme les choses à sa façon et les données deviennent incomparables.</p>
+  <table>
+    <thead><tr><th>Événement</th><th>Déclencheur</th><th>Paramètres clés</th><th>Destinations</th></tr></thead>
+    <tbody>
+      <tr><td><code>view_item</code></td><td>Vue fiche produit</td><td>item_id, value, currency</td><td>GA4, Meta (ViewContent)</td></tr>
+      <tr><td><code>add_to_cart</code></td><td>Ajout au panier</td><td>item_id, value, quantity</td><td>GA4, Meta (AddToCart)</td></tr>
+      <tr><td><code>begin_checkout</code></td><td>Entrée tunnel</td><td>value, currency, items</td><td>GA4, Meta (InitiateCheckout)</td></tr>
+      <tr><td><code>purchase</code></td><td>Page de confirmation</td><td>transaction_id, value, event_id</td><td>GA4, Meta (Purchase + CAPI)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Le dataLayer : une seule source de vérité</h3>
+  <p>Le <code>dataLayer</code> est un objet JavaScript standard que le site remplit et que GTM lit. La règle d’or : <strong>toutes</strong> les données utiles à la mesure y transitent, dans un format stable et documenté. GTM ne « gratte » jamais le HTML ; il lit le dataLayer — ce qui rend le tracking robuste aux refontes graphiques.</p>
+  <div class="tpl">
+    <div class="label">Gabarit — push dataLayer normalisé (achat)</div>
+    <div class="body">window.dataLayer = window.dataLayer || [];
+dataLayer.push({
+  event: 'purchase',
+  transaction_id: 'CMD-10482',
+  event_id: 'purch_CMD-10482',   // = dérivé de l'ID commande, réutilisé par pixel + CAPI
+  value: 149.00,
+  currency: 'EUR',
+  user: { email_sha256: '…', phone_sha256: '…' } // déjà haché côté serveur idéalement
+});</div>
+  </div>
+  <div class="tip">
+    <p style="margin:0"><strong>Où hacher ?</strong> Idéalement, l’email et le téléphone sont hachés côté serveur avant d’atteindre le navigateur, ou directement dans le conteneur sGTM. Éviter d’exposer des identifiants en clair dans le dataLayer côté page réduit la surface de risque.</p>
+  </div>
+  <div class="warn">
+    <p style="margin:0">Le péché capital : nommer les événements différemment selon les pages (<code>purchase</code>, <code>Purchase</code>, <code>achat_ok</code>…). GTM et les plateformes sont sensibles à la casse et aux libellés. Fixez la nomenclature dans le plan de taggage et ne la changez jamais sans le mettre à jour.</p>
+  </div>
+  <h3>Mini-checklist — Plan de taggage &amp; dataLayer</h3>
+  <ul>
+    <li>☐ Plan de taggage documenté (événement, params, déclencheur, destinations)</li>
+    <li>☐ Nomenclature d’événements figée et respectée (casse comprise)</li>
+    <li>☐ Toutes les données de mesure passent par le dataLayer</li>
+    <li>☐ event_id présent dès le push, dérivé de transaction_id</li>
+    <li>☐ Identifiants hachés le plus en amont possible</li>
+  </ul>
+
+  <div class="page-break"></div>
+  <h2>12. Mesurer la qualité (EMQ, taux de consentement, écart d’attribution)</h2>
+  <p>Un dispositif de tracking se pilote comme une campagne, avec des indicateurs. Trois comptent avant tout.</p>
+  <table>
+    <thead><tr><th>Indicateur</th><th>Ce qu’il mesure</th><th>Cible</th></tr></thead>
+    <tbody>
+      <tr><td><strong>EMQ</strong> (Event Match Quality)</td><td>Note de 0 à 10 dans Meta : qualité des paramètres de correspondance envoyés (email, téléphone, fbc/fbp…).</td><td>Viser 7+ ; en dessous de 5, la correspondance est faible.</td></tr>
+      <tr><td><strong>Taux de consentement</strong></td><td>Part des visiteurs qui acceptent les cookies. Se lit dans la CMP.</td><td>50 à 70 % avec une bannière bien conçue.</td></tr>
+      <tr><td><strong>Écart d’attribution</strong></td><td>Différence entre conversions réelles (back-office) et conversions remontées aux plateformes.</td><td>Réduire l’écart ; un delta &gt; 30 % signale une fuite de mesure.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Interpréter chaque indicateur sans se tromper</h3>
+  <p>Ils s’enchaînent dans un ordre logique : le <strong>taux de consentement</strong> est la porte d’entrée (un taux faible plafonne tout le reste), l’<strong>EMQ</strong> mesure la <em>qualité</em> de ce que vous envoyez pour les consentants, et l’<strong>écart d’attribution</strong> est le juge de paix — faible, il confirme que toute la chaîne (consentement, pixel, CAPI, déduplication) fonctionne de bout en bout. On agit donc dans cet ordre : d’abord le consentement, puis l’EMQ, l’écart validant le tout.</p>
+  <h3>Faire monter l’EMQ, paramètre par paramètre</h3>
+  <p>L’EMQ se construit : chaque paramètre ajouté et correctement formaté le fait grimper. Impact typique : l’email haché rapporte +2 à +3 points, le téléphone haché +1 à +2, le couple <code>fbc</code> + <code>fbp</code> +1 à +2 (correspondance déterministe), les prénom/nom/ville/CP hachés +0,5 à +1 ; corriger un email mal normalisé (espaces, casse) récupère à lui seul une correspondance perdue.</p>
+
+  <h3>Le tableau de bord de pilotage</h3>
+  <p>Suivez ces indicateurs chaque semaine dans un même tableau, à côté du chiffre d’affaires back-office.</p>
+  <div class="tpl">
+    <div class="label">Gabarit — suivi hebdomadaire</div>
+    <div class="body">Semaine | Ventes back-office | Conv. Meta | Conv. Google | Écart % | EMQ | Taux consent.
+S-12    | 214                | 148        | 161          | -31 %   | 5,1 | 52 %
+S-08    | 227                | 189        | 198          | -14 %   | 7,4 | 61 %
+S-04    | 233                | 214        | 220          |  -7 %   | 8,2 | 63 %
+→ objectif : écart &lt; 10 %, EMQ ≥ 7, consentement ≥ 55 %</div>
+  </div>
+  <div class="warn">
+    <p style="margin:0">Un écart d’attribution qui <em>remonte</em> soudainement (sans changement de trafic) est une alerte : mise à jour navigateur, tag cassé après une refonte, CMP modifiée. Le suivi hebdomadaire transforme ces incidents invisibles en signaux détectables en quelques jours.</p>
+  </div>
+  <h3>Mini-checklist — Qualité</h3>
+  <ul>
+    <li>☐ EMQ suivi et maintenu ≥ 7</li>
+    <li>☐ Taux de consentement suivi dans la CMP</li>
+    <li>☐ Écart back-office / plateformes calculé chaque semaine</li>
+    <li>☐ Alerte posée sur toute remontée soudaine de l’écart</li>
+  </ul>
+
+  <div class="page-break"></div>
+  <h2>13. Recette de test &amp; débogage : valider avant de se fier aux chiffres</h2>
+  <p>Un tracking « installé » n’est pas un tracking « qui marche ». Entre les deux, il y a la recette : une série de vérifications concrètes, dans les bons outils, qui confirment que chaque événement part avec les bons paramètres, dans le bon état de consentement, sans doublon. Sauter cette étape, c’est optimiser des budgets sur des chiffres jamais vérifiés.</p>
+
+  <h3>Les outils de contrôle, un par couche</h3>
+  <table>
+    <thead><tr><th>Couche</th><th>Outil de vérification</th><th>Ce qu’on regarde</th></tr></thead>
+    <tbody>
+      <tr><td>dataLayer / GTM</td><td>GTM Preview (Tag Assistant)</td><td>Événements poussés, tags déclenchés, variables lues</td></tr>
+      <tr><td>Consent Mode</td><td>Tag Assistant / onglet Consent</td><td>État denied → granted au bon moment</td></tr>
+      <tr><td>GA4</td><td>DebugView + rapport temps réel</td><td>Événements et paramètres reçus</td></tr>
+      <tr><td>Pixel Meta</td><td>Meta Pixel Helper</td><td>Événement navigateur + eventID présent</td></tr>
+      <tr><td>CAPI + déduplication</td><td>Gestionnaire d’événements Meta</td><td>Reçu pixel + serveur, mention « dédupliqué »</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Le protocole de recette (à dérouler dans l’ordre)</h3>
+  <div class="tpl">
+    <div class="label">Gabarit — recette d’un tunnel e-commerce</div>
+    <div class="body">1. Ouvrir GTM Preview + Meta Pixel Helper + GA4 DebugView
+2. Charger la page → VÉRIFIER : aucun tag marketing avant consentement
+3. Cliquer « Refuser » → VÉRIFIER : toujours aucun tag ads/analytics
+4. Recharger, cliquer « Accepter » → VÉRIFIER : consent passe à granted
+5. Parcourir : view_item, add_to_cart, begin_checkout → chaque event
+   apparaît dans GTM + GA4 + Pixel Helper avec les bons paramètres
+6. Finaliser un achat test → Purchase avec value, currency, event_id
+7. Dans le Gestionnaire d'événements Meta : Purchase reçu pixel + CAPI,
+   ligne « dédupliqué » présente
+8. Comparer le montant remonté au montant réel de la commande test</div>
+  </div>
+
+  <h3>Les erreurs qu’on attrape ainsi</h3>
+  <ul>
+    <li><strong>Tag qui part avant consentement</strong> — infraction CNIL, visible dès l’étape 2.</li>
+    <li><strong>Valeur d’achat manquante ou à 0</strong> — la plus fréquente, casse le ROAS.</li>
+    <li><strong>Devise absente ou incohérente</strong> — Meta/Google convertissent mal la valeur.</li>
+    <li><strong>event_id absent d’un côté</strong> — double comptage garanti.</li>
+    <li><strong>Double déclenchement du Purchase</strong> — page de merci rechargée sans garde.</li>
+  </ul>
+  <div class="tip">
+    <p style="margin:0"><strong>Faites une recette après chaque changement de site.</strong> Une refonte, un changement de thème Shopify, une mise à jour de plugin peuvent casser un tag silencieusement. La recette de 15 minutes vaut mieux qu’un mois de budget à l’aveugle.</p>
+  </div>
+  <div class="warn">
+    <p style="margin:0">Testez toujours dans les deux états de consentement (accepté <em>et</em> refusé). Un dispositif qui « marche » quand on accepte tout peut déclencher illégalement des tags quand on refuse : c’est précisément ce cas qui expose à la sanction.</p>
+  </div>
+  <h3>Mini-checklist — Recette</h3>
+  <ul>
+    <li>☐ Test en état « refusé » : aucun tag marketing ne part</li>
+    <li>☐ Test en état « accepté » : consent passe à granted, tags OK</li>
+    <li>☐ Chaque événement du tunnel vérifié dans GTM + GA4 + Pixel Helper</li>
+    <li>☐ Purchase : value, currency, event_id présents et corrects</li>
+    <li>☐ Déduplication confirmée dans le Gestionnaire d’événements Meta</li>
+    <li>☐ Recette rejouée après chaque changement de site</li>
+  </ul>
+
+  <div class="page-break"></div>
+  <h2>14. Checklist conformité · FAQ · Glossaire</h2>
+  <h3>Checklist conformité + performance</h3>
+  <ul>
+    <li>☐ CMP installée, aucun traceur non essentiel avant le choix de l’internaute</li>
+    <li>☐ « Tout refuser » aussi accessible que « Tout accepter »</li>
+    <li>☐ Journal de consentement horodaté et conservé (preuve)</li>
+    <li>☐ Lien permanent « Gérer les cookies » sur tout le site</li>
+    <li>☐ Consent Mode v2 (advanced) branché sur la CMP, 4 signaux pilotés</li>
+    <li>☐ GA4 avec durée de conservation réglée et données pseudonymisées</li>
+    <li>☐ Plan de taggage &amp; dataLayer documentés, nomenclature figée</li>
+    <li>☐ Pixel Meta ET Conversions API en place</li>
+    <li>☐ Déduplication vérifiée (même <code>event_id</code> pixel + serveur)</li>
+    <li>☐ Domaine vérifié dans le Business Manager + AEM configuré (iOS)</li>
+    <li>☐ Identifiants hachés en SHA-256 côté serveur, jamais en clair</li>
+    <li>☐ EMQ ≥ 7 et écart d’attribution suivi chaque semaine</li>
+    <li>☐ Recette réalisée dans les deux états de consentement</li>
+    <li>☐ Registre des traitements &amp; mentions à jour (page « Politique cookies »)</li>
+  </ul>
+
+  <h3>FAQ express</h3>
+  <p><strong>La CAPI me permet-elle de tracer ceux qui ont refusé ?</strong> Non. Elle reste soumise au consentement et fiabilise la mesure des seuls consentants.</p>
+  <p><strong>Le Consent Mode remplace-t-il la bannière ?</strong> Non. La bannière recueille le choix ; le Consent Mode ne fait que le transmettre à Google. Les deux sont complémentaires.</p>
+  <p><strong>Puis-je tout mesurer sans cookie ?</strong> Partiellement. La modélisation (Google, Meta) et la mesure d’audience exemptée récupèrent une part du signal, mais un dispositif complet combine consentement, serveur et modélisation.</p>
+  <p><strong>Le server-side me met-il en conformité automatiquement ?</strong> Non. Le sGTM améliore le contrôle des données, mais le consentement doit y voyager et être respecté par chaque tag serveur. Mal câblé, il aggrave le risque.</p>
+  <p><strong>Dois-je retirer le pixel une fois la CAPI en place ?</strong> Non. On garde les deux et on déduplique : le pixel fournit des signaux navigateur (fbp/fbc) précieux à la correspondance.</p>
+  <p><strong>Combien de temps pour tout mettre en place ?</strong> Le trio bannière + Consent Mode + CAPI dédupliquée se déploie en quelques jours à deux semaines selon la plateforme ; le sGTM ajoute quelques jours.</p>
+
+  <h3>Glossaire</h3>
+  <ul>
+    <li><strong>CMP</strong> — Consent Management Platform : la bannière et son moteur de consentement.</li>
+    <li><strong>Consent Mode v2</strong> — mécanisme Google traduisant le choix cookies en signaux (ad_storage, analytics_storage, ad_user_data, ad_personalization).</li>
+    <li><strong>CAPI</strong> — Conversions API : envoi des événements de conversion serveur-à-serveur vers Meta.</li>
+    <li><strong>event_id</strong> — identifiant unique partagé pixel/serveur pour dédupliquer.</li>
+    <li><strong>dataLayer</strong> — objet JavaScript standard où le site expose ses données de mesure à GTM.</li>
+    <li><strong>fbp / fbc</strong> — cookie first-party Meta / paramètre de clic issu du fbclid, clés de correspondance.</li>
+    <li><strong>ITP</strong> — Intelligent Tracking Prevention : limitation des cookies par Safari.</li>
+    <li><strong>ATT</strong> — App Tracking Transparency : l’invite de suivi d’Apple sur iOS.</li>
+    <li><strong>AEM</strong> — Aggregated Event Measurement : mesure agrégée priorisée de Meta post-ATT.</li>
+    <li><strong>sGTM</strong> — server-side Google Tag Manager : collecte hébergée côté serveur.</li>
+    <li><strong>EMQ</strong> — Event Match Quality : note de qualité de correspondance des événements Meta.</li>
+    <li><strong>Measurement Protocol</strong> — API d’envoi serveur des événements vers GA4.</li>
+    <li><strong>TCF v2.2</strong> — Transparency &amp; Consent Framework de l’IAB, cadre standardisé du consentement.</li>
+  </ul>
+
+  <div class="cta">
+    <h3>Vous voulez un tracking conforme ET performant, sans y passer vos nuits ?</h3>
+    <p>My-DTM installe et pilote pour vous l’ensemble : bannière conforme CNIL, Consent Mode v2, Conversions API, déduplication et suivi de la qualité. Vous récupérez le signal perdu, en règle.</p>
+    <p style="margin-top:14px"><a href="https://my-dtm.fr/services/tracking-conformite">→ Déléguer mon tracking &amp; ma conformité (à partir de 500 €) sur my-dtm.fr/services/tracking-conformite</a></p>
+  </div>
+
+  <p class="footer">© My-DTM — Agence digitale, Paris · my-dtm.fr · Ce guide a une visée pédagogique et ne constitue pas un conseil juridique. Pour une validation formelle, consultez votre DPO ou un avocat spécialisé. Usage personnel — revente et redistribution interdites.</p>
+</div>
+</body>
+</html>
