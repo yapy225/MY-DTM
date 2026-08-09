@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Sécuriser son site web — My-DTM</title>
+<style>
+  :root { --primary:#7c0dbe; --secondary:#4d71ee; --dark:#0e0a1a; --muted:#52525b; --soft:#f5f2fb; --border:#e7e1f3; --green:#10B981; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; color: var(--dark); line-height: 1.72; margin: 0; font-size: 12.5pt; }
+  .page { max-width: 800px; margin: 0 auto; padding: 56px 64px; }
+  h1 { font-size: 30pt; line-height: 1.12; margin: 0 0 8px; }
+  h2 { font-size: 19pt; margin: 36px 0 12px; color: var(--primary); border-bottom: 2px solid var(--border); padding-bottom: 6px; }
+  h3 { font-size: 13.5pt; margin: 22px 0 6px; }
+  p { margin: 8px 0; }
+  ul, ol { margin: 8px 0; padding-left: 22px; }
+  li { margin: 4px 0; }
+  .lead { font-size: 13pt; color: var(--muted); }
+  .eyebrow { text-transform: uppercase; letter-spacing: 3px; font-size: 9pt; font-weight: 800; color: var(--primary); }
+  .cover { min-height: 88vh; display: flex; flex-direction: column; justify-content: center; }
+  .badge { display: inline-block; background: var(--soft); border:1px solid var(--border); border-radius: 999px; padding: 4px 14px; font-size: 9.5pt; font-weight: 700; color: var(--primary); }
+  .box { background: var(--soft); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; margin: 16px 0; }
+  .tip { border-left: 4px solid var(--secondary); background: #eef2fe; border-radius: 0 10px 10px 0; padding: 12px 18px; margin: 14px 0; }
+  .warn { border-left: 4px solid #e0a106; background: #fdf6e3; border-radius: 0 10px 10px 0; padding: 12px 18px; margin: 14px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 10.5pt; }
+  th, td { border: 1px solid var(--border); padding: 7px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--primary); color: #fff; font-weight: 700; }
+  tr:nth-child(even) td { background: #faf8fe; }
+  .tpl { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; margin: 10px 0; }
+  .tpl .label { font-weight: 700; color: var(--primary); font-size: 10pt; }
+  .tpl .body { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 10pt; white-space: pre-wrap; margin-top: 6px; color: #1f2937; }
+  code { font-family: "SF Mono", Menlo, Consolas, monospace; background: #f1edfa; padding: 1px 5px; border-radius: 4px; font-size: 10.5pt; }
+  .footer { margin-top: 16px; font-size: 9pt; color: var(--muted); text-align: center; }
+  .cta { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #fff; border-radius: 14px; padding: 24px 28px; margin: 28px 0; }
+  .cta h3 { color: #fff; margin-top: 0; }
+  .cta a { color: #fff; font-weight: 800; }
+  .toc li { margin: 5px 0; }
+  @media print {
+    h2 { page-break-before: always; }
+    h2, h3 { page-break-after: avoid; }
+    .tpl, .box, .tip, .warn, table { page-break-inside: avoid; }
+    .page-break { page-break-before: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <section class="cover">
+    <span class="eyebrow">Guide premium · My-DTM</span>
+    <h1>Sécuriser son site web</h1>
+    <p class="lead">Rançongiciel, défiguration, vol de données, spam : un site n’est jamais « trop petit » pour être attaqué. Voici la méthode claire et concrète pour protéger votre site, vos clients et votre réputation — sans être expert en cybersécurité.</p>
+    <div style="margin-top:24px"><span class="badge">HTTPS · Mots de passe &amp; 2FA · Mises à jour · Sauvegardes · En-têtes · WordPress · Paiements · RGPD · Plan de réaction</span></div>
+    <p style="margin-top:40px; color:var(--muted); font-size:10pt">© My-DTM — Agence digitale, Paris · my-dtm.fr · Usage personnel. Revente et redistribution interdites.</p>
+  </section>
+
+  <div class="page-break"></div>
+
+  <h2>Sommaire</h2>
+  <ol class="toc">
+    <li>Pourquoi les PME sont des cibles (le mythe du « trop petit »)</li>
+    <li>HTTPS, TLS &amp; certificats : le socle</li>
+    <li>Mots de passe, gestionnaire &amp; double authentification (2FA)</li>
+    <li>Mises à jour &amp; dépendances (CMS, plugins, librairies)</li>
+    <li>Sauvegardes automatiques &amp; test de restauration</li>
+    <li>Les en-têtes de sécurité (HSTS, CSP, X-Frame-Options…)</li>
+    <li>Protéger les formulaires (spam, injections, honeypot, rate-limit)</li>
+    <li>Sécuriser WordPress en particulier</li>
+    <li>Sécurité des paiements &amp; e-commerce</li>
+    <li>RGPD &amp; données personnelles (la notification CNIL sous 72 h)</li>
+    <li>Hébergement, accès &amp; principe du moindre privilège</li>
+    <li>Détecter une intrusion (signes, monitoring, uptime)</li>
+    <li>Plan de réaction en cas de piratage</li>
+    <li>Checklist sécurité · FAQ · Glossaire</li>
+  </ol>
+
+  <div class="page-break"></div>
+
+  <h2>1. Pourquoi les PME sont des cibles (le mythe du « trop petit »)</h2>
+  <p>« Mon site est trop petit, personne ne va perdre son temps à l’attaquer. » C’est la phrase la plus dangereuse qu’on entend chez les entrepreneurs. Elle repose sur une image fausse du pirate : un humain qui vous vise personnellement. La réalité est tout autre. <strong>La grande majorité des attaques sont automatisées.</strong> Des robots parcourent le web en permanence, testent des millions d’adresses par jour et s’engouffrent dans la première faille venue, sans jamais savoir qui vous êtes ni ce que vous vendez. Un petit site de PME est même une <strong>cible privilégiée</strong> : moins bien protégé qu’une grande entreprise, rarement surveillé, sans équipe informatique. Vous n’êtes pas visé parce que vous êtes gros ou riche, mais parce que vous êtes <em>accessible</em>.</p>
+
+  <h3>Comment fonctionne une attaque automatisée</h3>
+  <p>Une attaque opportuniste typique se déroule en quatre temps, entièrement pilotés par des programmes :</p>
+  <ol>
+    <li><strong>Balayage</strong> : un robot scanne des plages entières d’adresses IP et de domaines à la recherche de sites vivants.</li>
+    <li><strong>Empreinte</strong> : il identifie la technologie (WordPress ? PrestaShop ? quelle version ?) via des indices publics dans les pages.</li>
+    <li><strong>Correspondance</strong> : il croise cette empreinte avec un catalogue de failles connues. Une version vulnérable apparaît dans sa liste.</li>
+    <li><strong>Exploitation</strong> : il envoie le « code d’attaque » correspondant. Si ça marche, il installe une porte dérobée et passe au site suivant.</li>
+  </ol>
+  <p>Tout cela se produit en quelques secondes, sur des milliers de sites à la fois. Aucun humain ne vous « choisit » : c’est une pêche au chalut, et votre site est pris dans le filet s’il présente une prise facile.</p>
+
+  <h3>Ce qu’un pirate cherche vraiment</h3>
+  <p>Contrairement à l’idée reçue, voler « les secrets de votre entreprise » est rarement le but. Un site compromis a une valeur marchande indépendamment de son contenu :</p>
+  <table>
+    <tr><th>Type d’attaque</th><th>Ce qui se passe concrètement</th><th>Conséquence pour vous</th></tr>
+    <tr><td>Rançongiciel (ransomware)</td><td>Vos fichiers et votre base sont chiffrés, on exige une rançon pour la clé.</td><td>Site à l’arrêt, données inaccessibles, chantage financier.</td></tr>
+    <tr><td>Défiguration (defacement)</td><td>Votre page d’accueil est remplacée par un message du pirate.</td><td>Réputation détruite en quelques heures, perte de confiance.</td></tr>
+    <tr><td>Vol de données</td><td>Emails, mots de passe, coordonnées clients ou bancaires sont exfiltrés.</td><td>Obligations RGPD, notification CNIL, plaintes clients, amende.</td></tr>
+    <tr><td>Détournement (spam / SEO black hat)</td><td>Votre serveur envoie du spam ou héberge des pages cachées de casinos/contrefaçons.</td><td>Adresse IP blacklistée, déréférencement Google, mails qui n’arrivent plus.</td></tr>
+    <tr><td>Minage / botnet</td><td>Votre hébergement est asservi pour miner de la cryptomonnaie ou attaquer d’autres sites.</td><td>Facture d’hébergement qui explose, site ralenti, complice malgré vous.</td></tr>
+    <tr><td>Hameçonnage hébergé</td><td>Le pirate installe une fausse page « banque » ou « impôts » sur votre site pour piéger d’autres victimes.</td><td>Votre domaine signalé comme dangereux, courriels bloqués, responsabilité engagée.</td></tr>
+  </table>
+  <div class="warn"><strong>Le vrai coût n’est pas la rançon.</strong> C’est l’arrêt d’activité, la perte de confiance, le temps de reconstruction, le référencement Google effondré et — si des données personnelles fuient — les obligations légales. Une PME sur deux touchée par une cyberattaque grave met des semaines à s’en remettre, et certaines ne s’en remettent jamais.</div>
+
+  <h3>Scénario réel : le restaurant qui a « disparu » de Google</h3>
+  <p>Un restaurant de quartier a un site vitrine sous WordPress, jamais mis à jour depuis deux ans. Une extension de galerie photo abandonnée contient une faille connue. Un robot l’exploite en pleine nuit et injecte des centaines de pages invisibles vantant de faux médicaments. Le gérant ne voit rien : la page d’accueil reste normale. Trois semaines plus tard, un client l’appelle : « Votre site est marqué “dangereux” sur Google. » Entre-temps, le référencement s’est effondré, les emails sont blacklistés, les réservations ont chuté. Nettoyage, réexamen Google et reconstruction de la réputation prendront deux mois. <strong>Coût d’une mise à jour évitée : plusieurs milliers d’euros et un été de chiffre d’affaires.</strong></p>
+
+  <h3>Le budget « sécurité » d’une PME est plus faible qu’on ne croit</h3>
+  <p>La bonne nouvelle : parce que la plupart des attaques sont automatiques et opportunistes, <strong>quelques mesures de base éliminent l’immense majorité du risque</strong>. Vous n’avez pas besoin d’être imprenable, seulement plus solide que la cible d’à côté, pour que le robot passe son chemin. La plupart des protections décrites ici sont gratuites ou coûtent quelques euros par mois ; l’investissement principal, c’est un peu de discipline et une heure par mois.</p>
+  <p>Pensez en termes de <strong>rapport effort / risque évité</strong>. Certaines mesures demandent dix minutes et suppriment un risque énorme (2FA, HTTPS forcé, mises à jour), d’autres sont plus techniques et concernent surtout les sites sensibles. Ce guide suit cette hiérarchie : commencez par le haut, faites-le bien, et vous aurez écarté la quasi-totalité des scénarios qui font tomber les PME. La sécurité n’est d’ailleurs pas un état mais une habitude — un entretien régulier, quelques gestes récurrents. Chaque section se termine sur une mini-checklist pour les ancrer.</p>
+  <div class="box"><strong>Mini-checklist — Section 1</strong>
+    <ul>
+      <li>☐ J’ai compris que les attaques sont automatiques, pas ciblées personnellement.</li>
+      <li>☐ Je sais qu’un site compromis a une valeur marchande même sans données sensibles.</li>
+      <li>☐ J’ai identifié ce que je perdrais concrètement en cas d’incident (CA, réputation, SEO, obligations légales).</li>
+      <li>☐ J’accepte l’idée que « quelques mesures simples » suffisent à écarter l’essentiel du risque.</li>
+    </ul>
+  </div>
+
+  <h2>2. HTTPS, TLS &amp; certificats : le socle</h2>
+  <p>Le petit cadenas dans la barre d’adresse n’est pas cosmétique : c’est la première brique de sécurité, aujourd’hui <strong>non négociable</strong>. HTTPS (le « S » de « sécurisé ») chiffre la conversation entre le navigateur du visiteur et votre serveur grâce au protocole <strong>TLS</strong>. Sans lui, tout circule en clair : un mot de passe, un numéro de carte, un formulaire de contact peuvent être interceptés sur un Wi-Fi public.</p>
+
+  <h3>Une analogie simple : la carte postale et l’enveloppe</h3>
+  <p>Un site en HTTP, c’est une carte postale : tout le monde sur le trajet — facteur, voisin, pirate du café — peut lire ce qui est écrit. HTTPS met cette carte dans une enveloppe scellée que seul le destinataire ouvre. TLS est la mécanique de l’enveloppe : il négocie une clé secrète entre navigateur et serveur, puis chiffre tout l’échange. Le certificat est la <em>pièce d’identité</em> du serveur : il prouve que vous parlez bien à <code>votre-site.fr</code> et non à un imposteur.</p>
+
+  <h3>Ce que HTTPS vous apporte</h3>
+  <ul>
+    <li><strong>Confidentialité</strong> : personne ne peut lire ce qui transite entre le visiteur et vous.</li>
+    <li><strong>Intégrité</strong> : personne ne peut modifier la page en cours de route (injecter une pub ou un virus).</li>
+    <li><strong>Confiance</strong> : le navigateur affiche un site « sécurisé » au lieu d’un avertissement rouge alarmant.</li>
+    <li><strong>SEO</strong> : Google favorise les sites en HTTPS et pénalise ceux qui restent en HTTP.</li>
+  </ul>
+  <div class="tip"><strong>Le certificat est gratuit.</strong> Grâce à Let’s Encrypt, obtenir un certificat TLS ne coûte rien et se renouvelle automatiquement. La plupart des hébergeurs modernes (et toutes les plateformes comme Vercel, Netlify, OVH, o2switch…) l’activent en un clic. Il n’y a plus aucune raison de rester en HTTP.</div>
+
+  <h3>Les trois réglages à vérifier</h3>
+  <ol>
+    <li><strong>Certificat valide et à jour</strong> : vérifiez sa date d’expiration. Un certificat expiré affiche un gros avertissement qui fait fuir vos visiteurs.</li>
+    <li><strong>Redirection forcée HTTP → HTTPS</strong> : personne ne doit pouvoir atteindre la version non sécurisée. Toute adresse en <code>http://</code> doit basculer automatiquement vers <code>https://</code>.</li>
+    <li><strong>Pas de « contenu mixte »</strong> : une page HTTPS qui charge une image ou un script en HTTP casse la sécurité et déclenche un avertissement. Tout doit être servi en HTTPS.</li>
+  </ol>
+
+  <h3>Vérifier son HTTPS en 5 minutes, sans être technicien</h3>
+  <table>
+    <tr><th>Ce que vous vérifiez</th><th>Comment faire</th><th>Résultat attendu</th></tr>
+    <tr><td>Le cadenas s’affiche</td><td>Cliquez sur l’icône à gauche de l’adresse dans le navigateur.</td><td>« Connexion sécurisée », pas d’avertissement.</td></tr>
+    <tr><td>La date d’expiration du certificat</td><td>Dans les détails du cadenas, ou via un outil gratuit comme SSL Labs.</td><td>Une échéance future ; renouvellement automatique actif.</td></tr>
+    <tr><td>La redirection HTTP → HTTPS</td><td>Tapez volontairement <code>http://votre-site.fr</code>.</td><td>Vous êtes redirigé vers la version <code>https://</code>.</td></tr>
+    <tr><td>L’absence de contenu mixte</td><td>Si le cadenas devient « non sécurisé » sur une page précise, une ressource est en HTTP.</td><td>Aucune alerte de contenu mixte sur aucune page.</td></tr>
+  </table>
+  <div class="warn"><strong>Attention au renouvellement.</strong> Un certificat Let’s Encrypt dure 90 jours. Le renouvellement est censé être automatique, mais il arrive qu’il échoue silencieusement (changement de serveur, migration). Programmez une alerte de surveillance qui vous prévient si le certificat approche de l’expiration — c’est une panne d’apparence catastrophique qui se répare pourtant en une minute.</div>
+  <div class="box"><strong>Mini-checklist — Section 2</strong>
+    <ul>
+      <li>☐ HTTPS actif sur toutes les pages, y compris les images et scripts.</li>
+      <li>☐ Redirection <code>http://</code> → <code>https://</code> vérifiée à la main.</li>
+      <li>☐ Certificat valide, renouvellement automatique confirmé.</li>
+      <li>☐ Une alerte me préviendra avant l’expiration du certificat.</li>
+    </ul>
+  </div>
+
+  <h2>3. Mots de passe, gestionnaire &amp; double authentification (2FA)</h2>
+  <p>Le maillon le plus faible n’est presque jamais technique : c’est le mot de passe. Les robots ne « cassent » pas des chiffrements complexes ; ils testent des listes de mots de passe volés et de combinaisons évidentes. Si le vôtre est <code>Motdepasse2026</code> ou le nom de votre entreprise suivi de <code>!</code>, considérez qu’il est déjà connu.</p>
+
+  <h3>Pourquoi vos mots de passe fuient (sans que vous le sachiez)</h3>
+  <p>La menace principale n’est pas qu’un pirate « devine » votre mot de passe. C’est qu’un <em>autre</em> service où vous étiez inscrit se fasse pirater, et que votre couple email + mot de passe se retrouve dans une base revendue. Les robots testent ensuite ces millions d’identifiants volés partout ailleurs : c’est le <strong>« credential stuffing »</strong> (bourrage d’identifiants). Si vous réutilisez le même mot de passe, une seule fuite ancienne suffit à ouvrir votre site aujourd’hui — <strong>l’unicité compte autant que la longueur</strong>.</p>
+
+  <h3>Un bon mot de passe en 2026</h3>
+  <ul>
+    <li><strong>Long avant tout</strong> : au moins 14 caractères. La longueur bat la complexité.</li>
+    <li><strong>Unique par service</strong> : jamais le même mot de passe sur deux sites. Une fuite chez l’un compromet tous les autres.</li>
+    <li><strong>Aléatoire</strong> : pas de date de naissance, pas de prénom, pas de mot du dictionnaire.</li>
+    <li><strong>Jamais partagé par email ou SMS</strong>, et jamais noté dans un fichier « mots de passe.xlsx ».</li>
+  </ul>
+  <table>
+    <tr><th>Mot de passe</th><th>Verdict</th><th>Pourquoi</th></tr>
+    <tr><td><code>Ete2026!</code></td><td>❌ Très faible</td><td>Court, prévisible, dans toutes les listes d’attaque.</td></tr>
+    <tr><td><code>Boulangerie75!</code></td><td>❌ Faible</td><td>Basé sur le métier + code postal, devinable.</td></tr>
+    <tr><td><code>Jaime-le-café-a-7h32-le-matin</code></td><td>✅ Bon</td><td>Long, personnel, facile à retenir, difficile à deviner.</td></tr>
+    <tr><td><code>x9$Kp2#mQvL7!nR4wZ</code></td><td>✅ Excellent</td><td>Généré par un gestionnaire, impossible à forcer.</td></tr>
+  </table>
+  <div class="tpl">
+    <div class="label">Gabarit — politique de mots de passe à afficher pour votre équipe</div>
+    <div class="body">RÈGLES MOTS DE PASSE — [Nom de l'entreprise]
+
+1. Minimum 14 caractères, générés par le gestionnaire.
+2. Un mot de passe UNIQUE par service (site, email, hébergeur, banque).
+3. Double authentification (2FA) OBLIGATOIRE sur : admin du site,
+   messagerie, hébergeur, banque, réseaux sociaux.
+4. Jamais de partage par email/SMS/chat. On partage via le
+   gestionnaire de mots de passe.
+5. Départ d'un collaborateur = révocation immédiate de ses accès.
+6. En cas de doute sur une fuite : on change, on ne « surveille » pas.</div>
+  </div>
+
+  <h3>Le gestionnaire de mots de passe : votre meilleur allié</h3>
+  <p>Personne ne peut retenir 40 mots de passe longs et uniques. Un <strong>gestionnaire de mots de passe</strong> (Bitwarden, 1Password, Proton Pass…) résout le problème : il génère, stocke et remplit vos mots de passe de manière chiffrée. Vous ne retenez qu’un seul mot de passe maître, très long ; tout le reste est géré pour vous. Objection fréquente : « tout mettre au même endroit, n’est-ce pas dangereux ? » Non : le coffre est chiffré de bout en bout, l’éditeur lui-même ne peut pas le lire, et le vrai danger — réutilisation et post-it — disparaît. Le gestionnaire vous alerte même quand un de vos mots de passe apparaît dans une fuite connue.</p>
+  <p>Il résout aussi le <strong>partage d’accès</strong> en entreprise. Plutôt que d’envoyer par messagerie le mot de passe de la boîte email commune — qui traîne ensuite dans les historiques —, vous partagez un « coffre d’équipe » : la personne utilise le mot de passe sans jamais le connaître en clair, et vous lui retirez l’accès d’un clic à son départ, sans le changer pour tout le monde. Pour démarrer sans se décourager, ne migrez pas tout en un jour : commencez par les cinq accès critiques (email principal, hébergeur, domaine, admin du site, banque), donnez-leur un mot de passe neuf et unique, puis remplacez les autres au fil de vos connexions.</p>
+
+  <h3>La double authentification (2FA) : la ceinture de sécurité</h3>
+  <p>La 2FA ajoute une deuxième preuve d’identité en plus du mot de passe : un code temporaire généré par une application (Google Authenticator, Authy, Aegis…). Même si un pirate obtient votre mot de passe, il lui manque ce code qui change toutes les 30 secondes. <strong>C’est probablement la mesure la plus rentable de tout ce guide.</strong></p>
+  <table>
+    <tr><th>Méthode 2FA</th><th>Niveau</th><th>Pour qui</th></tr>
+    <tr><td>Code par SMS</td><td>Basique</td><td>Mieux que rien ; à éviter sur les comptes critiques (risque de SIM swapping).</td></tr>
+    <tr><td>Application d’authentification</td><td>Bon</td><td>Le bon choix par défaut pour tous vos accès.</td></tr>
+    <tr><td>Clé physique (FIDO2 / passkey)</td><td>Excellent</td><td>Accès les plus sensibles (banque, hébergeur, admin principal).</td></tr>
+  </table>
+  <div class="warn"><strong>Préférez l’application au SMS.</strong> Le code par SMS est mieux que rien, mais il peut être intercepté (attaque par « SIM swapping », où le pirate détourne votre numéro chez l’opérateur). Une application d’authentification est plus sûre et fonctionne même sans réseau. Pensez aussi à conserver vos <strong>codes de secours</strong> dans le gestionnaire : ils vous évitent d’être verrouillé hors de votre propre compte en cas de perte du téléphone.</div>
+  <div class="box"><strong>Mini-checklist — Section 3</strong>
+    <ul>
+      <li>☐ Un gestionnaire de mots de passe installé et adopté par l’équipe.</li>
+      <li>☐ Mot de passe maître long et jamais réutilisé ailleurs.</li>
+      <li>☐ 2FA par application activée sur admin, email, hébergeur, banque, réseaux.</li>
+      <li>☐ Codes de secours 2FA stockés en lieu sûr.</li>
+      <li>☐ Aucun mot de passe partagé par email, SMS ou tableur.</li>
+    </ul>
+  </div>
+
+  <h2>4. Mises à jour &amp; dépendances (CMS, plugins, librairies)</h2>
+  <p>La très grande majorité des sites piratés le sont via une faille <strong>connue et déjà corrigée</strong>, mais que le propriétaire n’avait pas installée. Une mise à jour de sécurité, c’est une porte que l’éditeur a refermée : ne pas l’installer, c’est la laisser ouverte alors que le plan de la maison circule déjà chez les cambrioleurs.</p>
+
+  <h3>Pourquoi une faille corrigée reste dangereuse</h3>
+  <p>Contre-intuitif mais crucial : le jour où un éditeur publie un correctif, il décrit <em>publiquement</em> la faille qu’il vient de boucher. Les pirates lisent ces annonces et fabriquent aussitôt des robots qui cherchent les sites <strong>pas encore mis à jour</strong>. La publication d’un correctif déclenche donc une course : soit vous l’installez vite, soit les robots exploitent le retard. Ce délai s’appelle la « fenêtre de vulnérabilité » — quelques jours au plus pour un site vitrine, quelques heures pour une boutique sur les correctifs critiques. Une mise à jour esthétique peut attendre le rendez-vous mensuel, mais un correctif « sécurité » ou « critique » saute la file.</p>
+
+  <h3>Où se cachent les failles</h3>
+  <ul>
+    <li><strong>Le CMS</strong> (WordPress, PrestaShop, Joomla…) : le cœur de votre site.</li>
+    <li><strong>Les plugins et extensions</strong> : la première cause de piratage sur WordPress. Chaque plugin est du code tiers qui peut contenir une faille.</li>
+    <li><strong>Les thèmes</strong>, surtout ceux téléchargés gratuitement sur des sites douteux (souvent piégés).</li>
+    <li><strong>Les librairies</strong> qui font tourner un site sur mesure (les « dépendances » d’un projet Node.js, PHP, etc.).</li>
+    <li><strong>La version du langage serveur</strong> (PHP, Node) : une version obsolète ne reçoit plus de correctifs.</li>
+  </ul>
+  <div class="tip"><strong>Règle d’or WordPress :</strong> moins de plugins = moins de surface d’attaque. Désinstallez (pas seulement « désactivez ») tout plugin ou thème que vous n’utilisez pas. Un plugin désactivé mais présent reste une faille potentielle.</div>
+
+  <h3>Comment gérer les mises à jour sans casser son site</h3>
+  <ol>
+    <li><strong>Sauvegardez avant</strong> chaque mise à jour majeure (voir section 5).</li>
+    <li><strong>Testez si possible</strong> sur une copie (environnement de « préproduction ») avant de toucher au site en ligne.</li>
+    <li><strong>Priorisez les mises à jour de sécurité</strong> : elles ne peuvent pas attendre.</li>
+    <li><strong>Activez les mises à jour automatiques</strong> au moins pour les correctifs de sécurité mineurs.</li>
+    <li><strong>Fixez un rendez-vous mensuel</strong> pour passer en revue les mises à jour majeures.</li>
+  </ol>
+
+  <h3>Le rituel mensuel de mise à jour</h3>
+  <p>La sécurité par les mises à jour n’est pas un projet, c’est une habitude. Bloquez un créneau récurrent — 30 minutes le premier lundi du mois suffisent pour un site vitrine — et suivez toujours la même liste. Ce gabarit se colle dans votre agenda ou votre outil de suivi :</p>
+  <div class="tpl">
+    <div class="label">Gabarit — routine mensuelle de mise à jour</div>
+    <div class="body">MISE À JOUR MENSUELLE — le ___ / ___ / ______  ·  par : __________
+
+[ ] Sauvegarde complète effectuée AVANT toute action
+[ ] Cœur du CMS à jour (version : ______)
+[ ] Extensions / plugins à jour (nb mis à jour : ___)
+[ ] Thème à jour
+[ ] Version PHP / Node vérifiée (encore supportée ? O / N)
+[ ] Extensions inutiles ou abandonnées SUPPRIMÉES
+[ ] Site testé après mise à jour (accueil, contact, paiement)
+[ ] Aucun message d'erreur, cadenas HTTPS OK
+[ ] Note des anomalies éventuelles : __________________________</div>
+  </div>
+  <div class="warn"><strong>Un plugin abandonné est un danger.</strong> Si une extension n’a pas été mise à jour depuis plus d’un an, ou si son auteur a disparu, remplacez-la. Elle ne recevra jamais le correctif de la prochaine faille. Méfiez-vous aussi des extensions « nulled » (versions payantes piratées distribuées gratuitement) : elles sont très souvent livrées avec une porte dérobée préinstallée.</div>
+  <div class="box"><strong>Mini-checklist — Section 4</strong>
+    <ul>
+      <li>☐ Un rendez-vous mensuel de mise à jour est planté dans l’agenda.</li>
+      <li>☐ Les correctifs de sécurité sont appliqués sans attendre.</li>
+      <li>☐ Aucune extension abandonnée ou « nulled » sur le site.</li>
+      <li>☐ Version du langage serveur (PHP/Node) encore supportée.</li>
+      <li>☐ Chaque mise à jour est précédée d’une sauvegarde et suivie d’un test.</li>
+    </ul>
+  </div>
+
+  <h2>5. Sauvegardes automatiques &amp; test de restauration</h2>
+  <p>La sauvegarde est votre filet de sécurité ultime. Quoi qu’il arrive — piratage, erreur humaine, mise à jour ratée, panne serveur — une bonne sauvegarde vous permet de tout remonter : c’est la différence entre « on a perdu deux heures » et « on a perdu l’entreprise ».</p>
+
+  <h3>La règle 3-2-1</h3>
+  <p>Une méthode simple et éprouvée pour ne jamais tout perdre :</p>
+  <ul>
+    <li><strong>3</strong> copies de vos données (l’original + 2 sauvegardes).</li>
+    <li><strong>2</strong> supports différents (par ex. le serveur + un stockage cloud).</li>
+    <li><strong>1</strong> copie hors site, déconnectée, à l’abri d’un rançongiciel.</li>
+  </ul>
+  <div class="tpl">
+    <div class="label">Gabarit — plan de sauvegarde 3-2-1</div>
+    <div class="body">PLAN DE SAUVEGARDE — [Nom du site]
+
+Copie 1 (originale) : sur le serveur de production
+Copie 2 (locale/proche) : ______________  · fréquence : ________
+Copie 3 (hors site, déconnectée) : ____________ · fréquence : ______
+
+Contenu sauvegardé : [ ] fichiers  [ ] base de données  [ ] config
+Rétention : garder ___ jours / ___ semaines / ___ mois d'historique
+Chiffrement des sauvegardes : O / N
+Test de restauration : 2×/an, prochain le ___ / ___ / ______
+Responsable : __________________________</div>
+  </div>
+  <div class="warn"><strong>Le piège du rançongiciel :</strong> si votre unique sauvegarde est branchée en permanence sur le même serveur, elle sera chiffrée en même temps que le reste. Une sauvegarde qui vous sauve est une sauvegarde <em>déconnectée</em> ou stockée sur un service tiers indépendant.</div>
+
+  <h3>Ce qu’une bonne sauvegarde doit couvrir</h3>
+  <table>
+    <tr><th>Élément</th><th>Pourquoi c’est vital</th><th>Fréquence conseillée</th></tr>
+    <tr><td>Les fichiers du site</td><td>Thème, extensions, images, code : votre site en lui-même.</td><td>Quotidienne à hebdomadaire</td></tr>
+    <tr><td>La base de données</td><td>Vos contenus, commandes, clients, comptes. Le plus précieux.</td><td>Quotidienne (e-commerce : plusieurs fois/jour)</td></tr>
+    <tr><td>La configuration</td><td>Réglages serveur, certificats, variables d’environnement.</td><td>À chaque changement</td></tr>
+  </table>
+
+  <h3>La notion de rétention : ne pas sauvegarder que « hier »</h3>
+  <p>Une erreur classique : ne conserver que la sauvegarde de la nuit dernière, qui écrase la précédente. Or une intrusion peut rester discrète plusieurs jours : votre unique version contient peut-être déjà la porte dérobée du pirate. Conservez donc un <strong>historique</strong> — par exemple 7 sauvegardes quotidiennes, 4 hebdomadaires et 3 mensuelles — pour pouvoir revenir à un point <em>antérieur</em> à la compromission. Deux questions calibrent le reste : <strong>combien de données puis-je perdre ?</strong> (une sauvegarde quotidienne = une journée perdue au pire ; trop pour une boutique, qui sauvegarde plusieurs fois par jour) et <strong>en combien de temps dois-je être de nouveau en ligne ?</strong> (une restauration de six heures ne convient pas si chaque heure d’arrêt coûte cher).</p>
+  <p>Dernier réflexe : la <strong>surveillance des sauvegardes elles-mêmes</strong>. Une sauvegarde automatique peut échouer sans bruit pendant des mois (quota plein, identifiants expirés, service en panne). Configurez une alerte en cas d’échec : une sauvegarde qu’on croit active mais morte depuis trois mois est pire que pas de sauvegarde, car elle endort la vigilance.</p>
+  <div class="tip"><strong>Une sauvegarde jamais testée n’est pas une sauvegarde.</strong> Au moins deux fois par an, faites un vrai test de restauration sur un site de test. Beaucoup de PME découvrent le jour du drame que leurs sauvegardes étaient corrompues ou incomplètes. Testez avant, pas pendant la crise.</div>
+  <div class="box"><strong>Mini-checklist — Section 5</strong>
+    <ul>
+      <li>☐ Sauvegardes automatiques des fichiers ET de la base de données.</li>
+      <li>☐ Au moins une copie hors site, déconnectée du serveur.</li>
+      <li>☐ Un historique (rétention) permettant de remonter avant une intrusion.</li>
+      <li>☐ Sauvegardes chiffrées si elles contiennent des données personnelles.</li>
+      <li>☐ Un test de restauration réussi dans les 6 derniers mois.</li>
+    </ul>
+  </div>
+
+  <h2>6. Les en-têtes de sécurité (HSTS, CSP, X-Frame-Options…)</h2>
+  <p>Les « en-têtes de sécurité » (HTTP security headers) sont des instructions invisibles que votre serveur envoie au navigateur pour lui dire comment se comporter prudemment. Le visiteur ne les voit jamais, mais ils ferment des portes entières d’attaques courantes. C’est de la sécurité « gratuite » : quelques lignes de configuration qui protègent tous vos visiteurs.</p>
+
+  <h3>Les en-têtes essentiels, expliqués simplement</h3>
+  <table>
+    <tr><th>En-tête</th><th>Ce qu’il fait, en clair</th></tr>
+    <tr><td>HSTS (Strict-Transport-Security)</td><td>Force le navigateur à toujours utiliser HTTPS, même si quelqu’un tape l’adresse en HTTP. Empêche les attaques de « rétrogradation ».</td></tr>
+    <tr><td>CSP (Content-Security-Policy)</td><td>Le videur de la boîte : dit au navigateur quels scripts et ressources il a le droit de charger. Bloque l’injection de code malveillant (XSS).</td></tr>
+    <tr><td>X-Frame-Options</td><td>Empêche qu’on affiche votre site dans une fenêtre invisible pour piéger vos visiteurs (« clickjacking »).</td></tr>
+    <tr><td>X-Content-Type-Options</td><td>Empêche le navigateur de « deviner » le type d’un fichier et d’exécuter par erreur un fichier piégé.</td></tr>
+    <tr><td>Referrer-Policy</td><td>Limite les informations envoyées aux sites tiers quand un visiteur clique sur un lien sortant.</td></tr>
+    <tr><td>Permissions-Policy</td><td>Décide quelles fonctions (caméra, micro, géolocalisation) une page peut demander.</td></tr>
+  </table>
+  <div class="tpl">
+    <div class="label">Gabarit — en-têtes de sécurité recommandés</div>
+    <div class="body">Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+Content-Security-Policy: default-src 'self'; img-src 'self' https:; script-src 'self'
+X-Frame-Options: DENY
+X-Content-Type-Options: nosniff
+Referrer-Policy: strict-origin-when-cross-origin
+Permissions-Policy: camera=(), microphone=(), geolocation=()</div>
+  </div>
+
+  <h3>Deux attaques que ces en-têtes bloquent</h3>
+  <p><strong>Le clickjacking.</strong> Un pirate crée une fausse page « Gagnez un iPhone, cliquez ici » et superpose par-dessus <em>votre</em> site, rendu transparent, positionné pour que le vrai bouton cliqué soit « Supprimer mon compte » ou « Valider le paiement ». Le visiteur croit jouer, il agit à son insu sur votre site. L’en-tête <code>X-Frame-Options: DENY</code> interdit d’afficher votre site dans le cadre d’un autre : l’attaque devient impossible.</p>
+  <p><strong>Le XSS</strong> (cross-site scripting) injecte un script malveillant qui s’exécute chez vos visiteurs — par exemple un commentaire piégé qui vole les identifiants de session de chaque lecteur. Sans CSP, le navigateur l’exécute, car il vient « de votre site ». Avec un CSP bien réglé, il n’exécute que les scripts explicitement autorisés (votre domaine, ou porteurs d’un « nonce » que vous seul générez) ; le script injecté reste inerte. C’est la logique du videur : la liste des invités est établie à l’avance, tout le reste reste à la porte.</p>
+
+  <h3>Vérifier ses en-têtes gratuitement</h3>
+  <p>Des outils gratuits (securityheaders.com, l’observatoire de Mozilla) analysent votre site et vous donnent une note avec les en-têtes manquants. Lancez le test, notez ce qui manque, faites poser les en-têtes par votre développeur : le gain de sécurité est disproportionné par rapport à l’effort.</p>
+  <div class="tip"><strong>Le cas du CSP :</strong> c’est l’en-tête le plus puissant mais aussi le plus délicat, car trop strict il peut casser des fonctionnalités (widgets, statistiques, paiement). On le déploie progressivement, en mode « observation » d’abord (mode <code>Report-Only</code> qui signale sans bloquer). Sur une application moderne comme un site Next.js, la politique CSP se pose via ces en-têtes (avec un « nonce » unique par page pour autoriser vos propres scripts). L’idée à retenir : on autorise explicitement ce dont on a besoin, et on refuse tout le reste par défaut.</div>
+  <div class="box"><strong>Mini-checklist — Section 6</strong>
+    <ul>
+      <li>☐ HSTS actif pour forcer HTTPS en permanence.</li>
+      <li>☐ X-Frame-Options / X-Content-Type-Options / Referrer-Policy posés.</li>
+      <li>☐ CSP déployé, d’abord en mode observation puis en blocage.</li>
+      <li>☐ Note obtenue sur securityheaders.com et manques corrigés.</li>
+    </ul>
+  </div>
+
+  <h2>7. Protéger les formulaires (spam, injections, honeypot, rate-limit)</h2>
+  <p>Chaque formulaire de votre site — contact, inscription, commentaire, connexion — est une porte d’entrée. C’est un endroit où un inconnu envoie du texte à votre serveur. S’il n’est pas protégé, il devient un aimant à spam et une faille potentielle. Voici comment le blinder sans dégrader l’expérience de vos vrais visiteurs.</p>
+  <p>Un principe gouverne toute cette section : <strong>tout ce qui vient de l’extérieur est suspect jusqu’à preuve du contraire</strong>. Le texte qu’un visiteur tape dans un champ n’est pas une donnée amicale, c’est une matière première potentiellement piégée. Les développeurs expérimentés adoptent ce réflexe de méfiance non par paranoïa, mais parce que c’est là que se logent la plupart des attaques applicatives. Votre rôle est de vous assurer qu’il est appliqué, et de ne jamais accepter un formulaire « posé à la va-vite ».</p>
+
+  <h3>Contre le spam automatique</h3>
+  <ul>
+    <li><strong>Le honeypot (pot de miel)</strong> : un champ caché, invisible pour l’humain mais que les robots remplissent bêtement. Si ce champ est rempli, on rejette silencieusement l’envoi. Discret et redoutablement efficace.</li>
+    <li><strong>Le rate-limiting (limitation de débit)</strong> : on limite le nombre d’envois par minute depuis une même adresse. Un humain remplit un formulaire toutes les quelques minutes ; un robot en tente des centaines.</li>
+    <li><strong>Un captcha discret</strong> (type hCaptcha ou Turnstile) sur les formulaires sensibles, sans imposer les corvées de « sélectionnez les feux tricolores » à vos clients.</li>
+  </ul>
+
+  <h3>Contre les injections</h3>
+  <p>Les attaques les plus classiques consistent à glisser du code malveillant dans un champ, en espérant que le serveur l’exécute (injection SQL) ou qu’il s’affiche chez un autre visiteur (XSS). La parade tient en une règle d’or : <strong>ne jamais faire confiance à ce que l’utilisateur saisit.</strong></p>
+  <ul>
+    <li><strong>Valider</strong> chaque donnée reçue (un email ressemble-t-il à un email ? un numéro à un numéro ?).</li>
+    <li><strong>Échapper</strong> les données avant de les afficher, pour qu’un script saisi apparaisse comme du texte inoffensif.</li>
+    <li><strong>Utiliser des requêtes paramétrées</strong> côté base de données (le sujet est technique, mais tout développeur sérieux le fait par défaut).</li>
+  </ul>
+
+  <h3>Comprendre l’injection SQL en une image</h3>
+  <p>En coulisses, un serveur construit une phrase pour interroger la base : « donne-moi l’utilisateur dont l’email est [ce que la personne a tapé] ». S’il colle bêtement la saisie dans cette phrase, un pirate peut taper non pas un email mais une <em>instruction déguisée</em> qui la transforme en « donne-moi tous les utilisateurs » ou « supprime la table ». C’est l’injection SQL. La parade — les <strong>requêtes paramétrées</strong> — ne mélange jamais saisie et instruction : la saisie est traitée comme une simple valeur, jamais comme une commande. Votre rôle est de vous assurer que votre développeur l’applique partout.</p>
+  <table>
+    <tr><th>Formulaire</th><th>Protections minimales</th></tr>
+    <tr><td>Contact</td><td>Honeypot + rate-limit + validation email</td></tr>
+    <tr><td>Inscription / création de compte</td><td>Captcha discret + validation + vérification par email</td></tr>
+    <tr><td>Connexion</td><td>Rate-limit + blocage après N échecs + 2FA</td></tr>
+    <tr><td>Commentaire / avis</td><td>Honeypot + modération + échappement à l’affichage</td></tr>
+    <tr><td>Recherche interne</td><td>Requêtes paramétrées + échappement du terme affiché</td></tr>
+  </table>
+  <div class="warn"><strong>Le formulaire de connexion mérite une attention spéciale.</strong> C’est la cible n°1 des robots. Combinez 2FA, rate-limiting (blocage après plusieurs échecs) et — sur WordPress — le masquage de l’adresse d’administration par défaut (<code>/wp-admin</code>, <code>/wp-login.php</code>).</div>
+  <div class="box"><strong>Mini-checklist — Section 7</strong>
+    <ul>
+      <li>☐ Honeypot et/ou captcha discret sur les formulaires publics.</li>
+      <li>☐ Rate-limiting actif, surtout sur la connexion.</li>
+      <li>☐ Toutes les saisies validées côté serveur (pas seulement côté navigateur).</li>
+      <li>☐ Requêtes paramétrées confirmées auprès du développeur.</li>
+      <li>☐ Données échappées avant affichage (protection XSS).</li>
+    </ul>
+  </div>
+
+  <h2>8. Sécuriser WordPress en particulier</h2>
+  <p>WordPress fait tourner une part énorme du web, ce qui en fait la cible la plus attaquée — non parce qu’il serait mal conçu, mais parce qu’il est partout. Si votre site est sous WordPress, cette section rassemble les réglages qui vous mettent au-dessus de l’immense majorité des sites vulnérables. La bonne nouvelle : bien tenu, WordPress est parfaitement sûr.</p>
+  <p>D’où vient la mauvaise réputation ? WordPress lui-même — le « cœur » développé par des milliers de contributeurs — est plutôt bien sécurisé et corrigé vite. Le problème vient de l’écosystème : des dizaines de milliers d’extensions et de thèmes tiers de qualité inégale, dont certains abandonnés ou négligés. Ajoutez des installations laissées en réglages par défaut, et vous obtenez une immense population de sites faciles à attaquer. Votre objectif n’est pas d’être parfait : c’est de sortir de cette population-là.</p>
+
+  <h3>Les réglages qui font 90 % du travail</h3>
+  <ul>
+    <li><strong>Supprimer le compte <code>admin</code></strong> : c’est le premier identifiant que les robots testent. Créez un administrateur au nom non devinable, puis supprimez <code>admin</code>.</li>
+    <li><strong>Masquer / limiter la page de connexion</strong> : changez l’URL de <code>/wp-login.php</code> et bloquez les tentatives répétées.</li>
+    <li><strong>Désactiver l’éditeur de fichiers intégré</strong> : dans le tableau de bord, un pirate qui prend un compte admin peut sinon modifier votre code directement depuis le navigateur.</li>
+    <li><strong>Interdire l’exécution de code dans le dossier des médias</strong> (<code>/wp-content/uploads/</code>) : ce dossier ne doit contenir que des fichiers, jamais des scripts exécutables.</li>
+    <li><strong>Réduire les plugins au strict nécessaire</strong> et n’installer que des extensions maintenues et bien notées.</li>
+    <li><strong>Un plugin de sécurité reconnu</strong> (type Wordfence, Solid Security…) pour le pare-feu, le scan et la limitation des connexions.</li>
+  </ul>
+  <table>
+    <tr><th>Réglage</th><th>Risque évité</th><th>Effort</th></tr>
+    <tr><td>Supprimer le compte <code>admin</code></td><td>Attaque par force sur l’identifiant le plus courant</td><td>5 min</td></tr>
+    <tr><td>Limiter les tentatives de connexion</td><td>Bourrage de mots de passe</td><td>Plugin, 10 min</td></tr>
+    <tr><td>2FA sur les comptes admin</td><td>Vol de mot de passe</td><td>Plugin, 10 min</td></tr>
+    <tr><td>Désactiver l’éditeur de thème/plugin</td><td>Modification de code après compromission</td><td>1 ligne de config</td></tr>
+    <tr><td>Bloquer les scripts dans /uploads/</td><td>Porte dérobée déposée via un envoi de fichier</td><td>Config serveur</td></tr>
+    <tr><td>Retirer les extensions inutiles</td><td>Réduction de la surface d’attaque</td><td>15 min</td></tr>
+  </table>
+  <div class="tpl">
+    <div class="label">Gabarit — durcissement wp-config (extraits à faire poser)</div>
+    <div class="body">// Interdire l'éditeur de fichiers dans l'admin
+define('DISALLOW_FILE_EDIT', true);
+
+// Forcer les connexions admin en HTTPS
+define('FORCE_SSL_ADMIN', true);
+
+// Clés de sécurité uniques (à régénérer via l'outil officiel WordPress)
+// AUTH_KEY, SECURE_AUTH_KEY, LOGGED_IN_KEY, NONCE_KEY ...
+
+// Bon réflexe complémentaire :
+// - fichier wp-config.php en lecture seule
+// - désactiver l'édition de code dans /uploads/ (règle serveur)</div>
+  </div>
+  <div class="warn"><strong>Le danger n°1 reste les extensions.</strong> Un thème « premium gratuit » téléchargé sur un site de warez, une extension abandonnée depuis deux ans, une galerie photo trop populaire : c’est presque toujours par là que WordPress se fait pirater. Auditez vos plugins deux fois par an et supprimez sans pitié tout ce qui n’est plus indispensable ou plus maintenu.</div>
+  <div class="box"><strong>Mini-checklist — Section 8 (WordPress)</strong>
+    <ul>
+      <li>☐ Aucun compte nommé <code>admin</code>.</li>
+      <li>☐ Page de connexion protégée (URL modifiée + limitation des tentatives).</li>
+      <li>☐ 2FA sur tous les comptes administrateurs.</li>
+      <li>☐ Éditeur de fichiers désactivé, /uploads/ non exécutable.</li>
+      <li>☐ Plugin de sécurité reconnu installé et configuré.</li>
+      <li>☐ Extensions et thèmes inutiles ou abandonnés supprimés.</li>
+    </ul>
+  </div>
+
+  <h2>9. Sécurité des paiements &amp; e-commerce</h2>
+  <p>Dès que de l’argent circule, les enjeux changent d’échelle : une boutique manipule données bancaires, commandes et comptes clients, et devient une cible de grande valeur. La bonne nouvelle : une architecture de paiement bien pensée vous décharge de la partie la plus risquée. Encore faut-il faire les bons choix.</p>
+
+  <h3>Ne touchez jamais les numéros de carte</h3>
+  <p>La règle d’or du e-commerce : <strong>vous ne devez jamais voir, stocker ni transmettre les numéros de carte bancaire de vos clients</strong>. Confiez cela à un prestataire de paiement spécialisé (Stripe, PayPlug, Mollie, PayPal…). Concrètement, le client saisit sa carte dans un formulaire hébergé par le prestataire, pas par vous ; vous ne recevez qu’un jeton et une confirmation. Ainsi, même si votre site est piraté, il n’y a aucune donnée bancaire à voler chez vous. C’est le principe qui allège aussi vos obligations réglementaires (la norme <strong>PCI-DSS</strong>, qui encadre le traitement des cartes).</p>
+  <p>C’est de loin la décision de sécurité la plus importante d’une boutique. En déléguant, vous transférez la partie la plus lourde et la plus risquée — la conservation de données bancaires — à un acteur dont c’est le métier, qui investit des millions et se soumet à des audits réguliers. Vous vous concentrez sur le reste : la sécurité de votre site, de vos comptes clients et de vos processus. Vouloir « tout gérer soi-même » pour économiser quelques dixièmes de commission est un très mauvais calcul pour une PME.</p>
+  <table>
+    <tr><th>Modèle</th><th>Qui voit la carte</th><th>Votre exposition</th></tr>
+    <tr><td>Redirection / champ hébergé (recommandé)</td><td>Le prestataire seul</td><td>Minimale : aucune donnée carte chez vous</td></tr>
+    <tr><td>Formulaire sur votre site relayé au prestataire</td><td>Transite par votre site</td><td>Élevée : conformité PCI lourde</td></tr>
+    <tr><td>Stockage des cartes chez vous</td><td>Vous</td><td>À proscrire pour une PME</td></tr>
+  </table>
+
+  <h3>3-D Secure et lutte contre la fraude</h3>
+  <p><strong>3-D Secure</strong> (la validation par l’appli bancaire ou un code) déplace la responsabilité de la fraude vers la banque du client et bloque une grande partie des paiements frauduleux. Activez-le. Complétez avec les outils anti-fraude de votre prestataire (scoring des transactions, blocage géographique, plafonds), et surveillez les signaux : multiplication de petites commandes test, adresses de livraison incohérentes, pics de paiements refusés.</p>
+
+  <h3>Les fraudes spécifiques à surveiller</h3>
+  <ul>
+    <li><strong>Le web skimming (Magecart)</strong> : un script malveillant injecté dans votre page de paiement copie discrètement les cartes au moment de la saisie. La parade : CSP stricte, surveillance d’intégrité des scripts, et champ de paiement hébergé par le prestataire.</li>
+    <li><strong>Le card testing</strong> : des fraudeurs testent des milliers de numéros volés via votre formulaire pour repérer ceux qui marchent. La parade : captcha, rate-limiting et alertes sur les taux de refus anormaux.</li>
+    <li><strong>La prise de contrôle de compte client</strong> : réutilisation d’identifiants volés pour vider un compte fidélité ou changer une adresse. La parade : 2FA côté client, alertes de connexion inhabituelle.</li>
+  </ul>
+  <div class="tpl">
+    <div class="label">Gabarit — check e-commerce avant mise en ligne</div>
+    <div class="body">SÉCURITÉ BOUTIQUE — [Nom de la boutique]
+
+[ ] Paiement via prestataire (Stripe/PayPlug/Mollie…), champ hébergé
+[ ] Aucune donnée carte stockée sur notre serveur
+[ ] 3-D Secure activé
+[ ] Outils anti-fraude du prestataire activés (scoring, plafonds)
+[ ] CSP stricte sur la page de paiement (anti-skimming)
+[ ] Rate-limit + captcha au paiement (anti card testing)
+[ ] Comptes clients : 2FA proposée, mots de passe hachés
+[ ] Sauvegardes base de données plusieurs fois par jour
+[ ] Politique de confidentialité + mentions paiement à jour
+[ ] Webhooks du prestataire vérifiés (signature) et sécurisés</div>
+  </div>
+  <div class="warn"><strong>Sécurisez les webhooks de paiement.</strong> Votre boutique reçoit du prestataire des notifications automatiques (« paiement confirmé »). Un pirate qui devine cette adresse pourrait envoyer de fausses confirmations et déclencher des expéditions non payées. Vérifiez toujours la <em>signature</em> de ces notifications : c’est le sceau qui prouve qu’elles viennent bien du prestataire.</div>
+  <div class="box"><strong>Mini-checklist — Section 9 (e-commerce)</strong>
+    <ul>
+      <li>☐ Aucune donnée de carte stockée ou traitée chez moi.</li>
+      <li>☐ 3-D Secure et outils anti-fraude activés.</li>
+      <li>☐ Page de paiement protégée par CSP (anti-skimming).</li>
+      <li>☐ Rate-limit et captcha contre le card testing.</li>
+      <li>☐ Webhooks de paiement vérifiés par signature.</li>
+      <li>☐ Sauvegardes de la base plusieurs fois par jour.</li>
+    </ul>
+  </div>
+
+  <h2>10. RGPD &amp; données personnelles (la notification CNIL sous 72 h)</h2>
+  <p>Dès que votre site collecte la moindre donnée personnelle — un email de contact, un compte client, une commande — vous entrez dans le champ du RGPD. Ce n’est pas qu’une affaire de bandeau cookies : c’est une obligation de <strong>protéger</strong> ces données. La sécurité et le RGPD sont les deux faces d’une même pièce.</p>
+
+  <h3>Vos obligations de base</h3>
+  <ul>
+    <li><strong>Minimiser</strong> : ne collectez que ce dont vous avez réellement besoin. Une donnée que vous n’avez pas ne peut pas fuiter.</li>
+    <li><strong>Sécuriser</strong> : chiffrement (HTTPS), accès restreints, mots de passe des utilisateurs stockés « hachés » (jamais en clair).</li>
+    <li><strong>Informer</strong> : une politique de confidentialité claire, expliquant ce que vous collectez et pourquoi.</li>
+    <li><strong>Consentir</strong> : recueillir un consentement libre pour les cookies non essentiels et le marketing.</li>
+    <li><strong>Permettre l’accès et l’effacement</strong> : un client peut demander ses données ou leur suppression.</li>
+  </ul>
+  <div class="warn"><strong>La règle des 72 heures.</strong> En cas de fuite de données personnelles (violation), vous avez <strong>72 heures</strong> pour la notifier à la CNIL, et vous devez informer les personnes concernées si le risque pour elles est élevé. Ne pas le faire est une faute qui aggrave les sanctions. Préparez ce réflexe <em>avant</em> l’incident, pas pendant.</div>
+
+  <h3>Le registre des traitements : votre inventaire des données</h3>
+  <p>Le RGPD impose de tenir un <strong>registre des traitements</strong> : la liste de ce que vous collectez, pourquoi, où et combien de temps. Loin d’être une formalité, c’est un outil de sécurité — on ne protège bien que ce qu’on a recensé. Voici un gabarit minimal à tenir à jour :</p>
+  <div class="tpl">
+    <div class="label">Gabarit — registre des traitements (une ligne par usage)</div>
+    <div class="body">TRAITEMENT : ________________ (ex. « Formulaire de contact »)
+Finalité (pourquoi) : _____________________________________
+Données collectées : ______________________________________
+Base légale : consentement / contrat / intérêt légitime / obligation
+Où c'est stocké : _________________________________________
+Qui y a accès : ___________________________________________
+Sous-traitants (hébergeur, emailing, paiement) : ____________
+Durée de conservation : ___________________________________
+Mesures de sécurité : HTTPS / accès restreint / chiffrement / ...</div>
+  </div>
+
+  <h3>La minimisation, meilleure amie de la sécurité</h3>
+  <p>Retenez ce principe libérateur : <strong>la donnée la plus sûre est celle que vous ne collectez pas.</strong> Avant d’ajouter un champ à un formulaire, demandez-vous s’il est vraiment utile. Chaque donnée en moins, c’est une responsabilité et un risque de fuite en moins — et une confiance en plus. Au-delà de la contrainte légale, un client qui vous confie ses informations veut les savoir entre de bonnes mains : la conformité RGPD bien menée devient un atout commercial, pas seulement une case à cocher.</p>
+  <div class="box"><strong>Mini-checklist — Section 10 (RGPD)</strong>
+    <ul>
+      <li>☐ Un registre des traitements tenu et à jour.</li>
+      <li>☐ Politique de confidentialité claire et accessible.</li>
+      <li>☐ Consentement recueilli pour cookies non essentiels et marketing.</li>
+      <li>☐ Mots de passe utilisateurs hachés, accès restreints.</li>
+      <li>☐ Procédure de notification CNIL sous 72 h préparée à l’avance.</li>
+      <li>☐ Seules les données réellement utiles sont collectées.</li>
+    </ul>
+  </div>
+
+  <h2>11. Hébergement, accès &amp; principe du moindre privilège</h2>
+  <p>La sécurité ne s’arrête pas au code : elle dépend aussi de qui a les clés, et de combien de clés existent. Le <strong>principe du moindre privilège</strong> est simple : chaque personne, chaque service, chaque compte ne doit avoir accès qu’à ce dont il a strictement besoin, ni plus.</p>
+
+  <h3>Bien choisir son hébergement</h3>
+  <ul>
+    <li><strong>Un hébergeur sérieux</strong> qui maintient ses serveurs à jour et propose des sauvegardes, un pare-feu et un support réactif.</li>
+    <li><strong>L’isolation</strong> : évitez de mettre 20 sites sur le même hébergement partagé bas de gamme, où la faille de l’un contamine les autres.</li>
+    <li><strong>Un pare-feu applicatif (WAF)</strong> qui filtre le trafic malveillant avant qu’il n’atteigne votre site.</li>
+  </ul>
+
+  <h3>Discipliner les accès</h3>
+  <ol>
+    <li><strong>Un compte par personne</strong>, jamais un compte « admin » partagé par toute l’équipe. Sinon, impossible de savoir qui a fait quoi.</li>
+    <li><strong>Le bon rôle pour le bon besoin</strong> : un rédacteur n’a pas besoin des droits d’administrateur. Attribuez le rôle le plus limité possible.</li>
+    <li><strong>Révocation immédiate</strong> à chaque départ de collaborateur ou fin de mission d’un prestataire.</li>
+    <li><strong>Rotation des secrets</strong> : les clés d’API et mots de passe techniques ne se collent jamais dans un email ou un chat, et se changent en cas de doute.</li>
+    <li><strong>Inventaire des accès</strong> : sachez à tout moment qui a accès à quoi. Un accès oublié est une porte oubliée.</li>
+  </ol>
+
+  <h3>Le registre des accès : savoir qui a les clés</h3>
+  <p>La plupart des PME seraient incapables de dire qui a accès à leur hébergeur, leur domaine ou leur boîte email principale. C’est un angle mort classique : l’ancien stagiaire, le prestataire d’il y a deux ans, le cousin qui a « installé le site »… Tenez un registre simple et révisez-le deux fois par an :</p>
+  <p>Un accès mérite une mention spéciale : le <strong>nom de domaine</strong>. Qui contrôle le compte chez le bureau d’enregistrement (le « registrar ») ? Beaucoup d’entrepreneurs découvrent, en changeant de prestataire, que leur domaine est enregistré au nom de l’ancien développeur — ou qu’ils n’ont plus les identifiants. Or perdre la main sur son domaine, c’est perdre site, emails et référencement d’un coup. Vérifiez qu’il est à votre nom, que vous avez les accès, et activez le « verrou de transfert » qui empêche qu’on le déplace à votre insu.</p>
+  <div class="tpl">
+    <div class="label">Gabarit — registre des accès</div>
+    <div class="body">SERVICE            | PERSONNE       | RÔLE        | 2FA | REVU LE
+-------------------|----------------|-------------|-----|--------
+Admin du site      | ____________   | Admin       | O/N | __/__/__
+Hébergeur          | ____________   | ________    | O/N | __/__/__
+Nom de domaine     | ____________   | ________    | O/N | __/__/__
+Email principal    | ____________   | ________    | O/N | __/__/__
+Prestataire de paiement | _______   | ________    | O/N | __/__/__
+Réseaux sociaux    | ____________   | ________    | O/N | __/__/__
+
+Départ / fin de mission → révoquer le jour même.</div>
+  </div>
+  <div class="tip"><strong>Le compte « admin » par défaut est un cadeau aux pirates.</strong> Sur WordPress, ne gardez jamais l’identifiant <code>admin</code> : les robots le testent en premier. Créez un compte administrateur avec un nom d’utilisateur non devinable et supprimez <code>admin</code>.</div>
+  <div class="box"><strong>Mini-checklist — Section 11</strong>
+    <ul>
+      <li>☐ Hébergeur sérieux, à jour, avec sauvegardes et pare-feu.</li>
+      <li>☐ Un compte nominatif par personne, aucun compte partagé.</li>
+      <li>☐ Chaque compte a le rôle le plus restreint possible.</li>
+      <li>☐ Un registre des accès tenu et révisé deux fois par an.</li>
+      <li>☐ Révocation immédiate à chaque départ.</li>
+    </ul>
+  </div>
+
+  <h2>12. Détecter une intrusion (signes, monitoring, uptime)</h2>
+  <p>La meilleure défense n’est jamais parfaite. La question n’est pas seulement « comment empêcher », mais « combien de temps me faut-il pour <strong>savoir</strong> ». Un site peut rester compromis des semaines avant que son propriétaire s’en aperçoive — souvent parce qu’un client ou Google le prévient, ce qui est déjà trop tard.</p>
+  <p>Ce « temps de détection » — le délai entre l’intrusion et le moment où vous vous en rendez compte — décide de l’ampleur des dégâts : pages de spam indexées, données exfiltrées, réputation d’expéditeur détruite, porte dérobée qui s’enracine. Le réduire ne demande pas de compétences pointues : quelques capteurs qui vous préviennent automatiquement suffisent, pour ne pas dépendre du hasard ou d’un client mécontent.</p>
+
+  <h3>Les signes qui doivent alerter</h3>
+  <ul>
+    <li>Votre site est soudainement <strong>lent</strong> ou consomme des ressources anormales.</li>
+    <li>Des <strong>pages inconnues</strong> apparaissent (souvent liées à des casinos, contrefaçons, pharmacies).</li>
+    <li>Google affiche un <strong>avertissement « site trompeur »</strong> ou vous envoie une alerte dans la Search Console.</li>
+    <li>Vos <strong>emails n’arrivent plus</strong> (votre domaine a été blacklisté pour spam).</li>
+    <li>Des <strong>connexions</strong> à des heures ou depuis des pays inhabituels dans vos journaux.</li>
+    <li>Des <strong>fichiers modifiés</strong> récemment sans que vous y ayez touché.</li>
+  </ul>
+
+  <h3>Mettre en place une surveillance</h3>
+  <ul>
+    <li><strong>Monitoring de disponibilité (uptime)</strong> : un service qui vous alerte en quelques minutes si votre site tombe.</li>
+    <li><strong>Surveillance d’intégrité des fichiers</strong> : une alerte dès qu’un fichier du site est modifié de manière inattendue.</li>
+    <li><strong>Scan de malware</strong> régulier (plugins de sécurité, services externes).</li>
+    <li><strong>Google Search Console</strong> : elle vous prévient gratuitement en cas de problème de sécurité détecté par Google.</li>
+    <li><strong>Journaux (logs)</strong> : gardez-les et consultez-les. En cas d’incident, ce sont vos caméras de surveillance.</li>
+  </ul>
+  <table>
+    <tr><th>Outil</th><th>Ce qu’il surveille</th><th>Coût typique</th></tr>
+    <tr><td>Monitoring uptime</td><td>Site en ligne / hors ligne, temps de réponse</td><td>Gratuit à quelques €/mois</td></tr>
+    <tr><td>Search Console (Google)</td><td>Alertes sécurité, pages piratées détectées par Google</td><td>Gratuit</td></tr>
+    <tr><td>Scan de malware / intégrité</td><td>Fichiers modifiés, code injecté</td><td>Souvent inclus dans un plugin de sécurité</td></tr>
+    <tr><td>Surveillance du certificat</td><td>Expiration TLS imminente</td><td>Gratuit</td></tr>
+    <tr><td>Surveillance de blacklist mail</td><td>Domaine signalé comme spam</td><td>Gratuit à faible coût</td></tr>
+  </table>
+  <div class="tip"><strong>Détecter tôt change tout.</strong> Une intrusion repérée en une heure se nettoie souvent en une matinée. La même intrusion découverte trois semaines plus tard, quand Google vous a déréférencé et que vos clients ont vu la défiguration, coûte cent fois plus cher.</div>
+  <div class="box"><strong>Mini-checklist — Section 12</strong>
+    <ul>
+      <li>☐ Monitoring de disponibilité actif avec alerte immédiate.</li>
+      <li>☐ Google Search Console connectée et surveillée.</li>
+      <li>☐ Scan de malware / intégrité des fichiers en place.</li>
+      <li>☐ Journaux conservés et consultables en cas d’incident.</li>
+      <li>☐ Surveillance du certificat et de la réputation mail.</li>
+    </ul>
+  </div>
+
+  <h2>13. Plan de réaction en cas de piratage</h2>
+  <p>Malgré toutes les précautions, un incident peut survenir. Ce qui fait la différence, c’est d’avoir un plan clair <strong>avant</strong> la panique : improviser à 2 h du matin, sous stress, en supprimant des fichiers au hasard, aggrave presque toujours la situation. Voici la marche à suivre.</p>
+  <ol>
+    <li><strong>Rester calme et ne rien détruire.</strong> Ne supprimez rien dans la précipitation : vous auriez besoin des traces pour comprendre l’attaque.</li>
+    <li><strong>Isoler.</strong> Mettez le site en maintenance ou hors ligne pour stopper la propagation et protéger vos visiteurs.</li>
+    <li><strong>Changer tous les accès.</strong> Mots de passe admin, hébergeur, base de données, FTP, emails. Depuis un ordinateur sain.</li>
+    <li><strong>Constater et documenter.</strong> Faites des captures, notez l’heure, sauvegardez les journaux. Utile pour la CNIL et une éventuelle plainte.</li>
+    <li><strong>Restaurer depuis une sauvegarde saine</strong> antérieure à l’intrusion — d’où l’importance des sauvegardes datées (section 5).</li>
+    <li><strong>Corriger la faille.</strong> Restaurer sans comprendre la porte d’entrée, c’est se faire repirater dans la foulée. Identifiez la cause.</li>
+    <li><strong>Mettre à jour et durcir</strong> : correctifs, en-têtes, 2FA, revue des accès.</li>
+    <li><strong>Notifier si des données ont fuité</strong> : CNIL sous 72 h, personnes concernées si nécessaire.</li>
+    <li><strong>Surveiller renforcé</strong> pendant les semaines suivantes, au cas où une porte dérobée aurait survécu.</li>
+  </ol>
+
+  <h3>Votre fiche d’urgence à remplir maintenant</h3>
+  <p>Le plan ci-dessus ne vaut que si les informations utiles sont accessibles <em>hors du site</em> (car le site peut être justement inaccessible). Remplissez cette fiche et gardez-la ailleurs (papier, gestionnaire de mots de passe, document hors ligne) :</p>
+  <div class="tpl">
+    <div class="label">Gabarit — fiche d’urgence incident</div>
+    <div class="body">FICHE D'URGENCE — [Nom du site]  ·  à conserver HORS du site
+
+Hébergeur : ______________  · support / tél : ________________
+Registrar (domaine) : ____________________________________
+Prestataire de paiement : ________________________________
+Développeur / agence : ___________________________________
+Où sont les sauvegardes : ________________________________
+Comment mettre le site en maintenance : __________________
+Contact CNIL (violation de données) : cnil.fr — notification
+Assurance cyber (si souscrite) : ___________ · n° police ___
+Ordre des actions : ISOLER → CHANGER ACCÈS → DOCUMENTER →
+RESTAURER (sauvegarde saine) → CORRIGER LA FAILLE → NOTIFIER</div>
+  </div>
+  <div class="warn"><strong>Ne payez jamais une rançon sans conseil.</strong> Payer ne garantit rien : vous n’avez aucune assurance de récupérer vos données, et vous vous désignez comme cible « qui paie ». Une sauvegarde saine reste la meilleure réponse à un rançongiciel. En cas de doute, faites-vous accompagner par un professionnel.</div>
+  <div class="box"><strong>Mini-checklist — Section 13</strong>
+    <ul>
+      <li>☐ Un plan de réaction écrit, connu de l’équipe.</li>
+      <li>☐ Une fiche d’urgence remplie et conservée hors du site.</li>
+      <li>☐ Je sais où sont mes sauvegardes saines et comment restaurer.</li>
+      <li>☐ Je connais mon réflexe CNIL (72 h) en cas de fuite.</li>
+      <li>☐ Je n’improviserai pas de suppression de fichiers sous stress.</li>
+    </ul>
+  </div>
+
+  <div class="cta">
+    <h3>Vous préférez dormir tranquille ?</h3>
+    <p>Sécuriser un site demande du temps, de la vigilance et un peu de technique. Chez My-DTM, on audite votre site, on corrige les failles, on met en place sauvegardes, en-têtes de sécurité et surveillance — et on veille pour vous. Vous vous concentrez sur votre activité, on protège votre présence en ligne.</p>
+    <p style="margin-top:14px"><a href="https://my-dtm.fr/services/securite-web">→ Découvrir notre service Sécurité web — my-dtm.fr/services/securite-web</a></p>
+  </div>
+
+  <h2>14. Checklist sécurité · FAQ · Glossaire</h2>
+  <h3>Votre checklist sécurité essentielle</h3>
+  <ul>
+    <li>☐ HTTPS actif partout, redirection HTTP → HTTPS forcée, certificat valide.</li>
+    <li>☐ Mots de passe longs, uniques, dans un gestionnaire.</li>
+    <li>☐ 2FA activée sur tous les accès sensibles (admin, email, hébergeur, banque).</li>
+    <li>☐ CMS, plugins, thèmes et dépendances à jour ; extensions inutiles supprimées.</li>
+    <li>☐ Sauvegardes automatiques, déconnectées, avec historique et un test de restauration réussi.</li>
+    <li>☐ En-têtes de sécurité en place (HSTS, CSP, X-Frame-Options…).</li>
+    <li>☐ Formulaires protégés (honeypot, rate-limit, validation des saisies).</li>
+    <li>☐ WordPress durci (compte admin supprimé, connexion protégée, 2FA, plugins audités).</li>
+    <li>☐ Paiements délégués à un prestataire, 3-D Secure et anti-fraude actifs.</li>
+    <li>☐ Politique de confidentialité, registre des traitements et conformité RGPD à jour.</li>
+    <li>☐ Un compte par personne, moindre privilège, registre des accès révisé.</li>
+    <li>☐ Monitoring uptime + Search Console + scan malware actifs.</li>
+    <li>☐ Un plan de réaction écrit et une fiche d’urgence conservée hors du site.</li>
+  </ul>
+  <h3>FAQ</h3>
+  <p><strong>Mon site est vraiment petit, dois-je vraiment m’en soucier ?</strong><br />Oui. Les attaques sont automatiques et opportunistes : elles ne vous choisissent pas, elles trouvent une faille. Un petit site mal protégé est une cible plus facile qu’un gros site bien défendu.</p>
+  <p><strong>WordPress est-il moins sûr qu’un autre système ?</strong><br />Non : il est simplement le plus répandu, donc le plus visé. Bien maintenu (mises à jour, peu de plugins, 2FA), il est parfaitement sûr. Le danger vient presque toujours des extensions négligées.</p>
+  <p><strong>Un certificat HTTPS suffit-il à sécuriser mon site ?</strong><br />Non. HTTPS chiffre la connexion, mais ne protège ni contre les mots de passe faibles, ni contre les failles de plugins, ni contre le spam. C’est une brique indispensable, pas la maison entière.</p>
+  <p><strong>À quelle fréquence dois-je sauvegarder ?</strong><br />Au minimum une fois par jour pour la base de données d’un site actif, et à chaque changement important. Pour un e-commerce, plusieurs fois par jour. Et surtout : testez la restauration au moins deux fois par an.</p>
+  <p><strong>Dois-je stocker les cartes bancaires de mes clients pour faciliter le rachat ?</strong><br />Non, jamais chez vous. Confiez cela à votre prestataire de paiement, qui gère le stockage sécurisé (« carte enregistrée ») à votre place. Vous ne devez ni voir ni conserver les numéros de carte.</p>
+  <p><strong>Le captcha n’agace-t-il pas mes visiteurs ?</strong><br />Les captchas modernes (Turnstile, hCaptcha) sont le plus souvent invisibles et ne se déclenchent qu’en cas de doute ; le honeypot est totalement transparent. On se protège sans dégrader l’expérience.</p>
+  <p><strong>Ai-je besoin d’une assurance cyber ?</strong><br />Pour une petite structure, elle peut couvrir la remise en état, l’accompagnement juridique et parfois la perte d’exploitation. Non obligatoire, mais à évaluer si votre activité dépend fortement de votre site.</p>
+  <h3>Glossaire</h3>
+  <ul>
+    <li><strong>HTTPS / TLS</strong> : protocole qui chiffre les échanges entre le visiteur et votre site.</li>
+    <li><strong>2FA</strong> : double authentification, une deuxième preuve d’identité en plus du mot de passe.</li>
+    <li><strong>CMS</strong> : système de gestion de contenu (WordPress, PrestaShop…) qui fait tourner votre site.</li>
+    <li><strong>CSP</strong> : politique de sécurité du contenu, en-tête qui contrôle ce que le navigateur peut charger.</li>
+    <li><strong>HSTS</strong> : en-tête qui force l’usage permanent de HTTPS.</li>
+    <li><strong>XSS / injection SQL</strong> : attaques par insertion de code malveillant dans un formulaire.</li>
+    <li><strong>Honeypot</strong> : champ piège invisible destiné à démasquer les robots spammeurs.</li>
+    <li><strong>Rate-limiting</strong> : limitation du nombre de requêtes par période, contre les attaques en force.</li>
+    <li><strong>Credential stuffing</strong> : bourrage d’identifiants volés testés en masse sur d’autres sites.</li>
+    <li><strong>Rançongiciel (ransomware)</strong> : logiciel qui chiffre vos données pour exiger une rançon.</li>
+    <li><strong>WAF</strong> : pare-feu applicatif qui filtre le trafic malveillant.</li>
+    <li><strong>Moindre privilège</strong> : principe d’accorder à chacun le minimum d’accès nécessaire.</li>
+    <li><strong>PCI-DSS</strong> : norme de sécurité encadrant le traitement des données de cartes bancaires.</li>
+    <li><strong>3-D Secure</strong> : validation renforcée d’un paiement par la banque du client.</li>
+    <li><strong>Web skimming (Magecart)</strong> : vol de cartes via un script injecté dans la page de paiement.</li>
+    <li><strong>RGPD</strong> : règlement européen sur la protection des données personnelles.</li>
+  </ul>
+
+  <p class="footer">© My-DTM — Agence digitale, Paris · my-dtm.fr — « Sécuriser son site web ». Ce guide fournit des bonnes pratiques générales et ne remplace pas un audit de sécurité personnalisé. Usage personnel ; revente et redistribution interdites.</p>
+
+</div>
+</body>
+</html>
