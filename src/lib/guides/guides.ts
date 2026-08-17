@@ -725,6 +725,316 @@ export const GUIDES: Guide[] = [
     ],
     relatedService: { href: "/services/tracking-conformite", label: "Déléguer entièrement (à partir de 500 €)" }
   },
+
+  {
+    slug: "server-side-tracking-gtm",
+    title: "Server-Side Tracking avec GTM : le guide complet (2026)",
+    description:
+      "Server-side tagging avec GTM : mettre en place votre conteneur serveur, récupérer le signal perdu post-ITP et améliorer votre conformité RGPD.",
+    date: "2026-08-17",
+    readingTime: "9 min",
+    category: "Tracking & RGPD",
+    keywords: [
+      "server side tracking GTM",
+      "server side tagging Google Tag Manager",
+      "conteneur serveur GTM",
+      "tracking server-side RGPD",
+      "sGTM implémentation",
+    ],
+    eyebrow: "Guide premium",
+    intro:
+      "Vos analytics perdent 20 à 40 % des événements à cause des adblockers, de Safari ITP et des navigateurs stricts. Le server-side tagging renvoie ce signal depuis votre serveur — sans contourner le consentement. Voici la méthode complète pour récupérer la mesure perdue.",
+    content: [
+      { type: "p", text: "Le tracking côté navigateur a vécu sa belle époque. Aujourd'hui, Safari plafonne les cookies JavaScript à 7 jours (ITP), un quart à un tiers des visiteurs bloquent les scripts publicitaires avec des extensions ou des DNS filtrants, et la bannière de consentement réduit mécaniquement la surface de mesure. Résultat : vos dashboards sous-estiment vos conversions — souvent de 20 à 40 % — et vos algorithmes publicitaires s'optimisent sur un signal dégradé. Le server-side tagging (sGTM) répond à ce problème structurel, sans contourner la réglementation." },
+
+      { type: "h2", text: "Pourquoi le tracking navigateur ne suffit plus" },
+      { type: "p", text: "Un pixel chargé dans le navigateur est exposé à trois couches de blocage : les extensions (uBlock, AdBlock Plus installés sur des millions de postes), les protections natives des navigateurs (ITP de Safari, Enhanced Tracking Protection de Firefox) et les réseaux d'entreprise ou VPN qui filtrent les domaines de tracking connus. Chacun de ces mécanismes tronque silencieusement votre collecte. L'ITP, à lui seul, peut faire croire que tous vos visiteurs Safari sont de nouveaux utilisateurs — effaçant la réalité de vos audiences de retargeting." },
+      { type: "ul", items: [
+        "ITP de Safari : les cookies first-party posés par JavaScript sont plafonnés à 7 jours, et parfois 24 heures pour les scripts chargés depuis des domaines tiers.",
+        "Adblockers : entre 15 et 40 % des visiteurs selon le secteur bloquent au moins un tracker publicitaire.",
+        "Navigateurs stricts (Firefox, Brave, Tor) : bloquent ou randomisent les fingerprints, effaçant les mesures cross-session.",
+        "Réseau : certains pare-feu d'entreprise et résolveurs DNS filtrent les domaines de Google Analytics, Meta ou Hotjar.",
+      ]},
+
+      { type: "h2", text: "Le server-side tagging : ce qui change" },
+      { type: "p", text: "Avec le sGTM, vos tags ne s'exécutent plus dans le navigateur de l'internaute : ils tournent sur un serveur que vous contrôlez. Le navigateur envoie un seul hit vers votre propre domaine (collect.monsite.fr), le conteneur serveur décode cet événement et le redistribue vers Google Analytics 4, Google Ads, Meta CAPI et les autres destinations — depuis une IP serveur que les listes d'adblockers ne connaissent pas. Les cookies posés par votre serveur via un en-tête HTTP ne sont plus soumis à ITP : leur durée de vie peut atteindre 400 jours, contre 7 jours au maximum avec JavaScript." },
+      { type: "ul", items: [
+        "Résistance aux adblockers : le hit part vers votre sous-domaine first-party, pas vers les serveurs Google ou Meta directement.",
+        "Cookies first-party stables : posés via Set-Cookie HTTP, ils ne subissent pas les restrictions ITP de Safari.",
+        "Allègement du navigateur : une grande partie des scripts tiers disparaît du chargement client, avec un impact positif sur les Core Web Vitals.",
+        "Contrôle total sur les données transmises : vous filtrez, enrichissez ou anonymisez chaque événement avant de le distribuer à chaque plateforme.",
+      ]},
+
+      { type: "h2", text: "L'architecture sGTM en trois briques" },
+      { type: "p", text: "Un déploiement sGTM s'articule autour de trois composants. Les comprendre avant de commencer évite les erreurs de configuration et les surcoûts d'hébergement." },
+      { type: "ul", items: [
+        "Le conteneur Web modifié : vos balises GA4 et Meta Pixel sont redirigées vers votre endpoint sGTM plutôt que vers les serveurs Google ou Meta directement. C'est le seul changement côté navigateur.",
+        "Le conteneur Serveur : hébergé dans Cloud Run (Google Cloud Platform), il reçoit les hits, les parse et les redistribue via des clients configurés pour chaque destination (GA4, Meta CAPI, Google Ads…).",
+        "Le sous-domaine first-party : un sous-domaine de votre propre domaine (collect.monsite.fr) pointe vers votre conteneur serveur. C'est ce point d'entrée first-party qui contourne les adblockers et stabilise les cookies.",
+      ]},
+      { type: "p", text: "Le coût d'hébergement dans Cloud Run est négligeable sous quelques millions de hits mensuels (quelques euros). Le vrai investissement est le temps de configuration initiale et de validation de la déduplication — en particulier si vous envoyez les mêmes événements depuis le navigateur ET depuis le serveur." },
+
+      { type: "h2", text: "Ce que le sGTM change (et ne change pas) pour la conformité RGPD" },
+      { type: "p", text: "Le server-side tagging n'est pas une porte dérobée : si un internaute a refusé les cookies, vous ne devez toujours pas lui envoyer de données vers Meta ou Google Ads. Le Consent Mode v2 reste indispensable. En revanche, le sGTM améliore la conformité sur deux points concrets." },
+      { type: "ul", items: [
+        "Réduction de la surface d'exposition : moins de scripts tiers s'exécutent dans le navigateur, donc moins de transferts de données à l'insu de l'internaute et un avis CNIL plus simple à rédiger.",
+        "Enrichissement maîtrisé : vous pouvez anonymiser les données avant leur envoi — IP tronquée, hachage côté serveur des emails — réduisant la quantité de données personnelles réellement transmises aux plateformes.",
+      ]},
+      { type: "p", text: "La méthode complète — configuration du conteneur Cloud Run, sous-domaine first-party, migration des tags, déduplication des événements et checklist de conformité RGPD — est détaillée dans l'ebook ci-dessous, avec les templates de configuration et les scripts de validation à copier." },
+    ],
+    products: [
+      {
+        id: "ebook-server-side-tracking",
+        type: "pdf",
+        name: "L'ebook complet",
+        price: 9,
+        priceCents: 900,
+        tagline: "La méthode complète pour déployer votre conteneur sGTM et récupérer le signal perdu.",
+        includes: [
+          "L'architecture sGTM expliquée pas à pas (Cloud Run, sous-domaine, clients)",
+          "La configuration du conteneur Web : redirection GA4, Meta Pixel, Google Ads",
+          "Les templates de clients serveur prêts à importer dans GTM",
+          "La déduplication événements navigateur + serveur (event_id, protocole)",
+          "La checklist conformité RGPD et Consent Mode v2 côté serveur",
+          "Format PDF — accès immédiat après paiement",
+        ],
+        cta: "Télécharger l'ebook — 9 €",
+        featured: true,
+        file: "server-side-tracking-gtm.pdf",
+      },
+      {
+        id: "accompagnement-server-side-tracking",
+        type: "cal",
+        name: "L'accompagnement",
+        price: 150,
+        priceCents: 15000,
+        tagline: "On déploie votre conteneur sGTM ensemble, en direct, sur votre propriété.",
+        includes: [
+          "1 visio de 90 min en direct avec un expert",
+          "On configure votre Cloud Run, votre sous-domaine et votre conteneur serveur",
+          "On migre vos tags GA4 et Meta Pixel vers le sGTM ensemble",
+          "On valide la déduplication et la conformité Consent Mode en temps réel",
+          "L'ebook complet inclus",
+          "Vous repartez avec un tracking fiable et résistant aux adblockers",
+        ],
+        cta: "Réserver mon accompagnement — 150 €",
+      },
+    ],
+    faq: [
+      { q: "Ai-je besoin d'un développeur pour déployer le sGTM ?", a: "Pour la configuration de base (Cloud Run, sous-domaine, migration des tags GA4 et Meta), non — GTM est une interface no-code et l'ebook détaille chaque étape avec des captures. Un développeur devient utile pour des enrichissements avancés (envoi d'événements depuis votre back-office ou votre CRM côté serveur)." },
+      { q: "Le server-side tracking me dispense-t-il de la bannière cookies ?", a: "Non. Le sGTM n'est pas une dérogation au consentement : si un visiteur refuse les cookies, vous ne devez pas lui envoyer de données publicitaires, que ce soit depuis le navigateur ou depuis un serveur. Il travaille en complément du Consent Mode v2, pas à sa place." },
+      { q: "Quel est le coût d'hébergement du conteneur serveur GTM ?", a: "Hébergé dans Cloud Run sur Google Cloud Platform, le coût est de quelques euros par mois pour un site standard (plusieurs millions de hits inclus dans le free tier). Comptez 5 à 15 €/mois pour un site à trafic moyen. Vous payez uniquement ce que vous consommez, sans abonnement forfaitaire." },
+      { q: "Quelle différence entre l'ebook à 9 € et l'accompagnement à 150 € ?", a: "L'ebook vous donne la méthode complète à appliquer vous-même, avec les templates de configuration et les scripts de validation. L'accompagnement, c'est la même chose mais on déploie votre conteneur sGTM ensemble, en direct, sur votre compte GCP et vos tags — l'ebook est inclus." },
+    ],
+    relatedService: { href: "/services/tracking-conformite", label: "Déléguer entièrement (à partir de 500 €)" },
+  },
+
+  {
+    slug: "automatisation-marketing-pme",
+    title: "Automatisation marketing pour PME : le guide complet (2026)",
+    description:
+      "Automatiser son marketing digital quand on est PME : emailings automatiques, lead nurturing, CRM, chatbot et connecteurs no-code pour vendre sans effort.",
+    date: "2026-08-17",
+    readingTime: "9 min",
+    category: "Automatisation",
+    keywords: [
+      "automatisation marketing PME",
+      "marketing automation petite entreprise",
+      "automatiser son marketing digital",
+      "email automation PME France",
+      "no-code marketing automation",
+    ],
+    eyebrow: "Guide premium",
+    intro:
+      "Répondre à chaque lead en moins de 5 minutes, relancer automatiquement les prospects qui n'ont pas ouvert votre devis, déclencher une séquence de nurturing dès qu'un contact visite votre page de prix : c'est ce que fait le marketing automation pour une PME. Voici la méthode — sans budget agence.",
+    content: [
+      { type: "p", text: "La plupart des PME se battent à armes inégales avec les grandes entreprises qui ont des équipes marketing entières. L'automatisation marketing rétablit l'équilibre : elle permet à une équipe de deux personnes de traiter 200 leads par mois avec la même réactivité qu'une équipe de vingt. Mais mal employée, elle inonde la boîte de réception de vos prospects de messages génériques qui les font fuir. L'enjeu est d'automatiser ce qui doit l'être — et de rester humain là où ça compte." },
+
+      { type: "h2", text: "Marketing automation vs automatisation des réseaux sociaux : la vraie différence" },
+      { type: "p", text: "Programmer ses posts Instagram ou LinkedIn, c'est de l'automatisation de diffusion — utile, mais sans intelligence. Le marketing automation va plus loin : il s'active en réponse à un comportement. Quand un prospect télécharge votre guide, remplit un formulaire ou clique deux fois sur votre email sans répondre, un workflow démarre — une séquence d'actions déclenchée par l'intention du contact, sans intervention humaine de votre part." },
+      { type: "ul", items: [
+        "Automatisation de diffusion (Metricool, Buffer) : vous programmez un calendrier éditorial, l'outil publie. Unidirectionnel — vous poussez du contenu.",
+        "Marketing automation (Brevo, ActiveCampaign, Make) : l'outil réagit au comportement du contact. Bidirectionnel — vous répondez à une intention réelle.",
+        "La clé : un CRM ou une liste de contacts enrichis d'attributs comportementaux (pages visitées, emails ouverts, formulaires remplis) sur lesquels déclencher les workflows.",
+      ]},
+
+      { type: "h2", text: "Les 4 workflows qui changent tout pour une PME" },
+      { type: "p", text: "Inutile de tout automatiser d'un coup. Quatre workflows couvrent 80 % de la valeur et se mettent en place en une semaine — sans compétence technique préalable." },
+      { type: "ul", items: [
+        "1. La réponse immédiate au lead : dès qu'un formulaire de contact est soumis, un email de confirmation part en moins d'une minute. Les études montrent que le taux de conversion chute de 10× quand la réponse dépasse 5 minutes.",
+        "2. La séquence de nurturing : 3 à 5 emails espacés sur 10 jours pour réchauffer un contact qui a montré de l'intérêt (téléchargement, visite de page prix) mais n'a pas encore acheté.",
+        "3. La relance de devis abandonné : 48h après l'envoi d'un devis sans réponse, un rappel simple et non intrusif récupère 15 à 25 % des indécis.",
+        "4. La fidélisation post-prestation : J+3 après une livraison, un email de satisfaction suivi, une semaine après, d'une demande d'avis Google My Business — levier local souvent négligé, gratuit à automatiser.",
+      ]},
+
+      { type: "h2", text: "Choisir son outil : les trois familles" },
+      { type: "p", text: "Le marché est saturé d'outils qui se ressemblent. Pour une PME, trois familles couvrent l'essentiel des besoins selon votre niveau de complexité et votre budget." },
+      { type: "ul", items: [
+        "Les emailings automatisés simples (Brevo, Mailchimp) : séquences conditionnelles, formulaires, listes de contacts. Gratuit jusqu'à 300 emails/jour (Brevo) ou payant à partir de 15 €/mois. Aucune compétence technique requise.",
+        "Les plateformes marketing automation (ActiveCampaign, HubSpot Starter) : scoring de leads, pipelines CRM, déclencheurs comportementaux avancés. 50 à 200 €/mois selon la taille de la liste.",
+        "Les connecteurs no-code (Make, n8n) : pour tout brancher — CRM, agenda, WhatsApp Business, boutique e-commerce, comptabilité. Plus flexible, adapté aux workflows métier sur-mesure. À partir de 9 €/mois.",
+      ]},
+      { type: "p", text: "Notre recommandation pour démarrer : Brevo (gratuit) pour les séquences email + Make (9 €/mois) pour les connecteurs entre vos outils. Ce binôme couvre les quatre workflows ci-dessus pour moins de 30 €/mois, sans aucun code à écrire." },
+
+      { type: "h2", text: "Segmenter avant d'automatiser" },
+      { type: "p", text: "Un workflow envoyé à la mauvaise personne au mauvais moment nuit plus qu'il n'aide. Avant de configurer le moindre scénario, définissez trois attributs sur chaque contact : la source (d'où vient-il ?), le besoin (quel problème veut-il résoudre ?) et l'étape dans le cycle d'achat (découverte / évaluation / décision). Ces trois dimensions vous permettent de ne jamais envoyer une séquence « débutant » à un client existant, ni une relance de devis à quelqu'un qui vient de signer." },
+
+      { type: "h2", text: "Mesurer ce qui fonctionne" },
+      { type: "p", text: "L'automatisation sans mesure, c'est répéter ses erreurs à l'échelle. Trois indicateurs suffisent pour piloter vos workflows : le taux d'ouverture (base de comparaison : 30 à 45 % pour des emails ciblés et bien segmentés), le taux de clic (3 à 8 % pour une séquence de nurturing correctement calibrée), et le taux de conversion en lead qualifié ou en vente. Un workflow qui ne convertit pas après 30 contacts doit être revu — message, timing ou ciblage. La méthode complète, avec les templates de workflows, les modèles d'emails et les seuils de décision, est détaillée dans l'ebook ci-dessous." },
+    ],
+    products: [
+      {
+        id: "ebook-automatisation-marketing",
+        type: "pdf",
+        name: "L'ebook complet",
+        price: 9,
+        priceCents: 900,
+        tagline: "La méthode clé en main pour automatiser votre marketing et vendre sans effort.",
+        includes: [
+          "Les 4 workflows essentiels détaillés étape par étape (réponse lead, nurturing, relance, fidélisation)",
+          "Les configurations Brevo + Make prêtes à dupliquer avec captures d'écran",
+          "Les modèles d'emails de nurturing et de relance à copier-coller",
+          "Le guide de segmentation et de scoring de leads adapté aux PME",
+          "Les seuils de mesure et le diagnostic par workflow",
+          "Format PDF — accès immédiat après paiement",
+        ],
+        cta: "Télécharger l'ebook — 9 €",
+        featured: true,
+        file: "automatisation-marketing-pme.pdf",
+      },
+      {
+        id: "accompagnement-automatisation-marketing",
+        type: "cal",
+        name: "L'accompagnement",
+        price: 150,
+        priceCents: 15000,
+        tagline: "On installe votre premier workflow ensemble, en direct, sur vos outils.",
+        includes: [
+          "1 visio de 90 min en direct avec un expert",
+          "On configure VOTRE workflow prioritaire ensemble (Brevo, ActiveCampaign ou Make)",
+          "On segmente votre liste de contacts et on pose vos attributs clés",
+          "On teste le déclenchement et on valide la livraison en temps réel",
+          "L'ebook complet inclus",
+          "Vous repartez avec votre premier workflow actif et mesurable",
+        ],
+        cta: "Réserver mon accompagnement — 150 €",
+      },
+    ],
+    faq: [
+      { q: "Quelle différence entre le marketing automation et l'automatisation des réseaux sociaux ?", a: "L'automatisation des réseaux sociaux programme la diffusion de contenus selon un calendrier. Le marketing automation répond au comportement d'un contact : quand il remplit un formulaire, ouvre un email ou visite une page, un workflow se déclenche. Le premier est unidirectionnel ; le second est contextuel et réactif à l'intention." },
+      { q: "Quel budget prévoir pour démarrer ?", a: "Moins de 30 €/mois suffit pour les 4 workflows essentiels, avec Brevo (gratuit jusqu'à 300 emails/jour) et Make (9 €/mois). Un abonnement CRM plus avancé (ActiveCampaign, HubSpot) devient utile quand votre volume de leads dépasse 200 contacts actifs par mois." },
+      { q: "Faut-il déjà avoir une liste d'emails pour commencer ?", a: "Non, même une liste de 50 contacts suffit pour tester vos premiers workflows et en mesurer l'impact. L'important est de configurer correctement les déclencheurs dès le début, pour que chaque nouveau contact entre dans le bon workflow dès son arrivée." },
+      { q: "Quelle différence entre l'ebook à 9 € et l'accompagnement à 150 € ?", a: "L'ebook vous donne la méthode complète, les configurations et les modèles à appliquer vous-même. L'accompagnement, c'est la même chose mais on installe votre premier workflow en direct, sur vos propres outils, adapté à votre activité — l'ebook est inclus." },
+    ],
+    relatedService: { href: "/services/automatisation", label: "Déléguer entièrement (à partir de 500 €)" },
+  },
+
+  {
+    slug: "chatbot-whatsapp-entreprise",
+    title: "Chatbot WhatsApp pour entreprise : le guide complet (2026)",
+    description:
+      "Comment créer un chatbot WhatsApp Business pour répondre 24h/24, qualifier vos prospects et automatiser votre service client, avec ou sans l'API.",
+    date: "2026-08-17",
+    readingTime: "8 min",
+    category: "WhatsApp Business",
+    keywords: [
+      "chatbot WhatsApp entreprise",
+      "chatbot WhatsApp Business",
+      "créer chatbot WhatsApp",
+      "automatiser WhatsApp Business",
+      "WhatsApp Business API chatbot",
+    ],
+    eyebrow: "Guide premium",
+    intro:
+      "Un chatbot WhatsApp répond à vos leads en moins de 10 secondes, 24h/24, sans que vous décrochiez le téléphone. Bien conçu, il qualifie, informe et transfère au bon moment — sans jamais sonner comme un robot. Voici la méthode complète pour créer le vôtre.",
+    content: [
+      { type: "p", text: "Un formulaire web s'ouvre à 20 % et génère un email que vous lisez deux jours après. Un message WhatsApp s'ouvre à plus de 90 % dans les minutes qui suivent. Quand votre prospect clique sur votre publicité à 23h un dimanche et veut un devis, il ne rappellera pas le lundi : soit votre chatbot répond maintenant, soit votre concurrent — qui en a déjà un — le convertit avant vous." },
+
+      { type: "h2", text: "Pourquoi un chatbot WhatsApp convertit mieux qu'un formulaire" },
+      { type: "p", text: "La conversation est le format de vente le plus naturel qui soit. Un chatbot WhatsApp reproduit ce qu'un bon commercial fait à l'accueil : poser les bonnes questions, répondre aux objections immédiates, évaluer le sérieux du prospect et transférer les cas qualifiés à la bonne personne. Le tout, instantanément, même quand votre équipe dort." },
+      { type: "ul", items: [
+        "Réactivité immédiate sans effort humain : le bot envoie le bon message dès la première interaction, à n'importe quelle heure.",
+        "Qualification automatique : une suite de questions progressives filtre les leads sérieux des curieux avant de les passer à l'humain.",
+        "Disponibilité permanente : les week-ends, les nuits, les jours fériés — sans surcoût de personnel.",
+        "Trace complète : chaque échange est archivé dans WhatsApp Business, avec les étiquettes et le pipeline de suivi.",
+      ]},
+
+      { type: "h2", text: "WhatsApp Business app vs API : lequel vous faut-il ?" },
+      { type: "p", text: "Les deux versions de WhatsApp Business permettent de l'automatisation — mais pas avec les mêmes capacités. Le choix se fait en fonction de votre volume de conversations et de votre niveau de personnalisation visé." },
+      { type: "ul", items: [
+        "L'application WhatsApp Business (gratuite) : message d'accueil, message d'absence, réponses rapides prédéfinies. Efficace pour les structures avec moins de 30 conversations par jour. Limite : un seul appareil simultané, pas de workflows conditionnels complexes.",
+        "L'API WhatsApp Business (via un BSP — Business Solution Provider — comme 360dialog ou Twilio) : arborescences complètes, boutons interactifs, listes de choix, intégrations CRM, envoi de templates proactifs. Indispensable dès que le volume ou la personnalisation l'exige.",
+        "Les outils no-code connectés à l'API (WATI, Respond.io, Make) : interfaces visuelles drag-and-drop pour construire les scénarios sans coder.",
+      ]},
+
+      { type: "h2", text: "Les 5 scénarios qui donnent les meilleurs résultats" },
+      { type: "p", text: "Tous les chatbots ne se valent pas. Ces cinq scénarios ont une chose en commun : ils répondent à une attente précise du prospect et le font progresser vers l'achat — sans friction, sans attente." },
+      { type: "ul", items: [
+        "1. Le bot de qualification post-pub : le prospect clique sur votre publicité click-to-WhatsApp → le bot recueille besoin, budget et délai → transfert immédiat au commercial si le prospect est qualifié.",
+        "2. La prise de rendez-vous automatique : le contact envoie « RDV » → le bot affiche les créneaux disponibles (Cal.com) → confirmation dans les deux calendriers en moins de deux minutes.",
+        "3. Le FAQ intelligent : les dix questions les plus fréquentes — tarifs, délais, zone d'intervention, garantie — répondues en 3 secondes, sans jamais décrocher.",
+        "4. Le suivi de commande ou de dossier : le client envoie son numéro → le bot interroge votre CRM ou back-office → statut renvoyé en temps réel, sans intervention humaine.",
+        "5. La relance de devis : J+2 sans réponse → message de relance non intrusif avec un lien de rappel ou de reprise de conversation.",
+      ]},
+
+      { type: "h2", text: "Les règles WhatsApp à respecter absolument" },
+      { type: "p", text: "WhatsApp est strict sur l'usage commercial — pour une bonne raison : leur réputation de canal non-spam en dépend. Ignorer les règles entraîne la suspension du numéro, parfois définitive." },
+      { type: "ul", items: [
+        "Fenêtre de 24 heures : une fois le premier message envoyé par le client, vous pouvez lui répondre librement pendant 24 heures. Au-delà, seuls des templates pré-approuvés par WhatsApp sont autorisés.",
+        "Templates pré-approuvés : pour initier une conversation proactive (relance, notification), vous soumettez un template. Il ne doit pas ressembler à de la publicité non sollicitée.",
+        "Opt-in obligatoire : vous ne pouvez envoyer des messages proactifs qu'à des contacts qui ont explicitement accepté d'être contactés sur WhatsApp.",
+        "Zéro spam : pas de messages envoyés en masse à des inconnus. Les signalements « Spam » d'une partie des destinataires suffisent à faire suspendre le compte.",
+      ]},
+
+      { type: "h2", text: "Par où commencer" },
+      { type: "p", text: "Si vous avez moins de 30 conversations WhatsApp par jour, commencez par l'application WhatsApp Business gratuite. En une heure, vous pouvez configurer un message d'accueil, un message d'absence et cinq réponses rapides aux questions les plus fréquentes — c'est déjà un chatbot fonctionnel. Quand ce premier niveau est rentabilisé et que le volume justifie l'API, l'ebook ci-dessous détaille la migration, la connexion à WATI ou Make, la construction des arborescences métier et les templates à soumettre à WhatsApp pour vos relances automatiques." },
+    ],
+    products: [
+      {
+        id: "ebook-chatbot-whatsapp",
+        type: "pdf",
+        name: "L'ebook complet",
+        price: 9,
+        priceCents: 900,
+        tagline: "La méthode clé en main pour déployer un chatbot WhatsApp qui qualifie et vend.",
+        includes: [
+          "L'arborescence complète des 5 scénarios (qualification, RDV, FAQ, suivi, relance)",
+          "La migration app → API pas à pas (BSP, WATI, Make) avec captures d'écran",
+          "Les templates WhatsApp prêts à soumettre pour vos relances proactives",
+          "Les règles anti-suspension et la politique opt-in conforme",
+          "Le guide de connexion CRM / Cal.com / back-office via Make (no-code)",
+          "Format PDF — accès immédiat après paiement",
+        ],
+        cta: "Télécharger l'ebook — 9 €",
+        featured: true,
+        file: "chatbot-whatsapp-entreprise.pdf",
+      },
+      {
+        id: "accompagnement-chatbot-whatsapp",
+        type: "cal",
+        name: "L'accompagnement",
+        price: 150,
+        priceCents: 15000,
+        tagline: "On configure votre chatbot WhatsApp ensemble, en direct, sur votre compte.",
+        includes: [
+          "1 visio de 90 min en direct avec un expert",
+          "On configure VOTRE bot d'accueil et votre arborescence de qualification",
+          "On branche le scénario prioritaire (FAQ, RDV ou qualification post-pub)",
+          "On teste chaque déclenchement et on valide en conditions réelles",
+          "L'ebook complet inclus",
+          "Vous repartez avec un chatbot actif qui répond à votre place 24h/24",
+        ],
+        cta: "Réserver mon accompagnement — 150 €",
+      },
+    ],
+    faq: [
+      { q: "Faut-il l'API WhatsApp pour créer un chatbot ?", a: "Non pour démarrer. L'application WhatsApp Business gratuite permet déjà des messages d'accueil, des réponses rapides et un message d'absence — soit un chatbot de niveau 1 fonctionnel. L'API devient nécessaire pour des arborescences complexes, plusieurs agents simultanés ou l'intégration à un CRM." },
+      { q: "Mon numéro peut-il être suspendu à cause d'un chatbot ?", a: "Oui, si vous envoyez des messages non sollicités à des inconnus ou si vous contournez la fenêtre de 24 heures sans template approuvé. En respectant l'opt-in des contacts et les règles de templates, le risque est nul. Notre méthode reste dans le cadre prévu par WhatsApp." },
+      { q: "Combien coûte un chatbot WhatsApp ?", a: "L'application WhatsApp Business est gratuite. L'API coûte environ 40 à 100 €/mois via un BSP (360dialog, WATI) selon le volume. Ajoutez 9 €/mois pour Make si vous voulez connecter votre CRM ou Cal.com. La plupart des PME démarrent sous 50 €/mois tout compris." },
+      { q: "Quelle différence entre l'ebook à 9 € et l'accompagnement à 150 € ?", a: "L'ebook vous donne la méthode complète et les templates à appliquer vous-même. L'accompagnement, c'est la même chose mais on configure votre chatbot en direct, sur votre propre compte WhatsApp Business, avec le scénario adapté à votre activité — l'ebook est inclus." },
+    ],
+    relatedService: { href: "/services/whatsapp-business", label: "Déléguer entièrement (à partir de 500 €)" },
+  },
 ];
 
 // --- Garde-fou d'integrite du catalogue -----------------------------------
