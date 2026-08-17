@@ -3,9 +3,9 @@ import Link from "next/link";
 import { CheckCircle2, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Creation Site Web Paris — Site Vitrine, E-commerce, Plateforme Sur Mesure",
+  title: "Création Site Web Paris — Site Vitrine, E-commerce, Plateforme Sur Mesure",
   description:
-    "Agence creation site web a Paris. Sites vitrines, e-commerce Stripe, plateformes evenementielles. Next.js, performance et SEO integres. Devis gratuit.",
+    "Agence création site web à Paris. Sites vitrines, e-commerce Stripe, plateformes événementielles. Next.js, performance et SEO intégrés. Devis gratuit.",
   keywords: [
     "creation site web Paris",
     "agence creation site internet Paris",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     "site internet TPE PME",
   ],
   openGraph: {
-    title: "Creation Site Web Paris — My-DTM Agency",
+    title: "Création Site Web Paris — My-DTM Agency",
     description: "Sites vitrines, e-commerce, plateformes sur mesure. Devis gratuit sous 48h.",
   },
   alternates: { canonical: "https://my-dtm.fr/services/creation-site-web" },
@@ -75,10 +75,10 @@ export default function CreationSiteWebPage() {
             <span className="text-dark">Creation Site Web</span>
           </nav>
           <h1 className="max-w-3xl font-sans text-4xl font-extrabold leading-tight text-dark sm:text-5xl">
-            Creation de site web a Paris — performant, rapide, optimise SEO
+            Création de site web à Paris — performant, rapide, optimisé SEO
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-muted">
-            On cree des sites qui convertissent, pas juste des sites qui existent. Performance, design et SEO integres des le premier jour.
+            On crée des sites qui convertissent, pas juste des sites qui existent. Performance, design et SEO intégrés dès le premier jour.
           </p>
           <Link href="/contact" className="mt-8 inline-flex rounded-lg bg-gradient-to-r from-primary to-secondary px-8 py-4 text-base font-bold text-white transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/30">
             Devis gratuit sous 48h
@@ -112,7 +112,7 @@ export default function CreationSiteWebPage() {
       {/* Tech stack */}
       <section className="bg-surface px-4 py-24 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <h2 className="text-center font-sans text-3xl font-extrabold text-dark sm:text-4xl">Technologies utilisees</h2>
+          <h2 className="text-center font-sans text-3xl font-extrabold text-dark sm:text-4xl">Technologies utilisées</h2>
           <div className="mt-14 grid grid-cols-2 gap-6 md:grid-cols-3">
             {TECH_STACK.map((t) => (
               <div key={t.name} className="rounded-2xl border border-border bg-white p-6 text-center">
@@ -147,7 +147,7 @@ export default function CreationSiteWebPage() {
       </section>
 
       <section className="relative overflow-hidden bg-gradient-to-br from-dark to-charcoal px-4 py-20 text-center">
-        <h2 className="relative font-sans text-3xl font-extrabold text-white sm:text-4xl">Pret a lancer votre site ?</h2>
+        <h2 className="relative font-sans text-3xl font-extrabold text-white sm:text-4xl">Prêt à lancer votre site ?</h2>
         <p className="relative mt-4 text-white/60">Devis gratuit sous 48h. On s&apos;occupe de tout.</p>
         <Link href="/contact" className="relative mt-8 inline-flex rounded-lg bg-gradient-to-r from-primary to-secondary px-10 py-4 text-base font-bold text-white transition-all hover:-translate-y-1 hover:shadow-xl">
           Demander un devis

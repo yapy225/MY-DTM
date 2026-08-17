@@ -77,7 +77,7 @@ export default function AutomatisationPage() {
 
       <section className="px-4 py-24 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <h2 className="text-center font-sans text-3xl font-extrabold text-dark sm:text-4xl">Nos integrations</h2>
+          <h2 className="text-center font-sans text-3xl font-extrabold text-dark sm:text-4xl">Nos intégrations</h2>
           <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {INTEGRATIONS.map((i) => (
               <div key={i.name} className="rounded-2xl border border-border bg-white p-8 transition-all hover:-translate-y-1 hover:shadow-lg">
@@ -97,15 +97,15 @@ export default function AutomatisationPage() {
       {/* Example workflow */}
       <section className="bg-surface px-4 py-24 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-sans text-3xl font-extrabold text-dark">Exemple de workflow automatise</h2>
+          <h2 className="font-sans text-3xl font-extrabold text-dark">Exemple de workflow automatisé</h2>
           <div className="mt-12 space-y-4 text-left">
             {[
               "Un prospect remplit un formulaire Facebook Lead Ad",
-              "Webhook capture le lead en temps reel → stocke en base de donnees",
-              "Message WhatsApp envoye automatiquement dans la seconde",
+              "Webhook capture le lead en temps réel → stocké en base de données",
+              "Message WhatsApp envoyé automatiquement dans la seconde",
               "Email de bienvenue envoye avec brochure PDF",
-              "Notification interne → votre equipe est alertee",
-              "Relance automatique J+3 si pas de reponse",
+              "Notification interne → votre équipe est alertée",
+              "Relance automatique J+3 si pas de réponse",
             ].map((step, i) => (
               <div key={i} className="flex items-start gap-4 rounded-xl border border-border bg-white p-5">
                 <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary text-sm font-bold text-white">{i + 1}</div>

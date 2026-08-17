@@ -10,7 +10,7 @@ import CTA from "@/components/sections/CTA";
 export const metadata: Metadata = {
   title: "My-DTM — Agence Digitale Paris | Creation Site Web, SEO, Marketing Digital",
   description:
-    "Agence de marketing digital a Paris. Developpement web, SEO technique, automatisation API et marketing multi-canal. Audit gratuit sous 48h.",
+    "Agence de marketing digital à Paris. Développement web, SEO technique, automatisation API et marketing multi-canal. Audit gratuit sous 48h.",
   keywords: [
     "agence digitale Paris",
     "agence marketing digital Paris",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://my-dtm.fr" },
   openGraph: {
     title: "My-DTM — Agence Digitale Paris",
-    description: "Creation site web, SEO, automatisation et marketing digital. Audit gratuit sous 48h.",
+    description: "Création site web, SEO, automatisation et marketing digital. Audit gratuit sous 48h.",
     url: "https://my-dtm.fr",
     type: "website",
     locale: "fr_FR",

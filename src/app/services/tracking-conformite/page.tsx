@@ -3,9 +3,9 @@ import Link from "next/link";
 import { CheckCircle2, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Tracking & Conformite RGPD Paris — Meta Pixel, Conversions API, Consentement",
+  title: "Tracking & Conformité RGPD Paris — Meta Pixel, Conversions API, Consentement",
   description:
-    "Agence tracking a Paris. Meta Pixel + Conversions API server-side, deduplication, Advanced Matching, consentement RGPD. Audit tracking gratuit.",
+    "Agence tracking à Paris. Meta Pixel + Conversions API server-side, déduplication, Advanced Matching, consentement RGPD. Audit tracking gratuit.",
   keywords: [
     "tracking Meta Pixel Paris",
     "Conversions API Facebook",
@@ -21,16 +21,16 @@ export const metadata: Metadata = {
     "server-side tagging",
   ],
   openGraph: {
-    title: "Tracking & Conformite RGPD — My-DTM",
-    description: "Meta Pixel + Conversions API, deduplication, Advanced Matching, consentement RGPD. Audit tracking gratuit.",
+    title: "Tracking & Conformité RGPD — My-DTM",
+    description: "Meta Pixel + Conversions API, déduplication, Advanced Matching, consentement RGPD. Audit tracking gratuit.",
   },
   alternates: { canonical: "https://my-dtm.fr/services/tracking-conformite" },
 };
 
 const OFFERS = [
-  { name: "Audit Tracking", price: "500 €", desc: "On verifie ce qui remonte vraiment dans vos plateformes pub et ce que vous perdez.", features: ["Audit Pixel + Conversions API", "Detection des doublons et evenements manquants", "Score Event Match Quality (EMQ)", "Verification consentement RGPD", "Rapport + plan d'action priorise"] },
-  { name: "Setup Pixel + Conversions API", price: "A partir de 800 €", desc: "Tracking server-side complet pour ne plus perdre de conversions a cause d'iOS et des bloqueurs.", features: ["Meta Pixel + Conversions API (server-side)", "Deduplication par event_id", "Advanced Matching (email, telephone hashes)", "Evenements e-commerce (Purchase, IC, Lead)", "external_id + parametres fbp/fbc"], popular: true },
-  { name: "Mise en Conformite RGPD", price: "A partir de 600 €", desc: "Bandeau de consentement, mode consent et tracking conforme a la CNIL.", features: ["Banniere de consentement (Consent Mode)", "Tracking conditionne au consentement", "Politique de confidentialite a jour", "Anonymisation / hash des donnees", "Documentation conformite CNIL"] },
+  { name: "Audit Tracking", price: "500 €", desc: "On vérifie ce qui remonte vraiment dans vos plateformes pub et ce que vous perdez.", features: ["Audit Pixel + Conversions API", "Détection des doublons et événements manquants", "Score Event Match Quality (EMQ)", "Vérification consentement RGPD", "Rapport + plan d'action priorisé"] },
+  { name: "Setup Pixel + Conversions API", price: "À partir de 800 €", desc: "Tracking server-side complet pour ne plus perdre de conversions à cause d'iOS et des bloqueurs.", features: ["Meta Pixel + Conversions API (server-side)", "Déduplication par event_id", "Advanced Matching (email, téléphone hashes)", "Événements e-commerce (Purchase, IC, Lead)", "external_id + paramètres fbp/fbc"], popular: true },
+  { name: "Mise en Conformité RGPD", price: "À partir de 600 €", desc: "Bandeau de consentement, mode consent et tracking conforme à la CNIL.", features: ["Bannière de consentement (Consent Mode)", "Tracking conditionné au consentement", "Politique de confidentialité à jour", "Anonymisation / hash des données", "Documentation conformité CNIL"] },
   { name: "Optimisation Match Quality", price: "A partir de 700 €", desc: "On pousse votre score de correspondance pour des audiences et un ROAS meilleurs.", features: ["Enrichissement Advanced Matching", "Currency uppercase + ViewContent enrichi", "Dedup Purchase / Lead / InitiateCheckout", "Backfill historique via CAPI", "Suivi EMQ avant / apres"] },
 ];
 
@@ -90,7 +90,7 @@ export default function TrackingConformitePage() {
             <span className="text-dark">Tracking & Conformite</span>
           </nav>
           <h1 className="max-w-3xl font-sans text-4xl font-extrabold leading-tight text-dark sm:text-5xl">
-            Tracking & conformite RGPD — arretez de perdre vos conversions
+            Tracking & conformité RGPD — arrêtez de perdre vos conversions
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-muted">
             Meta Pixel + Conversions API server-side, deduplication, Advanced Matching et consentement RGPD. Une mesure fiable, des campagnes mieux optimisees.
@@ -141,7 +141,7 @@ export default function TrackingConformitePage() {
       {/* FAQ */}
       <section className="bg-surface px-4 py-24 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl">
-          <h2 className="text-center font-sans text-3xl font-extrabold text-dark">Questions frequentes</h2>
+          <h2 className="text-center font-sans text-3xl font-extrabold text-dark">Questions fréquentes</h2>
           <div className="mt-14 space-y-6">
             {FAQ.map((f) => (
               <div key={f.q} className="rounded-2xl border border-border bg-white p-6">

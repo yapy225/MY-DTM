@@ -3,9 +3,9 @@ import Link from "next/link";
 import { CheckCircle2, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Agence SEO Paris — Audit, Referencement Naturel, Indexation Google",
+  title: "Agence SEO Paris — Audit, Référencement Naturel, Indexation Google",
   description:
-    "Agence SEO technique a Paris. Audit, redirections 301, Schema.org, indexation Google. +8000 clics/mois recuperes pour nos clients. Audit gratuit.",
+    "Agence SEO technique à Paris. Audit, redirections 301, Schema.org, indexation Google. +8000 clics/mois récupérés pour nos clients. Audit gratuit.",
   keywords: [
     "agence SEO Paris",
     "audit SEO gratuit",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Agence SEO Paris — My-DTM",
-    description: "Audit SEO, referencement naturel, indexation Google. +8000 clics/mois recuperes. Audit gratuit.",
+    description: "Audit SEO, référencement naturel, indexation Google. +8000 clics/mois récupérés. Audit gratuit.",
   },
   alternates: { canonical: "https://my-dtm.fr/services/seo" },
 };
@@ -30,14 +30,14 @@ export const metadata: Metadata = {
 const OFFERS = [
   { name: "Audit SEO Complet", price: "500 \u20AC", desc: "Analyse technique, mots-cles, concurrence, Search Console. Rapport PDF + call.", features: ["Analyse technique complete (vitesse, structure, erreurs)", "Audit mots-cles vs concurrence", "Analyse Search Console", "Rapport PDF actionnable", "Call de restitution 45min"] },
   { name: "SEO Technique", price: "A partir de 1 500 \u20AC", desc: "Implementation complete : Schema.org, redirections, sitemap, Core Web Vitals.", features: ["Schema.org JSON-LD (FAQ, Event, Product, Article)", "Redirections 301 (migration WordPress)", "Sitemap XML dynamique", "Canonical URLs + OpenGraph", "Connexion Search Console + Indexing API", "Optimisation Core Web Vitals"] },
-  { name: "Recuperation Trafic Perdu", price: "A partir de 1 000 \u20AC", desc: "On recupere les clics que vous perdez depuis votre migration ou refonte.", features: ["Mapping ancien → nouveau site", "Redirections 301 en masse", "Nettoyage pages en erreur", "Indexation forcee Google Indexing API", "Suivi avant/apres"], popular: true },
+  { name: "R\u00E9cup\u00E9ration Trafic Perdu", price: "\u00C0 partir de 1 000 \u20AC", desc: "On r\u00E9cup\u00E8re les clics que vous perdez depuis votre migration ou refonte.", features: ["Mapping ancien → nouveau site", "Redirections 301 en masse", "Nettoyage pages en erreur", "Indexation forcee Google Indexing API", "Suivi avant/apres"], popular: true },
   { name: "SEO Contenu Mensuel", price: "A partir de 800 \u20AC/mois", desc: "Articles optimises, maillage interne, FAQ structurees. Croissance organique durable.", features: ["4 articles/mois optimises SEO", "Recherche mots-cles longue traine", "Maillage interne strategique", "FAQ avec schema FAQPage", "Rapport mensuel positions + trafic"] },
 ];
 
 const RESULTS = [
-  { number: "+8 000", label: "clics/mois recuperes", detail: "Via 239 redirections 301 sur Dream Team Africa" },
-  { number: "119", label: "URLs dans le sitemap", detail: "Pages dynamiques indexees automatiquement" },
-  { number: "11", label: "pages forcees via Indexing API", detail: "Indexation Google en quelques heures" },
+  { number: "+8 000", label: "clics/mois récupérés", detail: "Via 239 redirections 301 sur Dream Team Africa" },
+  { number: "119", label: "URLs dans le sitemap", detail: "Pages dynamiques indexées automatiquement" },
+  { number: "11", label: "pages forcées via Indexing API", detail: "Indexation Google en quelques heures" },
   { number: "100%", label: "score Schema.org", detail: "FAQPage, Event, NewsArticle, BreadcrumbList" },
 ];
 
@@ -79,10 +79,10 @@ export default function SEOPage() {
             <span className="text-dark">SEO</span>
           </nav>
           <h1 className="max-w-3xl font-sans text-4xl font-extrabold leading-tight text-dark sm:text-5xl">
-            Agence SEO a Paris — on recupere le trafic que vous perdez
+            Agence SEO à Paris — on récupère le trafic que vous perdez
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-muted">
-            Audit technique, redirections 301, Schema.org, indexation Google forcee. Des resultats concrets, pas des promesses.
+            Audit technique, redirections 301, Schema.org, indexation Google forcée. Des résultats concrets, pas des promesses.
           </p>
           <Link href="/contact" className="mt-8 inline-flex rounded-lg bg-gradient-to-r from-primary to-secondary px-8 py-4 text-base font-bold text-white transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/30">
             Audit SEO gratuit
@@ -110,7 +110,7 @@ export default function SEOPage() {
           <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2">
             {OFFERS.map((o) => (
               <div key={o.name} className={`rounded-2xl border p-8 transition-all hover:-translate-y-1 hover:shadow-lg ${o.popular ? "border-primary bg-primary/[0.02] shadow-lg shadow-primary/10" : "border-border bg-white"}`}>
-                {o.popular && <span className="mb-4 inline-block rounded-full bg-primary px-3 py-1 text-xs font-bold text-white">Le + demande</span>}
+                {o.popular && <span className="mb-4 inline-block rounded-full bg-primary px-3 py-1 text-xs font-bold text-white">Le + demandé</span>}
                 <h3 className="text-xl font-bold text-dark">{o.name}</h3>
                 <div className="mt-2 font-sans text-3xl font-extrabold text-gradient-primary">{o.price}</div>
                 <p className="mt-3 text-sm text-muted">{o.desc}</p>
@@ -130,7 +130,7 @@ export default function SEOPage() {
       {/* FAQ */}
       <section className="bg-surface px-4 py-24 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl">
-          <h2 className="text-center font-sans text-3xl font-extrabold text-dark">Questions frequentes</h2>
+          <h2 className="text-center font-sans text-3xl font-extrabold text-dark">Questions fréquentes</h2>
           <div className="mt-14 space-y-6">
             {FAQ.map((f) => (
               <div key={f.q} className="rounded-2xl border border-border bg-white p-6">
@@ -164,7 +164,7 @@ export default function SEOPage() {
       </section>
 
       <section className="relative overflow-hidden bg-gradient-to-br from-dark to-charcoal px-4 py-20 text-center">
-        <h2 className="relative font-sans text-3xl font-extrabold text-white sm:text-4xl">Pret a dominer Google ?</h2>
+        <h2 className="relative font-sans text-3xl font-extrabold text-white sm:text-4xl">Prêt à dominer Google ?</h2>
         <p className="relative mt-4 text-white/60">Audit SEO gratuit sous 48h.</p>
         <Link href="/contact" className="relative mt-8 inline-flex rounded-lg bg-gradient-to-r from-primary to-secondary px-10 py-4 text-base font-bold text-white transition-all hover:-translate-y-1 hover:shadow-xl">
           Audit SEO gratuit

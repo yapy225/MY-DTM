@@ -5,7 +5,7 @@ import { CheckCircle2, ArrowRight } from "lucide-react";
 export const metadata: Metadata = {
   title: "Agence Marketing Digital Paris — Acquisition Multi-Canal, SEO, Ads, WhatsApp",
   description:
-    "Agence marketing digital a Paris. Acquisition 360 : SEO + WhatsApp + Facebook Ads + Email. Resultats mesurables, rapport mensuel. Audit gratuit.",
+    "Agence marketing digital à Paris. Acquisition 360 : SEO + WhatsApp + Facebook Ads + Email. Résultats mesurables, rapport mensuel. Audit gratuit.",
   keywords: [
     "agence marketing digital Paris",
     "marketing multi-canal PME",
@@ -65,7 +65,7 @@ export default function MarketingDigitalPage() {
             Marketing digital multi-canal — vos clients vous trouvent partout
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-muted">
-            SEO, WhatsApp, Facebook Ads, email. On gere tous vos canaux d&apos;acquisition pour un maximum de resultats.
+            SEO, WhatsApp, Facebook Ads, email. On gère tous vos canaux d&apos;acquisition pour un maximum de résultats.
           </p>
           <Link href="/contact" className="mt-8 inline-flex rounded-lg bg-gradient-to-r from-primary to-secondary px-8 py-4 text-base font-bold text-white transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/30">
             Audit gratuit
@@ -116,8 +116,8 @@ export default function MarketingDigitalPage() {
       </section>
 
       <section className="relative overflow-hidden bg-gradient-to-br from-dark to-charcoal px-4 py-20 text-center">
-        <h2 className="relative font-sans text-3xl font-extrabold text-white sm:text-4xl">Pret a booster votre acquisition ?</h2>
-        <p className="relative mt-4 text-white/60">Audit gratuit. Resultats mesurables des le premier mois.</p>
+        <h2 className="relative font-sans text-3xl font-extrabold text-white sm:text-4xl">Prêt à booster votre acquisition ?</h2>
+        <p className="relative mt-4 text-white/60">Audit gratuit. Résultats mesurables dès le premier mois.</p>
         <Link href="/contact" className="relative mt-8 inline-flex rounded-lg bg-gradient-to-r from-primary to-secondary px-10 py-4 text-base font-bold text-white transition-all hover:-translate-y-1 hover:shadow-xl">
           Lancer ma strategie
         </Link>

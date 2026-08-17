@@ -3,9 +3,9 @@ import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Tarifs — Site Web, SEO, WhatsApp, Marketing, Tracking & Securite",
+  title: "Tarifs — Site Web, SEO, WhatsApp, Marketing, Tracking & Sécurité",
   description:
-    "Tarifs transparents : creation site web a partir de 1 500\u20AC, audit SEO 500\u20AC, WhatsApp Business 800\u20AC, marketing multi-canal 1 000\u20AC/mois. Devis gratuit.",
+    "Tarifs transparents : création site web à partir de 1 500\u20AC, audit SEO 500\u20AC, WhatsApp Business 800\u20AC, marketing multi-canal 1 000\u20AC/mois. Devis gratuit.",
   keywords: [
     "tarif agence web Paris",
     "prix creation site web",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://my-dtm.fr/tarifs" },
   openGraph: {
     title: "Tarifs — My-DTM Digital Agency",
-    description: "Tarifs transparents : site web a partir de 1 500€, SEO 500€, WhatsApp Business 800€. Devis gratuit.",
+    description: "Tarifs transparents : site web à partir de 1 500€, SEO 500€, WhatsApp Business 800€. Devis gratuit.",
     url: "https://my-dtm.fr/tarifs",
     type: "website",
     locale: "fr_FR",
@@ -97,7 +97,7 @@ export default function TarifsPage() {
             Tarifs clairs. Pas de surprises.
           </h1>
           <p className="mt-4 max-w-xl text-lg text-muted">
-            Tous les prix sont HT. Chaque projet est unique — contactez-nous pour un devis adapte.
+            Tous les prix sont HT. Chaque projet est unique — contactez-nous pour un devis adapté.
           </p>
         </div>
       </section>

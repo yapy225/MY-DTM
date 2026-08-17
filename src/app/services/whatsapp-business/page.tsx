@@ -3,9 +3,9 @@ import Link from "next/link";
 import { Bot, Zap, Users, MessageCircle, BarChart3, Clock, CheckCircle2, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Agence WhatsApp Business API — Integration & Configuration en 48h | Paris",
+  title: "Agence WhatsApp Business API — Intégration & Configuration en 48h | Paris",
   description:
-    "Agence WhatsApp Business API Paris : chatbot automatique, templates, webhooks Facebook Leads. Installation complete en 48h. Devis gratuit.",
+    "Agence WhatsApp Business API Paris : chatbot automatique, templates, webhooks Facebook Leads. Installation complète en 48h. Devis gratuit.",
   keywords: [
     "WhatsApp Business API configuration",
     "agence chatbot WhatsApp France",
@@ -27,11 +27,11 @@ export const metadata: Metadata = {
 };
 
 const FEATURES = [
-  { icon: <Bot size={24} />, title: "Chatbot automatique", desc: "Reponses instantanees 24h/24 : FAQ, horaires, menu, tarifs. Vos clients n'attendent jamais." },
-  { icon: <Zap size={24} />, title: "Webhooks temps reel", desc: "Lead Facebook/Instagram capture → message WhatsApp envoye dans la seconde. Zero lead perdu." },
-  { icon: <MessageCircle size={24} />, title: "Templates pre-approuves", desc: "Messages de confirmation, rappel RDV, promo, relance. Valides par Meta, prets a l'emploi." },
-  { icon: <Users size={24} />, title: "Multi-agents", desc: "Plusieurs collaborateurs repondent depuis le meme numero. Ideal pour les equipes." },
-  { icon: <BarChart3 size={24} />, title: "Analytics & reporting", desc: "Taux de lecture, reponse, conversion. Mesurez l'impact de chaque campagne WhatsApp." },
+  { icon: <Bot size={24} />, title: "Chatbot automatique", desc: "Réponses instantanées 24h/24 : FAQ, horaires, menu, tarifs. Vos clients n'attendent jamais." },
+  { icon: <Zap size={24} />, title: "Webhooks temps réel", desc: "Lead Facebook/Instagram capturé → message WhatsApp envoyé dans la seconde. Zéro lead perdu." },
+  { icon: <MessageCircle size={24} />, title: "Templates pré-approuvés", desc: "Messages de confirmation, rappel RDV, promo, relance. Validés par Meta, prêts à l'emploi." },
+  { icon: <Users size={24} />, title: "Multi-agents", desc: "Plusieurs collaborateurs répondent depuis le même numéro. Idéal pour les équipes." },
+  { icon: <BarChart3 size={24} />, title: "Analytics & reporting", desc: "Taux de lecture, réponse, conversion. Mesurez l'impact de chaque campagne WhatsApp." },
   { icon: <Clock size={24} />, title: "Installation 48h", desc: "Compte Business API, verification Meta, templates, webhooks. On s'occupe de tout." },
 ];
 
@@ -40,7 +40,7 @@ const USE_CASES = [
   { sector: "E-commerce & Boutiques", examples: "Suivi commande, relance panier abandonne, alertes promo, SAV instantane" },
   { sector: "Evenementiel & Festivals", examples: "Envoi billets, rappels J-7/J-1, infos pratiques, feedback post-evenement" },
   { sector: "Salons de coiffure & Beaute", examples: "Prise de RDV automatique, rappels, envoi portfolio, fidelisation" },
-  { sector: "Agences immobilieres", examples: "Alertes nouveaux biens, confirmation visite, suivi dossier, relance" },
+  { sector: "Agences immobilières", examples: "Alertes nouveaux biens, confirmation visite, suivi dossier, relance" },
   { sector: "Associations & ONG", examples: "Communication membres, cotisations, evenements, newsletters communautaires" },
   { sector: "Cabinets medicaux", examples: "Rappel RDV, resultats labo, ordonnances, teleconsultation" },
   { sector: "Auto-ecoles & Formation", examples: "Planning cours, rappels examen, resultats, facturation" },
@@ -119,7 +119,7 @@ export default function WhatsAppBusinessPage() {
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
             <div>
               <h1 className="font-sans text-4xl font-extrabold text-white sm:text-5xl">
-                Integration & configuration WhatsApp Business API pour votre entreprise
+                Intégration & configuration WhatsApp Business API pour votre entreprise
               </h1>
               <p className="mt-6 max-w-lg text-lg leading-relaxed text-white/80">
                 98% de taux d&apos;ouverture. On configure votre chatbot, vos templates et vos automatisations en 48h.
@@ -139,7 +139,7 @@ export default function WhatsAppBusinessPage() {
             <div className="grid grid-cols-2 gap-4">
               {[
                 { num: "98%", label: "Taux d'ouverture" },
-                { num: "45%", label: "Taux de reponse" },
+                { num: "45%", label: "Taux de réponse" },
                 { num: "10x", label: "Plus que l'email" },
                 { num: "48h", label: "Installation" },
               ].map((s) => (
@@ -227,7 +227,7 @@ export default function WhatsAppBusinessPage() {
       <section className="bg-surface px-4 py-24 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl">
           <h2 className="text-center font-sans text-3xl font-extrabold text-dark sm:text-4xl">
-            Questions frequentes
+            Questions fréquentes
           </h2>
           <div className="mt-14 space-y-6">
             {FAQ.map((f) => (

@@ -3,9 +3,9 @@ import Link from "next/link";
 import CTA from "@/components/sections/CTA";
 
 export const metadata: Metadata = {
-  title: "Services — Web, SEO, Marketing, Tracking & Securite | My-DTM Paris",
+  title: "Services — Web, SEO, Marketing, Tracking & Sécurité | My-DTM Paris",
   description:
-    "Tous nos services : creation site web, SEO, automatisation, marketing multi-canal, tracking RGPD et securite. Devis gratuit sous 48h.",
+    "Tous nos services : création site web, SEO, automatisation, marketing multi-canal, tracking RGPD et sécurité. Devis gratuit sous 48h.",
   keywords: [
     "services agence digitale Paris",
     "creation site web prix",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://my-dtm.fr/services" },
   openGraph: {
     title: "Services — My-DTM Digital Agency",
-    description: "Developpement web, SEO, automatisation, marketing, tracking et securite. 24 offres adaptees.",
+    description: "Développement web, SEO, automatisation, marketing, tracking et sécurité. 24 offres adaptées.",
     url: "https://my-dtm.fr/services",
     type: "website",
     locale: "fr_FR",
@@ -30,7 +30,7 @@ const OFFERS = [
   {
     id: "dev",
     icon: "\u{1F680}",
-    title: "Developpement Web Full-Stack",
+    title: "Développement Web Full-Stack",
     items: [
       { name: "Site Vitrine Pro", desc: "Next.js performant, responsive, SEO integre. Pour restaurants, freelances, associations.", price: "A partir de 1 500\u00A0\u20AC" },
       { name: "Plateforme E-commerce", desc: "Marketplace complete avec Stripe, gestion stocks, dashboard vendeur.", price: "A partir de 3 000\u00A0\u20AC" },
@@ -41,7 +41,7 @@ const OFFERS = [
   {
     id: "seo",
     icon: "\u{1F4A1}",
-    title: "SEO Technique Avance",
+    title: "SEO Technique Avancé",
     items: [
       { name: "Audit SEO Complet", desc: "Analyse technique, mots-cles, concurrence, Search Console. Rapport + plan d'action.", price: "A partir de 500\u00A0\u20AC" },
       { name: "Optimisation SEO Technique", desc: "Schema.org JSON-LD, redirections 301, sitemap, Core Web Vitals, indexation.", price: "A partir de 1 500\u00A0\u20AC" },
@@ -52,7 +52,7 @@ const OFFERS = [
   {
     id: "auto",
     icon: "\u2699\uFE0F",
-    title: "Integration API & Automatisation",
+    title: "Intégration API & Automatisation",
     items: [
       { name: "WhatsApp Business Automation", desc: "Config complete, templates, webhooks, reponses automatiques.", price: "A partir de 800\u00A0\u20AC" },
       { name: "Facebook & Instagram Leads", desc: "Formulaires Leads Ads, webhook temps reel, dashboard suivi.", price: "A partir de 500\u00A0\u20AC" },
@@ -74,7 +74,7 @@ const OFFERS = [
   {
     id: "tracking",
     icon: "\u{1F4CA}",
-    title: "Tracking & Conformite",
+    title: "Tracking & Conformité",
     items: [
       { name: "Audit Tracking", desc: "Audit Pixel + CAPI, detection des doublons et evenements manquants, score EMQ.", price: "A partir de 500\u00A0\u20AC" },
       { name: "Setup Pixel + Conversions API", desc: "Tracking server-side, deduplication, Advanced Matching, evenements e-commerce.", price: "A partir de 800\u00A0\u20AC" },
@@ -85,7 +85,7 @@ const OFFERS = [
   {
     id: "securite",
     icon: "\u{1F6E1}\uFE0F",
-    title: "Securite & Infra",
+    title: "Sécurité & Infra",
     items: [
       { name: "Audit de Securite", desc: "Headers, dependances vulnerables, secrets exposes, routes non protegees. Rapport + remediation.", price: "A partir de 700\u00A0\u20AC" },
       { name: "Hardening Complet", desc: "CSP avec nonce, headers, validation des uploads, protection des routes, webhooks signes.", price: "A partir de 1 500\u00A0\u20AC" },
@@ -107,7 +107,7 @@ export default function ServicesPage() {
             Des solutions pour chaque besoin digital.
           </h1>
           <p className="mt-4 max-w-xl text-lg text-muted">
-            6 piliers, des offres claires, des resultats mesurables.
+            6 piliers, des offres claires, des résultats mesurables.
           </p>
         </div>
       </section>
