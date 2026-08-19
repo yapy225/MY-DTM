@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   },
 };
 
-type Brand = { name: string; sector: string; href: string; initials: string };
+type Brand = { name: string; sector: string; blurb: string; href: string; initials: string };
 type Cluster = { title: string; note?: string; brands: Brand[] };
 
 const CLUSTERS: Cluster[] = [
@@ -23,30 +23,30 @@ const CLUSTERS: Cluster[] = [
     title: "Culture & Événementiel",
     note: "Le pôle culturel africain",
     brands: [
-      { name: "Dream Team Africa", sector: "Maison de la culture africaine", href: "https://dreamteamafrica.com", initials: "DTA" },
-      { name: "L'Afropéen", sector: "Magazine afro-européen", href: "https://lafropeen.com", initials: "LA" },
-      { name: "L'Officiel d'Afrique", sector: "Annuaire de la diaspora", href: "https://lofficieldafrique.fr", initials: "OA" },
+      { name: "Dream Team Africa", sector: "Maison de la culture africaine", blurb: "Événements, médias et commerce culturel africain à Paris — la maison qui réunit tous les univers.", href: "https://dreamteamafrica.com", initials: "DTA" },
+      { name: "L'Afropéen", sector: "Magazine afro-européen", blurb: "Le magazine des cultures afro-européennes, mis à jour chaque jour.", href: "https://lafropeen.com", initials: "LA" },
+      { name: "L'Officiel d'Afrique", sector: "Annuaire de la diaspora", blurb: "Le référentiel des acteurs, marques et talents de la diaspora.", href: "https://lofficieldafrique.fr", initials: "OA" },
     ],
   },
   {
     title: "Billetterie & Technologie",
     brands: [
-      { name: "eburnia", sector: "Billetterie événementielle (SaaS)", href: "https://eburnia.fr", initials: "EB" },
+      { name: "eburnia", sector: "Billetterie événementielle (SaaS)", blurb: "Billetterie en ligne : QR code, paiement Stripe, 3× sans frais et reversement automatique aux organisateurs.", href: "https://eburnia.fr", initials: "EB" },
     ],
   },
   {
     title: "Lifestyle & Commerce",
     brands: [
-      { name: "Sneakers Love", sector: "Sneakers & streetwear", href: "https://sneakerslove.fr", initials: "SL" },
-      { name: "Parfums de Paris", sector: "Parfumerie", href: "https://parfumsdeparis.fr", initials: "PP" },
-      { name: "La Plante", sector: "Végétal & décoration", href: "https://la-plante.com", initials: "LP" },
+      { name: "Sneakers Love", sector: "Sneakers & streetwear", blurb: "Sélection et univers sneakers pour les passionnés.", href: "https://sneakerslove.fr", initials: "SL" },
+      { name: "Parfums de Paris", sector: "Parfumerie", blurb: "Parfums d'exception, esprit parisien.", href: "https://parfumsdeparis.fr", initials: "PP" },
+      { name: "La Plante", sector: "Végétal & décoration", blurb: "Plantes et décoration végétale pour la maison et le bureau.", href: "https://la-plante.com", initials: "LP" },
     ],
   },
   {
     title: "Bien-être & Services",
     brands: [
-      { name: "Entreprise Bien-être", sector: "QVT & bien-être B2B", href: "https://entreprise-bienetre.fr", initials: "BE" },
-      { name: "Service at Home", sector: "Services à domicile", href: "https://serviceathome.fr", initials: "SH" },
+      { name: "Entreprise Bien-être", sector: "QVT & bien-être B2B", blurb: "Ateliers et prestations bien-être pour les entreprises.", href: "https://entreprise-bienetre.fr", initials: "BE" },
+      { name: "Service at Home", sector: "Services à domicile", blurb: "Prestations et services à domicile, simplement.", href: "https://serviceathome.fr", initials: "SH" },
     ],
   },
 ];
@@ -102,7 +102,8 @@ export default function EcosystemePage() {
                       <p className="text-sm text-secondary">{b.sector}</p>
                     </div>
                   </div>
-                  <span className="mt-5 text-sm font-semibold text-primary">
+                  <p className="mt-5 flex-1 text-sm leading-relaxed text-muted">{b.blurb}</p>
+                  <span className="mt-4 text-sm font-semibold text-primary">
                     {b.href.replace(/^https?:\/\//, "")} &rarr;
                   </span>
                 </a>
