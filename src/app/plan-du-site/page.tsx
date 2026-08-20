@@ -48,6 +48,12 @@ const SECTIONS = [
       { href: "/blog/nextjs-ou-wordpress-que-choisir", label: "Next.js ou WordPress : que choisir" },
       { href: "/blog/optimiser-fiche-google-business-profile", label: "Optimiser sa fiche Google Business Profile" },
       { href: "/blog/ameliorer-core-web-vitals-vitesse-site", label: "Améliorer la vitesse de son site (Core Web Vitals)" },
+      { href: "/blog/automatiser-taches-repetitives-entreprise", label: "Automatiser les tâches répétitives" },
+      { href: "/blog/prix-automatisation-processus-entreprise", label: "Combien coûte l'automatisation des processus" },
+      { href: "/blog/zapier-make-n8n-comparatif", label: "Zapier, Make ou n8n : lequel choisir" },
+      { href: "/blog/automatiser-relances-factures-impayees", label: "Automatiser les relances de factures impayées" },
+      { href: "/blog/integration-api-connecter-outils-entreprise", label: "Intégration API : connecter ses outils" },
+      { href: "/blog/automatiser-capture-leads-facebook-crm", label: "Automatiser la capture de leads Facebook vers le CRM" },
     ],
   },
   {
