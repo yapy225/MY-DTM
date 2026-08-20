@@ -8,6 +8,12 @@ import { POSTS_SECURITE } from "./theme-securite";
 import { POSTS_MARKETING } from "./theme-marketing";
 import { POSTS_CREATION_WEB } from "./theme-creation-web";
 import { POSTS_SEO } from "./theme-seo";
+import { POSTS_SECTEURS } from "./theme-secteurs";
+import { POSTS_IA } from "./theme-ia";
+import { POSTS_SOCIAL } from "./theme-social";
+import { POSTS_ECOMMERCE } from "./theme-ecommerce";
+import { POSTS_CONVERSION } from "./theme-conversion";
+import { POSTS_LOCAL } from "./theme-local";
 
 export type Block =
   | { type: "h2"; text: string }
@@ -1522,6 +1528,12 @@ const ALL_POSTS: Post[] = [
   ...POSTS_MARKETING,
   ...POSTS_CREATION_WEB,
   ...POSTS_SEO,
+  ...POSTS_SECTEURS,
+  ...POSTS_IA,
+  ...POSTS_SOCIAL,
+  ...POSTS_ECOMMERCE,
+  ...POSTS_CONVERSION,
+  ...POSTS_LOCAL,
 ];
 
 export function getAllPosts(): Post[] {
