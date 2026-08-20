@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "gsc:report": "node scripts/gsc-crawled-not-indexed.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^1.6.1",

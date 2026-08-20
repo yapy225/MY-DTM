@@ -1,11 +1,19 @@
 // Audit d'indexation GSC sur tout le sitemap de my-dtm.fr.
 // Propriété GSC = Domaine : sc-domain:my-dtm.fr
-// Usage local : GSC_KEY_FILE=/Users/yaps225/Downloads/dreamteamafrica-643167d8e328.json node scripts/gsc-crawled-not-indexed.mjs
+// Écrit gsc-indexation-report.json et affiche le delta vs le rapport précédent.
+//
+// Usage : npm run gsc:report   (ou : node scripts/gsc-crawled-not-indexed.mjs)
+// Clé de service account : par défaut ~/Library/Application Support/yapia-seo/gsc-key.json
+//   (override possible via GSC_KEY_FILE ou GSC_KEY).
 
 import crypto from "node:crypto";
 import fs from "node:fs/promises";
 
-const KEY_FILE = process.env.GSC_KEY_FILE || "/Users/yaps225/Downloads/dreamteamafrica-643167d8e328.json";
+const HOME = process.env.HOME || process.env.USERPROFILE || "";
+const KEY_FILE =
+  process.env.GSC_KEY_FILE ||
+  process.env.GSC_KEY ||
+  `${HOME}/Library/Application Support/yapia-seo/gsc-key.json`;
 const SITE_URL = "https://my-dtm.fr"; // pour récupérer le sitemap
 const GSC_SITE = "sc-domain:my-dtm.fr"; // propriété Domaine pour l'URL Inspection API
 const CONCURRENCY = 6;
@@ -144,6 +152,14 @@ async function runPool(items, concurrency, worker) {
     discovered.slice(0, 30).forEach((r, i) => console.log(`  ${i + 1}. ${r.url}`));
   }
 
+  // Delta vs rapport précédent (avant de l'écraser).
+  let prev = null;
+  try {
+    prev = JSON.parse(await fs.readFile("gsc-indexation-report.json", "utf8"));
+  } catch {
+    /* pas de rapport précédent */
+  }
+
   await fs.writeFile(
     "gsc-indexation-report.json",
     JSON.stringify(
@@ -160,6 +176,22 @@ async function runPool(items, concurrency, worker) {
     ),
   );
   console.log("\n✓ Rapport écrit : gsc-indexation-report.json");
+
+  if (prev) {
+    const fmt = (n) => (n >= 0 ? `+${n}` : `${n}`);
+    const dIndexed = indexed.length - (prev.indexed ?? 0);
+    const dTotal = results.length - (prev.total ?? 0);
+    console.log(`\n📊 Évolution vs ${prev.generatedAt?.slice(0, 10) ?? "précédent"} :`);
+    console.log(`  Indexées : ${prev.indexed ?? 0} → ${indexed.length}  (${fmt(dIndexed)})`);
+    console.log(`  Total    : ${prev.total ?? 0} → ${results.length}  (${fmt(dTotal)})`);
+    const nowIdx = new Set(indexed.map((r) => r.url));
+    const prevIdx = new Set(prev.byState?.["Submitted and indexed"] ?? []);
+    const gained = [...nowIdx].filter((u) => !prevIdx.has(u));
+    if (gained.length) {
+      console.log(`  🟢 Nouvellement indexées (${gained.length}) :`);
+      gained.slice(0, 40).forEach((u) => console.log(`     + ${u}`));
+    }
+  }
 })().catch((e) => {
   console.error("Erreur:", e.message);
   process.exit(1);
