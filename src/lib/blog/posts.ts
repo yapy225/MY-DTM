@@ -1,5 +1,13 @@
 // Source de verite des articles de blog. Ajouter un objet ici cree
 // automatiquement la page /blog/<slug>, l'entree dans /blog et le sitemap.
+// Les articles sont repartis par theme dans ./theme-*.ts et agreges plus bas.
+import { POSTS_WHATSAPP_BUSINESS } from "./theme-whatsapp-business";
+import { POSTS_BILLETTERIE } from "./theme-billetterie";
+import { POSTS_TRACKING } from "./theme-tracking";
+import { POSTS_SECURITE } from "./theme-securite";
+import { POSTS_MARKETING } from "./theme-marketing";
+import { POSTS_CREATION_WEB } from "./theme-creation-web";
+import { POSTS_SEO } from "./theme-seo";
 
 export type Block =
   | { type: "h2"; text: string }
@@ -1504,10 +1512,22 @@ export const POSTS: Post[] = [
   },
 ];
 
+// Agregation : articles historiques (POSTS) + fichiers par theme.
+const ALL_POSTS: Post[] = [
+  ...POSTS,
+  ...POSTS_WHATSAPP_BUSINESS,
+  ...POSTS_BILLETTERIE,
+  ...POSTS_TRACKING,
+  ...POSTS_SECURITE,
+  ...POSTS_MARKETING,
+  ...POSTS_CREATION_WEB,
+  ...POSTS_SEO,
+];
+
 export function getAllPosts(): Post[] {
-  return [...POSTS].sort((a, b) => (a.date < b.date ? 1 : -1));
+  return [...ALL_POSTS].sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
 export function getPost(slug: string): Post | undefined {
-  return POSTS.find((p) => p.slug === slug);
+  return ALL_POSTS.find((p) => p.slug === slug);
 }
