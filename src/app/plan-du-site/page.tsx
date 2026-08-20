@@ -58,6 +58,8 @@ const SECTIONS = [
     title: "Informations",
     links: [
       { href: "/", label: "Accueil" },
+      { href: "/realisations", label: "Réalisations" },
+      { href: "/ecosysteme", label: "Écosystème" },
       { href: "/tarifs", label: "Tarifs" },
       { href: "/contact", label: "Contact" },
       { href: "/mentions-legales", label: "Mentions légales" },
