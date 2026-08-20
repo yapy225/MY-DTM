@@ -3,7 +3,7 @@ import Link from "next/link";
 import CTA from "@/components/sections/CTA";
 
 export const metadata: Metadata = {
-  title: "Services — Web, SEO, Marketing, Tracking & Securite | My-DTM Paris",
+  title: "Services — Web, SEO, Marketing, Tracking & Securite | My DTM Paris",
   description:
     "Tous nos services : creation site web, SEO, automatisation, marketing multi-canal, tracking RGPD et securite. Devis gratuit sous 48h.",
   keywords: [
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://my-dtm.fr/services" },
   openGraph: {
-    title: "Services — My-DTM Digital Agency",
+    title: "Services — My DTM",
     description: "Developpement web, SEO, automatisation, marketing, tracking et securite. 24 offres adaptees.",
     url: "https://my-dtm.fr/services",
     type: "website",

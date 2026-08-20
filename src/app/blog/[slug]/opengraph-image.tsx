@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { getAllPosts, getPost } from "@/lib/blog/posts";
 
-export const alt = "My-DTM — Article";
+export const alt = "My DTM — Article";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -12,7 +12,7 @@ export function generateStaticParams() {
 export default async function OGImage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = getPost(slug);
-  const title = post?.title ?? "My-DTM — Agence Digitale";
+  const title = post?.title ?? "My DTM — Agence Digitale";
   const category = post?.category ?? "Blog";
 
   return new ImageResponse(
@@ -39,7 +39,7 @@ export default async function OGImage({ params }: { params: Promise<{ slug: stri
               color: "transparent",
             }}
           >
-            My-DTM
+            My DTM
           </span>
           <span style={{ fontSize: 20, color: "rgba(255,255,255,0.5)" }}>
             Agency

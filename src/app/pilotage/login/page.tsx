@@ -38,7 +38,7 @@ export default async function PilotageLogin({
         }}
       >
         <h1 style={{ fontSize: 22, fontWeight: 800, color: "var(--color-heading)", marginBottom: 6 }}>
-          Pilotage My-DTM
+          Pilotage My DTM
         </h1>
         <p style={{ color: "var(--color-muted)", fontSize: 14, marginBottom: 20 }}>
           Accès réservé. Entre ton mot de passe.

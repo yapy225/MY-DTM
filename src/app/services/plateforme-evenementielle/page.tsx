@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     "alternative Billetweb Weezevent",
   ],
   openGraph: {
-    title: "Plateforme Billetterie Sur Mesure — My-DTM Paris",
+    title: "Plateforme Billetterie Sur Mesure — My DTM Paris",
     description: "On crée votre billetterie événementielle sur mesure : QR codes, exposants, paiement, dashboard. Sans commission par billet.",
   },
   alternates: { canonical: "https://my-dtm.fr/services/plateforme-evenementielle" },
@@ -62,7 +62,7 @@ export default function PlateformeEvenementiellePage() {
     "@context": "https://schema.org",
     "@type": "Service",
     name: "Création de plateforme de billetterie événementielle sur mesure",
-    provider: { "@type": "Organization", name: "My-DTM Digital Agency", url: "https://my-dtm.fr" },
+    provider: { "@type": "Organization", name: "My DTM", url: "https://my-dtm.fr" },
     description: "Plateforme de billetterie sur mesure : billets QR code, réservation exposants, paiement en ligne, contrôle d'accès et dashboard admin.",
     areaServed: { "@type": "Country", name: "France" },
     offers: { "@type": "AggregateOffer", lowPrice: "4000", highPrice: "20000", priceCurrency: "EUR" },

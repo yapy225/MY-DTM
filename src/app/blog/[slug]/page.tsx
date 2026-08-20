@@ -42,8 +42,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     image: `https://my-dtm.fr/blog/${post.slug}/opengraph-image`,
     datePublished: post.date,
     dateModified: post.date,
-    author: { "@type": "Organization", name: "My-DTM Digital Agency", url: "https://my-dtm.fr" },
-    publisher: { "@type": "Organization", name: "My-DTM Digital Agency", logo: { "@type": "ImageObject", url: "https://my-dtm.fr/icon.svg" } },
+    author: { "@type": "Organization", name: "My DTM", url: "https://my-dtm.fr" },
+    publisher: { "@type": "Organization", name: "My DTM", logo: { "@type": "ImageObject", url: "https://my-dtm.fr/icon.svg" } },
     mainEntityOfPage: { "@type": "WebPage", "@id": `https://my-dtm.fr/blog/${post.slug}` },
     keywords: post.keywords.join(", "),
   };

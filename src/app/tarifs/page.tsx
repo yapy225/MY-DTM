@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://my-dtm.fr/tarifs" },
   openGraph: {
-    title: "Tarifs — My-DTM Digital Agency",
+    title: "Tarifs — My DTM",
     description: "Tarifs transparents : site web a partir de 1 500€, SEO 500€, WhatsApp Business 800€. Devis gratuit.",
     url: "https://my-dtm.fr/tarifs",
     type: "website",

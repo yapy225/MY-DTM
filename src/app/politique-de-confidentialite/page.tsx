@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Politique de Confidentialite | My-DTM Digital Agency",
+  title: "Politique de Confidentialite | My DTM",
   description: "Politique de confidentialite de my-dtm.fr — traitement des donnees personnelles, droits RGPD et cookies.",
   alternates: { canonical: "https://my-dtm.fr/politique-de-confidentialite" },
 };
@@ -16,7 +16,7 @@ export default function PolitiqueConfidentialite() {
         <div>
           <h2>1. Responsable du traitement</h2>
           <p>
-            My-DTM Digital Agency, micro-entreprise basee a Paris, France.
+            My DTM, micro-entreprise basee a Ormesson-sur-Marne (94490), Ile-de-France.
             Contact : hello@my-dtm.fr | +33 7 43 53 75 51.
           </p>
         </div>

@@ -86,7 +86,7 @@ export async function POST(req: Request) {
     const notifyTo = process.env.CONTACT_NOTIFY_TO || "yapy.mambo@gmail.com";
 
     await resend.emails.send({
-      from: "My-DTM Contact <hello@my-dtm.fr>",
+      from: "My DTM Contact <hello@my-dtm.fr>",
       to: [notifyTo],
       replyTo: email,
       subject: `Nouveau message de ${escapeHtml(name)} — ${escapeHtml(service || "Contact")}`,

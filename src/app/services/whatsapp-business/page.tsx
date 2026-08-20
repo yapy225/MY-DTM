@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     "WhatsApp Business catalogue produits",
   ],
   openGraph: {
-    title: "Configuration WhatsApp Business API — My-DTM Paris",
+    title: "Configuration WhatsApp Business API — My DTM Paris",
     description: "On configure votre WhatsApp Business API en 48h. Chatbot, templates, webhooks. Devis gratuit.",
     type: "website",
   },
@@ -78,7 +78,7 @@ export default function WhatsAppBusinessPage() {
     name: "Configuration WhatsApp Business API",
     provider: {
       "@type": "Organization",
-      name: "My-DTM Digital Agency",
+      name: "My DTM",
       url: "https://my-dtm.fr",
     },
     description: "Configuration complete de WhatsApp Business API pour entreprises. Chatbot, templates, webhooks, multi-agents.",

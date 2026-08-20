@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Plan du site — My-DTM Digital Agency",
+  title: "Plan du site — My DTM",
   description:
     "Plan du site my-dtm.fr : accueil, services, blog, guides, tarifs, contact et mentions légales.",
   alternates: { canonical: "https://my-dtm.fr/plan-du-site" },

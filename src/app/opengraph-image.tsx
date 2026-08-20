@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "My-DTM — Agence Digitale Paris";
+export const alt = "My DTM — Agence Digitale Paris";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -36,7 +36,7 @@ export default function OGImage() {
               color: "transparent",
             }}
           >
-            My-DTM
+            My DTM
           </span>
           <span style={{ fontSize: 28, color: "rgba(255,255,255,0.6)" }}>
             Agency
