@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { getAllPosts } from "@/lib/blog/posts";
 
 export const metadata: Metadata = {
   title: "Plan du site — My DTM",
@@ -22,38 +23,6 @@ const SECTIONS = [
       { href: "/services/tracking-conformite", label: "Tracking & Conformité RGPD" },
       { href: "/services/securite-web", label: "Sécurité web" },
       { href: "/services/plateforme-evenementielle", label: "Plateforme événementielle" },
-    ],
-  },
-  {
-    title: "Blog",
-    links: [
-      { href: "/blog", label: "Tous les articles" },
-      { href: "/blog/integrer-whatsapp-business-api-guide", label: "Comment intégrer l'API WhatsApp Business" },
-      { href: "/blog/conversions-api-meta-rgpd-guide", label: "Conversions API Meta & RGPD" },
-      { href: "/blog/prix-plateforme-billetterie-evenementielle", label: "Prix d'une plateforme de billetterie" },
-      { href: "/blog/cout-whatsapp-business-api-france", label: "Coût WhatsApp Business API France" },
-      { href: "/blog/deduplication-evenements-pixel-capi", label: "Déduplication événements Pixel / CAPI" },
-      { href: "/blog/securiser-application-nextjs-checklist", label: "Sécuriser une application Next.js" },
-      { href: "/blog/content-security-policy-nonce-nextjs", label: "Content Security Policy avec nonce Next.js" },
-      { href: "/blog/migration-wordpress-nextjs-seo", label: "Migrer de WordPress à Next.js sans perdre son SEO" },
-      { href: "/blog/chatbot-whatsapp-entreprise", label: "Chatbot WhatsApp pour entreprise" },
-      { href: "/blog/whatsapp-business-vs-whatsapp-classique", label: "WhatsApp Business vs WhatsApp classique" },
-      { href: "/blog/consent-mode-v2-rgpd-cnil", label: "Consent Mode v2 & cookies RGPD/CNIL" },
-      { href: "/blog/billetterie-qr-code-evenement", label: "Billetterie QR code : comment ça marche" },
-      { href: "/blog/site-billetterie-association", label: "Créer un site de billetterie pour une association" },
-      { href: "/blog/tracking-conversions-ios-att", label: "Tracking iOS & ATT : récupérer vos conversions Meta" },
-      { href: "/blog/prix-creation-site-web-professionnel", label: "Prix d'un site web professionnel" },
-      { href: "/blog/combien-coute-referencement-google", label: "Combien coûte le référencement Google (SEO)" },
-      { href: "/blog/refonte-site-web-sans-perdre-seo", label: "Refonte de site sans perdre son SEO" },
-      { href: "/blog/nextjs-ou-wordpress-que-choisir", label: "Next.js ou WordPress : que choisir" },
-      { href: "/blog/optimiser-fiche-google-business-profile", label: "Optimiser sa fiche Google Business Profile" },
-      { href: "/blog/ameliorer-core-web-vitals-vitesse-site", label: "Améliorer la vitesse de son site (Core Web Vitals)" },
-      { href: "/blog/automatiser-taches-repetitives-entreprise", label: "Automatiser les tâches répétitives" },
-      { href: "/blog/prix-automatisation-processus-entreprise", label: "Combien coûte l'automatisation des processus" },
-      { href: "/blog/zapier-make-n8n-comparatif", label: "Zapier, Make ou n8n : lequel choisir" },
-      { href: "/blog/automatiser-relances-factures-impayees", label: "Automatiser les relances de factures impayées" },
-      { href: "/blog/integration-api-connecter-outils-entreprise", label: "Intégration API : connecter ses outils" },
-      { href: "/blog/automatiser-capture-leads-facebook-crm", label: "Automatiser la capture de leads Facebook vers le CRM" },
     ],
   },
   {
@@ -81,6 +50,17 @@ const SECTIONS = [
 ];
 
 export default function PlanDuSitePage() {
+  // Section Blog generee dynamiquement depuis la source de verite des articles
+  // (plus de liste a maintenir a la main quand on ajoute un article).
+  const blogSection = {
+    title: "Blog",
+    links: [
+      { href: "/blog", label: "Tous les articles" },
+      ...getAllPosts().map((p) => ({ href: `/blog/${p.slug}`, label: p.title })),
+    ],
+  };
+  const sections = [SECTIONS[0], blogSection, ...SECTIONS.slice(1)];
+
   return (
     <>
       <script
@@ -111,7 +91,7 @@ export default function PlanDuSitePage() {
 
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
-          {SECTIONS.map((section) => (
+          {sections.map((section) => (
             <section key={section.title}>
               <h2 className="font-sans text-xl font-extrabold text-dark">{section.title}</h2>
               <ul className="mt-5 space-y-2.5">
