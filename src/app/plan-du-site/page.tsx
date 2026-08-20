@@ -42,6 +42,12 @@ const SECTIONS = [
       { href: "/blog/billetterie-qr-code-evenement", label: "Billetterie QR code : comment ça marche" },
       { href: "/blog/site-billetterie-association", label: "Créer un site de billetterie pour une association" },
       { href: "/blog/tracking-conversions-ios-att", label: "Tracking iOS & ATT : récupérer vos conversions Meta" },
+      { href: "/blog/prix-creation-site-web-professionnel", label: "Prix d'un site web professionnel" },
+      { href: "/blog/combien-coute-referencement-google", label: "Combien coûte le référencement Google (SEO)" },
+      { href: "/blog/refonte-site-web-sans-perdre-seo", label: "Refonte de site sans perdre son SEO" },
+      { href: "/blog/nextjs-ou-wordpress-que-choisir", label: "Next.js ou WordPress : que choisir" },
+      { href: "/blog/optimiser-fiche-google-business-profile", label: "Optimiser sa fiche Google Business Profile" },
+      { href: "/blog/ameliorer-core-web-vitals-vitesse-site", label: "Améliorer la vitesse de son site (Core Web Vitals)" },
     ],
   },
   {
