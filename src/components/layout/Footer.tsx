@@ -13,6 +13,8 @@ const SERVICES = [
 
 const LINKS = [
   { href: "/services", label: "Services" },
+  { href: "/realisations", label: "Réalisations" },
+  { href: "/ecosysteme", label: "Écosystème" },
   { href: "/blog", label: "Blog" },
   { href: "/#faq", label: "FAQ" },
   { href: "/tarifs", label: "Tarifs" },

@@ -29,6 +29,14 @@ const INTEGRATIONS = [
   { name: "CRM & Google Sheets", desc: "Synchronisation contacts, export automatique, reporting." },
 ];
 
+const FAQ = [
+  { q: "Combien coute une automatisation marketing ?", a: "Nos projets d'automatisation demarrent a partir de 500€ pour une integration simple (webhook Facebook Leads vers WhatsApp par exemple) et vont jusqu'a 3 000€ pour un workflow complet multi-outils. Le tarif depend du nombre d'outils a connecter et de la complexite des scenarios. On chiffre precisement apres un audit gratuit de vos besoins." },
+  { q: "Combien de temps pour mettre en place une automatisation ?", a: "Une integration simple (un webhook, une sequence email) est operationnelle en quelques jours. Un workflow complet reliant Facebook Leads, WhatsApp, Stripe et vos emails demande generalement 1 a 3 semaines selon vos outils existants. On teste chaque etape avant la mise en production." },
+  { q: "Quelle difference entre un webhook et une automatisation complete ?", a: "Un webhook est le declencheur technique : il capte un evenement en temps reel (un nouveau lead, un paiement Stripe). L'automatisation complete enchaine ensuite plusieurs actions : stockage en base, message WhatsApp, email de bienvenue, notification interne et relance J+3. Le webhook est la brique, le workflow est la chaine complete." },
+  { q: "Pourquoi automatiser la capture de mes leads Facebook ?", a: "Un lead contacte dans la premiere minute a beaucoup plus de chances de convertir qu'une relance le lendemain. En connectant Facebook Leads a WhatsApp par webhook, chaque prospect recoit un message automatique dans la seconde, sans intervention de votre equipe. Vous ne perdez plus aucun lead par manque de reactivite." },
+  { q: "Quels outils pouvez-vous connecter entre eux ?", a: "On integre WhatsApp Business API, Facebook et Instagram Leads, Stripe, les emails transactionnels (Resend / SendGrid), Google Search Console, ainsi que votre CRM ou vos Google Sheets. L'objectif est de faire dialoguer vos outils existants pour que leads, paiements, emails et messages tournent sans vous." },
+];
+
 const jsonLd = [
   {
     "@context": "https://schema.org",
@@ -51,11 +59,18 @@ const jsonLd = [
 ];
 
 export default function AutomatisationPage() {
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+  };
+
   return (
     <>
       {jsonLd.map((ld, i) => (
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
       ))}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <section className="bg-gradient-to-b from-white to-surface px-4 pt-32 pb-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <nav className="mb-8 text-sm text-muted">
@@ -116,6 +131,20 @@ export default function AutomatisationPage() {
           <Link href="/contact" className="mt-10 inline-flex rounded-lg bg-gradient-to-r from-primary to-secondary px-8 py-4 text-base font-bold text-white transition-all hover:-translate-y-1 hover:shadow-xl">
             Automatiser mon business
           </Link>
+        </div>
+      </section>
+
+      <section className="bg-surface px-4 py-24 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl">
+          <h2 className="text-center font-sans text-3xl font-extrabold text-dark">Questions frequentes</h2>
+          <div className="mt-14 space-y-6">
+            {FAQ.map((f) => (
+              <div key={f.q} className="rounded-2xl border border-border bg-white p-6">
+                <h3 className="text-base font-bold text-dark">{f.q}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted">{f.a}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

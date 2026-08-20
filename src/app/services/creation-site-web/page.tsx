@@ -41,7 +41,21 @@ const TECH_STACK = [
   { name: "Vercel", desc: "Hebergement CDN global, 99.9% uptime" },
 ];
 
+const FAQ = [
+  { q: "Combien coute la creation d’un site web a Paris ?", a: "Un site vitrine professionnel demarre a partir de 1 500€, un site e-commerce avec paiement Stripe a partir de 3 000€, et une plateforme evenementielle avec billetterie a partir de 4 000€. Pour un ecosysteme digital complet (site, marketplace, billetterie, journal, annuaire interconnectes), c’est sur devis. On chiffre precisement apres avoir cerne votre projet." },
+  { q: "Combien de temps pour creer mon site ?", a: "Un site vitrine est livre en 2 semaines environ. Comptez 4 semaines pour un site e-commerce, 4 a 6 semaines pour une plateforme evenementielle, et 8 a 12 semaines pour un ecosysteme digital complet. Ces delais incluent le design, le developpement et les phases de test avant mise en ligne." },
+  { q: "Quelle difference entre un site vitrine et un site e-commerce ?", a: "Le site vitrine (a partir de 1 500€) presente votre activite : design responsive, 5 a 10 pages, SEO de base et formulaire de contact. Le site e-commerce (a partir de 3 000€) ajoute un catalogue produits, le paiement Stripe securise, la gestion des stocks et un dashboard vendeur. Le choix depend de si vous vendez en ligne ou non." },
+  { q: "Pourquoi choisir Next.js pour mon site ?", a: "On developpe avec Next.js, React 19, Tailwind CSS, Prisma + PostgreSQL et Stripe, le tout heberge sur Vercel. Cette stack donne des sites ultra-rapides, un SEO technique integre des le premier jour et une base scalable. Un site performant charge vite, se positionne mieux sur Google et convertit davantage." },
+  { q: "L’hebergement et le SEO sont-ils inclus ?", a: "Oui. L’hebergement Vercel (CDN global, 99,9% d’uptime) est inclus des l’offre Site Vitrine, et le SEO technique est integre dans toutes nos offres. Vous obtenez un site rapide, bien structure pour Google et deja optimise, sans surcout cache." },
+];
+
 export default function CreationSiteWebPage() {
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+  };
+
   const serviceJsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -64,6 +78,7 @@ export default function CreationSiteWebPage() {
           { "@type": "ListItem", position: 3, name: "Creation Site Web", item: "https://my-dtm.fr/services/creation-site-web" },
         ],
       }) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
       <section className="bg-gradient-to-b from-white to-surface px-4 pt-32 pb-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
@@ -118,6 +133,21 @@ export default function CreationSiteWebPage() {
               <div key={t.name} className="rounded-2xl border border-border bg-white p-6 text-center">
                 <h3 className="text-lg font-bold text-dark">{t.name}</h3>
                 <p className="mt-2 text-sm text-muted">{t.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="bg-surface px-4 py-24 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl">
+          <h2 className="text-center font-sans text-3xl font-extrabold text-dark">Questions frequentes</h2>
+          <div className="mt-14 space-y-6">
+            {FAQ.map((f) => (
+              <div key={f.q} className="rounded-2xl border border-border bg-white p-6">
+                <h3 className="text-base font-bold text-dark">{f.q}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted">{f.a}</p>
               </div>
             ))}
           </div>

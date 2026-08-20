@@ -58,10 +58,21 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     ],
   };
 
+  const faqJsonLd = post.faq && post.faq.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: post.faq.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  } : null;
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      {faqJsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />}
 
       <article>
         <header className="bg-gradient-to-b from-white to-surface px-4 pt-32 pb-12 sm:px-6 lg:px-8">
@@ -110,6 +121,21 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 </div>
               );
             })}
+
+            {/* FAQ */}
+            {post.faq && post.faq.length > 0 && (
+              <div className="mt-14 border-t border-border pt-8">
+                <h2 className="font-sans text-2xl font-extrabold text-dark">Questions fréquentes</h2>
+                <div className="mt-6 space-y-4">
+                  {post.faq.map((f) => (
+                    <div key={f.q} className="rounded-2xl border border-border bg-white p-6">
+                      <h3 className="text-base font-bold text-dark">{f.q}</h3>
+                      <p className="mt-3 text-sm leading-relaxed text-muted">{f.a}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* Related services */}
             <div className="mt-14 border-t border-border pt-8">

@@ -27,6 +27,14 @@ const OFFERS = [
   { name: "Newsletter & Fidelisation", price: "A partir de 400 \u20AC/mois", desc: "Template, segmentation, envois reguliers, A/B testing.", features: ["Setup template responsive", "Segmentation base contacts", "2-4 envois/mois", "A/B testing sujets", "Suivi taux ouverture/clics"] },
 ];
 
+const FAQ = [
+  { q: "Combien coute le marketing digital pour une PME ?", a: "Notre offre Acquisition 360° (SEO + WhatsApp + Ads + Email) demarre a partir de 1 000€/mois. La gestion des reseaux sociaux commence a 800€/mois, la newsletter et fidelisation a 400€/mois, et le Pack Lancement Evenement a partir de 2 000€. On construit le mix de canaux selon votre budget et vos objectifs." },
+  { q: "Quelle difference entre l’acquisition 360° et la gestion des reseaux sociaux ?", a: "L’Acquisition 360° (a partir de 1 000€/mois) pilote tous vos canaux d’acquisition depuis un tableau de bord unifie : SEO, Facebook/Instagram Ads, WhatsApp et newsletter. La Gestion des reseaux sociaux (a partir de 800€/mois) se concentre sur le calendrier editorial, la creation de contenu et le community management. La premiere vise les leads, la seconde la presence et l’engagement." },
+  { q: "Combien de temps pour voir des resultats en marketing digital ?", a: "Les campagnes Ads et WhatsApp generent des premiers resultats des le premier mois, avec un rapport de performance a l’appui. Le SEO et le contenu montent en puissance sur 3 a 6 mois. On mesure tout et on ajuste chaque mois lors d’un call strategie." },
+  { q: "Pourquoi une approche multi-canal plutot qu’un seul canal ?", a: "Vos clients ne sont pas tous au meme endroit : certains cherchent sur Google, d’autres reagissent a une pub Facebook ou repondent sur WhatsApp. En combinant SEO, Ads, WhatsApp et email, on multiplie les points de contact et on ne depend pas d’un seul canal. Resultat : une acquisition plus stable et un cout par lead optimise." },
+  { q: "Que comprend le Pack Lancement Evenement ?", a: "Le Pack Lancement Evenement (a partir de 2 000€) est une offre cle en main : landing page dediee, campagne Facebook/Instagram Ads, sequence WhatsApp (confirmation et rappels), email blast sur votre base de contacts et relance post-evenement. Ideal pour remplir un evenement du lancement jusqu’a l’after." },
+];
+
 const jsonLd = [
   {
     "@context": "https://schema.org",
@@ -49,11 +57,18 @@ const jsonLd = [
 ];
 
 export default function MarketingDigitalPage() {
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+  };
+
   return (
     <>
       {jsonLd.map((ld, i) => (
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
       ))}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <section className="bg-gradient-to-b from-white to-surface px-4 pt-32 pb-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <nav className="mb-8 text-sm text-muted">
@@ -89,6 +104,21 @@ export default function MarketingDigitalPage() {
                     </li>
                   ))}
                 </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="bg-surface px-4 py-24 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl">
+          <h2 className="text-center font-sans text-3xl font-extrabold text-dark">Questions frequentes</h2>
+          <div className="mt-14 space-y-6">
+            {FAQ.map((f) => (
+              <div key={f.q} className="rounded-2xl border border-border bg-white p-6">
+                <h3 className="text-base font-bold text-dark">{f.q}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted">{f.a}</p>
               </div>
             ))}
           </div>
