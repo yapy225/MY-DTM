@@ -20,7 +20,7 @@ import {
 } from "@/components/pilotage/ui";
 
 export const metadata: Metadata = {
-  title: "Pilotage My-DTM",
+  title: "Pilotage My DTM",
   robots: { index: false, follow: false },
 };
 

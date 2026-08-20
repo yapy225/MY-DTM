@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   keywords: ["guides automatisation", "ebook réseaux sociaux", "ebook WhatsApp Business", "guide marketing digital"],
   alternates: { canonical: "https://my-dtm.fr/guides" },
   openGraph: {
-    title: "Guides & ebooks — My-DTM",
+    title: "Guides & ebooks — My DTM",
     description: "Guides complets et ebooks prêts à l'emploi pour automatiser votre activité.",
     url: "https://my-dtm.fr/guides",
     type: "website",

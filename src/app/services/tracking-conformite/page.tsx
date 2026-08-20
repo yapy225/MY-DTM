@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     "server-side tagging",
   ],
   openGraph: {
-    title: "Tracking & Conformite RGPD — My-DTM",
+    title: "Tracking & Conformite RGPD — My DTM",
     description: "Meta Pixel + Conversions API, deduplication, Advanced Matching, consentement RGPD. Audit tracking gratuit.",
   },
   alternates: { canonical: "https://my-dtm.fr/services/tracking-conformite" },
@@ -62,7 +62,7 @@ export default function TrackingConformitePage() {
     "@context": "https://schema.org",
     "@type": "Service",
     name: "Tracking & Conformite RGPD (Meta Pixel + Conversions API)",
-    provider: { "@type": "Organization", name: "My-DTM Digital Agency", url: "https://my-dtm.fr" },
+    provider: { "@type": "Organization", name: "My DTM", url: "https://my-dtm.fr" },
     description: "Setup Meta Pixel + Conversions API server-side, deduplication, Advanced Matching et consentement RGPD pour fiabiliser vos conversions.",
     areaServed: { "@type": "Country", name: "France" },
     offers: { "@type": "AggregateOffer", lowPrice: "500", highPrice: "800", priceCurrency: "EUR" },

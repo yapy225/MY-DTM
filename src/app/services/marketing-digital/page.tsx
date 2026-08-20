@@ -40,7 +40,7 @@ const jsonLd = [
     "@context": "https://schema.org",
     "@type": "Service",
     name: "Marketing Digital Multi-Canal",
-    provider: { "@type": "Organization", name: "My-DTM Digital Agency", url: "https://my-dtm.fr" },
+    provider: { "@type": "Organization", name: "My DTM", url: "https://my-dtm.fr" },
     description: "Acquisition 360 : SEO + WhatsApp + Facebook Ads + Email. Resultats mesurables, rapport mensuel.",
     areaServed: { "@type": "Country", name: "France" },
     offers: { "@type": "AggregateOffer", lowPrice: "400", highPrice: "2000", priceCurrency: "EUR" },

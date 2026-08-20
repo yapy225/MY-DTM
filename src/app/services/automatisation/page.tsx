@@ -42,7 +42,7 @@ const jsonLd = [
     "@context": "https://schema.org",
     "@type": "Service",
     name: "Automatisation Marketing & API",
-    provider: { "@type": "Organization", name: "My-DTM Digital Agency", url: "https://my-dtm.fr" },
+    provider: { "@type": "Organization", name: "My DTM", url: "https://my-dtm.fr" },
     description: "Integration WhatsApp Business API, Facebook Leads, Stripe, emails automatiques. On connecte vos outils pour tout automatiser.",
     areaServed: { "@type": "Country", name: "France" },
     offers: { "@type": "AggregateOffer", lowPrice: "500", highPrice: "3000", priceCurrency: "EUR" },

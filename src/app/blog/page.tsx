@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://my-dtm.fr/blog" },
   openGraph: {
-    title: "Blog — My-DTM Digital Agency",
+    title: "Blog — My DTM",
     description: "Guides et conseils : WhatsApp Business API, tracking Meta CAPI/RGPD, billetterie, SEO, web.",
     url: "https://my-dtm.fr/blog",
     type: "website",
@@ -30,7 +30,7 @@ export default function BlogIndexPage() {
   const blogJsonLd = {
     "@context": "https://schema.org",
     "@type": "Blog",
-    name: "Blog My-DTM",
+    name: "Blog My DTM",
     url: "https://my-dtm.fr/blog",
     blogPost: posts.map((p) => ({
       "@type": "BlogPosting",

@@ -4,7 +4,7 @@ import { getStripe, createDownloadToken, getCalLink } from "@/lib/stripe";
 import { getProductById } from "@/lib/guides/guides";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://my-dtm.fr";
-const FROM = "My-DTM <hello@my-dtm.fr>";
+const FROM = "My DTM <hello@my-dtm.fr>";
 const INTERNAL_TO = process.env.CONTACT_NOTIFY_TO || "yapy.mambo@gmail.com";
 
 // Stripe a besoin du corps brut pour verifier la signature : pas de parsing JSON.
@@ -70,7 +70,7 @@ async function deliver(productId: string, email: string, buyerName: string, even
         <p><a href="${link}" style="display:inline-block;background:#7c0dbe;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:bold;">Télécharger mon ebook (PDF)</a></p>
         <p style="color:#6b7280;font-size:13px;">Ce lien est valable 7 jours. Conservez cet email.</p>
         <p>Une question ? Répondez simplement à cet email.</p>
-        <p>— L'équipe My-DTM</p>
+        <p>— L'équipe My DTM</p>
       `,
       },
       // Dedup Resend (fenetre 24h) : un retry Stripe du meme event ne renvoie
@@ -89,7 +89,7 @@ async function deliver(productId: string, email: string, buyerName: string, even
         <p>Merci ! Votre <strong>accompagnement</strong> est confirmé. Dernière étape : choisissez le créneau qui vous arrange.</p>
         <p><a href="${cal}" style="display:inline-block;background:#7c0dbe;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:bold;">Réserver mon créneau (visio 90 min)</a></p>
         <p style="color:#6b7280;font-size:13px;">L'ebook complet est inclus — on le déroulera ensemble en direct.</p>
-        <p>À très vite,<br/>— L'équipe My-DTM</p>
+        <p>À très vite,<br/>— L'équipe My DTM</p>
       `,
       },
       { idempotencyKey: `deliver-${eventId}-buyer` },

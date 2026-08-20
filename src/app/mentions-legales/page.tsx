@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Mentions Legales | My-DTM Digital Agency",
+  title: "Mentions Legales | My DTM",
   description: "Mentions legales du site my-dtm.fr — informations sur l'editeur, l'hebergeur et les conditions d'utilisation.",
   alternates: { canonical: "https://my-dtm.fr/mentions-legales" },
 };
@@ -15,10 +15,10 @@ export default function MentionsLegales() {
         <div>
           <h2>1. Editeur du site</h2>
           <p>
-            Le site <strong>my-dtm.fr</strong> est edite par My-DTM Digital Agency, micro-entreprise immatriculee en France.
+            Le site <strong>my-dtm.fr</strong> est edite par My DTM, micro-entreprise immatriculee en France.
           </p>
           <ul className="mt-2 list-inside list-disc space-y-1">
-            <li>Responsable de la publication : My-DTM Digital Agency</li>
+            <li>Responsable de la publication : My DTM</li>
             <li>Email : hello@my-dtm.fr</li>
             <li>Telephone : +33 7 43 53 75 51</li>
             <li>Adresse : Paris, France</li>
@@ -37,7 +37,7 @@ export default function MentionsLegales() {
           <h2>3. Propriete intellectuelle</h2>
           <p>
             L&apos;ensemble des contenus presents sur le site my-dtm.fr (textes, images, logos, illustrations, mises en page)
-            sont la propriete exclusive de My-DTM Digital Agency ou de leurs auteurs respectifs.
+            sont la propriete exclusive de My DTM ou de leurs auteurs respectifs.
             Toute reproduction, representation ou diffusion, en tout ou partie, sans autorisation ecrite prealable est interdite.
           </p>
         </div>
@@ -45,7 +45,7 @@ export default function MentionsLegales() {
         <div>
           <h2>4. Donnees personnelles</h2>
           <p>
-            Les informations recueillies via le formulaire de contact sont destinees exclusivement a My-DTM Digital Agency
+            Les informations recueillies via le formulaire de contact sont destinees exclusivement a My DTM
             pour le traitement de votre demande. Conformement au RGPD, vous disposez d&apos;un droit d&apos;acces,
             de rectification et de suppression de vos donnees en nous contactant a hello@my-dtm.fr.
           </p>
@@ -68,7 +68,7 @@ export default function MentionsLegales() {
         <div>
           <h2>6. Limitation de responsabilite</h2>
           <p>
-            My-DTM Digital Agency s&apos;efforce de fournir des informations exactes et a jour sur le site.
+            My DTM s&apos;efforce de fournir des informations exactes et a jour sur le site.
             Cependant, elle ne saurait etre tenue responsable des erreurs, omissions ou des resultats
             obtenus suite a l&apos;utilisation de ces informations.
           </p>

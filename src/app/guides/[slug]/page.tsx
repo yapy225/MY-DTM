@@ -65,7 +65,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
         name: `${guide.title} — ${ebook.name}`,
         description: ebook.tagline,
         image: `https://my-dtm.fr/guides/${guide.slug}/opengraph-image`,
-        brand: { "@type": "Brand", name: "My-DTM" },
+        brand: { "@type": "Brand", name: "My DTM" },
         offers: {
           "@type": "Offer",
           price: ebook.price,

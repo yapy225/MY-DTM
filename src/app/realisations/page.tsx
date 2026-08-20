@@ -3,9 +3,9 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight, CheckCircle2 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Réalisations — sites, plateformes et SEO livrés par My-DTM",
+  title: "Réalisations — sites, plateformes et SEO livrés par My DTM",
   description:
-    "Études de cas My-DTM : billetterie SaaS, magazine à fort trafic, sites e-commerce et récupération de trafic SEO (+8000 clics/mois). Des projets réels, des résultats mesurables.",
+    "Études de cas My DTM : billetterie SaaS, magazine à fort trafic, sites e-commerce et récupération de trafic SEO (+8000 clics/mois). Des projets réels, des résultats mesurables.",
   keywords: [
     "réalisations agence digitale",
     "études de cas agence web Paris",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/realisations" },
   openGraph: {
-    title: "Réalisations & études de cas — My-DTM",
+    title: "Réalisations & études de cas — My DTM",
     description:
       "Billetterie SaaS, magazine à fort trafic, e-commerce et récupération de trafic SEO. Des projets réels que nous concevons et pilotons.",
     url: "https://my-dtm.fr/realisations",
@@ -126,7 +126,7 @@ export default function RealisationsPage() {
   const itemListJsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Réalisations My-DTM",
+    name: "Réalisations My DTM",
     itemListElement: CASES.map((c, i) => ({
       "@type": "ListItem",
       position: i + 1,

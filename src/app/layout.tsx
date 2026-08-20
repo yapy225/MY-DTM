@@ -19,8 +19,8 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: {
-    default: "My-DTM — Agence Digitale Paris | Marketing, SEO, Developpement Web",
-    template: "%s | My-DTM Agency",
+    default: "My DTM — Agence Digitale Paris | Marketing, SEO, Developpement Web",
+    template: "%s | My DTM",
   },
   description:
     "Agence de marketing digital a Paris. Developpement web, SEO technique, automatisation API et marketing multi-canal. Audit gratuit.",
@@ -41,10 +41,10 @@ export const metadata: Metadata = {
     other: { "p:domain_verify": "306c7badd695acd557743f16d44701fa" },
   },
   openGraph: {
-    title: "My-DTM — Agence Digitale Paris",
+    title: "My DTM — Agence Digitale Paris",
     description: "Developpement web, SEO, automatisation et marketing digital. Audit gratuit.",
     url: "https://my-dtm.fr",
-    siteName: "My-DTM Digital Agency",
+    siteName: "My DTM",
     type: "website",
     locale: "fr_FR",
   },
@@ -67,7 +67,9 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              name: "My-DTM Digital Agency",
+              name: "My DTM",
+              legalName: "My DTM",
+              alternateName: "My-DTM",
               url: "https://my-dtm.fr",
               logo: "https://my-dtm.fr/icon.svg",
               sameAs: [
@@ -88,7 +90,10 @@ export default function RootLayout({
               },
               address: {
                 "@type": "PostalAddress",
-                addressLocality: "Paris",
+                streetAddress: "48 rue de Birague",
+                postalCode: "94490",
+                addressLocality: "Ormesson-sur-Marne",
+                addressRegion: "Île-de-France",
                 addressCountry: "FR",
               },
               knowsAbout: [
@@ -107,12 +112,15 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
-              name: "My-DTM Digital Agency",
+              name: "My DTM",
               image: "https://my-dtm.fr/opengraph-image",
               description: "Agence de marketing digital a Paris. Developpement web, SEO, automatisation, marketing multi-canal.",
               address: {
                 "@type": "PostalAddress",
-                addressLocality: "Paris",
+                streetAddress: "48 rue de Birague",
+                postalCode: "94490",
+                addressLocality: "Ormesson-sur-Marne",
+                addressRegion: "Île-de-France",
                 addressCountry: "FR",
               },
               telephone: "+33743537551",

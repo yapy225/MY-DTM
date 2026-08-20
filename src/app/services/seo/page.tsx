@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     "Schema.org JSON-LD",
   ],
   openGraph: {
-    title: "Agence SEO Paris — My-DTM",
+    title: "Agence SEO Paris — My DTM",
     description: "Audit SEO, referencement naturel, indexation Google. +8000 clics/mois recuperes. Audit gratuit.",
   },
   alternates: { canonical: "https://my-dtm.fr/services/seo" },

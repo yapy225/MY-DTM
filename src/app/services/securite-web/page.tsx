@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     "conformite securite donnees",
   ],
   openGraph: {
-    title: "Securite Web — My-DTM",
+    title: "Securite Web — My DTM",
     description: "Audit securite, hardening CSP, rotation des secrets, protection des routes et uploads. Audit securite gratuit.",
   },
   alternates: { canonical: "https://my-dtm.fr/services/securite-web" },
@@ -62,7 +62,7 @@ export default function SecuriteWebPage() {
     "@context": "https://schema.org",
     "@type": "Service",
     name: "Securite Web (audit, hardening, rotation des secrets)",
-    provider: { "@type": "Organization", name: "My-DTM Digital Agency", url: "https://my-dtm.fr" },
+    provider: { "@type": "Organization", name: "My DTM", url: "https://my-dtm.fr" },
     description: "Audit de securite, hardening complet (CSP, headers, uploads, routes), rotation des secrets et monitoring pour applications web et plateformes.",
     areaServed: { "@type": "Country", name: "France" },
     offers: { "@type": "AggregateOffer", lowPrice: "500", highPrice: "1500", priceCurrency: "EUR" },

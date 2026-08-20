@@ -38,7 +38,7 @@ export default function Navbar() {
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
               }}>
-                My-DTM
+                My DTM
               </span>
             </Link>
           </div>
@@ -117,7 +117,7 @@ export default function Navbar() {
           </div>
           <div className="m-brand-logo" style={{ textAlign: "center" }}>
             <Link href="/" onClick={() => setMobileOpen(false)} style={{ fontSize: "20px", fontWeight: 700, color: "#7c0dbe", textDecoration: "none" }}>
-              My-DTM
+              My DTM
             </Link>
           </div>
           <div className="appi-ei-mobile-main-navigation">
