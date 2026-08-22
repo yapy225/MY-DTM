@@ -3,6 +3,7 @@ import { Poppins, Playfair_Display } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import SiteChrome from "@/components/layout/SiteChrome";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const poppins = Poppins({
   variable: "--font-sans",
@@ -139,6 +140,7 @@ export default function RootLayout({
         />
         <SiteChrome>{children}</SiteChrome>
         <Analytics />
+        <GoogleAnalytics />
       </body>
     </html>
   );
