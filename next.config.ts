@@ -32,11 +32,11 @@ const nextConfig: NextConfig = {
     // vecteurs les plus courants (clickjacking, injection de <base>, plugins).
     const csp = [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline'",
+      "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com",
       "style-src 'self' 'unsafe-inline'",
-      "img-src 'self' data:",
+      "img-src 'self' data: https://*.google-analytics.com https://www.googletagmanager.com",
       "font-src 'self'",
-      "connect-src 'self'",
+      "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com",
       "frame-ancestors 'none'",
       "base-uri 'self'",
       "form-action 'self'",
