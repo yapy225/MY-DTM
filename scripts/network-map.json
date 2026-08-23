@@ -1,21 +1,21 @@
 {
-  "_doc": "Carte canonique marque -> dépôt GitHub pour l'agent T2 (self-healing SEO). Clé = brandKey de network-report.mjs (domaine sans TLD, minuscule). ci=true → 'auto-merge si tests verts' possible ; ci=false (statiques) → PR + clic humain tant qu'un mini-check CI n'est pas ajouté. Confirmée par le fondateur 2026-08-23.",
-  "version": "network_map@v1",
+  "_doc": "Carte canonique marque -> dépôt GitHub pour l'agent T2 (self-healing SEO). Clé = brandKey de network-report.mjs (domaine sans TLD, minuscule). ci=true → 'auto-merge si tests verts' possible ; ci=false (statiques) → PR + clic humain. cluster = thème pour le maillage inter-sites pertinent (anti-PBN : on ne lie QUE dans le même cluster). Confirmée par le fondateur 2026-08-23.",
+  "version": "network_map@v2",
   "confirmed_at": "2026-08-23",
   "brands": {
-    "my-dtm":                            { "repo": "yapy225/MY-DTM",                              "domain": "my-dtm.fr",                            "stack": "next",   "ci": true,  "pilot": true },
-    "sneakerslove":                      { "repo": "yapy225/sneakerslove.fr",                     "domain": "sneakerslove.fr",                      "stack": "next",   "ci": true },
-    "parfumsdeparis":                    { "repo": "yapy225/parfumsdeparis.fr",                   "domain": "parfumsdeparis.fr",                    "stack": "next",   "ci": true },
-    "la-plante":                         { "repo": "yapy225/la-plante",                           "domain": "la-plante.com",                        "stack": "next",   "ci": true },
-    "evasionparis":                      { "repo": "yapy225/evasionparis.fr",                     "domain": "evasionparis.fr",                      "stack": "static", "ci": false },
-    "foiredafrique":                     { "repo": "yapy225/foiredafrique.fr",                    "domain": "foiredafrique.fr",                     "stack": "static", "ci": false },
-    "fashionweekafrica":                 { "repo": "yapy225/fashionweekafrica.fr",               "domain": "fashionweekafrica.fr",                 "stack": "static", "ci": false },
-    "salonmadeinafrica":                 { "repo": "yapy225/salonmadeinafrica.fr",               "domain": "salonmadeinafrica.fr",                 "stack": "static", "ci": false },
-    "festivalduconteafricain":           { "repo": "yapy225/festivalduconteafricain.fr",         "domain": "festivalduconteafricain.fr",           "stack": "static", "ci": false },
-    "zaouliparis":                       { "repo": "yapy225/zaouliparis.fr",                      "domain": "zaouliparis.fr",                       "stack": "static", "ci": false },
-    "centreculturelafricain":            { "repo": "yapy225/centreculturelafricain.fr",          "domain": "centreculturelafricain.fr",            "stack": "static", "ci": false },
-    "justeunedanse":                     { "repo": "yapy225/justeunedanse.fr",                    "domain": "justeunedanse.fr",                     "stack": "static", "ci": false },
-    "festivalinternationalducinemaafricain": { "repo": "yapy225/festivalinternationalducinemaafricain.fr", "domain": "festivalinternationalducinemaafricain.fr", "stack": "static", "ci": false },
-    "serviceathome":                     { "repo": "yapy225/serviceathome.fr",                    "domain": "serviceathome.fr",                     "stack": "static", "ci": false }
+    "my-dtm":                            { "repo": "yapy225/MY-DTM",                              "domain": "my-dtm.fr",                            "stack": "next",   "ci": true,  "pilot": true, "cluster": "agence" },
+    "sneakerslove":                      { "repo": "yapy225/sneakerslove.fr",                     "domain": "sneakerslove.fr",                      "stack": "next",   "ci": true,  "cluster": "commerce" },
+    "parfumsdeparis":                    { "repo": "yapy225/parfumsdeparis.fr",                   "domain": "parfumsdeparis.fr",                    "stack": "next",   "ci": true,  "cluster": "commerce" },
+    "la-plante":                         { "repo": "yapy225/la-plante",                           "domain": "la-plante.com",                        "stack": "next",   "ci": true,  "cluster": "commerce" },
+    "evasionparis":                      { "repo": "yapy225/evasionparis.fr",                     "domain": "evasionparis.fr",                      "stack": "static", "ci": false, "cluster": "lifestyle-paris" },
+    "foiredafrique":                     { "repo": "yapy225/foiredafrique.fr",                    "domain": "foiredafrique.fr",                     "stack": "static", "ci": false, "cluster": "afrique-culture" },
+    "fashionweekafrica":                 { "repo": "yapy225/fashionweekafrica.fr",               "domain": "fashionweekafrica.fr",                 "stack": "static", "ci": false, "cluster": "afrique-culture" },
+    "salonmadeinafrica":                 { "repo": "yapy225/salonmadeinafrica.fr",               "domain": "salonmadeinafrica.fr",                 "stack": "static", "ci": false, "cluster": "afrique-culture" },
+    "festivalduconteafricain":           { "repo": "yapy225/festivalduconteafricain.fr",         "domain": "festivalduconteafricain.fr",           "stack": "static", "ci": false, "cluster": "afrique-culture" },
+    "zaouliparis":                       { "repo": "yapy225/zaouliparis.fr",                      "domain": "zaouliparis.fr",                       "stack": "static", "ci": false, "cluster": "afrique-culture" },
+    "centreculturelafricain":            { "repo": "yapy225/centreculturelafricain.fr",          "domain": "centreculturelafricain.fr",            "stack": "static", "ci": false, "cluster": "afrique-culture" },
+    "justeunedanse":                     { "repo": "yapy225/justeunedanse.fr",                    "domain": "justeunedanse.fr",                     "stack": "static", "ci": false, "cluster": "afrique-culture" },
+    "festivalinternationalducinemaafricain": { "repo": "yapy225/festivalinternationalducinemaafricain.fr", "domain": "festivalinternationalducinemaafricain.fr", "stack": "static", "ci": false, "cluster": "afrique-culture" },
+    "serviceathome":                     { "repo": "yapy225/serviceathome.fr",                    "domain": "serviceathome.fr",                     "stack": "static", "ci": false, "cluster": "services" }
   }
 }
