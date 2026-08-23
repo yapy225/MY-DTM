@@ -30,6 +30,8 @@ const GA4_DAYS = Number.parseInt(process.env.GA4_DAYS || '28', 10);
 const DEBOUNCE_RUNS = Number.parseInt(process.env.DEBOUNCE_RUNS || '2', 10);   // une anomalie doit persister N runs avant d'être actionnable (anti-faux-positif)
 const DESINDEX_MIN = Number.parseInt(process.env.DESINDEX_MIN || '2', 10);     // nb mini d'URL réellement basculées non-indexées pour signaler
 const HEARTBEAT_DOW = Number.parseInt(process.env.HEARTBEAT_DOW || '1', 10);   // jour (0=dim..6=sam) du battement « je suis vivant » (défaut lundi)
+const EFFICACY_RUNS = Number.parseInt(process.env.EFFICACY_RUNS || '5', 10);   // nb de runs de nudge T1 sans gain avant de conclure « inefficace » → T3
+const EFFICACY_MIN_GAIN = Number.parseInt(process.env.EFFICACY_MIN_GAIN || '1', 10); // gain mini d'URL indexées pour considérer le nudge « efficace »
 const REPORT_PATH = 'reports/network-report.json';
 // webmasters (full, pas readonly) pour resoumettre le sitemap ; analytics readonly pour GA4.
 const SCOPES = 'https://www.googleapis.com/auth/webmasters https://www.googleapis.com/auth/analytics.readonly https://www.googleapis.com/auth/indexing';
@@ -125,9 +127,20 @@ function detect(now, prev) {
   for (const [brand, g] of Object.entries(now.gsc || {})) {
     // INDEXATION_LOW → Tier 1 : nudge sûr, agit tout de suite (pas besoin de debounce).
     if (g.total >= MIN_URLS && g.indexed / g.total < INDEX_THRESHOLD) {
-      a.push({ severity: 'P1', type: 'INDEXATION_LOW', tier: 1, brand, streak: streakOf(brand, 'INDEXATION_LOW') + 1,
+      const prevLow = prevAnoms.find((x) => x.brand === brand && x.type === 'INDEXATION_LOW');
+      const streak = (prevLow?.streak || 0) + 1;
+      const baseline = prevLow?.baseline ?? g.indexed;              // indexé au DÉBUT de la série de nudges
+      // Boucle d'efficacité : nudge T1 depuis EFFICACY_RUNS runs sans gain réel → inefficace.
+      const stagnant = streak >= EFFICACY_RUNS && (g.indexed - baseline) < EFFICACY_MIN_GAIN;
+      a.push({ severity: 'P1', type: 'INDEXATION_LOW', tier: 1, brand, streak, baseline, stagnant,
         detail: `${g.indexed}/${g.total} indexé (${Math.round(100 * g.indexed / g.total)}%)`,
-        action: 'resoumission sitemap + demande indexation (auto)' });
+        action: stagnant ? 'sitemap seul (indexing suspendu : nudge inefficace)' : 'resoumission sitemap + demande indexation (auto)' });
+      // Escalade humaine quand le crawl ne suffit pas (rappel tous les EFFICACY_RUNS runs).
+      if (stagnant && streak % EFFICACY_RUNS === 0) {
+        a.push({ severity: 'P1', type: 'INDEXATION_STAGNANTE', tier: 3, brand, streak,
+          detail: `indexé ${g.indexed}/${g.total} stagne depuis ${streak} runs malgré les nudges T1`,
+          action: 'cause probable = AUTORITÉ/CONTENU (pas crawl) → plan backlinks + maillage inter-sites — action humaine' });
+      }
     }
     // DESINDEXATION → sur les MÊMES URL (étaient indexées, ne le sont plus), pas un delta de total agrégé,
     // + debounce : ne devient actionnable (tier 2) qu'après persistance sur DEBOUNCE_RUNS runs.
