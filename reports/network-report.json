@@ -1,0 +1,241 @@
+{
+  "generatedAt": "2026-08-23T14:05:48.329Z",
+  "gsc": {
+    "lofficieldafrique": {
+      "property": "sc-domain:lofficieldafrique.fr",
+      "total": 16,
+      "indexed": 15
+    },
+    "sneakerslove": {
+      "property": "sc-domain:sneakerslove.fr",
+      "total": 101,
+      "indexed": 85
+    },
+    "centreculturelafricain": {
+      "property": "sc-domain:centreculturelafricain.fr",
+      "total": 6,
+      "indexed": 1
+    },
+    "festivalduconteafricain": {
+      "property": "sc-domain:festivalduconteafricain.fr",
+      "total": 9,
+      "indexed": 2
+    },
+    "lafropeen": {
+      "property": "sc-domain:lafropeen.com",
+      "total": 150,
+      "indexed": 147
+    },
+    "dreamteamafrica": {
+      "property": "https://dreamteamafrica.com/",
+      "total": 62,
+      "indexed": 52
+    },
+    "my-dtm": {
+      "property": "sc-domain:my-dtm.fr",
+      "total": 131,
+      "indexed": 108
+    },
+    "parfumsdeparis": {
+      "property": "sc-domain:parfumsdeparis.fr",
+      "total": 51,
+      "indexed": 11
+    },
+    "eburnia": {
+      "property": "sc-domain:eburnia.fr",
+      "total": 41,
+      "indexed": 20
+    },
+    "evasionparis": {
+      "property": "sc-domain:evasionparis.fr",
+      "total": 36,
+      "indexed": 1
+    },
+    "zaouliparis": {
+      "property": "sc-domain:zaouliparis.fr",
+      "total": 18,
+      "indexed": 0
+    }
+  },
+  "ga4": {
+    "l'afropéen": {
+      "name": "L'Afropéen",
+      "sessions": null,
+      "users": null,
+      "status": "NO_DATA"
+    },
+    "my-dtm-paris": {
+      "name": "My DTM Paris - GA4",
+      "sessions": null,
+      "users": null,
+      "status": "NO_DATA"
+    },
+    "juste-une-danse": {
+      "name": "Juste Une Danse",
+      "sessions": null,
+      "users": null,
+      "status": "NO_DATA"
+    },
+    "fica-paris": {
+      "name": "fica paris  - GA4",
+      "sessions": null,
+      "users": null,
+      "status": "NO_DATA"
+    },
+    "black-sublime": {
+      "name": "Black Sublime",
+      "sessions": null,
+      "users": null,
+      "status": "NO_DATA"
+    },
+    "festival-du-conte-africain": {
+      "name": "Festival du Conte Africain",
+      "sessions": null,
+      "users": null,
+      "status": "NO_DATA"
+    },
+    "zaouli-paris-": {
+      "name": "Zaouli Paris ",
+      "sessions": null,
+      "users": null,
+      "status": "NO_DATA"
+    },
+    "centre-culturel-africain": {
+      "name": "Centre Culturel Africain",
+      "sessions": null,
+      "users": null,
+      "status": "NO_DATA"
+    },
+    "salon-made-in-africa": {
+      "name": "Salon Made In Africa",
+      "sessions": null,
+      "users": null,
+      "status": "NO_DATA"
+    },
+    "foire-dafrique-paris": {
+      "name": "Foire dAfrique Paris",
+      "sessions": null,
+      "users": null,
+      "status": "NO_DATA"
+    },
+    "fashion-week-africa": {
+      "name": "Fashion Week Africa",
+      "sessions": null,
+      "users": null,
+      "status": "NO_DATA"
+    },
+    "parfums-de-paris": {
+      "name": "Parfums de Paris",
+      "sessions": null,
+      "users": null,
+      "status": "NO_DATA"
+    },
+    "la-plante": {
+      "name": "La Plante",
+      "sessions": null,
+      "users": null,
+      "status": "NO_DATA"
+    },
+    "sneakers-love": {
+      "name": "Sneakers Love",
+      "sessions": null,
+      "users": null,
+      "status": "NO_DATA"
+    },
+    "évasion-paris": {
+      "name": "Évasion Paris",
+      "sessions": null,
+      "users": null,
+      "status": "NO_DATA"
+    }
+  },
+  "anomalies": [
+    {
+      "severity": "P1",
+      "type": "INDEXATION_LOW",
+      "tier": 1,
+      "brand": "centreculturelafricain",
+      "detail": "1/6 indexé (17%)",
+      "action": "resoumission sitemap (auto)"
+    },
+    {
+      "severity": "P1",
+      "type": "INDEXATION_LOW",
+      "tier": 1,
+      "brand": "festivalduconteafricain",
+      "detail": "2/9 indexé (22%)",
+      "action": "resoumission sitemap (auto)"
+    },
+    {
+      "severity": "P1",
+      "type": "INDEXATION_LOW",
+      "tier": 1,
+      "brand": "parfumsdeparis",
+      "detail": "11/51 indexé (22%)",
+      "action": "resoumission sitemap (auto)"
+    },
+    {
+      "severity": "P1",
+      "type": "INDEXATION_LOW",
+      "tier": 1,
+      "brand": "evasionparis",
+      "detail": "1/36 indexé (3%)",
+      "action": "resoumission sitemap (auto)"
+    },
+    {
+      "severity": "P1",
+      "type": "INDEXATION_LOW",
+      "tier": 1,
+      "brand": "zaouliparis",
+      "detail": "0/18 indexé (0%)",
+      "action": "resoumission sitemap (auto)"
+    }
+  ],
+  "remediation": [
+    {
+      "action": "resubmit_sitemap",
+      "brand": "centreculturelafricain",
+      "property": "sc-domain:centreculturelafricain.fr",
+      "reason": "INDEXATION_LOW",
+      "feed": "https://centreculturelafricain.fr/sitemap.xml",
+      "ok": false,
+      "status": 401
+    },
+    {
+      "action": "resubmit_sitemap",
+      "brand": "festivalduconteafricain",
+      "property": "sc-domain:festivalduconteafricain.fr",
+      "reason": "INDEXATION_LOW",
+      "feed": "https://festivalduconteafricain.fr/sitemap.xml",
+      "ok": false,
+      "status": 401
+    },
+    {
+      "action": "resubmit_sitemap",
+      "brand": "parfumsdeparis",
+      "property": "sc-domain:parfumsdeparis.fr",
+      "reason": "INDEXATION_LOW",
+      "feed": "https://parfumsdeparis.fr/sitemap.xml",
+      "ok": false,
+      "status": 401
+    },
+    {
+      "action": "resubmit_sitemap",
+      "brand": "evasionparis",
+      "property": "sc-domain:evasionparis.fr",
+      "reason": "INDEXATION_LOW",
+      "feed": "https://evasionparis.fr/sitemap.xml",
+      "ok": false,
+      "status": 401
+    },
+    {
+      "action": "resubmit_sitemap",
+      "brand": "zaouliparis",
+      "property": "sc-domain:zaouliparis.fr",
+      "reason": "INDEXATION_LOW",
+      "feed": "https://zaouliparis.fr/sitemap.xml",
+      "ok": false,
+      "status": 401
+    }
+  ]
+}
