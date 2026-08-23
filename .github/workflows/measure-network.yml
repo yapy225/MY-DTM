@@ -38,6 +38,7 @@ jobs:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           ALERT_EMAIL_TO: ${{ secrets.ALERT_EMAIL_TO }}
           ALERT_EMAIL_FROM: ${{ secrets.ALERT_EMAIL_FROM }}
+          DIGEST_MODE: '1'   # e-mail délégué au digest unifié (unified-digest.yml) → un seul canal
         run: node scripts/network-report.mjs
 
       - name: Commit du rapport (delta / dashboard)

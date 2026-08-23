@@ -1,0 +1,29 @@
+name: Digest unifié réseau (SEO + agent T2)
+
+# Canal e-mail UNIQUE : lit les artefacts commités par la mesure (06:00) et l'agent T2 (07:31),
+# envoie UN seul e-mail à 08:00 UTC. Silence sauf anomalie / activité T2 / battement hebdo.
+# Dead-man's switch : si le rapport de mesure manque → alerte « mesure en panne ».
+
+on:
+  schedule:
+    - cron: '0 8 * * *'   # 08:00 UTC, après la mesure (~06:15) et l'agent T2 (07:31)
+  workflow_dispatch: {}
+
+concurrency:
+  group: unified-digest
+  cancel-in-progress: false
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Digest unifié
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          ALERT_EMAIL_TO: ${{ secrets.ALERT_EMAIL_TO }}
+          ALERT_EMAIL_FROM: ${{ secrets.ALERT_EMAIL_FROM }}
+        run: node scripts/unified-digest.mjs
