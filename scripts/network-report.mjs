@@ -17,6 +17,7 @@
 
 import crypto from 'node:crypto';
 import fs from 'node:fs/promises';
+import { pathToFileURL } from 'node:url';
 import { remediateTier1 } from './lib/remediate.mjs';
 import { buildLinkingPlan } from './lib/linking-plan.mjs';
 
@@ -37,11 +38,10 @@ const REPORT_PATH = 'reports/network-report.json';
 // webmasters (full, pas readonly) pour resoumettre le sitemap ; analytics readonly pour GA4.
 const SCOPES = 'https://www.googleapis.com/auth/webmasters https://www.googleapis.com/auth/analytics.readonly https://www.googleapis.com/auth/indexing';
 
-if (!SA) { console.error('GSC_SA_JSON manquant (secret).'); process.exit(1); }
-const key = JSON.parse(SA);
 const b64 = (x) => Buffer.from(x).toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 
 async function token() {
+  const key = JSON.parse(process.env.GSC_SA_JSON);   // parse paresseux → module importable sans secret (tests)
   const now = Math.floor(Date.now() / 1000);
   const d = `${b64(JSON.stringify({ alg: 'RS256', typ: 'JWT' }))}.${b64(JSON.stringify({
     iss: key.client_email, scope: SCOPES, aud: 'https://oauth2.googleapis.com/token', exp: now + 3600, iat: now,
@@ -121,7 +121,7 @@ async function ga4Network(tok) {
 
 // ---- Détection + CLASSEMENT en tiers (vs run précédent) -------------------
 // tier 1 = auto-fixable sûr · tier 2 = cause code (→ agent/PR) · tier 3 = humain.
-function detect(now, prev) {
+export function detect(now, prev) {
   const a = [];
   const prevAnoms = prev?.anomalies || [];
   const streakOf = (brand, type) => (prevAnoms.find((x) => x.brand === brand && x.type === type)?.streak || 0);
@@ -214,7 +214,9 @@ async function sendEmail(report, isHeartbeat) {
   console.log(r.ok ? '✉️  email envoyé.' : `✉️  échec email: ${await r.text()}`);
 }
 
-(async () => {
+const isMain = process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href;
+if (isMain) (async () => {
+  if (!process.env.GSC_SA_JSON) { console.error('GSC_SA_JSON manquant (secret).'); process.exit(1); }
   const tok = await token();
   const [gsc, ga4] = await Promise.all([gscNetwork(tok), ga4Network(tok)]);
   const now = { generatedAt: new Date().toISOString(), gsc, ga4 };
