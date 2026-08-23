@@ -1,0 +1,53 @@
+name: Mesure réseau (SEO + Audience) — full auto
+
+# Full-auto, cloud, READ-ONLY : découvre toutes les propriétés GSC/GA4 du compte de
+# service, mesure indexation + audience, détecte les anomalies vs le run précédent,
+# et n'envoie un e-mail (Resend) QUE s'il y a une anomalie (silent success sinon).
+#
+# Secrets requis (Settings → Secrets and variables → Actions) :
+#   GSC_SA_JSON       : le JSON complet de la clé du compte de service (read-only).
+#   RESEND_API_KEY    : clé Resend (pour l'e-mail d'alerte).
+#   ALERT_EMAIL_TO    : destinataire (ex. yapy.mambo@gmail.com).
+#   ALERT_EMAIL_FROM  : expéditeur (domaine VÉRIFIÉ dans Resend, ex. "My DTM <hello@my-dtm.fr>").
+
+on:
+  schedule:
+    - cron: '0 6 * * *'   # tous les jours 06:00 UTC (≈ 07-08h Paris)
+  workflow_dispatch: {}    # + déclenchement manuel à la demande
+
+permissions:
+  contents: write          # pour committer reports/network-report.json (delta + historique)
+
+concurrency:
+  group: measure-network
+  cancel-in-progress: false
+
+jobs:
+  measure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Mesure réseau
+        env:
+          GSC_SA_JSON: ${{ secrets.GSC_SA_JSON }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          ALERT_EMAIL_TO: ${{ secrets.ALERT_EMAIL_TO }}
+          ALERT_EMAIL_FROM: ${{ secrets.ALERT_EMAIL_FROM }}
+        run: node scripts/network-report.mjs
+
+      - name: Commit du rapport (delta / dashboard)
+        run: |
+          git config user.name  "measure-bot"
+          git config user.email "actions@github.com"
+          git add reports/network-report.json
+          if git diff --cached --quiet; then
+            echo "Rapport inchangé — rien à committer."
+          else
+            git commit -m "chore(measure): rapport réseau $(date -u +%Y-%m-%dT%H:%MZ) [skip ci]"
+            git push
+          fi
