@@ -49,8 +49,9 @@ export async function remediateTier1(anomalies, report, token) {
       done.push({ action: 'resubmit_sitemap', brand: a.brand, property: prop, ok: false, error: e.message });
     }
 
-    // 2) demande d'indexation des URL non indexées (best-effort, budget partagé)
-    if (!indexingBlocked && budget > 0) {
+    // 2) demande d'indexation des URL non indexées (best-effort, budget partagé).
+    //    Sauté si le site est « stagnant » (nudge prouvé inefficace) → on préserve le quota.
+    if (!indexingBlocked && budget > 0 && !a.stagnant) {
       const urls = g?.notIndexed || [];
       let ok = 0, ko = 0;
       for (const u of urls) {
