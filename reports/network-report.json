@@ -1,45 +1,55 @@
 {
-  "generatedAt": "2026-08-23T15:14:21.869Z",
+  "generatedAt": "2026-08-23T16:23:45.936Z",
   "gsc": {
+    "entreprise-bienetre": {
+      "property": "sc-domain:entreprise-bienetre.fr",
+      "total": 80,
+      "indexed": 11
+    },
+    "festivalduconteafricain": {
+      "property": "sc-domain:festivalduconteafricain.fr",
+      "total": 9,
+      "indexed": 2
+    },
+    "my-dtm": {
+      "property": "sc-domain:my-dtm.fr",
+      "total": 80,
+      "indexed": 69
+    },
     "parfumsdeparis": {
       "property": "sc-domain:parfumsdeparis.fr",
       "total": 51,
       "indexed": 11
+    },
+    "sneakerslove": {
+      "property": "sc-domain:sneakerslove.fr",
+      "total": 80,
+      "indexed": 64
     },
     "evasionparis": {
       "property": "sc-domain:evasionparis.fr",
       "total": 36,
       "indexed": 8
     },
-    "sneakerslove": {
-      "property": "sc-domain:sneakerslove.fr",
-      "total": 101,
-      "indexed": 85
-    },
     "zaouliparis": {
       "property": "sc-domain:zaouliparis.fr",
       "total": 18,
       "indexed": 11
     },
-    "eburnia": {
-      "property": "sc-domain:eburnia.fr",
-      "total": 41,
-      "indexed": 21
+    "lafropeen": {
+      "property": "sc-domain:lafropeen.com",
+      "total": 80,
+      "indexed": 77
+    },
+    "fashionweekafrica": {
+      "property": "sc-domain:fashionweekafrica.fr",
+      "total": 11,
+      "indexed": 2
     },
     "lofficieldafrique": {
       "property": "sc-domain:lofficieldafrique.fr",
       "total": 16,
       "indexed": 15
-    },
-    "lafropeen": {
-      "property": "sc-domain:lafropeen.com",
-      "total": 150,
-      "indexed": 147
-    },
-    "festivalduconteafricain": {
-      "property": "sc-domain:festivalduconteafricain.fr",
-      "total": 9,
-      "indexed": 2
     },
     "centreculturelafricain": {
       "property": "sc-domain:centreculturelafricain.fr",
@@ -51,10 +61,15 @@
       "total": 62,
       "indexed": 52
     },
-    "my-dtm": {
-      "property": "sc-domain:my-dtm.fr",
-      "total": 131,
-      "indexed": 65
+    "eburnia": {
+      "property": "sc-domain:eburnia.fr",
+      "total": 41,
+      "indexed": 15
+    },
+    "foiredafrique": {
+      "property": "sc-domain:foiredafrique.fr",
+      "total": 8,
+      "indexed": 2
     }
   },
   "ga4": {
@@ -154,16 +169,8 @@
       "severity": "P1",
       "type": "INDEXATION_LOW",
       "tier": 1,
-      "brand": "parfumsdeparis",
-      "detail": "11/51 indexé (22%)",
-      "action": "resoumission sitemap (auto)"
-    },
-    {
-      "severity": "P1",
-      "type": "INDEXATION_LOW",
-      "tier": 1,
-      "brand": "evasionparis",
-      "detail": "8/36 indexé (22%)",
+      "brand": "entreprise-bienetre",
+      "detail": "11/80 indexé (14%)",
       "action": "resoumission sitemap (auto)"
     },
     {
@@ -178,37 +185,84 @@
       "severity": "P1",
       "type": "INDEXATION_LOW",
       "tier": 1,
-      "brand": "centreculturelafricain",
-      "detail": "1/6 indexé (17%)",
+      "brand": "parfumsdeparis",
+      "detail": "11/51 indexé (22%)",
       "action": "resoumission sitemap (auto)"
     },
     {
       "severity": "P1",
       "type": "DESINDEXATION",
       "tier": 2,
-      "brand": "my-dtm",
-      "detail": "indexé 108 → 65 (-43)",
+      "brand": "sneakerslove",
+      "detail": "indexé 85 → 64 (-21)",
       "action": "nudge sitemap (auto) + diagnostic code → agent (PR, auto-merge si tests verts)"
+    },
+    {
+      "severity": "P1",
+      "type": "INDEXATION_LOW",
+      "tier": 1,
+      "brand": "evasionparis",
+      "detail": "8/36 indexé (22%)",
+      "action": "resoumission sitemap (auto)"
+    },
+    {
+      "severity": "P1",
+      "type": "DESINDEXATION",
+      "tier": 2,
+      "brand": "lafropeen",
+      "detail": "indexé 147 → 77 (-70)",
+      "action": "nudge sitemap (auto) + diagnostic code → agent (PR, auto-merge si tests verts)"
+    },
+    {
+      "severity": "P1",
+      "type": "INDEXATION_LOW",
+      "tier": 1,
+      "brand": "fashionweekafrica",
+      "detail": "2/11 indexé (18%)",
+      "action": "resoumission sitemap (auto)"
+    },
+    {
+      "severity": "P1",
+      "type": "INDEXATION_LOW",
+      "tier": 1,
+      "brand": "centreculturelafricain",
+      "detail": "1/6 indexé (17%)",
+      "action": "resoumission sitemap (auto)"
+    },
+    {
+      "severity": "P1",
+      "type": "INDEXATION_LOW",
+      "tier": 1,
+      "brand": "eburnia",
+      "detail": "15/41 indexé (37%)",
+      "action": "resoumission sitemap (auto)"
+    },
+    {
+      "severity": "P1",
+      "type": "DESINDEXATION",
+      "tier": 2,
+      "brand": "eburnia",
+      "detail": "indexé 21 → 15 (-6)",
+      "action": "nudge sitemap (auto) + diagnostic code → agent (PR, auto-merge si tests verts)"
+    },
+    {
+      "severity": "P1",
+      "type": "INDEXATION_LOW",
+      "tier": 1,
+      "brand": "foiredafrique",
+      "detail": "2/8 indexé (25%)",
+      "action": "resoumission sitemap (auto)"
     }
   ],
   "remediation": [
     {
       "action": "resubmit_sitemap",
-      "brand": "parfumsdeparis",
-      "property": "sc-domain:parfumsdeparis.fr",
+      "brand": "entreprise-bienetre",
+      "property": "sc-domain:entreprise-bienetre.fr",
       "reason": "INDEXATION_LOW",
-      "feed": "https://parfumsdeparis.fr/sitemap.xml",
-      "ok": false,
-      "status": 401
-    },
-    {
-      "action": "resubmit_sitemap",
-      "brand": "evasionparis",
-      "property": "sc-domain:evasionparis.fr",
-      "reason": "INDEXATION_LOW",
-      "feed": "https://evasionparis.fr/sitemap.xml",
-      "ok": false,
-      "status": 401
+      "feed": "https://entreprise-bienetre.fr/sitemap.xml",
+      "ok": true,
+      "status": 204
     },
     {
       "action": "resubmit_sitemap",
@@ -216,8 +270,35 @@
       "property": "sc-domain:festivalduconteafricain.fr",
       "reason": "INDEXATION_LOW",
       "feed": "https://festivalduconteafricain.fr/sitemap.xml",
-      "ok": false,
-      "status": 401
+      "ok": true,
+      "status": 204
+    },
+    {
+      "action": "resubmit_sitemap",
+      "brand": "parfumsdeparis",
+      "property": "sc-domain:parfumsdeparis.fr",
+      "reason": "INDEXATION_LOW",
+      "feed": "https://parfumsdeparis.fr/sitemap.xml",
+      "ok": true,
+      "status": 204
+    },
+    {
+      "action": "resubmit_sitemap",
+      "brand": "evasionparis",
+      "property": "sc-domain:evasionparis.fr",
+      "reason": "INDEXATION_LOW",
+      "feed": "https://evasionparis.fr/sitemap.xml",
+      "ok": true,
+      "status": 204
+    },
+    {
+      "action": "resubmit_sitemap",
+      "brand": "fashionweekafrica",
+      "property": "sc-domain:fashionweekafrica.fr",
+      "reason": "INDEXATION_LOW",
+      "feed": "https://fashionweekafrica.fr/sitemap.xml",
+      "ok": true,
+      "status": 204
     },
     {
       "action": "resubmit_sitemap",
@@ -225,8 +306,26 @@
       "property": "sc-domain:centreculturelafricain.fr",
       "reason": "INDEXATION_LOW",
       "feed": "https://centreculturelafricain.fr/sitemap.xml",
-      "ok": false,
-      "status": 401
+      "ok": true,
+      "status": 204
+    },
+    {
+      "action": "resubmit_sitemap",
+      "brand": "eburnia",
+      "property": "sc-domain:eburnia.fr",
+      "reason": "INDEXATION_LOW",
+      "feed": "https://eburnia.fr/sitemap.xml",
+      "ok": true,
+      "status": 204
+    },
+    {
+      "action": "resubmit_sitemap",
+      "brand": "foiredafrique",
+      "property": "sc-domain:foiredafrique.fr",
+      "reason": "INDEXATION_LOW",
+      "feed": "https://foiredafrique.fr/sitemap.xml",
+      "ok": true,
+      "status": 204
     }
   ]
 }
