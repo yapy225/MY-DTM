@@ -5,6 +5,7 @@ import assert from 'node:assert/strict';
 import { detect } from '../network-report.mjs';
 import { buildLinkingPlan } from '../lib/linking-plan.mjs';
 import { buildSeoStatus } from '../lib/seo-status.mjs';
+import { composeDigest, t2Section } from '../unified-digest.mjs';
 
 const gsc = (o) => ({ property: 'sc-domain:x', total: 10, indexed: 5, indexedUrls: [], notIndexed: [], ...o });
 const find = (arr, type, brand) => arr.find((x) => x.type === type && (!brand || x.brand === brand));
@@ -105,4 +106,33 @@ test('seo_status@v1 : seuls les action_required (tier>=2) deviennent des events'
   const des = s.events.find((e) => e.event_type === 'DESINDEXATION');
   assert.equal(des.occurrence_count, 2); assert.equal(des.novelty, 'RECURRING'); assert.equal(des.brand_id, 'a');
   assert.equal(s.coverage.auto_remediated, 1); assert.equal(s.coverage.gsc_properties, 1);
+});
+
+test('digest : rapport absent → dead-man\'s switch (alerte panne)', () => {
+  const d = composeDigest(null, null, { isHeartbeat: false });
+  assert.equal(d.send, true); assert.match(d.subject, /ABSENT/); assert.match(d.text, /PANNE/i);
+});
+
+test('digest : réseau sain hors battement → silencieux', () => {
+  const report = { generatedAt: 'x', gsc: { a: {} }, ga4: {}, anomalies: [], remediation: [] };
+  assert.equal(composeDigest(report, null, { isHeartbeat: false }).send, false);
+});
+
+test('digest : réseau sain + jour de battement → envoi (💓)', () => {
+  const report = { generatedAt: 'x', gsc: { a: {} }, ga4: {}, anomalies: [], remediation: [] };
+  const d = composeDigest(report, null, { isHeartbeat: true });
+  assert.equal(d.send, true); assert.match(d.subject, /battement/);
+});
+
+test('digest : anomalies + activité T2 → envoi + section T2', () => {
+  const report = { generatedAt: 'x', gsc: { a: {} }, ga4: {},
+    anomalies: [{ brand: 'a', type: 'DESINDEXATION', tier: 2 }], remediation: [{ ok: true, action: 'resubmit_sitemap', brand: 'a' }] };
+  const t2 = { traite: [{ brand: 'a', verdict: 'FIX_PR', pr: 'url' }], no_code_cause: [{ brand: 'b' }] };
+  const d = composeDigest(report, t2, { isHeartbeat: false });
+  assert.equal(d.send, true);
+  assert.match(d.text, /AGENT T2/); assert.match(d.text, /FIX_PR/); assert.match(d.text, /faux positifs/);
+});
+
+test('t2Section : null → mention explicite', () => {
+  assert.match(t2Section(null), /pas de résultat/i);
 });

@@ -204,7 +204,7 @@ export function detect(now, prev) {
   return a;
 }
 
-function emailBody(report) {
+export function emailBody(report) {
   const byTier = (t) => report.anomalies.filter((x) => x.tier === t);
   const seg = [];
   const fixed = report.remediation.filter((r) => r.ok);
@@ -280,6 +280,7 @@ if (isMain) (async () => {
   // (dead-man's switch : l'absence du battement hebdo = système en panne).
   const somethingToSay = now.anomalies.length > 0 || now.remediation.length > 0;
   const isHeartbeat = new Date().getUTCDay() === HEARTBEAT_DOW;
-  if (somethingToSay || isHeartbeat) await sendEmail(now, isHeartbeat);
+  if (process.env.DIGEST_MODE) console.log('DIGEST_MODE → e-mail délégué au digest unifié (unified-digest.mjs).');
+  else if (somethingToSay || isHeartbeat) await sendEmail(now, isHeartbeat);
   else console.log('✅ Aucune anomalie, hors jour de battement → aucun email (silent success).');
 })().catch((e) => { console.error('Erreur:', e.message); process.exit(1); });
