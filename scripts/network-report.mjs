@@ -34,11 +34,23 @@ const DESINDEX_MIN = Number.parseInt(process.env.DESINDEX_MIN || '2', 10);     /
 const HEARTBEAT_DOW = Number.parseInt(process.env.HEARTBEAT_DOW || '1', 10);   // jour (0=dim..6=sam) du battement « je suis vivant » (défaut lundi)
 const EFFICACY_RUNS = Number.parseInt(process.env.EFFICACY_RUNS || '5', 10);   // nb de runs de nudge T1 sans gain avant de conclure « inefficace » → T3
 const EFFICACY_MIN_GAIN = Number.parseInt(process.env.EFFICACY_MIN_GAIN || '1', 10); // gain mini d'URL indexées pour considérer le nudge « efficace »
+const CONCURRENCY = Number.parseInt(process.env.CONCURRENCY || '6', 10);        // inspections d'URL en parallèle (borné) — backoff sur 429
 const REPORT_PATH = 'reports/network-report.json';
 // webmasters (full, pas readonly) pour resoumettre le sitemap ; analytics readonly pour GA4.
 const SCOPES = 'https://www.googleapis.com/auth/webmasters https://www.googleapis.com/auth/analytics.readonly https://www.googleapis.com/auth/indexing';
 
 const b64 = (x) => Buffer.from(x).toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+// Pool de concurrence borné : worker sur chaque item, max n en vol. Préserve l'ordre.
+async function pool(items, n, worker) {
+  const out = new Array(items.length);
+  let i = 0;
+  await Promise.all(Array.from({ length: Math.min(n, items.length) }, async () => {
+    while (i < items.length) { const idx = i++; out[idx] = await worker(items[idx], idx); }
+  }));
+  return out;
+}
 
 async function token() {
   const key = JSON.parse(process.env.GSC_SA_JSON);   // parse paresseux → module importable sans secret (tests)
@@ -60,14 +72,31 @@ async function token() {
 const brandKey = (s) => String(s).replace(/^sc-domain:/, '').replace(/^https?:\/\//, '').replace(/\/$/, '')
   .replace(/\.(fr|com|net|org)$/i, '').toLowerCase();
 
-// ---- GSC : découverte + indexation par propriété -------------------------
+// Inspecte UNE URL avec backoff sur 429/5xx. true=indexée · false=non · null=échec.
+async function inspectOne(u, prop, tok) {
+  for (let attempt = 0; attempt < 4; attempt++) {
+    try {
+      const ir = await fetch('https://searchconsole.googleapis.com/v1/urlInspection/index:inspect', {
+        method: 'POST', headers: { Authorization: `Bearer ${tok}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ inspectionUrl: u, siteUrl: prop }),
+      });
+      if (ir.status === 429 || ir.status >= 500) { await sleep(500 * 2 ** attempt); continue; }
+      const ij = await ir.json();
+      return /^Submitted and indexed$/i.test(ij?.inspectionResult?.indexStatusResult?.coverageState || '');
+    } catch { await sleep(400 * 2 ** attempt); }
+  }
+  return null;
+}
+
+// ---- GSC : découverte + indexation par propriété (parallèle borné) -------
 async function gscNetwork(tok) {
   const r = await fetch('https://searchconsole.googleapis.com/webmasters/v3/sites', { headers: { Authorization: `Bearer ${tok}` } });
   const j = await r.json();
   if (j.error) throw new Error('sites.list: ' + j.error.message);
   const sites = (j.siteEntry || []).filter((s) => s.permissionLevel !== 'siteUnverifiedUser');
-  const out = {};
-  for (const s of sites) {
+
+  // 1) sitemaps en parallèle → liste plate de tâches {brand, prop, url}
+  const perSite = await pool(sites, CONCURRENCY, async (s) => {
     const prop = s.siteUrl;
     const host = prop.replace(/^sc-domain:/, '').replace(/^https?:\/\//, '').replace(/\/$/, '');
     let urls = [];
@@ -75,21 +104,23 @@ async function gscNetwork(tok) {
       const xml = await (await fetch(`https://${host}/sitemap.xml`)).text();
       urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]).filter((u) => !u.endsWith('.xml')).slice(0, MAX_URLS);
     } catch { /* pas de sitemap accessible */ }
-    let indexed = 0, inspected = 0; const notIndexed = [], indexedUrls = [];
-    for (const u of urls) {
-      try {
-        const ir = await fetch('https://searchconsole.googleapis.com/v1/urlInspection/index:inspect', {
-          method: 'POST', headers: { Authorization: `Bearer ${tok}`, 'Content-Type': 'application/json' },
-          body: JSON.stringify({ inspectionUrl: u, siteUrl: prop }),
-        });
-        const ij = await ir.json();
-        const st = ij?.inspectionResult?.indexStatusResult?.coverageState || '';
-        inspected++;
-        if (/^Submitted and indexed$/i.test(st)) { indexed++; indexedUrls.push(u); }
-        else notIndexed.push(u);              // pour la demande d'indexation Tier 1
-      } catch { /* skip URL */ }
-    }
-    out[brandKey(prop)] = { property: prop, total: inspected, indexed, indexedUrls, notIndexed };
+    return { prop, brand: brandKey(prop), urls };
+  });
+
+  const tasks = [];
+  for (const site of perSite) for (const url of site.urls) tasks.push({ brand: site.brand, prop: site.prop, url });
+
+  // 2) inspection des URL en parallèle borné (backoff anti-429)
+  const results = await pool(tasks, CONCURRENCY, (t) => inspectOne(t.url, t.prop, tok).then((ok) => ({ ...t, ok })));
+
+  // 3) agrégation par marque
+  const out = {};
+  for (const site of perSite) out[site.brand] = { property: site.prop, total: 0, indexed: 0, indexedUrls: [], notIndexed: [] };
+  for (const res of results) {
+    if (res.ok === null) continue;            // échec d'inspection → ni indexé ni non (non compté)
+    const o = out[res.brand];
+    o.total += 1;
+    if (res.ok) { o.indexed += 1; o.indexedUrls.push(res.url); } else o.notIndexed.push(res.url);
   }
   return out;
 }
