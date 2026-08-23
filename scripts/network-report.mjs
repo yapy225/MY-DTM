@@ -20,6 +20,7 @@ import fs from 'node:fs/promises';
 import { pathToFileURL } from 'node:url';
 import { remediateTier1 } from './lib/remediate.mjs';
 import { buildLinkingPlan } from './lib/linking-plan.mjs';
+import { buildSeoStatus } from './lib/seo-status.mjs';
 
 const SA = process.env.GSC_SA_JSON;
 const RESEND_KEY = process.env.RESEND_API_KEY;
@@ -272,6 +273,8 @@ if (isMain) (async () => {
 
   await fs.mkdir('reports', { recursive: true });
   await fs.writeFile(REPORT_PATH, JSON.stringify(now, null, 2));
+  // Contrat gouverné pour le Founder Brief unifié (consommé par seo-control-plane via SEO_STATUS_FILE).
+  await fs.writeFile('reports/seo-status.json', JSON.stringify(buildSeoStatus(now), null, 2));
 
   // e-mail si : quelque chose à dire (anomalie/remédiation) OU jour du battement de cœur
   // (dead-man's switch : l'absence du battement hebdo = système en panne).

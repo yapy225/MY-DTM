@@ -4,6 +4,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { detect } from '../network-report.mjs';
 import { buildLinkingPlan } from '../lib/linking-plan.mjs';
+import { buildSeoStatus } from '../lib/seo-status.mjs';
 
 const gsc = (o) => ({ property: 'sc-domain:x', total: 10, indexed: 5, indexedUrls: [], notIndexed: [], ...o });
 const find = (arr, type, brand) => arr.find((x) => x.type === type && (!brand || x.brand === brand));
@@ -85,4 +86,23 @@ test('maillage : site isolé → 0 cible + conseil autorité externe', () => {
   const p = buildLinkingPlan('me', map);
   assert.equal(p.targets.length, 0);
   assert.match(p.note, /EXTERNE/i);
+});
+
+test('seo_status@v1 : seuls les action_required (tier>=2) deviennent des events', () => {
+  const report = { generatedAt: '2026-08-23T00:00:00Z',
+    gsc: { a: { property: 'sc-domain:a.fr' } }, ga4: {},
+    remediation: [{ ok: true }, { ok: false }],
+    anomalies: [
+      { brand: 'a', type: 'INDEXATION_LOW', tier: 1, severity: 'P1', streak: 1 },          // auto-fixé → exclu
+      { brand: 'a', type: 'DESINDEXATION', tier: 0, severity: 'P1', streak: 1 },            // surveillance → exclu
+      { brand: 'a', type: 'DESINDEXATION', tier: 2, severity: 'P1', streak: 2, confirmed: true }, // inclus
+      { brand: 'a', type: 'INDEXATION_STAGNANTE', tier: 3, severity: 'P1', streak: 5 },     // inclus
+    ] };
+  const s = buildSeoStatus(report);
+  assert.equal(s.contract_version, 'seo_status@v1');
+  assert.equal(s.events.length, 2);
+  assert.ok(s.events.every((e) => e.action_required === true));
+  const des = s.events.find((e) => e.event_type === 'DESINDEXATION');
+  assert.equal(des.occurrence_count, 2); assert.equal(des.novelty, 'RECURRING'); assert.equal(des.brand_id, 'a');
+  assert.equal(s.coverage.auto_remediated, 1); assert.equal(s.coverage.gsc_properties, 1);
 });
