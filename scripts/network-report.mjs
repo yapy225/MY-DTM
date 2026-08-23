@@ -18,6 +18,7 @@
 import crypto from 'node:crypto';
 import fs from 'node:fs/promises';
 import { remediateTier1 } from './lib/remediate.mjs';
+import { buildLinkingPlan } from './lib/linking-plan.mjs';
 
 const SA = process.env.GSC_SA_JSON;
 const RESEND_KEY = process.env.RESEND_API_KEY;
@@ -178,8 +179,14 @@ function emailBody(report) {
   if (fixed.length) seg.push(`✅ AUTO-CORRIGÉ (Tier 1) :\n` + fixed.map((r) => `   • ${r.brand} — ${r.action}${r.detail ? ` : ${r.detail}` : ''}${r.reason ? ` (${r.reason})` : ''}`).join('\n'));
   const t2 = byTier(2);
   if (t2.length) seg.push(`🟡 À CORRIGER PAR L'AGENT (Tier 2 — code) :\n` + t2.map((x) => `   • ${x.brand} : ${x.type} — ${x.detail}\n     → ${x.action}`).join('\n'));
+  const fmtPlan = (p) => {
+    if (!p) return '';
+    if (!p.targets?.length) return `\n     ↳ maillage : ${p.note}`;
+    const links = p.targets.map((t) => `${t.from_domain} → « ${t.anchor_suggestion} »`).join(' ; ');
+    return `\n     ↳ maillage suggéré (cluster ${p.cluster}) : ${links}\n       (${p.execution})`;
+  };
   const t3 = byTier(3);
-  if (t3.length) seg.push(`🔴 À REGARDER (Tier 3 — humain) :\n` + t3.map((x) => `   • ${x.brand} : ${x.type} — ${x.detail}\n     → ${x.action}`).join('\n'));
+  if (t3.length) seg.push(`🔴 À REGARDER (Tier 3 — humain) :\n` + t3.map((x) => `   • ${x.brand} : ${x.type} — ${x.detail}\n     → ${x.action}${fmtPlan(x.plan)}`).join('\n'));
   const watch = byTier(0);
   if (watch.length) seg.push(`👀 EN SURVEILLANCE (non confirmé — anti-faux-positif) :\n` + watch.map((x) => `   • ${x.brand} : ${x.type} — ${x.detail}`).join('\n'));
   const failed = report.remediation.filter((r) => !r.ok);
@@ -214,6 +221,12 @@ async function sendEmail(report, isHeartbeat) {
   let prev = null;
   try { prev = JSON.parse(await fs.readFile(REPORT_PATH, 'utf8')); } catch { /* premier run */ }
   now.anomalies = detect(now, prev);
+  // Enrichir les stagnations (T3) d'un plan de MAILLAGE inter-sites (levier autorité, exécution humaine).
+  let map = null;
+  try { map = JSON.parse(await fs.readFile('scripts/network-map.json', 'utf8')); } catch { /* pas de carte */ }
+  if (map) for (const x of now.anomalies) {
+    if (x.type === 'INDEXATION_STAGNANTE') x.plan = buildLinkingPlan(x.brand, map, { max: 3 });
+  }
   // Token FRAIS avant la remédiation : l'inspection peut durer ~1h et le token vit 60 min
   // (sinon le PUT sitemap échoue en HTTP 401 « token expiré »).
   const tokFresh = await token();
