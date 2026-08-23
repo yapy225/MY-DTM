@@ -29,7 +29,7 @@ const MAX_URLS = Number.parseInt(process.env.MAX_URLS_PER_SITE || '80', 10);
 const GA4_DAYS = Number.parseInt(process.env.GA4_DAYS || '28', 10);
 const REPORT_PATH = 'reports/network-report.json';
 // webmasters (full, pas readonly) pour resoumettre le sitemap ; analytics readonly pour GA4.
-const SCOPES = 'https://www.googleapis.com/auth/webmasters https://www.googleapis.com/auth/analytics.readonly';
+const SCOPES = 'https://www.googleapis.com/auth/webmasters https://www.googleapis.com/auth/analytics.readonly https://www.googleapis.com/auth/indexing';
 
 if (!SA) { console.error('GSC_SA_JSON manquant (secret).'); process.exit(1); }
 const key = JSON.parse(SA);
@@ -69,7 +69,7 @@ async function gscNetwork(tok) {
       const xml = await (await fetch(`https://${host}/sitemap.xml`)).text();
       urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]).filter((u) => !u.endsWith('.xml')).slice(0, MAX_URLS);
     } catch { /* pas de sitemap accessible */ }
-    let indexed = 0, inspected = 0;
+    let indexed = 0, inspected = 0; const notIndexed = [];
     for (const u of urls) {
       try {
         const ir = await fetch('https://searchconsole.googleapis.com/v1/urlInspection/index:inspect', {
@@ -80,9 +80,10 @@ async function gscNetwork(tok) {
         const st = ij?.inspectionResult?.indexStatusResult?.coverageState || '';
         inspected++;
         if (/^Submitted and indexed$/i.test(st)) indexed++;
+        else notIndexed.push(u);              // pour la demande d'indexation Tier 1
       } catch { /* skip URL */ }
     }
-    out[brandKey(prop)] = { property: prop, total: inspected, indexed };
+    out[brandKey(prop)] = { property: prop, total: inspected, indexed, notIndexed };
   }
   return out;
 }
@@ -144,7 +145,7 @@ function emailBody(report) {
   const byTier = (t) => report.anomalies.filter((x) => x.tier === t);
   const seg = [];
   const fixed = report.remediation.filter((r) => r.ok);
-  if (fixed.length) seg.push(`✅ AUTO-CORRIGÉ (Tier 1) :\n` + fixed.map((r) => `   • ${r.brand} — ${r.action} (${r.reason})`).join('\n'));
+  if (fixed.length) seg.push(`✅ AUTO-CORRIGÉ (Tier 1) :\n` + fixed.map((r) => `   • ${r.brand} — ${r.action}${r.detail ? ` : ${r.detail}` : ''}${r.reason ? ` (${r.reason})` : ''}`).join('\n'));
   const t2 = byTier(2);
   if (t2.length) seg.push(`🟡 À CORRIGER PAR L'AGENT (Tier 2 — code) :\n` + t2.map((x) => `   • ${x.brand} : ${x.type} — ${x.detail}\n     → ${x.action}`).join('\n'));
   const t3 = byTier(3);
