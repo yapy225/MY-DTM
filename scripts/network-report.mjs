@@ -27,6 +27,9 @@ const INDEX_THRESHOLD = Number.parseFloat(process.env.INDEX_THRESHOLD || '0.4');
 const MIN_URLS = 5;                       // sous ce total, ratio non significatif → pas d'anomalie
 const MAX_URLS = Number.parseInt(process.env.MAX_URLS_PER_SITE || '80', 10);
 const GA4_DAYS = Number.parseInt(process.env.GA4_DAYS || '28', 10);
+const DEBOUNCE_RUNS = Number.parseInt(process.env.DEBOUNCE_RUNS || '2', 10);   // une anomalie doit persister N runs avant d'être actionnable (anti-faux-positif)
+const DESINDEX_MIN = Number.parseInt(process.env.DESINDEX_MIN || '2', 10);     // nb mini d'URL réellement basculées non-indexées pour signaler
+const HEARTBEAT_DOW = Number.parseInt(process.env.HEARTBEAT_DOW || '1', 10);   // jour (0=dim..6=sam) du battement « je suis vivant » (défaut lundi)
 const REPORT_PATH = 'reports/network-report.json';
 // webmasters (full, pas readonly) pour resoumettre le sitemap ; analytics readonly pour GA4.
 const SCOPES = 'https://www.googleapis.com/auth/webmasters https://www.googleapis.com/auth/analytics.readonly https://www.googleapis.com/auth/indexing';
@@ -69,7 +72,7 @@ async function gscNetwork(tok) {
       const xml = await (await fetch(`https://${host}/sitemap.xml`)).text();
       urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]).filter((u) => !u.endsWith('.xml')).slice(0, MAX_URLS);
     } catch { /* pas de sitemap accessible */ }
-    let indexed = 0, inspected = 0; const notIndexed = [];
+    let indexed = 0, inspected = 0; const notIndexed = [], indexedUrls = [];
     for (const u of urls) {
       try {
         const ir = await fetch('https://searchconsole.googleapis.com/v1/urlInspection/index:inspect', {
@@ -79,11 +82,11 @@ async function gscNetwork(tok) {
         const ij = await ir.json();
         const st = ij?.inspectionResult?.indexStatusResult?.coverageState || '';
         inspected++;
-        if (/^Submitted and indexed$/i.test(st)) indexed++;
+        if (/^Submitted and indexed$/i.test(st)) { indexed++; indexedUrls.push(u); }
         else notIndexed.push(u);              // pour la demande d'indexation Tier 1
       } catch { /* skip URL */ }
     }
-    out[brandKey(prop)] = { property: prop, total: inspected, indexed, notIndexed };
+    out[brandKey(prop)] = { property: prop, total: inspected, indexed, indexedUrls, notIndexed };
   }
   return out;
 }
@@ -117,25 +120,39 @@ async function ga4Network(tok) {
 // tier 1 = auto-fixable sûr · tier 2 = cause code (→ agent/PR) · tier 3 = humain.
 function detect(now, prev) {
   const a = [];
+  const prevAnoms = prev?.anomalies || [];
+  const streakOf = (brand, type) => (prevAnoms.find((x) => x.brand === brand && x.type === type)?.streak || 0);
   for (const [brand, g] of Object.entries(now.gsc || {})) {
+    // INDEXATION_LOW → Tier 1 : nudge sûr, agit tout de suite (pas besoin de debounce).
     if (g.total >= MIN_URLS && g.indexed / g.total < INDEX_THRESHOLD) {
-      a.push({ severity: 'P1', type: 'INDEXATION_LOW', tier: 1, brand,
+      a.push({ severity: 'P1', type: 'INDEXATION_LOW', tier: 1, brand, streak: streakOf(brand, 'INDEXATION_LOW') + 1,
         detail: `${g.indexed}/${g.total} indexé (${Math.round(100 * g.indexed / g.total)}%)`,
-        action: 'resoumission sitemap (auto)' });
+        action: 'resoumission sitemap + demande indexation (auto)' });
     }
+    // DESINDEXATION → sur les MÊMES URL (étaient indexées, ne le sont plus), pas un delta de total agrégé,
+    // + debounce : ne devient actionnable (tier 2) qu'après persistance sur DEBOUNCE_RUNS runs.
     const p = prev?.gsc?.[brand];
-    if (p && g.indexed < p.indexed - 2) {
-      a.push({ severity: 'P1', type: 'DESINDEXATION', tier: 2, brand,
-        detail: `indexé ${p.indexed} → ${g.indexed} (-${p.indexed - g.indexed})`,
-        action: 'nudge sitemap (auto) + diagnostic code → agent (PR, auto-merge si tests verts)' });
+    if (p && Array.isArray(p.indexedUrls) && Array.isArray(g.notIndexed)) {
+      const nowNI = new Set(g.notIndexed);
+      const flipped = p.indexedUrls.filter((u) => nowNI.has(u));   // vraie bascule indexé → non indexé
+      if (flipped.length >= DESINDEX_MIN) {
+        const streak = streakOf(brand, 'DESINDEXATION') + 1;
+        const confirmed = streak >= DEBOUNCE_RUNS;
+        a.push({ severity: 'P1', type: 'DESINDEXATION', tier: confirmed ? 2 : 0, brand, streak, confirmed,
+          detail: `${flipped.length} URL désindexées (run ${streak}/${DEBOUNCE_RUNS})`,
+          action: confirmed ? 'diagnostic code → agent (PR, auto-merge si tests verts)'
+                            : 'surveillance — non confirmé (persiste ?)' });
+      }
     }
   }
   for (const [brand, g] of Object.entries(now.ga4 || {})) {
     const p = prev?.ga4?.[brand];
     if (g.status === 'OK' && p?.status === 'OK' && p.sessions > 0 && g.sessions < p.sessions * 0.5) {
-      a.push({ severity: 'P1', type: 'CHUTE_AUDIENCE', tier: 3, brand,
-        detail: `sessions ${p.sessions} → ${g.sessions} (-${Math.round(100 * (1 - g.sessions / p.sessions))}%)`,
-        action: 'diagnostic requis (tag GA4 / cause externe) — action humaine' });
+      const streak = streakOf(brand, 'CHUTE_AUDIENCE') + 1;
+      const confirmed = streak >= DEBOUNCE_RUNS;
+      a.push({ severity: 'P1', type: 'CHUTE_AUDIENCE', tier: confirmed ? 3 : 0, brand, streak, confirmed,
+        detail: `sessions ${p.sessions} → ${g.sessions} (-${Math.round(100 * (1 - g.sessions / p.sessions))}%, run ${streak}/${DEBOUNCE_RUNS})`,
+        action: confirmed ? 'diagnostic requis (tag GA4 / cause externe) — action humaine' : 'surveillance — non confirmé' });
     }
   }
   return a;
@@ -150,22 +167,29 @@ function emailBody(report) {
   if (t2.length) seg.push(`🟡 À CORRIGER PAR L'AGENT (Tier 2 — code) :\n` + t2.map((x) => `   • ${x.brand} : ${x.type} — ${x.detail}\n     → ${x.action}`).join('\n'));
   const t3 = byTier(3);
   if (t3.length) seg.push(`🔴 À REGARDER (Tier 3 — humain) :\n` + t3.map((x) => `   • ${x.brand} : ${x.type} — ${x.detail}\n     → ${x.action}`).join('\n'));
-  const t1left = byTier(1).filter((x) => !fixed.some((f) => f.brand === x.brand));
-  if (t1left.length) seg.push(`⚠️ Tier 1 non appliqué (à vérifier) :\n` + t1left.map((x) => `   • ${x.brand} : ${x.detail}`).join('\n'));
-  return `Mesure automatique du réseau (${report.generatedAt}).\n\n${seg.join('\n\n')}\n\nDétail complet : reports/network-report.json.\nSilence = tout va bien (silent success).`;
+  const watch = byTier(0);
+  if (watch.length) seg.push(`👀 EN SURVEILLANCE (non confirmé — anti-faux-positif) :\n` + watch.map((x) => `   • ${x.brand} : ${x.type} — ${x.detail}`).join('\n'));
+  const failed = report.remediation.filter((r) => !r.ok);
+  if (failed.length) seg.push(`⚠️ Tier 1 échec (à vérifier) :\n` + failed.map((r) => `   • ${r.brand} — ${r.action} (${r.status ?? r.error ?? r.detail})`).join('\n'));
+  if (!seg.length) seg.push('✅ Aucune anomalie. Réseau sain.');
+  return `Mesure automatique du réseau (${report.generatedAt}).\n\n${seg.join('\n\n')}\n\nDétail complet : reports/network-report.json.`;
 }
 
-async function sendEmail(report) {
+async function sendEmail(report, isHeartbeat) {
   if (!RESEND_KEY) { console.log('RESEND_API_KEY absent → pas d\'email (résumé affiché seulement).'); return; }
   const nFix = report.remediation.filter((r) => r.ok).length;
   const nTodo = report.anomalies.filter((x) => x.tier >= 2).length;
+  const nothing = report.anomalies.length === 0 && report.remediation.length === 0;
+  const jour = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'][HEARTBEAT_DOW];
+  const subject = nothing
+    ? `[Réseau SEO] 💓 battement — réseau sain (${Object.keys(report.gsc).length} sites)`
+    : `[Réseau SEO] ${nFix} auto-corrigé(s) · ${nTodo} à traiter`;
+  const text = (isHeartbeat && nothing)
+    ? `Battement de cœur hebdo — le système est VIVANT (${report.generatedAt}).\n\n✅ ${Object.keys(report.gsc).length} sites mesurés, aucune anomalie.\n\n⚠️ Si tu ne reçois PAS ce message un ${jour}, le système est peut-être en panne (dead-man's switch).\n\nDétail : reports/network-report.json.`
+    : emailBody(report);
   const r = await fetch('https://api.resend.com/emails', {
     method: 'POST', headers: { Authorization: `Bearer ${RESEND_KEY}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      from: ALERT_FROM, to: [ALERT_TO],
-      subject: `[Réseau SEO] ${nFix} auto-corrigé(s) · ${nTodo} à traiter`,
-      text: emailBody(report),
-    }),
+    body: JSON.stringify({ from: ALERT_FROM, to: [ALERT_TO], subject, text }),
   });
   console.log(r.ok ? '✉️  email envoyé.' : `✉️  échec email: ${await r.text()}`);
 }
@@ -190,7 +214,10 @@ async function sendEmail(report) {
   await fs.mkdir('reports', { recursive: true });
   await fs.writeFile(REPORT_PATH, JSON.stringify(now, null, 2));
 
-  // e-mail si quelque chose à dire : anomalie détectée OU remédiation appliquée
-  if (now.anomalies.length > 0 || now.remediation.length > 0) await sendEmail(now);
-  else console.log('✅ Aucune anomalie → aucun email (silent success).');
+  // e-mail si : quelque chose à dire (anomalie/remédiation) OU jour du battement de cœur
+  // (dead-man's switch : l'absence du battement hebdo = système en panne).
+  const somethingToSay = now.anomalies.length > 0 || now.remediation.length > 0;
+  const isHeartbeat = new Date().getUTCDay() === HEARTBEAT_DOW;
+  if (somethingToSay || isHeartbeat) await sendEmail(now, isHeartbeat);
+  else console.log('✅ Aucune anomalie, hors jour de battement → aucun email (silent success).');
 })().catch((e) => { console.error('Erreur:', e.message); process.exit(1); });
