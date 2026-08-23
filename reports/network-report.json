@@ -1,30 +1,50 @@
 {
-  "generatedAt": "2026-08-23T14:05:48.329Z",
+  "generatedAt": "2026-08-23T15:14:21.869Z",
   "gsc": {
-    "lofficieldafrique": {
-      "property": "sc-domain:lofficieldafrique.fr",
-      "total": 16,
-      "indexed": 15
+    "parfumsdeparis": {
+      "property": "sc-domain:parfumsdeparis.fr",
+      "total": 51,
+      "indexed": 11
+    },
+    "evasionparis": {
+      "property": "sc-domain:evasionparis.fr",
+      "total": 36,
+      "indexed": 8
     },
     "sneakerslove": {
       "property": "sc-domain:sneakerslove.fr",
       "total": 101,
       "indexed": 85
     },
-    "centreculturelafricain": {
-      "property": "sc-domain:centreculturelafricain.fr",
-      "total": 6,
-      "indexed": 1
+    "zaouliparis": {
+      "property": "sc-domain:zaouliparis.fr",
+      "total": 18,
+      "indexed": 11
+    },
+    "eburnia": {
+      "property": "sc-domain:eburnia.fr",
+      "total": 41,
+      "indexed": 21
+    },
+    "lofficieldafrique": {
+      "property": "sc-domain:lofficieldafrique.fr",
+      "total": 16,
+      "indexed": 15
+    },
+    "lafropeen": {
+      "property": "sc-domain:lafropeen.com",
+      "total": 150,
+      "indexed": 147
     },
     "festivalduconteafricain": {
       "property": "sc-domain:festivalduconteafricain.fr",
       "total": 9,
       "indexed": 2
     },
-    "lafropeen": {
-      "property": "sc-domain:lafropeen.com",
-      "total": 150,
-      "indexed": 147
+    "centreculturelafricain": {
+      "property": "sc-domain:centreculturelafricain.fr",
+      "total": 6,
+      "indexed": 1
     },
     "dreamteamafrica": {
       "property": "https://dreamteamafrica.com/",
@@ -34,27 +54,7 @@
     "my-dtm": {
       "property": "sc-domain:my-dtm.fr",
       "total": 131,
-      "indexed": 108
-    },
-    "parfumsdeparis": {
-      "property": "sc-domain:parfumsdeparis.fr",
-      "total": 51,
-      "indexed": 11
-    },
-    "eburnia": {
-      "property": "sc-domain:eburnia.fr",
-      "total": 41,
-      "indexed": 20
-    },
-    "evasionparis": {
-      "property": "sc-domain:evasionparis.fr",
-      "total": 36,
-      "indexed": 1
-    },
-    "zaouliparis": {
-      "property": "sc-domain:zaouliparis.fr",
-      "total": 18,
-      "indexed": 0
+      "indexed": 65
     }
   },
   "ga4": {
@@ -154,8 +154,16 @@
       "severity": "P1",
       "type": "INDEXATION_LOW",
       "tier": 1,
-      "brand": "centreculturelafricain",
-      "detail": "1/6 indexé (17%)",
+      "brand": "parfumsdeparis",
+      "detail": "11/51 indexé (22%)",
+      "action": "resoumission sitemap (auto)"
+    },
+    {
+      "severity": "P1",
+      "type": "INDEXATION_LOW",
+      "tier": 1,
+      "brand": "evasionparis",
+      "detail": "8/36 indexé (22%)",
       "action": "resoumission sitemap (auto)"
     },
     {
@@ -170,46 +178,20 @@
       "severity": "P1",
       "type": "INDEXATION_LOW",
       "tier": 1,
-      "brand": "parfumsdeparis",
-      "detail": "11/51 indexé (22%)",
+      "brand": "centreculturelafricain",
+      "detail": "1/6 indexé (17%)",
       "action": "resoumission sitemap (auto)"
     },
     {
       "severity": "P1",
-      "type": "INDEXATION_LOW",
-      "tier": 1,
-      "brand": "evasionparis",
-      "detail": "1/36 indexé (3%)",
-      "action": "resoumission sitemap (auto)"
-    },
-    {
-      "severity": "P1",
-      "type": "INDEXATION_LOW",
-      "tier": 1,
-      "brand": "zaouliparis",
-      "detail": "0/18 indexé (0%)",
-      "action": "resoumission sitemap (auto)"
+      "type": "DESINDEXATION",
+      "tier": 2,
+      "brand": "my-dtm",
+      "detail": "indexé 108 → 65 (-43)",
+      "action": "nudge sitemap (auto) + diagnostic code → agent (PR, auto-merge si tests verts)"
     }
   ],
   "remediation": [
-    {
-      "action": "resubmit_sitemap",
-      "brand": "centreculturelafricain",
-      "property": "sc-domain:centreculturelafricain.fr",
-      "reason": "INDEXATION_LOW",
-      "feed": "https://centreculturelafricain.fr/sitemap.xml",
-      "ok": false,
-      "status": 401
-    },
-    {
-      "action": "resubmit_sitemap",
-      "brand": "festivalduconteafricain",
-      "property": "sc-domain:festivalduconteafricain.fr",
-      "reason": "INDEXATION_LOW",
-      "feed": "https://festivalduconteafricain.fr/sitemap.xml",
-      "ok": false,
-      "status": 401
-    },
     {
       "action": "resubmit_sitemap",
       "brand": "parfumsdeparis",
@@ -230,10 +212,19 @@
     },
     {
       "action": "resubmit_sitemap",
-      "brand": "zaouliparis",
-      "property": "sc-domain:zaouliparis.fr",
+      "brand": "festivalduconteafricain",
+      "property": "sc-domain:festivalduconteafricain.fr",
       "reason": "INDEXATION_LOW",
-      "feed": "https://zaouliparis.fr/sitemap.xml",
+      "feed": "https://festivalduconteafricain.fr/sitemap.xml",
+      "ok": false,
+      "status": 401
+    },
+    {
+      "action": "resubmit_sitemap",
+      "brand": "centreculturelafricain",
+      "property": "sc-domain:centreculturelafricain.fr",
+      "reason": "INDEXATION_LOW",
+      "feed": "https://centreculturelafricain.fr/sitemap.xml",
       "ok": false,
       "status": 401
     }
