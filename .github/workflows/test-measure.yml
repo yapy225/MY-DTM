@@ -1,0 +1,20 @@
+name: Tests mesure (logique de détection)
+
+# Lance les tests unitaires de la logique de détection à chaque changement des scripts de
+# mesure → attrape les régressions AVANT la prod (les 2 bugs host/token avaient filé en live).
+
+on:
+  push:
+    paths: ['scripts/**', '.github/workflows/test-measure.yml']
+  pull_request:
+    paths: ['scripts/**']
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node --test scripts/test/*.test.mjs
