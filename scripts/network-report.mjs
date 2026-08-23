@@ -25,7 +25,7 @@ const ALERT_TO = process.env.ALERT_EMAIL_TO || 'yapy.mambo@gmail.com';
 const ALERT_FROM = process.env.ALERT_EMAIL_FROM || 'My DTM <hello@my-dtm.fr>';
 const INDEX_THRESHOLD = Number.parseFloat(process.env.INDEX_THRESHOLD || '0.4');
 const MIN_URLS = 5;                       // sous ce total, ratio non significatif → pas d'anomalie
-const MAX_URLS = Number.parseInt(process.env.MAX_URLS_PER_SITE || '150', 10);
+const MAX_URLS = Number.parseInt(process.env.MAX_URLS_PER_SITE || '80', 10);
 const GA4_DAYS = Number.parseInt(process.env.GA4_DAYS || '28', 10);
 const REPORT_PATH = 'reports/network-report.json';
 // webmasters (full, pas readonly) pour resoumettre le sitemap ; analytics readonly pour GA4.
@@ -176,7 +176,10 @@ async function sendEmail(report) {
   let prev = null;
   try { prev = JSON.parse(await fs.readFile(REPORT_PATH, 'utf8')); } catch { /* premier run */ }
   now.anomalies = detect(now, prev);
-  now.remediation = await remediateTier1(now.anomalies, now, tok);   // Tier 1 auto-appliqué
+  // Token FRAIS avant la remédiation : l'inspection peut durer ~1h et le token vit 60 min
+  // (sinon le PUT sitemap échoue en HTTP 401 « token expiré »).
+  const tokFresh = await token();
+  now.remediation = await remediateTier1(now.anomalies, now, tokFresh);   // Tier 1 auto-appliqué
 
   const nIdx = Object.keys(gsc).length, nAud = Object.values(ga4).filter((x) => x.status === 'OK').length;
   console.log(`GSC: ${nIdx} propriétés · GA4: ${nAud}/${Object.keys(ga4).length} avec données · anomalies: ${now.anomalies.length} · auto-corrigé: ${now.remediation.filter((r) => r.ok).length}`);
