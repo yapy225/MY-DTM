@@ -9,7 +9,7 @@
 export async function resubmitSitemap(property, token) {
   const host = property.replace(/^sc-domain:/, '').replace(/^https?:\/\//, '').replace(/\/$/, '');
   const feed = `https://${host}/sitemap.xml`;
-  const url = `https://www.googleapis.com/webmasters/v3/sites/${encodeURIComponent(property)}/sitemaps/${encodeURIComponent(feed)}`;
+  const url = `https://searchconsole.googleapis.com/webmasters/v3/sites/${encodeURIComponent(property)}/sitemaps/${encodeURIComponent(feed)}`;
   const r = await fetch(url, { method: 'PUT', headers: { Authorization: `Bearer ${token}` } });
   return { feed, ok: r.status === 204 || r.ok, status: r.status };
 }
