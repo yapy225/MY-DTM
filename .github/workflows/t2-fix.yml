@@ -1,0 +1,45 @@
+name: Agent T2 déterministe (correction indexabilité)
+
+# Remplace l'agent LLM distant (qui ne pouvait pas pousser). Job Actions déterministe :
+# lit tier-2 du rapport → clone les repos cibles (PAT) → diagnostic code → PR (robots) / issue →
+# écrit reports/t2-status.json (lu par le digest 08:00). Tourne après la mesure (06:00).
+
+on:
+  schedule:
+    - cron: '31 7 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: t2-fix
+  cancel-in-progress: false
+
+jobs:
+  t2:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GH_PAT }}    # PAT (accès réseau) pour clone/push/PR cross-repo
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: git auth via PAT
+        run: gh auth setup-git
+      - name: Correction T2
+        run: node scripts/t2-fix.mjs
+      - name: Commit du statut T2 (lu par le digest)
+        run: |
+          git config user.name  "t2-bot"
+          git config user.email "actions@github.com"
+          git add reports/t2-status.json
+          if git diff --cached --quiet; then
+            echo "Statut T2 inchangé."
+          else
+            git commit -m "chore(t2): résultat agent déterministe $(date -u +%Y-%m-%dT%H:%MZ) [skip ci]"
+            git push
+          fi
