@@ -1,0 +1,24 @@
+{
+  "generatedAt": "2026-08-24T05:30:38.288Z",
+  "traite": [
+    {
+      "brand": "sneakerslove",
+      "repo": "yapy225/sneakerslove.fr",
+      "verdict": "ISSUE_OPENED",
+      "pr": "https://github.com/yapy225/sneakerslove.fr/issues/6",
+      "findings": [
+        "NEXT_NOINDEX"
+      ]
+    }
+  ],
+  "no_code_cause": [],
+  "escalade_humain": [],
+  "ignore_hors_carte": [
+    {
+      "brand": "lafropeen"
+    },
+    {
+      "brand": "eburnia"
+    }
+  ]
+}
