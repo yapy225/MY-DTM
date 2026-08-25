@@ -40,6 +40,10 @@ export default function Home() {
       <Results />
       <FAQ />
       <LatestPosts />
+
+      {/* Régie LAFF : encart réseau owned (mêmes pubs rotatives que L'Afropéen). */}
+      <div data-laff-slot="article-banner" style={{ maxWidth: 1000, margin: "28px auto", padding: "0 16px" }} />
+      <script async src="https://laff-regie.yapy-mambo.workers.dev/regie.js" data-site="mydtm" />
       <CTA />
     </>
   );
