@@ -55,6 +55,25 @@ const CASES: CaseStudy[] = [
     initials: "EB",
   },
   {
+    name: "Black Sublime",
+    url: "https://blacksublime.fr",
+    sector: "Cosmétique naturelle africaine · Marketplace",
+    challenge:
+      "Lancer une marketplace e-commerce de cosmétiques afro (marque propre + créateurs tiers) sur le socle eburnia, avec conformité cosmétique et un moteur SEO complet dès l'ouverture.",
+    work: [
+      "Marketplace multi-vendeur sur eburnia (Stripe Connect, commission, reversement)",
+      "Paiement à la livraison confirmée (séquestre) + suivi transporteur",
+      "SEO complet : données structurées, guides ingrédients, page experte E-E-A-T",
+      "Pont média→commerce avec L'Afropéen (autorité + acquisition)",
+    ],
+    result: { value: "Pré-lancement", label: "boutique en ligne, capture d'emails active" },
+    services: [
+      { href: "/services/creation-site-web", label: "Création de site web" },
+      { href: "/services/seo", label: "SEO technique" },
+    ],
+    initials: "BS",
+  },
+  {
     name: "Dream Team Africa",
     url: "https://dreamteamafrica.com",
     sector: "Culture & événementiel · Média",
