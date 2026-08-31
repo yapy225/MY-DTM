@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Notre écosystème — les marques que My DTM conçoit et pilote",
   description:
-    "My DTM conçoit, développe et pilote un écosystème de marques : culture africaine, événementiel, billetterie, commerce, bien-être et services. Découvrez le groupe.",
+    "My DTM conçoit et pilote un écosystème de marques : culture africaine, événementiel, billetterie, commerce, bien-être et services. Découvrez le groupe.",
   alternates: { canonical: "/ecosysteme" },
   openGraph: {
     title: "Notre écosystème — My DTM",

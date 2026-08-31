@@ -5,7 +5,7 @@ import { ArrowRight, ArrowUpRight, CheckCircle2 } from "lucide-react";
 export const metadata: Metadata = {
   title: "Réalisations — sites, plateformes et SEO livrés par My DTM",
   description:
-    "Études de cas My DTM : billetterie SaaS, magazine à fort trafic, sites e-commerce et récupération de trafic SEO (+8000 clics/mois). Des projets réels, des résultats mesurables.",
+    "Billetterie SaaS, magazine à fort trafic, e-commerce, récupération SEO (+8 000 clics/mois). Études de cas réels — My DTM, agence digitale Paris.",
   keywords: [
     "réalisations agence digitale",
     "études de cas agence web Paris",

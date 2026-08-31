@@ -3,9 +3,9 @@ import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Tarifs — Site Web, SEO, WhatsApp, Marketing, Tracking & Securite",
+  title: "Tarifs — Site Web, SEO, WhatsApp, Marketing, Tracking & Sécurité",
   description:
-    "Tarifs transparents : creation site web a partir de 1 500\u20AC, audit SEO 500\u20AC, WhatsApp Business 800\u20AC, marketing multi-canal 1 000\u20AC/mois. Devis gratuit.",
+    "Tarifs transparents : cr\u00E9ation site web \u00E0 partir de 1 500\u20AC, audit SEO 500\u20AC, WhatsApp Business 800\u20AC, marketing multi-canal 1 000\u20AC/mois. Devis gratuit.",
   keywords: [
     "tarif agence web Paris",
     "prix creation site web",
