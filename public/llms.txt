@@ -1,0 +1,7 @@
+# my-dtm.fr
+
+> Ressources clés pour agents IA (llms.txt — standard émergent GEO/AEO).
+> Généré automatiquement (passe on-page T2) ; à enrichir manuellement.
+
+- Accueil : https://my-dtm.fr/
+- Plan du site (sitemap) : https://my-dtm.fr/sitemap.xml
