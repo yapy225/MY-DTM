@@ -30,16 +30,18 @@ jobs:
           node-version: '20'
       - name: git auth via PAT
         run: gh auth setup-git
-      - name: Correction T2
+      - name: Correction T2 (désindexation robots)
         run: node scripts/t2-fix.mjs
+      - name: Passe on-page T2 (llms.txt + audit max-image-preview/sameAs)
+        run: node scripts/t2-onpage.mjs
       - name: Commit du statut T2 (lu par le digest)
         run: |
           git config user.name  "t2-bot"
           git config user.email "actions@github.com"
-          git add reports/t2-status.json
+          git add reports/t2-status.json reports/t2-onpage-status.json
           if git diff --cached --quiet; then
             echo "Statut T2 inchangé."
           else
-            git commit -m "chore(t2): résultat agent déterministe $(date -u +%Y-%m-%dT%H:%MZ) [skip ci]"
+            git commit -m "chore(t2): résultat agents déterministes $(date -u +%Y-%m-%dT%H:%MZ) [skip ci]"
             git push
           fi
