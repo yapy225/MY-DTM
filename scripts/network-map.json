@@ -1,7 +1,10 @@
 {
-  "_doc": "Carte canonique marque -> dépôt GitHub pour l'agent T2 (self-healing SEO). Clé = brandKey de network-report.mjs (domaine sans TLD, minuscule). ci=true → 'auto-merge si tests verts' possible ; ci=false (statiques) → PR + clic humain. cluster = thème pour le maillage inter-sites pertinent (anti-PBN : on ne lie QUE dans le même cluster). Confirmée par le fondateur 2026-08-23.",
-  "version": "network_map@v2",
+  "_doc": "Carte canonique marque -> dépôt GitHub pour les agents T2 (self-healing SEO). Clé = brandKey de network-report.mjs (domaine sans TLD, minuscule). ci=true → 'auto-merge si tests verts' possible (Next) ; ci=false (statiques/sensibles) → PR + clic humain (Option A fondateur 2026-08-23). onpage=false → EXCLU de l'auto-fix fichier de la passe on-page (t2-onpage.mjs) : monorepos host-aware (1 fichier servi sur plusieurs hôtes) ou repos sensibles (paiement) ; défaut (absent) = éligible. cluster = thème pour le maillage inter-sites pertinent (anti-PBN : on ne lie QUE dans le même cluster ; un cluster unique = site isolé = conseil autorité EXTERNE).",
+  "version": "network_map@v3",
   "confirmed_at": "2026-08-23",
+  "updated_at": "2026-08-31",
+  "_changelog_v3": "Ajout des 3 marques autrefois hors-carte (angle mort §19) avec slugs VÉRIFIÉS : dreamteamafrica, lafropeen, eburnia. Flags conservateurs (ci:false = PR+clic ; onpage:false sur monorepo/paiement) → activent la MESURE + le routage T2, PAS d'auto-merge sans décision fondateur. Clusters à confirmer.",
+  "_unresolved": "2 marques NON ajoutées faute de repo autonome vérifié (ne jamais mapper un slug deviné) : (1) lofficieldafrique.fr — pas de repo dédié ; probablement servi en host-aware depuis le monorepo 'dreamteamafrica' (cf. doctrine §Domaine dédié) → à confirmer fondateur ; (2) entreprise-bienetre.fr — pas de repo 'entreprise-bienetre' ; candidat = 'bien-etre-ecole' (créé 2026-08-22) mais périmètre/domaine non confirmé.",
   "brands": {
     "my-dtm":                            { "repo": "yapy225/MY-DTM",                              "domain": "my-dtm.fr",                            "stack": "next",   "ci": true,  "pilot": true, "cluster": "agence" },
     "sneakerslove":                      { "repo": "yapy225/sneakerslove.fr",                     "domain": "sneakerslove.fr",                      "stack": "next",   "ci": true,  "cluster": "commerce" },
@@ -16,6 +19,9 @@
     "centreculturelafricain":            { "repo": "yapy225/centreculturelafricain.fr",          "domain": "centreculturelafricain.fr",            "stack": "static", "ci": false, "cluster": "afrique-culture" },
     "justeunedanse":                     { "repo": "yapy225/justeunedanse.fr",                    "domain": "justeunedanse.fr",                     "stack": "static", "ci": false, "cluster": "afrique-culture" },
     "festivalinternationalducinemaafricain": { "repo": "yapy225/festivalinternationalducinemaafricain.fr", "domain": "festivalinternationalducinemaafricain.fr", "stack": "static", "ci": false, "cluster": "afrique-culture" },
-    "serviceathome":                     { "repo": "yapy225/serviceathome.fr",                    "domain": "serviceathome.fr",                     "stack": "static", "ci": false, "cluster": "services" }
+    "serviceathome":                     { "repo": "yapy225/serviceathome.fr",                    "domain": "serviceathome.fr",                     "stack": "static", "ci": false, "cluster": "services" },
+    "dreamteamafrica":                   { "repo": "yapy225/dreamteamafrica",                     "domain": "dreamteamafrica.com",                  "stack": "next",   "ci": false, "onpage": false, "cluster": "afrique-culture", "_note": "monorepo host-aware (sert peut-être lofficieldafrique.fr) → llms.txt per-host non trivial ; onpage:false" },
+    "lafropeen":                         { "repo": "yapy225/lafropeen",                           "domain": "lafropeen.com",                        "stack": "next",   "ci": false, "cluster": "media", "_note": "média : cluster isolé (anti-PBN) ; PR+clic (pas d'auto-merge sur le média)" },
+    "eburnia":                           { "repo": "yapy225/eburnia",                             "domain": "eburnia.fr",                           "stack": "next",   "ci": false, "onpage": false, "cluster": "afrique-culture", "_note": "plateforme de PAIEMENT (billetterie) → jamais d'auto-fix bot ; onpage:false + ci:false" }
   }
 }
