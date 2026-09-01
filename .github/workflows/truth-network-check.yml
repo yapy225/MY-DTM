@@ -1,0 +1,40 @@
+name: Vérité réseau — faux numéro (full auto)
+
+# Full-auto, cloud, READ-ONLY : récupère la vérité SERVIE par le gateway Yap IA
+# (/api/truth) et vérifie qu'AUCUN site du réseau ne publie un faux numéro.
+# N'envoie un e-mail (Resend) QUE s'il y a une dérive (silent success sinon).
+# N'écrit rien sur les sites. Cf scripts/truth-network-check.mjs.
+#
+# Secrets requis :
+#   YAP_IA_TOKEN     : accès au gateway /api/truth.
+#   RESEND_API_KEY / ALERT_EMAIL_TO / ALERT_EMAIL_FROM : e-mail d'alerte.
+
+on:
+  schedule:
+    - cron: '30 6 * * *'   # tous les jours 06:30 UTC (après la mesure réseau)
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: truth-network-check
+  cancel-in-progress: false
+
+jobs:
+  truth-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Vérité réseau — scan faux numéro
+        env:
+          YAP_IA_TOKEN: ${{ secrets.YAP_IA_TOKEN }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          ALERT_EMAIL_TO: ${{ secrets.ALERT_EMAIL_TO }}
+          ALERT_EMAIL_FROM: ${{ secrets.ALERT_EMAIL_FROM }}
+        run: node scripts/truth-network-check.mjs
