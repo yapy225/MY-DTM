@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Kit Conformité Facturation Électronique 2026-2027 — My-DTM</title>
+<style>
+  :root { --primary:#7c0dbe; --secondary:#4d71ee; --dark:#0e0a1a; --muted:#52525b; --soft:#f5f2fb; --border:#e7e1f3; --green:#10B981; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; color: var(--dark); line-height: 1.72; margin: 0; font-size: 12.5pt; }
+  .page { max-width: 800px; margin: 0 auto; padding: 56px 64px; }
+  h1 { font-size: 30pt; line-height: 1.12; margin: 0 0 8px; }
+  h2 { font-size: 19pt; margin: 36px 0 12px; color: var(--primary); border-bottom: 2px solid var(--border); padding-bottom: 6px; }
+  h3 { font-size: 13.5pt; margin: 22px 0 6px; }
+  p { margin: 8px 0; }
+  ul, ol { margin: 8px 0; padding-left: 22px; }
+  li { margin: 4px 0; }
+  .lead { font-size: 13pt; color: var(--muted); }
+  .eyebrow { text-transform: uppercase; letter-spacing: 3px; font-size: 9pt; font-weight: 800; color: var(--primary); }
+  .cover { min-height: 88vh; display: flex; flex-direction: column; justify-content: center; }
+  .badge { display: inline-block; background: var(--soft); border:1px solid var(--border); border-radius: 999px; padding: 4px 14px; font-size: 9.5pt; font-weight: 700; color: var(--primary); }
+  .box { background: var(--soft); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; margin: 16px 0; }
+  .tip { border-left: 4px solid var(--secondary); background: #eef2fe; border-radius: 0 10px 10px 0; padding: 12px 18px; margin: 14px 0; }
+  .warn { border-left: 4px solid #e0a106; background: #fdf6e3; border-radius: 0 10px 10px 0; padding: 12px 18px; margin: 14px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 10.5pt; }
+  th, td { border: 1px solid var(--border); padding: 7px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--primary); color: #fff; font-weight: 700; }
+  tr:nth-child(even) td { background: #faf8fe; }
+  .tpl { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; margin: 10px 0; }
+  .tpl .label { font-weight: 700; color: var(--primary); font-size: 10pt; }
+  .tpl .body { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 10pt; white-space: pre-wrap; margin-top: 6px; color: #1f2937; }
+  code { font-family: "SF Mono", Menlo, Consolas, monospace; background: #f1edfa; padding: 1px 5px; border-radius: 4px; font-size: 10.5pt; }
+  .check { list-style: none; padding-left: 0; }
+  .check li { padding-left: 26px; position: relative; margin: 6px 0; }
+  .check li::before { content: "☐"; position: absolute; left: 0; color: var(--primary); font-weight: 700; }
+  .qa { margin: 12px 0; }
+  .qa .q { font-weight: 700; color: var(--dark); }
+  .qa .a { color: var(--muted); margin-top: 2px; }
+  .footer { margin-top: 16px; font-size: 9pt; color: var(--muted); text-align: center; }
+  .cta { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #fff; border-radius: 14px; padding: 24px 28px; margin: 28px 0; }
+  .cta h3 { color: #fff; margin-top: 0; }
+  .cta a { color: #fff; font-weight: 800; }
+  .toc li { margin: 5px 0; }
+  @media print {
+    h2 { page-break-before: always; }
+    h2, h3 { page-break-after: avoid; }
+    .tpl, .box, .tip, .warn, table { page-break-inside: avoid; }
+    .page-break { page-break-before: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <section class="cover">
+    <span class="eyebrow">Guide premium · My-DTM</span>
+    <h1>Kit Conformité<br />Facturation Électronique</h1>
+    <p class="lead">La méthode complète pour mettre votre entreprise en conformité avant les échéances de 2026 et 2027 : votre date exacte, le bon choix de plateforme, les formats, les mentions, le cycle de vie de la facture, un plan d'action en 30 jours — checklists, modèles et glossaire inclus.</p>
+    <div style="margin-top:24px"><span class="badge">Calendrier · Plateforme agréée · Factur-X · Mentions · Cycle &amp; statuts · Archivage · E-reporting · Plan 30 jours · Cas pratiques · Sanctions · Glossaire · FAQ</span></div>
+    <p style="margin-top:40px; color:var(--muted); font-size:10pt">© My-DTM — Agence digitale, Paris · my-dtm.fr · Édition 2026. Usage personnel — revente et redistribution interdites.</p>
+    <p style="margin-top:8px; color:var(--muted); font-size:9pt"><strong>Avertissement.</strong> Ce guide est un document d'information, pas un conseil fiscal individualisé. Le dispositif peut évoluer : vérifiez toujours votre situation auprès de la DGFiP et de votre expert-comptable.</p>
+  </section>
+
+  <div class="page-break"></div>
+
+  <h2>Sommaire</h2>
+  <ol class="toc">
+    <li>La réforme en 5 minutes</li>
+    <li>Pourquoi l'État impose la facturation électronique</li>
+    <li>Suis-je concerné ? Le test de l'assujettissement</li>
+    <li>Le calendrier exact</li>
+    <li>E-invoicing et e-reporting : les deux volets</li>
+    <li>Les formats : Factur-X, UBL, CII</li>
+    <li>Plateforme Agréée, PPF et annuaire</li>
+    <li>Le cycle de vie d'une facture et ses statuts</li>
+    <li>Choisir sa Plateforme Agréée sans se tromper</li>
+    <li>Les nouvelles mentions obligatoires</li>
+    <li>L'archivage à valeur probante</li>
+    <li>Le plan de mise en conformité en 30 jours</li>
+    <li>Cas pratiques par profil</li>
+    <li>Sanctions et contrôle</li>
+    <li>Les 12 erreurs qui coûtent cher</li>
+    <li>Les questions à poser à votre expert-comptable</li>
+    <li>Checklists &amp; modèles</li>
+    <li>Glossaire</li>
+    <li>FAQ — 20 questions</li>
+  </ol>
+
+  <h2>1. La réforme en 5 minutes</h2>
+  <p>La facturation électronique devient progressivement obligatoire en France pour les entreprises assujetties à la TVA. Elle poursuit un triple objectif : lutter contre la fraude à la TVA, simplifier à terme les déclarations, et fluidifier les échanges entre entreprises grâce à des données structurées.</p>
+  <h3>Une facture électronique, ce n'est pas un PDF</h3>
+  <p>Attention au malentendu de départ : une facture électronique au sens de la réforme n'est <strong>pas</strong> un simple PDF envoyé par e-mail. C'est une facture émise dans un <strong>format structuré</strong> (lisible par une machine), qui <strong>transite par une plateforme agréée</strong> et dont certaines données sont transmises à l'administration.</p>
+  <div class="box">
+    <strong>Les 3 changements concrets</strong>
+    <ul>
+      <li><strong>Le format</strong> : Factur-X, UBL ou CII, à la place du PDF « imprimé ».</li>
+      <li><strong>Le canal</strong> : une Plateforme Agréée (PA), à la place de l'e-mail direct.</li>
+      <li><strong>La donnée</strong> : de nouvelles mentions obligatoires, et une transmission de données à l'administration (facture électronique + e-reporting).</li>
+    </ul>
+  </div>
+  <h3>Deux obligations à ne jamais confondre</h3>
+  <p>C'est le point le plus mal compris de toute la réforme. Il y a deux obligations distinctes, avec des dates différentes :</p>
+  <ul>
+    <li><strong>Recevoir</strong> une facture électronique : obligatoire pour <strong>toutes</strong> les entreprises assujetties dès le 1er septembre 2026.</li>
+    <li><strong>Émettre</strong> une facture électronique : selon la taille — 2026 pour les grandes entreprises et ETI, 2027 pour les autres.</li>
+  </ul>
+  <div class="tip"><strong>À retenir.</strong> Même si vous « avez jusqu'en 2027 » pour émettre, vous devez pouvoir <strong>recevoir</strong> dès 2026. C'est l'échéance que la plupart des petites structures oublient.</div>
+
+  <h2>2. Pourquoi l'État impose la facturation électronique</h2>
+  <p>Comprendre le « pourquoi » aide à faire les bons choix. Trois motivations structurent la réforme.</p>
+  <ul>
+    <li><strong>Réduire la fraude à la TVA.</strong> En recevant les données de facturation, l'administration peut recouper et détecter plus tôt les anomalies. La TVA est l'un des premiers postes de recettes de l'État, et aussi l'un des plus fraudés.</li>
+    <li><strong>Simplifier la vie des entreprises à terme.</strong> À mesure que les données remontent, l'objectif affiché est de pré-remplir certaines déclarations et d'alléger la charge administrative.</li>
+    <li><strong>Moderniser les échanges.</strong> La facture structurée s'intègre automatiquement dans les logiciels : moins de ressaisie, moins d'erreurs, paiements plus rapides.</li>
+  </ul>
+  <p>La France n'est pas isolée : plusieurs pays européens (Italie, Espagne…) ont déjà déployé des dispositifs comparables, et une harmonisation européenne se dessine. Anticiper, c'est aussi se préparer à un mouvement de fond, pas à une contrainte passagère.</p>
+
+  <h2>3. Suis-je concerné ? Le test de l'assujettissement</h2>
+  <p>La question n'est pas « quelle est ma forme juridique ? » mais « <strong>suis-je assujetti à la TVA et établi en France ?</strong> ». La réforme vise les opérations B2B (entre professionnels) entre assujettis établis en France.</p>
+  <h3>Le test en 3 questions</h3>
+  <ol>
+    <li><strong>Suis-je établi en France ?</strong> Si oui, poursuivez.</li>
+    <li><strong>Suis-je assujetti à la TVA ?</strong> Oui, même en franchise en base (auto-entrepreneur non redevable = assujetti). Non seulement si votre activité est hors champ ou exonérée.</li>
+    <li><strong>Est-ce que je facture des professionnels (B2B) ?</strong> Si oui → facture électronique. Si je vends aux particuliers (B2C) ou à l'étranger → e-reporting (voir chapitre 5).</li>
+  </ol>
+  <div class="warn"><strong>Le piège n°1.</strong> « Je ne facture pas la TVA, donc je ne suis pas concerné. » <strong>Faux.</strong> La franchise en base de TVA ne fait pas sortir du dispositif : vous restez un assujetti non redevable, et vos opérations B2B sont concernées.</div>
+  <h3>Les cas particuliers qui reviennent le plus</h3>
+  <table>
+    <tr><th>Profil</th><th>Concerné ?</th></tr>
+    <tr><td>Auto-entrepreneur en franchise de TVA</td><td>Oui (réception 2026, émission 2027)</td></tr>
+    <tr><td>Association avec activité commerciale assujettie</td><td>Oui, pour ces opérations</td></tr>
+    <tr><td>Association non lucrative, exonérée de TVA</td><td>Pas d'émission B2B assujettie, mais réception à prévoir</td></tr>
+    <tr><td>SCI louant des logements nus (sans TVA)</td><td>Pas d'émission assujettie, mais réception à prévoir</td></tr>
+    <tr><td>SCI louant des locaux pros avec TVA</td><td>Oui, pour ces loyers</td></tr>
+    <tr><td>Profession de santé (soins exonérés de TVA)</td><td>Souvent pas d'émission ; réception à prévoir ; activités taxables accessoires concernées</td></tr>
+    <tr><td>Avocat (prestations soumises à TVA)</td><td>Oui (réception 2026, émission 2027)</td></tr>
+    <tr><td>Commerce / e-commerce (particuliers)</td><td>E-reporting (B2C) + facture électronique pour clients pros</td></tr>
+  </table>
+  <div class="tip">En cas de doute, faites confirmer votre situation TVA <strong>activité par activité</strong> par votre expert-comptable. C'est ce curseur qui décide de tout.</div>
+
+  <h2>4. Le calendrier exact</h2>
+  <p>Le calendrier a été plusieurs fois modifié depuis le projet initial de 2024. Voici les dates en vigueur — méfiez-vous des contenus qui citent encore d'anciennes échéances.</p>
+  <table>
+    <tr><th>Échéance</th><th>Qui</th><th>Obligation</th></tr>
+    <tr><td>1er septembre 2026</td><td>Toutes les entreprises assujetties</td><td>Réception de factures électroniques</td></tr>
+    <tr><td>1er septembre 2026</td><td>Grandes entreprises &amp; ETI</td><td>Émission de factures électroniques</td></tr>
+    <tr><td>1er septembre 2027</td><td>PME, TPE, micro-entreprises, indépendants</td><td>Émission de factures électroniques</td></tr>
+  </table>
+  <h3>Comment se situe ma taille d'entreprise</h3>
+  <p>Les catégories sont définies par des seuils (effectif, chiffre d'affaires, bilan). En simplifié : une grande entreprise dépasse 5 000 salariés (ou des seuils financiers élevés) ; une ETI compte jusqu'à 5 000 salariés avec un CA important ; une PME va jusqu'à 250 salariés ; une TPE / micro est en dessous. En cas de doute sur votre catégorie, votre expert-comptable tranche.</p>
+  <div class="box"><strong>Votre date en un coup d'œil.</strong> Réception : <strong>toujours 2026</strong>. Émission : <strong>2026</strong> si vous êtes une grande entreprise ou une ETI, <strong>2027</strong> sinon. (Simulateur gratuit sur my-dtm.fr.)</div>
+
+  <h2>5. E-invoicing et e-reporting : les deux volets</h2>
+  <p>La réforme repose sur deux mécanismes complémentaires. Beaucoup d'entreprises sont concernées par les deux.</p>
+  <h3>E-invoicing (facture électronique)</h3>
+  <p>Il concerne les opérations B2B entre assujettis établis en France : une facture structurée circule d'entreprise à entreprise via une Plateforme Agréée.</p>
+  <h3>E-reporting (transmission de données)</h3>
+  <p>Il concerne les opérations qui échappent au circuit B2B français : les ventes aux <strong>particuliers</strong> (B2C) et les opérations avec l'<strong>étranger</strong>. Il n'y a alors pas de facture à transmettre à un client via une plateforme, mais des <strong>données de transaction</strong> (et de paiement pour certaines opérations) à communiquer à l'administration, selon une périodicité définie.</p>
+  <table>
+    <tr><th>Vous vendez à…</th><th>Volet concerné</th></tr>
+    <tr><td>Des entreprises françaises (B2B)</td><td>Facture électronique</td></tr>
+    <tr><td>Des particuliers (B2C)</td><td>E-reporting</td></tr>
+    <tr><td>Des clients étrangers</td><td>E-reporting</td></tr>
+  </table>
+  <div class="warn"><strong>Piège fréquent.</strong> Choisir un outil qui ne gère que la facture électronique B2B alors qu'on vend aussi aux particuliers : on se retrouve à découvert sur l'e-reporting.</div>
+
+  <h2>6. Les formats : Factur-X, UBL, CII</h2>
+  <p>Trois formats socles, tous conformes à la norme européenne EN 16931 :</p>
+  <ul>
+    <li><strong>Factur-X</strong> : format hybride. Un PDF lisible par l'humain qui embarque un fichier XML lisible par la machine. Très répandu en France car il combine le confort du PDF et l'exploitation automatique.</li>
+    <li><strong>UBL</strong> (Universal Business Language) : format XML pur, standard international largement utilisé en Europe.</li>
+    <li><strong>CII</strong> (Cross Industry Invoice) : autre format XML reconnu par la norme.</li>
+  </ul>
+  <p>Vous n'écrirez pas de XML à la main : c'est votre logiciel ou votre plateforme qui produit le format à partir de vos saisies. Votre rôle est de choisir un outil qui gère nativement au moins l'un de ces formats.</p>
+  <div class="tip">Pour une petite structure, Factur-X est souvent le plus confortable : la facture reste lisible comme un PDF classique tout en étant structurée.</div>
+
+  <h2>7. Plateforme Agréée, PPF et annuaire</h2>
+  <h3>La Plateforme Agréée (PA)</h3>
+  <p>Anciennement « PDP » (Plateforme de Dématérialisation Partenaire). C'est un opérateur immatriculé par l'administration, autorisé à émettre, transmettre et recevoir les factures électroniques pour le compte des entreprises. Vous devez en choisir une.</p>
+  <h3>Le Portail Public de Facturation (PPF)</h3>
+  <p>Le PPF ne joue plus le rôle de plateforme d'émission gratuite prévu à l'origine. Il devient un <strong>annuaire</strong> et un <strong>concentrateur de données</strong> : il ne remplace pas une Plateforme Agréée.</p>
+  <h3>L'annuaire</h3>
+  <p>L'annuaire central permet de router chaque facture vers la bonne plateforme du destinataire. D'où l'importance d'y être correctement référencé (SIREN, adresse électronique de réception) : une adresse erronée, et vos factures n'arrivent pas.</p>
+
+  <h2>8. Le cycle de vie d'une facture et ses statuts</h2>
+  <p>Dans le circuit électronique, une facture n'est plus « envoyée puis oubliée » : elle porte des <strong>statuts</strong> qui suivent son parcours. Comprendre cette mécanique évite bien des malentendus avec vos clients.</p>
+  <h3>Les grands statuts</h3>
+  <ul>
+    <li><strong>Émise / déposée</strong> : la facture est créée et déposée sur la plateforme.</li>
+    <li><strong>Reçue</strong> : elle est mise à disposition du destinataire.</li>
+    <li><strong>Rejetée</strong> : la plateforme la refuse pour non-conformité (format, mention manquante). Elle n'est pas considérée comme valablement émise.</li>
+    <li><strong>Refusée</strong> : le client la refuse (erreur de montant, litige). Il faut corriger et réémettre.</li>
+    <li><strong>Encaissée</strong> : le paiement est constaté (statut utile notamment pour la TVA sur les encaissements).</li>
+  </ul>
+  <div class="tip">Certains statuts sont obligatoires, d'autres recommandés. L'intérêt : vous savez en temps réel où en est chaque facture, ce qui accélère les relances et le rapprochement comptable.</div>
+  <div class="warn">Une facture <strong>rejetée</strong> par la plateforme n'est pas « en retard » : elle est réputée non émise. Tant qu'elle n'est pas corrigée, votre paiement ne peut pas suivre.</div>
+
+  <h2>9. Choisir sa Plateforme Agréée sans se tromper</h2>
+  <p>Avant le prix ou l'interface, une seule question compte : <strong>la solution est-elle une Plateforme Agréée immatriculée, ou connectée à l'une d'elles ?</strong> Une interface séduisante qui ne transite pas par une plateforme agréée ne vous met pas en conformité.</p>
+  <h3>La grille des 5 critères</h3>
+  <table>
+    <tr><th>Critère</th><th>Ce qu'il faut vérifier</th></tr>
+    <tr><td>Agrément</td><td>Figure dans la liste officielle des Plateformes Agréées (ou s'y appuie)</td></tr>
+    <tr><td>Périmètre</td><td>Émission ET réception ? E-reporting ? Archivage à valeur probante ?</td></tr>
+    <tr><td>Formats</td><td>Factur-X, UBL, CII pris en charge</td></tr>
+    <tr><td>Intégration</td><td>Se connecte à vos outils (banque, compta, caisse, e-commerce)</td></tr>
+    <tr><td>Coût / volume</td><td>Gratuit ou quelques euros pour un indépendant ; offre structurée pour une PME</td></tr>
+  </table>
+  <h3>Les grandes familles</h3>
+  <ul>
+    <li><strong>Compta / facturation tout-en-un</strong> (type Pennylane, Tiime) : pour centraliser avec l'expert-comptable.</li>
+    <li><strong>ERP</strong> (type Odoo, Sage) : pour les structures à gestion intégrée (stocks, achats, ventes).</li>
+    <li><strong>Néobanques / outils pro</strong> (type Qonto) : pour rester dans l'outil qui gère déjà les paiements.</li>
+    <li><strong>Outils pour indépendants</strong> (type Indy, Abby, Henrri) : simples et peu coûteux.</li>
+    <li><strong>Open-source</strong> (type Dolibarr) : flexible, mais demande des compétences techniques.</li>
+  </ul>
+  <div class="tip">Le plus souvent, la solution la plus économique est <strong>celle qui s'intègre à ce que vous utilisez déjà</strong>. Demandez d'abord à votre logiciel actuel et à votre expert-comptable.</div>
+
+  <h2>10. Les nouvelles mentions obligatoires</h2>
+  <p>La réforme ajoute des mentions à vos factures. Les oublier, c'est risquer un rejet automatique par la plateforme — et donc un retard de paiement.</p>
+  <ul>
+    <li>Le <strong>numéro SIREN du client</strong>.</li>
+    <li>Le <strong>type d'opération</strong> : livraison de biens, prestation de services, ou les deux.</li>
+    <li>L'<strong>adresse de livraison</strong> des biens si elle diffère de l'adresse de facturation.</li>
+    <li>L'<strong>option pour le paiement de la TVA d'après les débits</strong>, le cas échéant.</li>
+  </ul>
+  <div class="warn"><strong>Point crucial — le SIREN émetteur.</strong> Le SIREN de l'émetteur est une donnée contrôlée : <strong>sans immatriculation valide, impossible d'émettre</strong> une facture conforme. Si votre structure est en cours de création, anticipez l'obtention du SIREN avant votre échéance d'émission.</div>
+  <h3>Fiabilisez votre base clients</h3>
+  <ul class="check">
+    <li>Récupérer et vérifier le SIREN de chaque client professionnel</li>
+    <li>Contrôler les adresses (facturation et livraison)</li>
+    <li>Nettoyer les doublons et les fiches incomplètes</li>
+    <li>Vérifier votre propre SIREN et votre adresse de réception dans l'annuaire</li>
+  </ul>
+
+  <h2>11. L'archivage à valeur probante</h2>
+  <p>Émettre et recevoir ne suffit pas : il faut aussi <strong>conserver</strong> vos factures. La facture est une pièce comptable et fiscale, à archiver pendant la durée légale (plusieurs années), dans des conditions garantissant son intégrité, sa lisibilité et son authenticité.</p>
+  <ul>
+    <li><strong>Intégrité</strong> : la facture ne doit pas pouvoir être modifiée après émission.</li>
+    <li><strong>Lisibilité</strong> : elle doit rester consultable pendant toute la durée de conservation.</li>
+    <li><strong>Authenticité</strong> : on doit pouvoir identifier de façon fiable l'émetteur.</li>
+  </ul>
+  <p>Beaucoup de Plateformes Agréées proposent un archivage à valeur probante. Vérifiez si c'est inclus dans votre offre ou en option, et ne comptez pas sur un simple dossier de PDF sur votre ordinateur pour tenir lieu d'archivage conforme.</p>
+
+  <h2>12. Le plan de mise en conformité en 30 jours</h2>
+  <p>Inutile d'attendre l'échéance. Voici un plan réaliste, semaine par semaine, pour une TPE/PME.</p>
+  <h3>Semaine 1 — Diagnostic</h3>
+  <ul class="check">
+    <li>Faire le test d'assujettissement (chapitre 3) avec votre expert-comptable</li>
+    <li>Déterminer vos dates exactes (réception + émission)</li>
+    <li>Identifier si l'e-reporting vous concerne (ventes B2C / international)</li>
+  </ul>
+  <h3>Semaine 2 — Choix de la solution</h3>
+  <ul class="check">
+    <li>Lister vos besoins (émission, réception, e-reporting, intégrations, archivage)</li>
+    <li>Vérifier si votre logiciel actuel est/sera une Plateforme Agréée</li>
+    <li>Comparer 2-3 solutions avec la grille des 5 critères (chapitre 9)</li>
+    <li>Décider et souscrire</li>
+  </ul>
+  <h3>Semaine 3 — Paramétrage</h3>
+  <ul class="check">
+    <li>Fiabiliser la base clients (SIREN, adresses)</li>
+    <li>Configurer les mentions obligatoires dans l'outil</li>
+    <li>Vérifier votre référencement dans l'annuaire (SIREN, adresse de réception)</li>
+    <li>Activer l'archivage à valeur probante</li>
+  </ul>
+  <h3>Semaine 4 — Tests &amp; go-live</h3>
+  <ul class="check">
+    <li>Émettre une facture test au bon format (Factur-X)</li>
+    <li>Recevoir une facture test et vérifier son traitement et ses statuts</li>
+    <li>Former les personnes qui facturent</li>
+    <li>Documenter la procédure interne</li>
+  </ul>
+  <div class="tip">Même si votre émission n'est obligatoire qu'en 2027, mettre en place la <strong>réception dès 2026</strong> et tester tout le cycle maintenant vous évite l'urgence — et vous n'y revenez plus.</div>
+
+  <h2>13. Cas pratiques par profil</h2>
+  <h3>Auto-entrepreneur</h3>
+  <p>Concerné même en franchise de TVA. Priorité : un outil simple (palier gratuit ou faible coût), Plateforme Agréée, qui gère la réception dès 2026 et l'émission pour 2027. Si vous vendez aux particuliers, vérifiez l'e-reporting.</p>
+  <h3>TPE / PME</h3>
+  <p>Réception dès 2026, émission en 2027. Le meilleur choix est souvent la plateforme intégrée à votre logiciel de compta ou proposée par votre expert-comptable. Suivez le plan 30 jours.</p>
+  <h3>Association</h3>
+  <p>Tout dépend de l'assujettissement à la TVA, activité par activité. Réception à prévoir pour toutes ; émission seulement pour les activités assujetties.</p>
+  <h3>SCI / LMNP</h3>
+  <p>Locations d'habitation nues (sans TVA) : pas d'émission assujettie, mais réception à prévoir. Locaux professionnels avec TVA ou activité para-hôtelière : concernés. Faites trancher le régime TVA par votre comptable.</p>
+  <h3>Profession libérale de santé</h3>
+  <p>Les soins sont souvent exonérés de TVA : pas d'émission B2B assujettie, mais réception à prévoir. Attention aux activités accessoires taxables (formation, expertise), qui, elles, sont concernées.</p>
+  <h3>Avocat</h3>
+  <p>Prestations soumises à la TVA : concerné (réception 2026, émission 2027). Clientèle mixte pro/particuliers : souvent concerné par la facture électronique ET l'e-reporting. Interrogez votre logiciel de cabinet.</p>
+  <h3>Commerce / e-commerce (B2C)</h3>
+  <p>L'e-reporting est votre volet principal (ventes aux particuliers), plus la facture électronique pour vos clients pros. Choisissez une solution qui gère les deux et s'intègre à votre caisse / boutique.</p>
+  <h3>Fournisseur du secteur public (B2G)</h3>
+  <p>Vous facturez déjà l'administration via Chorus Pro (obligation B2G déjà en vigueur). La réforme ajoute la facture électronique pour vos clients privés. Visez une solution qui couvre le public et le privé sans multiplier les outils.</p>
+
+  <h2>14. Sanctions et contrôle</h2>
+  <p>Deux types de conséquences en cas de non-conformité : les sanctions financières et, souvent plus immédiat, les blocages opérationnels.</p>
+  <h3>Les amendes</h3>
+  <p>Le dispositif prévoit des amendes forfaitaires en cas de manquement, plafonnées à l'année : l'une pour l'e-invoicing (par facture non conforme), l'autre pour l'e-reporting (par transmission manquante). Les montants et modalités pouvant évoluer, vérifiez le régime en vigueur auprès de la DGFiP. Ces sanctions visent le manquement, pas une erreur ponctuelle corrigée de bonne foi.</p>
+  <h3>Le risque immédiat : la facture rejetée</h3>
+  <p>Avant toute amende, une facture non conforme peut être rejetée automatiquement par la plateforme : elle n'est pas considérée comme émise, et votre paiement prend du retard. Multiplié sur plusieurs clients, cela pèse sur votre trésorerie.</p>
+  <div class="tip">La meilleure protection contre les sanctions n'est pas juridique, elle est opérationnelle : anticiper, fiabiliser ses données et tester avant l'échéance.</div>
+
+  <h2>15. Les 12 erreurs qui coûtent cher</h2>
+  <ol>
+    <li>Croire que la franchise de TVA exonère de l'obligation.</li>
+    <li>Confondre réception (2026) et émission (2026/2027) et se croire « tranquille jusqu'en 2027 ».</li>
+    <li>Penser qu'un PDF envoyé par e-mail suffira.</li>
+    <li>Choisir une solution qui n'est pas (et n'utilise pas) une Plateforme Agréée.</li>
+    <li>Oublier l'e-reporting quand on vend aux particuliers.</li>
+    <li>Négliger la fiabilisation de la base clients (SIREN manquants).</li>
+    <li>Émettre sans SIREN valide (structure en cours de création).</li>
+    <li>Négliger l'archivage à valeur probante (un dossier de PDF ne suffit pas).</li>
+    <li>Attendre la dernière minute pour paramétrer et tester.</li>
+    <li>Se fier à d'anciennes dates (2024/2025) encore en ligne.</li>
+    <li>Prendre la solution « la plus connue » sans vérifier qu'elle couvre son besoin réel.</li>
+    <li>Ignorer les statuts de facture (rejetée, refusée) et laisser traîner des paiements bloqués.</li>
+  </ol>
+
+  <h2>16. Les questions à poser à votre expert-comptable</h2>
+  <p>Un rendez-vous ciblé fait gagner des semaines. Arrivez avec cette liste.</p>
+  <ul class="check">
+    <li>Pour quelles activités suis-je assujetti à la TVA ? Lesquelles sont exonérées ?</li>
+    <li>Quelle est ma catégorie d'entreprise (et donc ma date d'émission) ?</li>
+    <li>Suis-je concerné par l'e-reporting (ventes aux particuliers / international) ?</li>
+    <li>Proposez-vous une Plateforme Agréée, ou en recommandez-vous une ?</li>
+    <li>Mon logiciel actuel sera-t-il connecté à une plateforme agréée ?</li>
+    <li>Comment fiabiliser ma base clients (SIREN) avant l'échéance ?</li>
+    <li>Comment gérez-vous l'archivage à valeur probante de mes factures ?</li>
+    <li>Quel calendrier concret me conseillez-vous d'ici mon échéance ?</li>
+  </ul>
+
+  <h2>17. Checklists &amp; modèles</h2>
+  <h3>Checklist finale de conformité</h3>
+  <ul class="check">
+    <li>Ma situation TVA et mes dates sont confirmées</li>
+    <li>Ma Plateforme Agréée est choisie et souscrite</li>
+    <li>Mon outil produit un format conforme (Factur-X / UBL / CII)</li>
+    <li>Mes mentions obligatoires sont paramétrées</li>
+    <li>Ma base clients est fiabilisée (SIREN, adresses)</li>
+    <li>Mon SIREN et mon adresse de réception sont référencés dans l'annuaire</li>
+    <li>La réception est opérationnelle (testée)</li>
+    <li>L'émission est testée (au moins une facture réelle)</li>
+    <li>Les statuts de facture sont compris et suivis</li>
+    <li>L'archivage à valeur probante est en place</li>
+    <li>L'e-reporting est couvert si je vends aux particuliers / à l'international</li>
+    <li>Mon équipe est formée et la procédure est écrite</li>
+  </ul>
+  <h3>Modèle — E-mail à votre logiciel / banque</h3>
+  <div class="tpl">
+    <div class="label">Objet : Facturation électronique — êtes-vous une Plateforme Agréée ?</div>
+    <div class="body">Bonjour,
+
+Dans le cadre de la réforme de la facturation électronique, pouvez-vous me confirmer :
+1. Êtes-vous une Plateforme Agréée immatriculée, ou connecté à l'une d'elles (laquelle) ?
+2. Votre offre couvre-t-elle l'émission ET la réception au format structuré (Factur-X) ?
+3. Gérez-vous l'e-reporting (ventes aux particuliers / international) ?
+4. Proposez-vous l'archivage à valeur probante ?
+5. Quel est le coût selon mon volume de factures ?
+
+Merci d'avance pour ces précisions.</div>
+  </div>
+  <h3>Modèle — Demande de SIREN à un client professionnel</h3>
+  <div class="tpl">
+    <div class="label">Objet : Mise à jour de votre fiche — facturation électronique</div>
+    <div class="body">Bonjour,
+
+Pour être conforme à la facturation électronique, nos factures doivent désormais mentionner votre numéro SIREN. Pourriez-vous nous le communiquer, ainsi que votre adresse de facturation à jour ?
+
+Merci et bonne journée.</div>
+  </div>
+
+  <h2>18. Glossaire</h2>
+  <div class="qa"><span class="q">Assujetti à la TVA</span><div class="a">Personne qui réalise de façon indépendante une activité économique dans le champ de la TVA — même en franchise en base (non redevable).</div></div>
+  <div class="qa"><span class="q">B2B / B2C / B2G</span><div class="a">Opérations entre entreprises / vers les particuliers / vers le secteur public.</div></div>
+  <div class="qa"><span class="q">CII</span><div class="a">Cross Industry Invoice : format XML de facture conforme à la norme européenne.</div></div>
+  <div class="qa"><span class="q">E-invoicing</span><div class="a">Facturation électronique entre professionnels : émission, transmission et réception via une plateforme.</div></div>
+  <div class="qa"><span class="q">E-reporting</span><div class="a">Transmission à l'administration des données des opérations hors circuit B2B français (B2C, international).</div></div>
+  <div class="qa"><span class="q">EN 16931</span><div class="a">Norme européenne définissant le socle sémantique d'une facture électronique.</div></div>
+  <div class="qa"><span class="q">Factur-X</span><div class="a">Format hybride français : un PDF lisible embarquant un XML de données.</div></div>
+  <div class="qa"><span class="q">Franchise en base de TVA</span><div class="a">Régime dispensant de facturer la TVA sous certains seuils ; on reste assujetti non redevable.</div></div>
+  <div class="qa"><span class="q">PA (Plateforme Agréée)</span><div class="a">Opérateur immatriculé par l'administration, par lequel transitent les factures. Ancien nom : PDP.</div></div>
+  <div class="qa"><span class="q">PPF (Portail Public de Facturation)</span><div class="a">Devenu annuaire et concentrateur de données ; n'assure plus le service d'émission gratuit initial.</div></div>
+  <div class="qa"><span class="q">SIREN</span><div class="a">Identifiant à 9 chiffres d'une entreprise ; mention désormais requise et donnée contrôlée à l'émission.</div></div>
+  <div class="qa"><span class="q">Statut de facture</span><div class="a">État d'une facture dans le circuit (émise, reçue, rejetée, refusée, encaissée).</div></div>
+  <div class="qa"><span class="q">UBL</span><div class="a">Universal Business Language : format XML standard international de facture.</div></div>
+
+  <h2>19. FAQ — 20 questions</h2>
+  <div class="qa"><span class="q">1. La facturation électronique est-elle vraiment obligatoire ?</span><div class="a">Oui, progressivement : réception pour tous en 2026, émission en 2026 (grandes entreprises/ETI) puis 2027 (autres).</div></div>
+  <div class="qa"><span class="q">2. Un PDF envoyé par e-mail suffit-il ?</span><div class="a">Non : il faut un format structuré (Factur-X, UBL, CII) transitant par une Plateforme Agréée.</div></div>
+  <div class="qa"><span class="q">3. Suis-je concerné si je suis en franchise de TVA ?</span><div class="a">Oui : la franchise ne fait pas sortir du dispositif.</div></div>
+  <div class="qa"><span class="q">4. Quelle est ma date d'émission ?</span><div class="a">2026 si vous êtes une grande entreprise ou une ETI, 2027 sinon.</div></div>
+  <div class="qa"><span class="q">5. Et pour la réception ?</span><div class="a">Toutes les entreprises assujetties : dès le 1er septembre 2026.</div></div>
+  <div class="qa"><span class="q">6. Qu'est-ce qu'une Plateforme Agréée ?</span><div class="a">Un opérateur immatriculé (ex-PDP) par lequel transitent vos factures.</div></div>
+  <div class="qa"><span class="q">7. Le portail public est-il gratuit pour émettre ?</span><div class="a">Non : ce service gratuit a été abandonné ; le PPF est un annuaire.</div></div>
+  <div class="qa"><span class="q">8. Puis-je me mettre en conformité gratuitement ?</span><div class="a">Souvent oui pour une petite structure (paliers gratuits), à condition de couvrir tout le besoin.</div></div>
+  <div class="qa"><span class="q">9. Dois-je écrire du XML ?</span><div class="a">Non : votre logiciel ou plateforme le génère pour vous.</div></div>
+  <div class="qa"><span class="q">10. Qu'est-ce que l'e-reporting ?</span><div class="a">La transmission des données de vos ventes B2C et internationales à l'administration.</div></div>
+  <div class="qa"><span class="q">11. Une association est-elle concernée ?</span><div class="a">Selon son assujettissement à la TVA, activité par activité ; réception à prévoir.</div></div>
+  <div class="qa"><span class="q">12. Une SCI est-elle concernée ?</span><div class="a">Selon la TVA : logements nus non ; locaux pros avec TVA oui ; réception à prévoir.</div></div>
+  <div class="qa"><span class="q">13. Un médecin est-il concerné ?</span><div class="a">Soins exonérés : pas d'émission B2B assujettie ; réception à prévoir ; activités taxables concernées.</div></div>
+  <div class="qa"><span class="q">14. Un avocat est-il concerné ?</span><div class="a">Oui : prestations soumises à la TVA (réception 2026, émission 2027).</div></div>
+  <div class="qa"><span class="q">15. Chorus Pro, c'est pareil ?</span><div class="a">Non : Chorus Pro = secteur public (B2G), déjà obligatoire ; la réforme ajoute le B2B.</div></div>
+  <div class="qa"><span class="q">16. Que risque-t-on en cas de non-conformité ?</span><div class="a">Des amendes forfaitaires plafonnées, et surtout des factures rejetées / paiements retardés.</div></div>
+  <div class="qa"><span class="q">17. Que veut dire « facture rejetée » ?</span><div class="a">La plateforme la refuse pour non-conformité : elle est réputée non émise.</div></div>
+  <div class="qa"><span class="q">18. Dois-je archiver mes factures ?</span><div class="a">Oui, à valeur probante (intégrité, lisibilité, authenticité), pendant la durée légale.</div></div>
+  <div class="qa"><span class="q">19. Mon logiciel actuel suffira-t-il ?</span><div class="a">Peut-être : demandez-lui s'il est ou sera une Plateforme Agréée ou connecté à l'une d'elles.</div></div>
+  <div class="qa"><span class="q">20. Par où commencer ?</span><div class="a">Le test d'assujettissement, la date exacte, puis le plan 30 jours de ce guide.</div></div>
+
+  <div class="cta">
+    <h3>Vous voulez qu'on le fasse avec vous ?</h3>
+    <p>En 90 minutes, un expert My-DTM détermine votre date exacte, vous aide à choisir votre Plateforme Agréée, vérifie vos mentions et vous remet un plan de conformité personnalisé.</p>
+    <p><a href="https://my-dtm.fr/guides/facturation-electronique-obligatoire">→ Réserver l'accompagnement conformité sur my-dtm.fr</a></p>
+  </div>
+
+  <p class="footer">© My-DTM — Agence digitale, Paris · my-dtm.fr · Ce guide est un document d'information et ne constitue pas un conseil fiscal individualisé. Vérifiez votre situation auprès de la DGFiP et de votre expert-comptable. Édition 2026.</p>
+
+</div>
+</body>
+</html>

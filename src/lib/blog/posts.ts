@@ -14,6 +14,7 @@ import { POSTS_SOCIAL } from "./theme-social";
 import { POSTS_ECOMMERCE } from "./theme-ecommerce";
 import { POSTS_CONVERSION } from "./theme-conversion";
 import { POSTS_LOCAL } from "./theme-local";
+import { POSTS_FACTURATION } from "./theme-facturation";
 
 export type Block =
   | { type: "h2"; text: string }
@@ -1534,6 +1535,7 @@ const ALL_POSTS: Post[] = [
   ...POSTS_ECOMMERCE,
   ...POSTS_CONVERSION,
   ...POSTS_LOCAL,
+  ...POSTS_FACTURATION,
 ];
 
 export function getAllPosts(): Post[] {

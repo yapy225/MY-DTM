@@ -41,6 +41,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/services/plateforme-evenementielle`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.9 },
     { url: `${baseUrl}/blog`, lastModified: LAST_MODIFIED, changeFrequency: "weekly", priority: 0.8 },
     ...blogPosts,
+    { url: `${baseUrl}/outils/facturation-electronique-simulateur`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/tarifs`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/contact`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/plan-du-site`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.4 },

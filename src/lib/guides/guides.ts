@@ -725,6 +725,110 @@ export const GUIDES: Guide[] = [
     ],
     relatedService: { href: "/services/tracking-conformite", label: "Déléguer entièrement (à partir de 500 €)" }
   },
+
+  {
+    slug: "facturation-electronique-obligatoire",
+    title: "Facturation électronique obligatoire : le guide complet (2026-2027)",
+    description:
+      "Facturation électronique obligatoire en France : ce que c'est, qui est concerné, les dates (réception 2026, émission 2026-2027), les plateformes agréées et les formats. Le guide clair pour se mettre en conformité.",
+    date: "2026-09-02",
+    readingTime: "10 min",
+    category: "Facturation électronique",
+    keywords: [
+      "facturation électronique obligatoire",
+      "facturation électronique obligation",
+      "facturation électronique c'est quoi",
+      "facturation électronique pour qui",
+      "facturation électronique réforme",
+      "facturation électronique 2026",
+    ],
+    eyebrow: "Guide premium",
+    intro:
+      "La facturation électronique devient obligatoire en France entre 2026 et 2027. Derrière le calendrier se cachent deux obligations distinctes, des formats précis et le passage forcé par une plateforme agréée. Voici la méthode claire pour comprendre ce qui vous concerne — et vous mettre en conformité sans stress avant l'échéance.",
+    content: [
+      { type: "p", text: "La facturation électronique n'est pas un simple PDF envoyé par e-mail. C'est une facture émise, transmise et reçue dans un format structuré, lisible par une machine, qui transite par des plateformes agréées et alimente l'administration fiscale. La réforme française la rend progressivement obligatoire pour toutes les entreprises assujetties à la TVA. Ce guide vous donne le « pourquoi » et le « quoi » ; l'accompagnement ci-dessous applique le « comment » à votre cas précis." },
+
+      { type: "h2", text: "La facturation électronique, c'est quoi exactement ?" },
+      { type: "p", text: "Une facture électronique au sens de la réforme n'est pas un document PDF classique. C'est une facture émise dans un format structuré — Factur-X (un PDF qui embarque des données XML), UBL ou CII — que les logiciels savent lire automatiquement. Elle ne se transmet plus par simple e-mail : elle passe par une plateforme agréée, qui garantit son acheminement et transmet certaines données à l'administration. L'objectif de l'État : simplifier la TVA, réduire la fraude et alléger, à terme, les déclarations." },
+
+      { type: "h2", text: "Deux obligations à ne pas confondre : recevoir et émettre" },
+      { type: "p", text: "C'est le point qui prête le plus à confusion. La réforme distingue l'obligation de recevoir une facture électronique et celle d'en émettre — et elles n'ont pas la même date." },
+      { type: "ul", items: [
+        "Réception : dès le 1er septembre 2026, TOUTES les entreprises assujetties, quelle que soit leur taille, doivent être en capacité de recevoir une facture électronique.",
+        "Émission — grandes entreprises et ETI : obligatoire elle aussi au 1er septembre 2026.",
+        "Émission — PME, TPE, micro-entreprises et indépendants : obligatoire à partir du 1er septembre 2027.",
+      ]},
+      { type: "p", text: "Traduit simplement : au 1er septembre 2026, tout le monde doit pouvoir recevoir ; les grandes structures émettent déjà, et les plus petites ont jusqu'au 1er septembre 2027 pour émettre à leur tour. Le calendrier a été plusieurs fois reporté depuis le projet initial de 2024 — méfiez-vous des contenus qui citent encore d'anciennes dates, et recoupez toujours avec la DGFiP." },
+
+      { type: "h2", text: "Qui est concerné (et qui ne l'est pas) ?" },
+      { type: "p", text: "Le critère central n'est pas le statut juridique mais l'assujettissement à la TVA. La réforme vise les opérations B2B entre assujettis établis en France." },
+      { type: "ul", items: [
+        "Concernés : entreprises, indépendants, professions libérales, mais aussi associations et SCI dès lors qu'ils exercent une activité assujettie à la TVA.",
+        "Réception pour tous : même un assujetti qui n'émet pas encore doit pouvoir recevoir dès 2026.",
+        "Nuances par statut : associations et SCI dépendent de leur régime TVA activité par activité — d'où des guides dédiés pour ces cas.",
+        "Hors périmètre B2B : les ventes aux particuliers (B2C) et à l'international ne passent pas par la facture électronique mais par l'e-reporting (transmission des données de transaction).",
+      ]},
+
+      { type: "h2", text: "La plateforme agréée (PA) : le passage obligé" },
+      { type: "p", text: "Vous ne pourrez plus envoyer une facture directement par e-mail à un client professionnel. Elle devra transiter par une Plateforme Agréée (PA) — anciennement appelée « PDP » — c'est-à-dire un opérateur immatriculé par l'administration. Le Portail Public de Facturation (PPF), lui, ne joue plus le rôle de plateforme de dépôt gratuite prévu à l'origine : il devient un annuaire et un concentrateur de données. Concrètement, chaque entreprise doit choisir sa plateforme (souvent celle de son logiciel de facturation ou de son expert-comptable)." },
+
+      { type: "h2", text: "Les formats : Factur-X, UBL, CII" },
+      { type: "p", text: "La facture doit être produite dans un format structuré normalisé. Trois formats socles sont admis : Factur-X (format hybride PDF + XML, très répandu en France car lisible par un humain ET une machine), UBL et CII (formats XML purs). Votre logiciel ou votre plateforme s'en charge — mais c'est ce qui explique qu'un simple PDF « fait maison » ne suffira plus." },
+
+      { type: "h2", text: "Les nouvelles mentions obligatoires" },
+      { type: "p", text: "La réforme ajoute des mentions à faire figurer sur les factures (numéro SIREN du client, type d'opération, adresse de livraison le cas échéant, option de paiement de la TVA…). Point de vigilance majeur : le SIREN de l'émetteur est une donnée obligatoire et contrôlée par la plateforme. Une entité sans SIREN valide ne peut pas émettre — un sujet à régler en amont si votre structure est en cours d'immatriculation." },
+
+      { type: "h2", text: "Par où commencer concrètement" },
+      { type: "p", text: "Inutile d'attendre 2027 : la réception s'impose dès 2026, et le choix d'une plateforme, la mise à jour des mentions et les tests de format prennent du temps. La marche à suivre tient en cinq étapes : déterminer votre situation TVA et votre date exacte, choisir votre plateforme agréée, vérifier vos mentions obligatoires (dont le SIREN), adapter votre outil de facturation au format structuré, et organiser la réception. C'est exactement ce parcours, appliqué à votre activité, que couvre l'accompagnement ci-dessous." },
+    ],
+    products: [
+      {
+        id: "ebook-facturation-electronique",
+        type: "pdf",
+        name: "Le Kit conformité (ebook)",
+        price: 9,
+        priceCents: 900,
+        tagline: "La méthode complète pour vous mettre en conformité avant l'échéance, checklists et modèles inclus.",
+        includes: [
+          "Le test « suis-je concerné » et votre calendrier exact (réception / émission)",
+          "La grille pour choisir votre Plateforme Agréée sans vous tromper",
+          "Les nouvelles mentions obligatoires + la fiabilisation de la base clients",
+          "Le plan de mise en conformité en 30 jours, semaine par semaine",
+          "Les cas pratiques par profil (auto-entrepreneur, TPE/PME, association, SCI, B2C)",
+          "Checklists et modèles d'e-mails prêts à l'emploi — format PDF, accès immédiat",
+        ],
+        cta: "Télécharger le Kit — 9 €",
+        featured: true,
+        file: "kit-conformite-facturation-electronique.pdf",
+      },
+      {
+        id: "accompagnement-facturation-electronique",
+        type: "cal",
+        name: "L'accompagnement conformité",
+        price: 150,
+        priceCents: 15000,
+        tagline: "On met votre facturation en conformité ensemble, en direct, avant l'échéance.",
+        includes: [
+          "1 visio de 90 min en direct avec un expert",
+          "On détermine VOTRE date d'obligation exacte (réception et émission)",
+          "On choisit votre Plateforme Agréée (PA) adaptée à vos outils",
+          "On vérifie vos mentions obligatoires et votre format (Factur-X)",
+          "On cadre l'e-reporting si vous vendez aux particuliers ou à l'international",
+          "Le Kit conformité (ebook) inclus",
+          "Vous repartez avec un plan de mise en conformité écrit, étape par étape",
+        ],
+        cta: "Réserver mon accompagnement — 150 €",
+      },
+    ],
+    faq: [
+      { q: "La facturation électronique est-elle obligatoire ?", a: "Oui, progressivement. La réception de factures électroniques est obligatoire pour toutes les entreprises assujetties à la TVA dès le 1er septembre 2026. L'émission est obligatoire au 1er septembre 2026 pour les grandes entreprises et ETI, et au 1er septembre 2027 pour les PME, TPE, micro-entreprises et indépendants." },
+      { q: "La facturation électronique, c'est quoi ?", a: "C'est une facture émise dans un format structuré (Factur-X, UBL ou CII), lisible par une machine, transmise via une plateforme agréée plutôt que par simple e-mail. Elle alimente aussi l'administration fiscale. Un PDF classique envoyé par mail ne répond pas à cette définition." },
+      { q: "Qui est concerné par la facturation électronique obligatoire ?", a: "Toutes les entreprises assujetties à la TVA et établies en France, pour leurs opérations entre professionnels (B2B) : sociétés, indépendants, professions libérales, mais aussi associations et SCI selon leur régime TVA. Les ventes aux particuliers et à l'international relèvent, elles, de l'e-reporting." },
+      { q: "Faut-il un logiciel payant pour se mettre en conformité ?", a: "La facture doit transiter par une Plateforme Agréée, mais l'offre est large et inclut des solutions à faible coût. Le bon choix dépend de votre volume, de vos outils actuels et de votre expert-comptable — c'est précisément ce qu'on cadre en accompagnement pour éviter de payer pour des fonctions inutiles." },
+      { q: "Que faire si mon entreprise n'a pas encore de SIREN ?", a: "Le SIREN de l'émetteur est une donnée obligatoire et contrôlée : sans immatriculation valide, vous ne pouvez pas émettre de facture électronique conforme. Si votre structure est en cours de création, il faut anticiper ce point avant l'échéance d'émission qui vous concerne." },
+    ],
+    relatedService: { href: "/services/automatisation", label: "Déléguer la mise en conformité (sur devis)" },
+  },
 ];
 
 // --- Garde-fou d'integrite du catalogue -----------------------------------
