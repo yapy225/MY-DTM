@@ -1,10 +1,66 @@
 {
   "contract_version": "seo_status@v1",
-  "last_run_at": "2026-08-31T12:53:21.977Z",
-  "events": [],
+  "last_run_at": "2026-09-01T11:17:51.640Z",
+  "events": [
+    {
+      "event_id": "seo:entreprise-bienetre:INDEXATION_STAGNANTE",
+      "event_type": "INDEXATION_STAGNANTE",
+      "severity": "P1",
+      "action_required": true,
+      "brand_id": "entreprise-bienetre",
+      "business_object_ref": "sc-domain:entreprise-bienetre.fr",
+      "occurrence_count": 10,
+      "novelty": "RECURRING",
+      "state": "CONFIRMED"
+    },
+    {
+      "event_id": "seo:parfumsdeparis:INDEXATION_STAGNANTE",
+      "event_type": "INDEXATION_STAGNANTE",
+      "severity": "P1",
+      "action_required": true,
+      "brand_id": "parfumsdeparis",
+      "business_object_ref": "sc-domain:parfumsdeparis.fr",
+      "occurrence_count": 10,
+      "novelty": "RECURRING",
+      "state": "CONFIRMED"
+    },
+    {
+      "event_id": "seo:justeunedanse:INDEXATION_STAGNANTE",
+      "event_type": "INDEXATION_STAGNANTE",
+      "severity": "P1",
+      "action_required": true,
+      "brand_id": "justeunedanse",
+      "business_object_ref": "sc-domain:justeunedanse.fr",
+      "occurrence_count": 10,
+      "novelty": "RECURRING",
+      "state": "CONFIRMED"
+    },
+    {
+      "event_id": "seo:festivalinternationalducinemaafricain:INDEXATION_STAGNANTE",
+      "event_type": "INDEXATION_STAGNANTE",
+      "severity": "P1",
+      "action_required": true,
+      "brand_id": "festivalinternationalducinemaafricain",
+      "business_object_ref": "sc-domain:festivalinternationalducinemaafricain.fr",
+      "occurrence_count": 10,
+      "novelty": "RECURRING",
+      "state": "CONFIRMED"
+    },
+    {
+      "event_id": "seo:centreculturelafricain:INDEXATION_STAGNANTE",
+      "event_type": "INDEXATION_STAGNANTE",
+      "severity": "P1",
+      "action_required": true,
+      "brand_id": "centreculturelafricain",
+      "business_object_ref": "sc-domain:centreculturelafricain.fr",
+      "occurrence_count": 10,
+      "novelty": "RECURRING",
+      "state": "CONFIRMED"
+    }
+  ],
   "coverage": {
     "gsc_properties": 18,
-    "ga4_with_data": 9,
-    "auto_remediated": 8
+    "ga4_with_data": 11,
+    "auto_remediated": 9
   }
 }
