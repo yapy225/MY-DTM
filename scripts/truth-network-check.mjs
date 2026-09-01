@@ -19,6 +19,9 @@ const SITES = [
   "foiredafrique.fr", "evasionparis.fr", "festivalduconteafricain.fr",
   "fashionweekafrica.fr", "festivalinternationalducinemaafricain.fr",
   "salonmadeinafrica.fr", "zaouliparis.fr", "justeunedanse.fr",
+  // Plateforme billetterie (eburnia.fr = repo ARCHIVÉ, non modifiable → surveillé seulement)
+  // + site principal.
+  "eburnia.fr", "dreamteamafrica.com",
 ];
 const PAGES = ["mentions-legales", "cgv-billetterie", "annulation", ""]; // "" = home
 
