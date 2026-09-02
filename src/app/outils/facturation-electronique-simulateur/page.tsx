@@ -57,6 +57,9 @@ export default function SimulateurPage() {
             >
               Le guide complet de la facturation électronique →
             </Link>
+            <Link href="/outils/comparateur-plateformes-agreees" className="text-sm font-semibold text-primary hover:underline">
+              Quelle plateforme choisir ? →
+            </Link>
             <Link href="/contact" className="text-sm font-semibold text-primary hover:underline">
               Être accompagné →
             </Link>

@@ -271,6 +271,7 @@ export const POSTS_FACTURATION: Post[] = [
     ],
     related: [
       { href: "/guides/facturation-electronique-obligatoire", label: "Le guide complet de la facturation électronique" },
+      { href: "/outils/comparateur-plateformes-agreees", label: "Comparateur : quelle plateforme pour mon profil ?" },
       { href: "/outils/facturation-electronique-simulateur", label: "Simulateur : suis-je concerné et à quelle date ?" },
     ],
     content: [
@@ -369,6 +370,7 @@ export const POSTS_FACTURATION: Post[] = [
     ],
     related: [
       { href: "/guides/facturation-electronique-obligatoire", label: "Le guide complet de la facturation électronique" },
+      { href: "/outils/comparateur-plateformes-agreees", label: "Comparateur : quelle plateforme pour mon profil ?" },
       { href: "/blog/plateforme-agreee-facturation-electronique", label: "Qu'est-ce qu'une Plateforme Agréée ?" },
     ],
     content: [
@@ -392,7 +394,7 @@ export const POSTS_FACTURATION: Post[] = [
         "Les solutions open-source (type Dolibarr) : flexibles, mais demandent des compétences techniques ou un intégrateur.",
       ]},
       { type: "p", text: "Aucune de ces catégories n'est « la meilleure » dans l'absolu : la bonne dépend de votre taille, de vos outils existants et de votre budget. Le plus souvent, la solution la plus économique est celle qui s'intègre à ce que vous utilisez déjà." },
-      { type: "cta", text: "Vous ne savez pas par quel bout prendre le choix ?", href: "/guides/facturation-electronique-obligatoire", label: "Lire le guide complet de la facturation électronique" },
+      { type: "cta", text: "Vous ne savez pas par quel bout prendre le choix ?", href: "/outils/comparateur-plateformes-agreees", label: "Trouver ma famille de plateforme en 3 questions" },
       { type: "h2", text: "L'erreur à éviter : choisir avant de connaître son besoin" },
       { type: "p", text: "Beaucoup d'entreprises se précipitent sur la marque la plus connue ou la moins chère, puis découvrent qu'elle ne couvre pas la réception, ou pas l'e-reporting, ou qu'elle ne s'intègre pas à leur logiciel de caisse. Commencez par lister vos besoins (émission, réception, e-reporting, intégrations), puis confrontez chaque solution à cette liste. C'est l'inverse du réflexe habituel — et c'est ce qui évite de changer d'outil six mois plus tard." },
     ],
