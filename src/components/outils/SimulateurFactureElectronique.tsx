@@ -8,6 +8,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { CheckCircle2, CalendarClock, ArrowRight, RefreshCw } from "lucide-react";
+import LeadMagnetForm from "@/components/LeadMagnetForm";
 
 type Assujetti = "oui" | "non";
 type Taille = "ge-eti" | "pme" | "tpe-micro";
@@ -209,12 +210,24 @@ export default function SimulateurFactureElectronique() {
             </div>
           )}
 
+          {result.concerne && (
+            <div className="mt-6 rounded-xl bg-white/10 p-5">
+              <p className="text-sm font-bold">📩 Recevez votre plan de conformité + le Kit (gratuit)</p>
+              <p className="mt-1 text-xs text-white/80">
+                Votre calendrier, le choix de plateforme et les checklists — par email, tout de suite.
+              </p>
+              <div className="mt-3">
+                <LeadMagnetForm productId="ebook-facturation-electronique" source="simulateur" onDark cta="Recevoir le Kit" />
+              </div>
+            </div>
+          )}
+
           <div className="mt-7 flex flex-col gap-3 sm:flex-row">
             <Link
               href="/guides/facturation-electronique-obligatoire"
-              className="inline-flex items-center justify-center rounded-lg bg-white px-6 py-3 text-sm font-bold text-primary transition-all hover:-translate-y-0.5 hover:shadow-xl"
+              className="inline-flex items-center justify-center rounded-lg border border-white/40 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-white/10"
             >
-              {result.concerne ? "Voir le guide et l'accompagnement conformité →" : "Voir le guide complet →"}
+              {result.concerne ? "Voir le guide et l'accompagnement →" : "Voir le guide complet →"}
             </Link>
             <button
               type="button"

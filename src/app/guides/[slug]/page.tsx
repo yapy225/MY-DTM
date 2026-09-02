@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ArrowRight, Check, Clock, Star } from "lucide-react";
 import { getAllGuides, getGuide } from "@/lib/guides/guides";
 import BuyButton from "@/components/BuyButton";
+import LeadMagnetForm from "@/components/LeadMagnetForm";
 
 export function generateStaticParams() {
   return getAllGuides().map((g) => ({ slug: g.slug }));
@@ -36,7 +37,8 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
   if (!guide) notFound();
 
   const url = `https://my-dtm.fr/guides/${guide.slug}`;
-  const ebook = guide.products.find((p) => p.type === "pdf");
+  const paidEbook = guide.products.find((p) => p.type === "pdf" && !p.free);
+  const freeMagnet = guide.products.find((p) => p.free);
 
   const faqJsonLd = {
     "@context": "https://schema.org",
@@ -58,17 +60,17 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
     ],
   };
 
-  const productJsonLd = ebook
+  const productJsonLd = paidEbook
     ? {
         "@context": "https://schema.org",
         "@type": "Product",
-        name: `${guide.title} — ${ebook.name}`,
-        description: ebook.tagline,
+        name: `${guide.title} — ${paidEbook.name}`,
+        description: paidEbook.tagline,
         image: `https://my-dtm.fr/guides/${guide.slug}/opengraph-image`,
         brand: { "@type": "Brand", name: "My DTM" },
         offers: {
           "@type": "Offer",
-          price: ebook.price,
+          price: paidEbook.price,
           priceCurrency: "EUR",
           availability: "https://schema.org/InStock",
           url,
@@ -101,7 +103,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
               <span className="inline-flex items-center gap-1.5"><Clock size={14} />{guide.readingTime} de lecture</span>
             </div>
             <a href="#offres" className="mt-7 inline-flex items-center gap-1.5 rounded-lg bg-gradient-to-r from-primary to-secondary px-6 py-3 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:shadow-lg">
-              Passer à l'action — dès 9 € <ArrowRight size={15} />
+              {freeMagnet ? "Recevez le Kit gratuit" : "Passer à l'action — dès 9 €"} <ArrowRight size={15} />
             </a>
           </div>
         </header>
@@ -133,9 +135,9 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
         <section id="offres" className="scroll-mt-24 bg-surface px-4 py-20 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
             <div className="mx-auto max-w-2xl text-center">
-              <p className="text-xs font-bold uppercase tracking-[3px] text-primary">Passez à l'action</p>
+              <p className="text-xs font-bold uppercase tracking-[3px] text-primary">Passez à l&apos;action</p>
               <h2 className="mt-4 font-sans text-3xl font-extrabold text-dark sm:text-4xl">3 façons de vous lancer</h2>
-              <p className="mt-4 text-muted">Le guide pour faire seul, l'accompagnement pour le faire avec nous, ou la délégation complète.</p>
+              <p className="mt-4 text-muted">Le guide pour faire seul, l&apos;accompagnement pour le faire avec nous, ou la délégation complète.</p>
             </div>
 
             <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-3">
@@ -151,8 +153,14 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
                   ) : null}
                   <h3 className="font-sans text-lg font-extrabold text-dark">{product.name}</h3>
                   <div className="mt-2 flex items-baseline gap-1">
-                    <span className="font-sans text-4xl font-extrabold text-dark">{product.price} €</span>
-                    <span className="text-sm text-muted">TTC</span>
+                    {product.free ? (
+                      <span className="font-sans text-4xl font-extrabold text-dark">Gratuit</span>
+                    ) : (
+                      <>
+                        <span className="font-sans text-4xl font-extrabold text-dark">{product.price} €</span>
+                        <span className="text-sm text-muted">TTC</span>
+                      </>
+                    )}
                   </div>
                   <p className="mt-3 text-sm leading-relaxed text-muted">{product.tagline}</p>
                   <ul className="mt-5 flex-1 space-y-3">
@@ -163,7 +171,11 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
                     ))}
                   </ul>
                   <div className="mt-7">
-                    <BuyButton productId={product.id} label={product.cta} variant={product.featured ? "primary" : "outline"} />
+                    {product.free ? (
+                      <LeadMagnetForm productId={product.id} source={`guide-${guide.slug}`} cta={product.cta} />
+                    ) : (
+                      <BuyButton productId={product.id} label={product.cta} variant={product.featured ? "primary" : "outline"} />
+                    )}
                   </div>
                 </div>
               ))}

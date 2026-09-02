@@ -21,6 +21,7 @@ export type GuideProduct = {
   cta: string;
   featured?: boolean;
   file?: string; // pour type "pdf" : nom du fichier dans private/ebooks/
+  free?: boolean; // aimant à leads : livré gratuitement contre email (pas de Stripe)
 };
 
 export type GuideFaq = { q: string; a: string };
@@ -789,19 +790,20 @@ export const GUIDES: Guide[] = [
       {
         id: "ebook-facturation-electronique",
         type: "pdf",
-        name: "Le Kit conformité (ebook)",
-        price: 9,
-        priceCents: 900,
-        tagline: "La méthode complète pour vous mettre en conformité avant l'échéance, checklists et modèles inclus.",
+        name: "Le Kit conformité (ebook gratuit)",
+        price: 0,
+        priceCents: 0,
+        free: true,
+        tagline: "La méthode complète pour vous mettre en conformité avant l'échéance — gratuit, contre votre email.",
         includes: [
           "Le test « suis-je concerné » et votre calendrier exact (réception / émission)",
           "La grille pour choisir votre Plateforme Agréée sans vous tromper",
           "Les nouvelles mentions obligatoires + la fiabilisation de la base clients",
           "Le plan de mise en conformité en 30 jours, semaine par semaine",
           "Les cas pratiques par profil (auto-entrepreneur, TPE/PME, association, SCI, B2C)",
-          "Checklists et modèles d'e-mails prêts à l'emploi — format PDF, accès immédiat",
+          "Checklists et modèles d'e-mails prêts à l'emploi — PDF envoyé par email",
         ],
-        cta: "Télécharger le Kit — 9 €",
+        cta: "Recevoir le Kit gratuit",
         featured: true,
         file: "kit-conformite-facturation-electronique.pdf",
       },
@@ -849,14 +851,22 @@ function validateCatalog(guides: Guide[]): void {
     for (const p of guide.products) {
       if (productIds.has(p.id)) throw new Error(`Catalogue: id de produit en double "${p.id}"`);
       productIds.add(p.id);
-      if (!Number.isInteger(p.priceCents) || p.priceCents <= 0) {
-        throw new Error(`Catalogue: priceCents invalide pour "${p.id}" (${p.priceCents})`);
+      // Produit gratuit (aimant à leads) : prix 0 attendu, pas de tunnel Stripe.
+      if (p.free) {
+        if (p.priceCents !== 0 || p.price !== 0) {
+          throw new Error(`Catalogue: produit gratuit "${p.id}" doit avoir price/priceCents = 0`);
+        }
+      } else {
+        if (!Number.isInteger(p.priceCents) || p.priceCents <= 0) {
+          throw new Error(`Catalogue: priceCents invalide pour "${p.id}" (${p.priceCents})`);
+        }
+        if (p.priceCents !== Math.round(p.price * 100)) {
+          throw new Error(
+            `Catalogue: price/priceCents incoherents pour "${p.id}" (${p.price}€ vs ${p.priceCents}c)`,
+          );
+        }
       }
-      if (p.priceCents !== Math.round(p.price * 100)) {
-        throw new Error(
-          `Catalogue: price/priceCents incoherents pour "${p.id}" (${p.price}€ vs ${p.priceCents}c)`,
-        );
-      }
+      // Un PDF (payant OU gratuit) doit toujours pointer un fichier livrable.
       if (p.type === "pdf" && !p.file) {
         throw new Error(`Catalogue: produit PDF "${p.id}" sans fichier`);
       }

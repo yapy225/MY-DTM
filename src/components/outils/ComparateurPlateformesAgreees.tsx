@@ -9,6 +9,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { CheckCircle2, ArrowRight, RefreshCw, ListChecks } from "lucide-react";
+import LeadMagnetForm from "@/components/LeadMagnetForm";
 
 type Profil = "indep" | "tpe-pme" | "erp";
 type Clients = "b2b" | "b2c" | "mixte";
@@ -208,6 +209,16 @@ export default function ComparateurPlateformesAgreees() {
                 </li>
               ))}
             </ul>
+          </div>
+
+          <div className="mt-6 rounded-xl bg-white/10 p-5">
+            <p className="text-sm font-bold">📩 Recevez le Kit conformité + cette checklist par email</p>
+            <p className="mt-1 text-xs text-white/80">
+              Le guide complet (choix de plateforme, mentions, plan 30 jours) — gratuit, tout de suite.
+            </p>
+            <div className="mt-3">
+              <LeadMagnetForm productId="ebook-facturation-electronique" source="comparateur" onDark cta="Recevoir le Kit" />
+            </div>
           </div>
 
           <div className="mt-7 flex flex-col gap-3 sm:flex-row">
