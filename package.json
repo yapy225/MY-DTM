@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "gsc:report": "node scripts/gsc-crawled-not-indexed.mjs",
+    "gsc:facturation": "node scripts/gsc-facturation.mjs",
     "ga4:report": "node scripts/ga4-report.mjs",
     "test:measure": "node --test scripts/test/*.test.mjs"
   },
