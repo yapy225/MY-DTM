@@ -1,14 +1,7 @@
 {
-  "generatedAt": "2026-09-01T12:42:08.932Z",
+  "generatedAt": "2026-09-02T12:15:12.123Z",
   "llms_fixed": [],
-  "llms_pr_open": [
-    {
-      "brand": "lofficieldafrique",
-      "verdict": "FIX_PR",
-      "pr": "https://github.com/yapy225/lofficieldafrique.fr/pull/12",
-      "auto_merge_arme": false
-    }
-  ],
+  "llms_pr_open": [],
   "compliant": [
     "lafropeen",
     "eburnia"
@@ -76,6 +69,10 @@
     },
     {
       "brand": "entreprise-bienetre",
+      "verdict": "PR_ALREADY_OPEN"
+    },
+    {
+      "brand": "lofficieldafrique",
       "verdict": "PR_ALREADY_OPEN"
     }
   ],
