@@ -744,7 +744,7 @@ export const GUIDES: Guide[] = [
     ],
     eyebrow: "Guide premium",
     intro:
-      "La facturation électronique devient obligatoire en France entre 2026 et 2027. Derrière le calendrier se cachent deux obligations distinctes, des formats précis et le passage forcé par une plateforme agréée. Voici la méthode claire pour comprendre ce qui vous concerne — et vous mettre en conformité sans stress avant l'échéance.",
+      "La facturation électronique devient obligatoire en France entre 2026 et 2027. La réception s'impose déjà à toutes les entreprises depuis le 1er septembre 2026 ; l'émission suit selon votre taille. Derrière le calendrier se cachent deux obligations distinctes, des formats précis et le passage forcé par une plateforme agréée. Voici la méthode claire pour comprendre ce qui vous concerne — et vous mettre en conformité sans stress avant l'échéance.",
     content: [
       { type: "p", text: "La facturation électronique n'est pas un simple PDF envoyé par e-mail. C'est une facture émise, transmise et reçue dans un format structuré, lisible par une machine, qui transite par des plateformes agréées et alimente l'administration fiscale. La réforme française la rend progressivement obligatoire pour toutes les entreprises assujetties à la TVA. Ce guide vous donne le « pourquoi » et le « quoi » ; l'accompagnement ci-dessous applique le « comment » à votre cas précis." },
 
@@ -780,6 +780,10 @@ export const GUIDES: Guide[] = [
 
       { type: "h2", text: "Par où commencer concrètement" },
       { type: "p", text: "Inutile d'attendre 2027 : la réception s'impose dès 2026, et le choix d'une plateforme, la mise à jour des mentions et les tests de format prennent du temps. La marche à suivre tient en cinq étapes : déterminer votre situation TVA et votre date exacte, choisir votre plateforme agréée, vérifier vos mentions obligatoires (dont le SIREN), adapter votre outil de facturation au format structuré, et organiser la réception. C'est exactement ce parcours, appliqué à votre activité, que couvre l'accompagnement ci-dessous." },
+
+      { type: "h2", text: "Le faire seul, ou se faire accompagner ?" },
+      { type: "p", text: "La réforme n'est pas insurmontable, mais elle cumule des décisions à ne pas rater : votre date exacte, le bon choix de plateforme (il en existe des dizaines), les mentions obligatoires, l'e-reporting si vous vendez aux particuliers, et un SIREN valide pour émettre. Une erreur — plateforme inadaptée, base clients non fiabilisée, mauvaise date — se paie en factures rejetées, en paiements retardés et en temps perdu à corriger dans l'urgence." },
+      { type: "p", text: "Deux façons d'avancer. En autonomie : le Kit conformité (ebook ci-dessous) vous donne la méthode complète, les checklists et les modèles pour tout faire vous-même, à votre rythme. Ou accompagné : en 90 minutes en visio, un expert détermine votre situation exacte, choisit votre plateforme avec vous, vérifie vos mentions et vous remet un plan de mise en conformité personnalisé — l'ebook inclus. Dans les deux cas, vous repartez avec une marche à suivre claire plutôt qu'une pile de questions." },
     ],
     products: [
       {

@@ -225,6 +225,14 @@ export default function ComparateurPlateformesAgreees() {
               <RefreshCw className="h-4 w-4" /> Recommencer
             </button>
           </div>
+          <p className="mt-3 text-xs text-white/80">
+            Vous hésitez encore ? En 90 min, un expert choisit votre plateforme avec vous et vous remet un
+            plan de mise en conformité —{" "}
+            <Link href="/guides/facturation-electronique-obligatoire" className="font-semibold underline">
+              voir l&apos;accompagnement
+            </Link>
+            .
+          </p>
         </div>
       )}
 

@@ -16,12 +16,22 @@ type Result = {
   concerne: boolean;
   reception: string | null;
   emission: string | null;
+  emissionIso: string | null;
   title: string;
   points: string[];
 };
 
 const DATE_2026 = "1er septembre 2026";
 const DATE_2027 = "1er septembre 2027";
+const ISO_2026 = "2026-09-01";
+const ISO_2027 = "2027-09-01";
+
+// Urgence FACTUELLE, fondée sur les échéances réelles (aucune fausse rareté).
+function monthsUntil(iso: string): number {
+  const now = new Date();
+  const target = new Date(`${iso}T00:00:00`);
+  return Math.round((target.getTime() - now.getTime()) / (1000 * 60 * 60 * 24 * 30.44));
+}
 
 function computeResult(assujetti: Assujetti, taille: Taille): Result {
   if (assujetti === "non") {
@@ -29,6 +39,7 @@ function computeResult(assujetti: Assujetti, taille: Taille): Result {
       concerne: false,
       reception: null,
       emission: null,
+      emissionIso: null,
       title: "Vous n'êtes a priori pas dans le périmètre de l'émission",
       points: [
         "La réforme vise les assujettis à la TVA établis en France pour leurs opérations entre professionnels (B2B).",
@@ -44,6 +55,7 @@ function computeResult(assujetti: Assujetti, taille: Taille): Result {
     concerne: true,
     reception: DATE_2026,
     emission,
+    emissionIso: taille === "ge-eti" ? ISO_2026 : ISO_2027,
     title: "Vous êtes concerné par la facturation électronique",
     points: [
       `Réception obligatoire dès le ${DATE_2026} : vous devez pouvoir recevoir une facture électronique.`,
@@ -182,12 +194,27 @@ export default function SimulateurFactureElectronique() {
             ))}
           </ul>
 
+          {result.concerne && (
+            <div className="mt-6 rounded-xl bg-white/15 p-4">
+              <p className="text-sm font-semibold">⏳ Ce qu&apos;il vous reste</p>
+              <p className="mt-1 text-sm text-white/90">
+                {monthsUntil(ISO_2026) < 0
+                  ? "La réception est déjà obligatoire. "
+                  : `Réception dans environ ${Math.max(0, monthsUntil(ISO_2026))} mois. `}
+                {result.emissionIso &&
+                  (monthsUntil(result.emissionIso) <= 0
+                    ? "Votre obligation d'émission est en vigueur — mieux vaut régulariser sans tarder."
+                    : `Il vous reste environ ${monthsUntil(result.emissionIso)} mois avant votre obligation d'émission. Choisir sa plateforme, fiabiliser sa base clients et tester un cycle complet prend du temps : mieux vaut s'y prendre à froid.`)}
+              </p>
+            </div>
+          )}
+
           <div className="mt-7 flex flex-col gap-3 sm:flex-row">
             <Link
               href="/guides/facturation-electronique-obligatoire"
               className="inline-flex items-center justify-center rounded-lg bg-white px-6 py-3 text-sm font-bold text-primary transition-all hover:-translate-y-0.5 hover:shadow-xl"
             >
-              Voir le guide et me mettre en conformité
+              {result.concerne ? "Voir le guide et l'accompagnement conformité →" : "Voir le guide complet →"}
             </Link>
             <button
               type="button"
@@ -197,6 +224,12 @@ export default function SimulateurFactureElectronique() {
               <RefreshCw className="h-4 w-4" /> Recommencer
             </button>
           </div>
+          {result.concerne && (
+            <p className="mt-3 text-xs text-white/80">
+              Vous préférez ne pas gérer ça seul ? En 90 min, un expert détermine votre date, choisit
+              votre plateforme et vous remet un plan de conformité (accompagnement dès 150 €).
+            </p>
+          )}
         </div>
       )}
 
