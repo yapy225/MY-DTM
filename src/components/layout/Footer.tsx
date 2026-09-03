@@ -84,7 +84,7 @@ export default function Footer() {
                 </a>
               </li>
               <li className="flex items-center gap-2.5 text-sm">
-                <MapPin size={16} className="text-primary-light" /> Ormesson-sur-Marne, Île-de-France
+                <MapPin size={16} className="text-primary-light" /> Paris, Île-de-France
               </li>
             </ul>
             <div className="mt-5 flex gap-3">

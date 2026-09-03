@@ -16,7 +16,7 @@ export default function PolitiqueConfidentialite() {
         <div>
           <h2>1. Responsable du traitement</h2>
           <p>
-            My DTM, micro-entreprise basee a Ormesson-sur-Marne (94490), Ile-de-France.
+            My DTM, micro-entreprise basee en Ile-de-France.
             Contact : hello@my-dtm.fr | +33 7 43 53 75 51.
           </p>
         </div>

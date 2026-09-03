@@ -91,9 +91,7 @@ export default function RootLayout({
               },
               address: {
                 "@type": "PostalAddress",
-                streetAddress: "48 rue de Birague",
-                postalCode: "94490",
-                addressLocality: "Ormesson-sur-Marne",
+                addressLocality: "Paris",
                 addressRegion: "Île-de-France",
                 addressCountry: "FR",
               },
@@ -118,9 +116,7 @@ export default function RootLayout({
               description: "Agence de marketing digital a Paris. Developpement web, SEO, automatisation, marketing multi-canal.",
               address: {
                 "@type": "PostalAddress",
-                streetAddress: "48 rue de Birague",
-                postalCode: "94490",
-                addressLocality: "Ormesson-sur-Marne",
+                addressLocality: "Paris",
                 addressRegion: "Île-de-France",
                 addressCountry: "FR",
               },
