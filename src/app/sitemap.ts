@@ -43,6 +43,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...blogPosts,
     { url: `${baseUrl}/outils/facturation-electronique-simulateur`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/outils/comparateur-plateformes-agreees`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/auteur/alex-nteby`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.5 },
     { url: `${baseUrl}/tarifs`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/contact`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/plan-du-site`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.4 },

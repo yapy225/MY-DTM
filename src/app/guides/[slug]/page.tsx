@@ -5,6 +5,7 @@ import { ArrowRight, Check, Clock, Star } from "lucide-react";
 import { getAllGuides, getGuide } from "@/lib/guides/guides";
 import BuyButton from "@/components/BuyButton";
 import LeadMagnetForm from "@/components/LeadMagnetForm";
+import AuthorByline from "@/components/AuthorByline";
 
 export function generateStaticParams() {
   return getAllGuides().map((g) => ({ slug: g.slug }));
@@ -102,6 +103,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
               <time dateTime={guide.date}>{new Date(guide.date).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" })}</time>
               <span className="inline-flex items-center gap-1.5"><Clock size={14} />{guide.readingTime} de lecture</span>
             </div>
+            <AuthorByline className="mt-4" />
             <a href="#offres" className="mt-7 inline-flex items-center gap-1.5 rounded-lg bg-gradient-to-r from-primary to-secondary px-6 py-3 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:shadow-lg">
               {freeMagnet ? "Recevez le Kit gratuit" : "Passer à l'action — dès 9 €"} <ArrowRight size={15} />
             </a>

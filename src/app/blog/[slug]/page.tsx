@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, ArrowLeft, Clock } from "lucide-react";
 import { getAllPosts, getPost } from "@/lib/blog/posts";
+import AuthorByline from "@/components/AuthorByline";
+import { AUTHOR } from "@/lib/author";
 
 export function generateStaticParams() {
   return getAllPosts().map((p) => ({ slug: p.slug }));
@@ -42,7 +44,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     image: `https://my-dtm.fr/blog/${post.slug}/opengraph-image`,
     datePublished: post.date,
     dateModified: post.date,
-    author: { "@type": "Organization", name: "My DTM", url: "https://my-dtm.fr" },
+    author: { "@type": "Person", name: AUTHOR.name, url: AUTHOR.url },
     publisher: { "@type": "Organization", name: "My DTM", logo: { "@type": "ImageObject", url: "https://my-dtm.fr/icon.svg" } },
     mainEntityOfPage: { "@type": "WebPage", "@id": `https://my-dtm.fr/blog/${post.slug}` },
     keywords: post.keywords.join(", "),
@@ -88,6 +90,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               <time dateTime={post.date}>{new Date(post.date).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" })}</time>
               <span className="inline-flex items-center gap-1.5"><Clock size={14} />{post.readingTime} de lecture</span>
             </div>
+            <AuthorByline className="mt-4" />
           </div>
         </header>
 
