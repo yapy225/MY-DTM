@@ -46,7 +46,9 @@ export async function POST(req: Request) {
       return NextResponse.json({ success: true });
     }
     // Jeton de formulaire : preuve d'interaction réelle + temps de remplissage.
-    const tok = verifyFormToken(typeof body.formToken === "string" ? body.formToken : undefined, Date.now());
+    // Seuil abaissé à 1,2 s : formulaire à un seul champ (email), un humain rapide
+    // peut coller+cliquer vite. La présence du jeton bloque déjà les bots direct-API.
+    const tok = verifyFormToken(typeof body.formToken === "string" ? body.formToken : undefined, Date.now(), { minAgeMs: 1200 });
     if (!tok.ok) {
       // Remplissage trop rapide / pas de jeton posté en direct = bot → 200 muet.
       if (tok.reason === "too_fast") return NextResponse.json({ success: true });
