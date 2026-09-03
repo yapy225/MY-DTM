@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { recordLead } from "@/lib/pilotage/leads";
+import { verifyFormToken } from "@/lib/form-token";
 
 // Bornes de validation (anti-payload massif).
 const MAX = { name: 200, email: 254, phone: 40, service: 120, message: 5000 } as const;
@@ -51,6 +52,13 @@ export async function POST(req: Request) {
     // Rempli = on répond 200 sans rien envoyer (le bot croit avoir réussi).
     if (typeof body.company === "string" && body.company.trim() !== "") {
       return NextResponse.json({ success: true });
+    }
+
+    // Jeton de formulaire : preuve d'interaction réelle + temps de remplissage min.
+    const tok = verifyFormToken(typeof body.formToken === "string" ? body.formToken : undefined, Date.now());
+    if (!tok.ok) {
+      if (tok.reason === "too_fast") return NextResponse.json({ success: true });
+      return NextResponse.json({ error: "Session du formulaire expirée. Rechargez la page et réessayez." }, { status: 400 });
     }
 
     if (rateLimited(clientIp(req))) {

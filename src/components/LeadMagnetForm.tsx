@@ -6,6 +6,7 @@
 
 import { useState } from "react";
 import { Loader2, MailCheck } from "lucide-react";
+import { useFormToken } from "@/lib/use-form-token";
 
 type Props = {
   productId: string;
@@ -20,16 +21,18 @@ export default function LeadMagnetForm({ productId, source, cta = "Recevoir le K
   const [company, setCompany] = useState(""); // honeypot
   const [status, setStatus] = useState<"idle" | "loading" | "done" | "error">("idle");
   const [error, setError] = useState<string | null>(null);
+  const ensureToken = useFormToken();
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setStatus("loading");
     setError(null);
     try {
+      const formToken = await ensureToken();
       const res = await fetch("/api/lead-magnet", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, productId, source, company }),
+        body: JSON.stringify({ email, productId, source, company, formToken }),
       });
       const data = await res.json();
       if (res.ok && data.success) {

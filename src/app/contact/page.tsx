@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { Phone, Mail, MapPin, Send, Loader2 } from "lucide-react";
+import { useFormToken } from "@/lib/use-form-token";
 
 const SERVICES = [
   "Création site web",
@@ -20,6 +21,7 @@ export default function ContactPage() {
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const ensureToken = useFormToken();
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -27,6 +29,7 @@ export default function ContactPage() {
     setError("");
 
     const form = e.currentTarget;
+    const formToken = await ensureToken();
     const data = {
       name: (form.elements.namedItem("name") as HTMLInputElement).value,
       email: (form.elements.namedItem("email") as HTMLInputElement).value,
@@ -35,6 +38,7 @@ export default function ContactPage() {
       message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
       // Honeypot anti-bot : doit rester vide (invisible pour l'humain).
       company: (form.elements.namedItem("company") as HTMLInputElement)?.value ?? "",
+      formToken,
     };
 
     try {

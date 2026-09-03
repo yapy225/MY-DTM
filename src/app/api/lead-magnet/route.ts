@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { createDownloadToken } from "@/lib/stripe";
 import { getProductById } from "@/lib/guides/guides";
 import { recordLead } from "@/lib/pilotage/leads";
+import { verifyFormToken } from "@/lib/form-token";
 
 // Livraison d'un aimant à leads (ebook gratuit) contre email.
 // Flux : email → lead enregistré (audience Resend) → email au visiteur avec un
@@ -43,6 +44,14 @@ export async function POST(req: Request) {
     // Honeypot : rempli = bot → 200 muet.
     if (typeof body.company === "string" && body.company.trim() !== "") {
       return NextResponse.json({ success: true });
+    }
+    // Jeton de formulaire : preuve d'interaction réelle + temps de remplissage.
+    const tok = verifyFormToken(typeof body.formToken === "string" ? body.formToken : undefined, Date.now());
+    if (!tok.ok) {
+      // Remplissage trop rapide / pas de jeton posté en direct = bot → 200 muet.
+      if (tok.reason === "too_fast") return NextResponse.json({ success: true });
+      // Page trop ancienne (jeton expiré/absent côté humain) → invitation à recharger.
+      return NextResponse.json({ error: "Session du formulaire expirée. Rechargez la page et réessayez." }, { status: 400 });
     }
     if (rateLimited(clientIp(req))) {
       return NextResponse.json({ error: "Trop de tentatives. Réessayez dans quelques minutes." }, { status: 429 });
