@@ -1,10 +1,10 @@
 {
   "contract_version": "seo_status@v1",
-  "last_run_at": "2026-09-02T10:49:55.176Z",
+  "last_run_at": "2026-09-03T10:54:00.797Z",
   "events": [],
   "coverage": {
     "gsc_properties": 18,
     "ga4_with_data": 11,
-    "auto_remediated": 9
+    "auto_remediated": 10
   }
 }
