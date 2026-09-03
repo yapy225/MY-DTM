@@ -1,8 +1,10 @@
 {
-  "generatedAt": "2026-09-02T12:15:12.123Z",
+  "generatedAt": "2026-09-03T12:13:11.382Z",
   "llms_fixed": [],
   "llms_pr_open": [],
   "compliant": [
+    "evasionparis",
+    "serviceathome",
     "lafropeen",
     "eburnia"
   ],
@@ -21,10 +23,6 @@
     },
     {
       "brand": "la-plante",
-      "verdict": "PR_ALREADY_OPEN"
-    },
-    {
-      "brand": "evasionparis",
       "verdict": "PR_ALREADY_OPEN"
     },
     {
@@ -60,10 +58,6 @@
       "verdict": "PR_ALREADY_OPEN"
     },
     {
-      "brand": "serviceathome",
-      "verdict": "PR_ALREADY_OPEN"
-    },
-    {
       "brand": "dreamteamafrica",
       "reason": "onpage:false (monorepo/sensible)"
     },
@@ -92,20 +86,6 @@
       "note": "DÉTECTÉ, non auto-fixé (max-image-preview=fragile par stack ; sameAs=exige vraies URLs sociales)"
     },
     {
-      "brand": "la-plante",
-      "domain": "la-plante.com",
-      "maxImagePreview": false,
-      "sameAs": true,
-      "note": "DÉTECTÉ, non auto-fixé (max-image-preview=fragile par stack ; sameAs=exige vraies URLs sociales)"
-    },
-    {
-      "brand": "evasionparis",
-      "domain": "evasionparis.fr",
-      "maxImagePreview": false,
-      "sameAs": true,
-      "note": "DÉTECTÉ, non auto-fixé (max-image-preview=fragile par stack ; sameAs=exige vraies URLs sociales)"
-    },
-    {
       "brand": "foiredafrique",
       "domain": "foiredafrique.fr",
       "maxImagePreview": false,
@@ -131,13 +111,6 @@
       "domain": "festivalduconteafricain.fr",
       "maxImagePreview": false,
       "sameAs": false,
-      "note": "DÉTECTÉ, non auto-fixé (max-image-preview=fragile par stack ; sameAs=exige vraies URLs sociales)"
-    },
-    {
-      "brand": "zaouliparis",
-      "domain": "zaouliparis.fr",
-      "maxImagePreview": false,
-      "sameAs": true,
       "note": "DÉTECTÉ, non auto-fixé (max-image-preview=fragile par stack ; sameAs=exige vraies URLs sociales)"
     },
     {
