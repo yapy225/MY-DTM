@@ -105,7 +105,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-sm sm:flex-row">
-          <span>&copy; 2026 My DTM. Tous droits réservés.</span>
+          <span>&copy; 2026 My-DTM Paris — Agence digitale · my-dtm.fr · hello@my-dtm.fr. Tous droits réservés.</span>
           <div className="flex gap-6">
             <Link href="/mentions-legales" className="transition-colors hover:text-accent-light">Mentions légales</Link>
             <Link href="/politique-de-confidentialite" className="transition-colors hover:text-accent-light">Confidentialité</Link>

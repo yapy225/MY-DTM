@@ -18,6 +18,10 @@ export default function BuyButton({
   async function handleClick() {
     setLoading(true);
     setError(null);
+    // Mesure de conversion : intention d'achat (si GA chargé).
+    (window as unknown as { gtag?: (...a: unknown[]) => void }).gtag?.("event", "begin_checkout", {
+      items: [{ item_id: productId }],
+    });
     try {
       const res = await fetch("/api/checkout", {
         method: "POST",

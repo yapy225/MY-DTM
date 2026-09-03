@@ -11,6 +11,7 @@ declare global {
   interface Window {
     dataLayer?: unknown[];
     __gaLoaded?: boolean;
+    gtag?: (...args: unknown[]) => void;
   }
 }
 
@@ -49,6 +50,10 @@ export default function GoogleAnalytics() {
 
   useEffect(() => {
     if (!GA_ID || GA_ID.indexOf("XXXX") !== -1) return;
+    // Expose gtag globalement pour la mesure d'événements de conversion
+    // (LeadMagnetForm, BuyButton…). Les events poussés avant le consentement
+    // restent en file dans dataLayer sans réseau (Consent Mode denied).
+    window.gtag = gtag;
     gtag("consent", "default", {
       ad_storage: "denied",
       ad_user_data: "denied",
@@ -63,6 +68,9 @@ export default function GoogleAnalytics() {
       /* localStorage indisponible */
     }
     if (stored === "granted") grant();
+    // Affichage du bandeau au montage si aucun choix stocké : lecture localStorage
+    // (client-only) impossible dans l'initialiseur d'état → effet intentionnel.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     else if (stored !== "denied") setShowBanner(true);
   }, []);
 

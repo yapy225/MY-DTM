@@ -84,7 +84,7 @@ export async function POST(req: Request) {
           <p style="font-size:13px;color:#52525b">Ce lien est valable 7 jours. S'il expire, revenez sur le guide pour en redemander un.</p>
           <hr style="border:none;border-top:1px solid #e7e1f3;margin:24px 0" />
           <p>Un doute sur votre situation, ou envie qu'on le fasse avec vous ? Découvrez l'accompagnement conformité (90 min en visio) sur <a href="${guideUrl}" style="color:#7c0dbe">le guide</a>.</p>
-          <p style="font-size:12px;color:#52525b">Document d'information — ne constitue pas un conseil fiscal individualisé. Vérifiez votre situation auprès de la DGFiP ou de votre expert-comptable.<br/>My DTM — Agence digitale, Paris · my-dtm.fr</p>
+          <p style="font-size:12px;color:#52525b">Document d'information — ne constitue pas un conseil fiscal individualisé. Vérifiez votre situation auprès de la DGFiP ou de votre expert-comptable.<br/>© My-DTM Paris — Agence digitale · my-dtm.fr · hello@my-dtm.fr</p>
         </div>`,
     });
 
