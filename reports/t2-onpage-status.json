@@ -1,12 +1,21 @@
 {
-  "generatedAt": "2026-09-03T12:13:11.382Z",
+  "generatedAt": "2026-09-04T12:14:02.971Z",
   "llms_fixed": [],
   "llms_pr_open": [],
   "compliant": [
+    "parfumsdeparis",
     "evasionparis",
+    "foiredafrique",
+    "fashionweekafrica",
+    "salonmadeinafrica",
+    "festivalduconteafricain",
+    "centreculturelafricain",
+    "justeunedanse",
+    "festivalinternationalducinemaafricain",
     "serviceathome",
     "lafropeen",
-    "eburnia"
+    "eburnia",
+    "lofficieldafrique"
   ],
   "skipped": [
     {
@@ -18,43 +27,11 @@
       "verdict": "PR_ALREADY_OPEN"
     },
     {
-      "brand": "parfumsdeparis",
-      "verdict": "PR_ALREADY_OPEN"
-    },
-    {
       "brand": "la-plante",
       "verdict": "PR_ALREADY_OPEN"
     },
     {
-      "brand": "foiredafrique",
-      "verdict": "PR_ALREADY_OPEN"
-    },
-    {
-      "brand": "fashionweekafrica",
-      "verdict": "PR_ALREADY_OPEN"
-    },
-    {
-      "brand": "salonmadeinafrica",
-      "verdict": "PR_ALREADY_OPEN"
-    },
-    {
-      "brand": "festivalduconteafricain",
-      "verdict": "PR_ALREADY_OPEN"
-    },
-    {
       "brand": "zaouliparis",
-      "verdict": "PR_ALREADY_OPEN"
-    },
-    {
-      "brand": "centreculturelafricain",
-      "verdict": "PR_ALREADY_OPEN"
-    },
-    {
-      "brand": "justeunedanse",
-      "verdict": "PR_ALREADY_OPEN"
-    },
-    {
-      "brand": "festivalinternationalducinemaafricain",
       "verdict": "PR_ALREADY_OPEN"
     },
     {
@@ -63,10 +40,6 @@
     },
     {
       "brand": "entreprise-bienetre",
-      "verdict": "PR_ALREADY_OPEN"
-    },
-    {
-      "brand": "lofficieldafrique",
       "verdict": "PR_ALREADY_OPEN"
     }
   ],
