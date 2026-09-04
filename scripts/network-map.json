@@ -2,7 +2,8 @@
   "_doc": "Carte canonique marque -> dépôt GitHub pour les agents T2 (self-healing SEO). Clé = brandKey de network-report.mjs (domaine sans TLD, minuscule). ci=true → 'auto-merge si tests verts' possible (Next) ; ci=false (statiques/sensibles) → PR + clic humain (Option A fondateur 2026-08-23). onpage=false → EXCLU de l'auto-fix fichier de la passe on-page (t2-onpage.mjs) : monorepos host-aware (1 fichier servi sur plusieurs hôtes) ou repos sensibles (paiement) ; défaut (absent) = éligible. cluster = thème pour le maillage inter-sites pertinent (anti-PBN : on ne lie QUE dans le même cluster ; un cluster unique = site isolé = conseil autorité EXTERNE).",
   "version": "network_map@v3",
   "confirmed_at": "2026-08-23",
-  "updated_at": "2026-08-31",
+  "updated_at": "2026-09-04",
+  "_changelog_v3_1": "2026-09-04 (décision fondateur explicite) : serviceathome armé ci=true (5e repo full-auto) + stack corrigé static→next (app Next dans site/, build Vercel = vrai gate). Les 4 autres ci=true inchangés (my-dtm, sneakerslove, parfumsdeparis, la-plante).",
   "_changelog_v3": "Ajout des 3 marques autrefois hors-carte (angle mort §19) avec slugs VÉRIFIÉS : dreamteamafrica, lafropeen, eburnia. Flags conservateurs (ci:false = PR+clic ; onpage:false sur monorepo/paiement) → activent la MESURE + le routage T2, PAS d'auto-merge sans décision fondateur. Clusters à confirmer.",
   "_note_bien_etre_ecole": "'bien-etre-ecole' = projet docs-only en cours, sans site live → volontairement hors carte.",
   "brands": {
@@ -19,7 +20,7 @@
     "centreculturelafricain":            { "repo": "yapy225/centreculturelafricain.fr",          "domain": "centreculturelafricain.fr",            "stack": "static", "ci": false, "cluster": "afrique-culture" },
     "justeunedanse":                     { "repo": "yapy225/justeunedanse.fr",                    "domain": "justeunedanse.fr",                     "stack": "static", "ci": false, "cluster": "afrique-culture" },
     "festivalinternationalducinemaafricain": { "repo": "yapy225/festivalinternationalducinemaafricain.fr", "domain": "festivalinternationalducinemaafricain.fr", "stack": "static", "ci": false, "cluster": "afrique-culture" },
-    "serviceathome":                     { "repo": "yapy225/serviceathome.fr",                    "domain": "serviceathome.fr",                     "stack": "static", "ci": false, "cluster": "services" },
+    "serviceathome":                     { "repo": "yapy225/serviceathome.fr",                    "domain": "serviceathome.fr",                     "stack": "next",   "ci": true,  "cluster": "services", "_note": "app Next dans site/ (build Vercel réel = vrai gate CI) ; ARMÉ ci=true par décision fondateur 2026-09-04 (correction : n'était PAS statique)" },
     "dreamteamafrica":                   { "repo": "yapy225/dreamteamafrica",                     "domain": "dreamteamafrica.com",                  "stack": "next",   "ci": false, "onpage": false, "cluster": "afrique-culture", "_note": "monorepo host-aware (sert peut-être lofficieldafrique.fr) → llms.txt per-host non trivial ; onpage:false" },
     "lafropeen":                         { "repo": "yapy225/lafropeen",                           "domain": "lafropeen.com",                        "stack": "next",   "ci": false, "cluster": "media", "_note": "média : cluster isolé (anti-PBN) ; PR+clic (pas d'auto-merge sur le média)" },
     "eburnia":                           { "repo": "yapy225/eburnia",                             "domain": "eburnia.fr",                           "stack": "next",   "ci": false, "onpage": false, "cluster": "afrique-culture", "_note": "plateforme de PAIEMENT (billetterie) → jamais d'auto-fix bot ; onpage:false + ci:false" },
