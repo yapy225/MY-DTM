@@ -835,6 +835,343 @@ export const GUIDES: Guide[] = [
     ],
     relatedService: { href: "/services/automatisation", label: "Déléguer la mise en conformité (sur devis)" },
   },
+
+  {
+    slug: "billetterie-association",
+    title: "Billetterie association : vendre ses billets en ligne (guide 2026)",
+    description:
+      "Choisir la bonne billetterie pour une association : outils gratuits ou sans commission, RGPD, encaissement sécurisé et contrôle d'accès QR le jour J.",
+    date: "2026-09-03",
+    readingTime: "8 min",
+    category: "Billetterie",
+    keywords: [
+      "billetterie association",
+      "billetterie en ligne association gratuite",
+      "créer sa billetterie en ligne",
+      "logiciel billetterie événement associatif",
+      "vendre billets événement association",
+    ],
+    eyebrow: "Guide premium",
+    intro:
+      "Vendre des billets pour un gala, un tournoi ou un concert associatif sans outil dédié, c'est parier sur des virements qui n'arrivent jamais et des listes papier qui se perdent. Pourtant, pour une association, il existe des solutions gratuites ou sans commission qui remplissent votre salle et sécurisent l'encaissement — dès ce week-end.",
+    content: [
+      { type: "p", text: "La réalité des associations : gérer la billetterie à la main mobilise des heures de bénévolat précieux. Des participants qui « confirment » et ne se présentent pas, une caisse difficile à arrêter, un fichier emails inexistant pour la prochaine édition. Pourtant, les outils ont radicalement changé. Une billetterie en ligne accessible en quelques heures de configuration suffit à résoudre ces trois problèmes simultanément." },
+
+      { type: "h2", text: "Pourquoi une association a besoin d'une vraie billetterie en ligne" },
+      { type: "p", text: "Un billet payé — même symbolique — divise le taux d'absence de 40 à 60 % sous les 15 %. S'inscrire et payer crée un engagement concret que le simple « j'y serai » ne peut pas rivaliser. La billetterie en ligne apporte aussi trois avantages que le paiement en espèces n'offre pas." },
+      { type: "ul", items: [
+        "Encaisser avant l'événement : vous savez à J-7 combien vous avez réellement dans la caisse, et vous engagez les dépenses logistiques en conséquence — fini les avances sur recettes hypothétiques.",
+        "Construire un fichier participants : chaque billet laisse un email et un prénom qui restent propriété de votre association (contrairement à certaines places de marché qui retiennent les données). Ce fichier remplira votre prochaine édition.",
+        "Contrôle d'accès QR fiable : chaque billet génère un code unique, à usage unique. Un doublon frauduleux est refusé automatiquement. C'est la fin des listes papier et des entrées contestées.",
+      ]},
+
+      { type: "h2", text: "Les spécificités d'une billetterie associative" },
+      { type: "p", text: "Une association n'est pas un organisateur commercial. Ses contraintes sont différentes — et certains outils généralistes ne les prennent pas en compte." },
+      { type: "ul", items: [
+        "Budget contraint : la commission prélevée par la plateforme doit rester minimale ou nulle. À 5 % sur 500 billets à 10 €, c'est 250 € de marge perdue sur votre événement.",
+        "Bénévoles non-techniques : l'interface doit être intuitive, sans formation préalable. Votre trésorier doit pouvoir paramétrer la vente en une heure, seul.",
+        "Statut non-lucratif : une association loi 1901 peut vendre des billets dans le cadre de ses activités associatives. Mais une programmation événementielle récurrente à but commercial mérite d'être portée par une structure dédiée pour protéger votre statut non-lucratif et vos subventions. Consultez votre expert-comptable si vous avez un doute.",
+        "RGPD : les emails et prénoms des participants sont des données personnelles. Votre association est responsable de traitement et doit informer les participants, limiter la conservation des données à la durée nécessaire et ne pas les réutiliser sans consentement pour d'autres finalités.",
+      ]},
+
+      { type: "h2", text: "Avec ou sans commission : les deux modèles" },
+      { type: "p", text: "Le marché propose deux grandes logiques tarifaires. Le bon choix dépend du volume de billets et de la récurrence de vos événements." },
+      { type: "ul", items: [
+        "Plateformes sans commission pour associations : certains acteurs proposent des offres spécifiques non-profit (zéro commission sur les billets, parfois en échange d'une visibilité sur leur marketplace). Idéal pour les petits événements ponctuels. La contrepartie : vos données participants peuvent rester sur leur plateforme.",
+        "Plateformes à commission standard (3 à 5 % + frais bancaires) avec option « frais à la charge de l'acheteur » : l'association encaisse le plein tarif, l'acheteur voit les frais s'ajouter au checkout. Solution rapide à mettre en place pour un événement urgent.",
+        "Billetterie sur-mesure intégrée à votre propre site : zéro commission plateforme (seuls les frais Stripe, soit 1,5 % + 0,25 € par transaction en Europe). Vos données, votre image, votre tunnel de vente. La référence pour les associations récurrentes avec un site existant — c'est ce que nous installons chez nos clients.",
+      ]},
+
+      { type: "h2", text: "RGPD et données des participants : ce que l'association doit faire" },
+      { type: "p", text: "Collecter un email pour vendre un billet, c'est devenir responsable de traitement au sens du RGPD. Trois réflexes s'imposent dès la mise en place de la billetterie." },
+      { type: "ul", items: [
+        "Informer les participants : une politique de confidentialité accessible depuis la page de billetterie, qui précise qui collecte les données, pour quoi, combien de temps et quels sont leurs droits.",
+        "Respecter la finalité : les emails collectés pour l'événement ne peuvent pas être réutilisés pour une newsletter sans un consentement séparé et explicite.",
+        "Limiter la durée de conservation : les données des participants n'ont pas vocation à rester indéfiniment dans votre outil de billetterie. Prévoyez une purge annuelle des événements passés.",
+      ]},
+
+      { type: "h2", text: "Événement gratuit : collecter les inscriptions sans paiement" },
+      { type: "p", text: "Pour les portes ouvertes, les assemblées générales ou les conférences gratuites, vous n'avez pas besoin d'un tunnel de paiement. Mais exiger une inscription — même sans paiement — réduit déjà le no-show, parce que s'inscrire crée un engagement moral. Un simple formulaire (prénom + email) sur votre site, relayé par un email de rappel à J-3 et J-1, suffit à faire chuter l'absentéisme de 30 à 40 % par rapport à l'annonce seule." },
+
+      { type: "h2", text: "Par où commencer concrètement" },
+      { type: "p", text: "La décision initiale est simple : votre événement est payant ou gratuit ? Gratuit → un formulaire d'inscription suffit. Payant → choisissez entre une plateforme de billetterie dédiée (mise en place en quelques heures, idéale pour un événement ponctuel) ou une billetterie intégrée à votre site (plus de travail initial, mais zéro commission et données 100 % à vous pour les associations récurrentes). Dans tous les cas, testez le parcours complet depuis un téléphone avant d'ouvrir la vente : plus de 70 % des billets associatifs se vendent sur mobile. L'ebook ci-dessous détaille les deux options, avec les configurations pas-à-pas, le protocole QR du jour J et la checklist de lancement adaptée aux associations." },
+    ],
+    products: [
+      {
+        id: "ebook-billetterie-association",
+        type: "pdf",
+        name: "L'ebook complet",
+        price: 9,
+        priceCents: 900,
+        tagline: "La méthode clé en main pour ouvrir votre billetterie associative et remplir votre salle.",
+        includes: [
+          "Comparatif des solutions avec et sans commission pour associations",
+          "La configuration Stripe et le paramétrage QR pas-à-pas",
+          "La checklist de lancement complète (J-30, J-7, jour J, après)",
+          "Les modèles d'emails (ouverture de vente, rappel J-3, remerciement)",
+          "La fiche RGPD prête à l'emploi pour votre politique de confidentialité",
+          "Format PDF — accès immédiat après paiement",
+        ],
+        cta: "Télécharger l'ebook — 9 €",
+        featured: true,
+        file: "billetterie-association.pdf",
+      },
+      {
+        id: "accompagnement-billetterie-association",
+        type: "cal",
+        name: "L'accompagnement",
+        price: 150,
+        priceCents: 15000,
+        tagline: "On configure votre billetterie associative ensemble, en direct, avant votre événement.",
+        includes: [
+          "1 visio de 90 min en direct avec un expert",
+          "On choisit votre solution adaptée à votre association et votre budget",
+          "On paramètre le paiement Stripe et le contrôle d'accès QR ensemble",
+          "On prépare vos emails de vente et votre fiche RGPD",
+          "L'ebook complet inclus",
+          "Vous repartez avec la vente ouverte et la machine qui tourne",
+        ],
+        cta: "Réserver mon accompagnement — 150 €",
+      },
+    ],
+    faq: [
+      { q: "Une association peut-elle vendre des billets en ligne ?", a: "Oui, une association loi 1901 peut vendre des billets dans le cadre de ses activités associatives. Des outils adaptés (sans commission ou à faible commission) sont disponibles. Pour une programmation événementielle récurrente à caractère commercial, il est prudent de consulter votre expert-comptable pour s'assurer que l'activité reste cohérente avec votre statut non-lucratif." },
+      { q: "Faut-il un compte bancaire professionnel pour encaisser en ligne ?", a: "Non, Stripe fonctionne avec un compte bancaire association classique (sous réserve d'une vérification d'identité et de la présentation des statuts). La démarche prend généralement 1 à 3 jours ouvrés. Planifiez-la au moins deux semaines avant l'ouverture de la vente." },
+      { q: "Que faire si l'événement est annulé après la vente des billets ?", a: "Remboursez intégralement les acheteurs. Stripe permet de lancer les remboursements depuis votre tableau de bord en quelques clics, sur l'ensemble des transactions ou individuellement. Les frais Stripe sont généralement remboursés en cas de remboursement complet. Prévoyez cette clause dans vos conditions générales de vente dès l'ouverture." },
+      { q: "Quelle différence entre l'ebook à 9 € et l'accompagnement à 150 € ?", a: "L'ebook vous donne la méthode complète, les modèles et la checklist pour tout configurer vous-même. L'accompagnement, c'est la même chose mais on le fait avec vous en visio, sur votre propre billetterie, adapté à votre événement et votre budget — l'ebook est inclus." },
+    ],
+    relatedService: { href: "/services/plateforme-evenementielle", label: "Déléguer entièrement (à partir de 500 €)" },
+  },
+
+  {
+    slug: "server-side-tracking-gtm",
+    title: "Server-Side Tracking avec GTM : le guide complet (2026)",
+    description:
+      "Implémenter le server-side tracking avec Google Tag Manager Server-Side : architecture, avantages RGPD, déploiement sur Cloud Run et connexion GA4 et Conversions API Meta.",
+    date: "2026-09-03",
+    readingTime: "10 min",
+    category: "Tracking & RGPD",
+    keywords: [
+      "server side tracking GTM",
+      "Google Tag Manager server-side",
+      "sGTM mise en place",
+      "tracking côté serveur RGPD",
+      "GTM server side vs client side",
+    ],
+    eyebrow: "Guide premium",
+    intro:
+      "Un visiteur sur trois bloque les scripts publicitaires côté client. Safari plafonne vos cookies à 7 jours. Résultat : votre tracking perd 20 à 40 % du signal réel — et votre budget publicitaire s'optimise sur des données incomplètes. La réponse : déporter une partie du suivi sur un serveur que vous contrôlez. C'est exactement ce que fait Google Tag Manager Server-Side.",
+    content: [
+      { type: "p", text: "Le tracking côté client — scripts JavaScript qui s'exécutent dans le navigateur — était la norme pendant vingt ans. Il reste utile, mais ses limites sont devenues structurelles : adblockers (25 à 35 % des visiteurs en France), Intelligent Tracking Prevention de Safari (cookies plafonnés à 7 jours), restrictions RGPD sur les cookies tiers, et surcharge de scripts qui pèse sur les Core Web Vitals. Le server-side tracking ne remplace pas le client-side : il le complète en déportant sur un serveur la collecte et le routage des événements." },
+
+      { type: "h2", text: "Client-side vs server-side : les 3 différences fondamentales" },
+      { type: "ul", items: [
+        "Localisation de l'exécution : côté client, le script s'exécute dans le navigateur (et peut être bloqué par un adblock ou une extension de confidentialité). Côté serveur, l'exécution se passe sur votre infrastructure — hors de portée de toute extension navigateur.",
+        "Durée de vie des cookies : un cookie first-party posé par votre serveur peut avoir une durée de vie de 400 jours (limite Chrome). Posé par JavaScript sous Safari/ITP, ce même cookie expire souvent à 7 jours — voire 1 jour en navigation privée.",
+        "Contrôle sur les données : le serveur filtre les événements avant de les router vers les plateformes publicitaires. Vous décidez exactement quels champs partager avec GA4, Meta ou TikTok, et vous pouvez anonymiser les données en transit — clé pour la conformité RGPD.",
+      ]},
+
+      { type: "h2", text: "Comment fonctionne Google Tag Manager Server-Side" },
+      { type: "p", text: "GTM Server-Side (sGTM) est une instance de Google Tag Manager que vous déployez sur votre propre infrastructure cloud. Voici son rôle dans l'architecture de collecte." },
+      { type: "ul", items: [
+        "Le navigateur envoie ses événements (pageview, ajout panier, achat…) à VOTRE endpoint sGTM — par exemple analytics.mondomaine.fr — plutôt qu'à Google ou Meta directement.",
+        "Le sGTM reçoit l'événement, l'analyse via ses « clients » (composants qui traduisent les requêtes entrantes), applique des transformations de données, puis le route vers les destinations (GA4, Meta Conversions API, Floodlight…) via des tags déclenchés par des déclencheurs.",
+        "Le visiteur ne voit jamais les domaines des plateformes tiers dans son navigateur : l'interception par les adblockers devient impossible, et vos cookies first-party sont posés par votre propre domaine.",
+      ]},
+
+      { type: "h2", text: "Les bénéfices mesurables pour votre tracking" },
+      { type: "p", text: "Ce changement d'architecture a des effets directement observables sur la qualité de vos données publicitaires." },
+      { type: "ul", items: [
+        "Récupérer 15 à 25 % de données supplémentaires sur Safari et Firefox, où l'ITP fait le plus de dégâts sur les fenêtres d'attribution.",
+        "Réduire le chargement côté client : un seul tag dans le navigateur (Google Tag / gtag.js) communique avec le serveur, qui gère ensuite toutes les destinations. Moins de scripts signifie une page plus rapide — et de meilleures Core Web Vitals, qui influencent le ranking Google.",
+        "Contrôle fin des données : hacher les PII (email, téléphone) avant l'envoi à Meta, exclure les IP internes, enrichir les événements avec des données CRM sans les exposer au navigateur de l'utilisateur.",
+        "Cookies first-party étendus : posés par votre serveur, vos cookies analytiques tiennent jusqu'à 400 jours sur tous les navigateurs, contre 7 jours sous ITP.",
+      ]},
+
+      { type: "h2", text: "sGTM et RGPD : ce qui change — et ce qui ne change pas" },
+      { type: "p", text: "Le server-side tracking ne vous dispense pas du recueil du consentement. Votre bannière cookies et votre Consent Mode v2 restent indispensables. Ce qui change, c'est le chemin parcouru par la donnée après consentement." },
+      { type: "ul", items: [
+        "Le filtre de consentement s'applique toujours côté client, AVANT l'envoi au serveur. Le sGTM ne doit jamais recevoir de données sur un visiteur qui a refusé le tracking.",
+        "Vous choisissez quels champs envoyer à chaque plateforme — la minimisation des données est plus facile à respecter qu'avec un tag client qui envoie tout ce qu'il voit.",
+        "Vous pouvez héberger votre instance sGTM en Europe (Cloud Run région eu-west) et ainsi limiter les transferts de données hors EEE — un argument solide pour votre DPO.",
+        "Attention au câblage : le tag client-side de consentement (Consent Mode v2) doit être synchronisé avec les décisions de routage côté serveur. Un setup mal configuré peut envoyer des données sans consentement, ce qui est exactement l'inverse de l'objectif.",
+      ]},
+
+      { type: "h2", text: "Déployer GTM Server-Side : les 4 étapes" },
+      { type: "p", text: "Un déploiement sGTM complet se structure en quatre phases, de la création du conteneur GTM à la validation en production." },
+      { type: "ul", items: [
+        "1. Créer un conteneur de type « serveur » dans votre interface GTM (distinct du conteneur web habituel). GTM génère une URL d'instance à déployer.",
+        "2. Déployer l'application sur Google App Engine (solution la plus simple, démarrage à environ 50-100 €/mois pour un trafic moyen) ou Cloud Run (facturation à la requête, plus économique pour les faibles trafics, mais configuration plus technique).",
+        "3. Configurer votre sous-domaine de collecte — analytics.votredomaine.fr → votre instance sGTM — pour que les cookies soient posés en first-party sur votre domaine.",
+        "4. Migrer vos tags : remplacer le tag GA4 client-side par le client GA4 serveur, paramétrer les tags Meta Conversions API avec l'event_id de déduplication, puis valider l'ensemble via le mode preview sGTM avant d'activer en production.",
+      ]},
+
+      { type: "h2", text: "Déduplication Meta CAPI : le point le plus souvent raté" },
+      { type: "p", text: "Le server-side est particulièrement puissant combiné à la Conversions API Meta (CAPI). Mais si votre pixel Meta continue à s'exécuter côté client EN PLUS des événements envoyés via sGTM → CAPI, Meta risque de compter deux fois le même achat. La règle ne change pas : un event_id unique, strictement identique dans l'appel pixel navigateur et dans l'appel CAPI serveur. Sans cela, Meta optimise sur un signal faussé — et votre coût par acquisition réel est biaisé à la hausse. Mesurez votre Event Match Quality (EMQ) dans le Gestionnaire d'événements Meta : visez 7 ou plus. En dessous, quelque chose cloche dans votre correspondance." },
+
+      { type: "h2", text: "Pour qui, et à quel coût ?" },
+      { type: "p", text: "Un setup sGTM est pertinent dès que vous dépensez régulièrement en publicité en ligne et que vous constatez un écart important entre vos conversions réelles (commandes dans votre back-office ou CRM) et les conversions remontées dans GA4 ou Meta. L'infrastructure démarre à 50-100 €/mois sur App Engine. La mise en place technique — configuration GTM, migration des tags, déduplication, tests — représente 1 à 3 jours d'expertise selon la complexité de votre setup existant. L'ebook ci-dessous couvre la configuration complète, avec les gabarits de tags et la checklist de validation en production." },
+    ],
+    products: [
+      {
+        id: "ebook-server-side-tracking",
+        type: "pdf",
+        name: "L'ebook complet",
+        price: 9,
+        priceCents: 900,
+        tagline: "Le guide de A à Z pour déployer GTM Server-Side et récupérer le signal perdu.",
+        includes: [
+          "Architecture sGTM expliquée pas-à-pas (schémas + captures GTM)",
+          "Le déploiement Cloud Run / App Engine en détail avec les commandes exactes",
+          "La configuration des clients GA4 et Meta CAPI avec déduplication event_id",
+          "Les gabarits de tags et variables prêts à importer dans votre conteneur",
+          "La checklist de validation complète en mode preview avant mise en production",
+          "Format PDF — accès immédiat après paiement",
+        ],
+        cta: "Télécharger l'ebook — 9 €",
+        featured: true,
+        file: "server-side-tracking-gtm.pdf",
+      },
+      {
+        id: "accompagnement-server-side-tracking",
+        type: "cal",
+        name: "L'accompagnement",
+        price: 150,
+        priceCents: 15000,
+        tagline: "On audite votre tracking actuel et on déploie votre sGTM ensemble, en direct.",
+        includes: [
+          "1 visio de 90 min en direct avec un expert",
+          "Audit de votre setup actuel (ecart de mesure, ITP, adblockers)",
+          "Déploiement et configuration de votre instance sGTM ensemble",
+          "Migration de vos tags GA4 et Meta CAPI avec déduplication",
+          "L'ebook complet inclus",
+          "Vous repartez avec un tracking qui mesure vraiment",
+        ],
+        cta: "Réserver mon accompagnement — 150 €",
+      },
+    ],
+    faq: [
+      { q: "Le server-side tracking me permet-il de contourner le RGPD ?", a: "Non. Le RGPD s'applique à la collecte de données personnelles, quelle que soit la technique utilisée. Le server-side tracking ne dispense pas du consentement : votre bannière cookies et votre Consent Mode v2 restent obligatoires. Ce que le sGTM améliore, c'est la qualité de la mesure APRÈS consentement, et le contrôle sur les données transmises aux plateformes." },
+      { q: "Quelle différence entre GTM Server-Side et la Conversions API Meta ?", a: "Ce sont deux couches complémentaires. La Conversions API Meta est une destination : elle reçoit vos événements et les transmet à Meta depuis votre serveur. GTM Server-Side est l'infrastructure de routage qui se place entre votre site et vos destinations (Meta CAPI, GA4, et d'autres). Le sGTM peut envoyer à la CAPI Meta — parmi d'autres destinations — depuis un point de contrôle unique." },
+      { q: "Mon site a peu de trafic — le sGTM est-il rentable ?", a: "Pour un trafic faible (moins de 100 000 événements/mois), Cloud Run est l'option économique : vous ne payez qu'à la requête, ce qui peut revenir à quelques euros par mois. La mise en place représente l'investissement principal — mais il n'est à faire qu'une fois, et le bénéfice sur la précision de vos données publicitaires est immédiat." },
+      { q: "Quelle différence entre l'ebook à 9 € et l'accompagnement à 150 € ?", a: "L'ebook vous donne toute la méthode et les gabarits pour déployer votre sGTM et migrer vos tags vous-même. L'accompagnement, c'est la même chose mais on le fait avec vous en visio, sur votre propre compte GTM et votre infrastructure, avec un audit de votre tracking actuel — l'ebook est inclus." },
+    ],
+    relatedService: { href: "/services/tracking-conformite", label: "Déléguer entièrement (à partir de 500 €)" },
+  },
+
+  {
+    slug: "automatisation-marketing-pme",
+    title: "Automatisation marketing pour les PME : guide pratique (2026)",
+    description:
+      "Comment une PME automatise son marketing sans équipe technique : les 5 automatisations à fort ROI, les outils accessibles (CRM, email, Make) et par où commencer.",
+    date: "2026-09-03",
+    readingTime: "9 min",
+    category: "Automatisation",
+    keywords: [
+      "automatisation marketing PME",
+      "marketing automation petite entreprise",
+      "automatiser prospection PME",
+      "CRM automatisation PME",
+      "outils marketing automation PME",
+    ],
+    eyebrow: "Guide premium",
+    intro:
+      "Automatiser le marketing, ce n'est pas réservé aux grandes entreprises avec un service IT. C'est précisément ce dont une PME a besoin : faire tourner ses relances, ses emails et sa prospection sans y passer ses soirées. Voici les 5 automatisations à fort ROI et les outils réellement accessibles pour une équipe de 1 à 20 personnes.",
+    content: [
+      { type: "p", text: "Une PME ne rivalise pas avec les ressources marketing d'un grand groupe. Mais elle peut automatiser intelligemment pour créer un effet de levier : des prospects relancés au bon moment, une équipe commerciale qui ne saisit plus les données à la main, une newsletter qui part sans que personne n'y pense. L'automatisation n'invente pas la stratégie — elle exécute une stratégie déjà validée, de manière fiable, sept jours sur sept, sans oubli et sans friction." },
+
+      { type: "h2", text: "Ce que l'automatisation change vraiment pour une PME" },
+      { type: "p", text: "Le bénéfice principal n'est pas le gain de temps sur une tâche isolée — c'est la consistance. Un email de bienvenue envoyé manuellement part quand on a le temps. Un email de bienvenue automatisé part dans les cinq minutes, à chaque nouveau prospect, même à 23h. Cette fiabilité change les conversions : un lead contacté dans les cinq premières minutes a statistiquement beaucoup plus de chances de convertir qu'un lead rappelé le lendemain." },
+      { type: "ul", items: [
+        "Les relances commerciales qui n'ont jamais lieu faute de temps deviennent systématiques — aucun prospect n'est oublié.",
+        "L'onboarding des nouveaux clients suit le même parcours parfait pour chaque personne, sans effort humain à chaque fois.",
+        "La mesure devient automatique : taux d'ouverture, taux de clic, conversion, coût par lead — tout remonte sans manipulation de fichiers.",
+      ]},
+
+      { type: "h2", text: "Les 5 automatisations à mettre en place en premier" },
+      { type: "p", text: "Toutes les automatisations ne se valent pas. Ces cinq-là affichent le meilleur ratio effort de mise en place / revenus générés pour une PME." },
+      { type: "ul", items: [
+        "1. L'email de bienvenue automatique : déclenché dans les 5 minutes quand un prospect remplit un formulaire ou télécharge une ressource. Le moment de plus forte attention — un email utile et immédiat (ressource promise, prochaine étape claire) convertit deux à trois fois plus qu'un email envoyé le lendemain matin.",
+        "2. La séquence de nurturing (3 à 5 emails sur 2 à 4 semaines) : des messages envoyés automatiquement aux prospects non-encore-clients pour entretenir la relation, démontrer l'expertise et proposer un rendez-vous au bon moment. Aucune relance manuelle, aucun prospect oublié.",
+        "3. La relance devis sans réponse (ou panier abandonné pour l'e-commerce) : un email automatique envoyé 48h après l'envoi d'un devis sans réponse, puis J+5. Ce seul réflexe automatisé récupère 10 à 20 % des affaires en cours qui seraient sinon tombées dans l'oubli.",
+        "4. La synchronisation CRM → action commerciale : quand un commercial change le statut d'un prospect en « proposition envoyée », une tâche de suivi se crée automatiquement à J+2 et une notification part sur Slack. Le pipeline devient auto-pilote.",
+        "5. Le rapport hebdomadaire automatique : un email récapitulatif (nouveaux leads, conversions, taux d'ouverture) envoyé chaque lundi à votre équipe commerciale, sans intervention humaine. Ce seul automatisme oblige à regarder les chiffres et à réagir.",
+      ]},
+
+      { type: "h2", text: "Les outils adaptés à une PME (sans DSI)" },
+      { type: "p", text: "La tentation est d'acheter un outil tout-en-un coûteux qu'on n'utilisera qu'à 10 %. Pour une PME, trois briques suffisent à couvrir 90 % des besoins." },
+      { type: "ul", items: [
+        "Un CRM léger (Brevo CRM, HubSpot gratuit, Pipedrive) : pour centraliser les contacts, suivre le pipeline commercial et déclencher les automatisations selon le statut du prospect. La clé : choisir un CRM qui inclut l'email automation, pour ne pas multiplier les outils dès le départ.",
+        "Un outil d'email automation (Brevo, Mailchimp, ActiveCampaign) : pour créer les séquences d'emails, segmenter les listes et mesurer les résultats. Brevo est particulièrement adapté aux entreprises françaises : support FR, conformité RGPD native, tarification accessible.",
+        "Un moteur d'automatisation no-code (Make, n8n) pour connecter les outils entre eux : quand votre formulaire reçoit un message, Make le crée automatiquement dans votre CRM, envoie un accusé de réception au prospect et notifie votre commercial sur Slack. Ces connexions inter-outils sont ce qui crée le vrai gain de temps opérationnel.",
+      ]},
+
+      { type: "h2", text: "CRM et pipeline : la brique que les PME négligent le plus" },
+      { type: "p", text: "Beaucoup de PME gèrent leur pipeline dans un fichier Excel ou dans leur tête. Résultat : des prospects oubliés, des relances qui ne se font pas, des affaires perdues faute de suivi. Un CRM — même basique — rend chaque opportunité visible et déclenche automatiquement les bonnes actions selon l'avancement." },
+      { type: "ul", items: [
+        "Pipeline visuel : chaque prospect a un statut (prospect chaud, devis envoyé, en négociation, gagné, perdu). Changer le statut déclenche une action automatique.",
+        "Historique des interactions : chaque email, chaque appel, chaque note est rattaché au contact. N'importe quel membre de l'équipe sait en un coup d'œil où en est la relation.",
+        "Alertes sur l'inactivité : une affaire sans activité depuis 7 jours génère une alerte automatique. Aucune opportunité ne disparaît silencieusement.",
+      ]},
+
+      { type: "h2", text: "Les erreurs qui font échouer l'automatisation dans les PME" },
+      { type: "ul", items: [
+        "Automatiser avant d'avoir testé manuellement : si votre séquence commerciale ne convertit pas à la main, l'automatisation ne la réparera pas — elle diffusera un processus cassé plus rapidement.",
+        "Choisir l'outil le plus complet plutôt que le plus adapté : un outil trop complexe décourage vos équipes et reste inexploité. Commencez par le plus simple qui fait le travail.",
+        "Automatiser sans mesurer : sans KPI (taux d'ouverture, taux de clic, taux de conversion), vous ne savez pas si l'automatisation fonctionne — et vous ne l'améliorez pas.",
+        "Traiter l'automation comme un projet unique : les meilleures automatisations s'affinent dans le temps (A/B test des sujets d'email, ajustement des délais, nettoyage des listes). Ce n'est jamais « réglé une fois pour toutes ».",
+        "Négliger le RGPD : envoyer des emails automatiques à des contacts qui n'ont pas consenti est une infraction CNIL et un risque de bannissement par votre fournisseur d'email. Pensez opt-in d'abord, automation ensuite.",
+      ]},
+
+      { type: "h2", text: "Par où commencer concrètement" },
+      { type: "p", text: "La première semaine : choisissez une seule automatisation, la plus simple — l'email de bienvenue. Créez un formulaire de contact sur votre site, branchez Brevo (gratuit jusqu'à 300 emails/jour), rédigez un email de bienvenue utile avec une ressource concrète ou une prochaine étape claire. Mesurez le taux d'ouverture et le taux de clic au bout d'un mois. Une fois ce premier engrenage rodé, ajoutez la séquence de nurturing, puis la synchronisation CRM. C'est exactement ce parcours, étape par étape avec les gabarits de séquences prêts à copier et les configurations Make prêtes à importer, que détaille l'ebook ci-dessous." },
+    ],
+    products: [
+      {
+        id: "ebook-automatisation-pme",
+        type: "pdf",
+        name: "L'ebook complet",
+        price: 9,
+        priceCents: 900,
+        tagline: "Le système clé en main pour automatiser le marketing de votre PME sans équipe technique.",
+        includes: [
+          "Les 5 automatisations à fort ROI détaillées pas-à-pas avec captures",
+          "Les gabarits de séquences email (bienvenue, nurturing, relance devis) à copier",
+          "Les configurations Make prêtes à importer (formulaire → CRM → Slack)",
+          "Le comparatif CRM + email automation adapté aux PME avec budgets",
+          "La checklist RGPD de l'email automatisé (opt-in, désinscription, conservation)",
+          "Format PDF — accès immédiat après paiement",
+        ],
+        cta: "Télécharger l'ebook — 9 €",
+        featured: true,
+        file: "automatisation-marketing-pme.pdf",
+      },
+      {
+        id: "accompagnement-automatisation-pme",
+        type: "cal",
+        name: "L'accompagnement",
+        price: 150,
+        priceCents: 15000,
+        tagline: "On installe vos premières automatisations marketing ensemble, en direct, sur vos outils.",
+        includes: [
+          "1 visio de 90 min en direct avec un expert",
+          "On choisit votre stack CRM + email adapté à votre PME",
+          "On configure vos premières séquences et vos connecteurs Make ensemble",
+          "On adapte les gabarits à votre activité et vos cibles",
+          "L'ebook complet inclus",
+          "Vous repartez avec au moins une automatisation qui tourne le jour même",
+        ],
+        cta: "Réserver mon accompagnement — 150 €",
+      },
+    ],
+    faq: [
+      { q: "Faut-il des compétences techniques pour automatiser son marketing en PME ?", a: "Non pour les automatisations de base (email de bienvenue, séquences CRM) : des outils comme Brevo ou HubSpot sont conçus pour des non-techniques. Un peu, pour les connecteurs inter-outils avec Make — mais Make est très visuel et l'ebook détaille chaque étape avec des captures. L'accompagnement configure tout avec vous en direct si vous préférez ne pas le faire seul." },
+      { q: "Mon CRM actuel est-il compatible avec ces automatisations ?", a: "La grande majorité des CRM du marché (HubSpot, Pipedrive, Brevo, Salesforce, Zoho…) sont compatibles avec les automatisations décrites dans ce guide, soit nativement, soit via Make qui s'intègre à plus de 2 000 applications. L'ebook précise les configurations pour les CRM les plus répandus chez les PME françaises." },
+      { q: "Le RGPD interdit-il l'envoi d'emails automatiques ?", a: "Non, à condition que le destinataire ait consenti à recevoir des communications de votre part (opt-in). La CNIL exige que l'opt-in soit libre, spécifique et prouvable (date, source). L'ebook inclut une fiche RGPD prête à l'emploi pour vos formulaires d'inscription et vos mentions d'emails automatiques." },
+      { q: "Quelle différence entre l'ebook à 9 € et l'accompagnement à 150 € ?", a: "L'ebook vous donne la méthode complète, les gabarits et les configurations à appliquer vous-même. L'accompagnement, c'est la même chose mais on installe vos premières automatisations avec vous en visio, sur vos propres outils, adaptées à votre activité — l'ebook est inclus." },
+    ],
+    relatedService: { href: "/services/automatisation", label: "Déléguer entièrement (à partir de 500 €)" },
+  },
 ];
 
 // --- Garde-fou d'integrite du catalogue -----------------------------------
