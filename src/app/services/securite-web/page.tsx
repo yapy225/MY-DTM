@@ -5,7 +5,7 @@ import { CheckCircle2, ArrowRight } from "lucide-react";
 export const metadata: Metadata = {
   title: "Securite Web Paris — Audit, Hardening, CSP, Rotation des Secrets",
   description:
-    "Agence securite web a Paris. Audit, hardening (CSP, headers, secrets), protection des routes et uploads. Blindez votre site avant qu'il soit trop tard.",
+    "Agence sécurité web à Paris. Audit, hardening (CSP, headers, secrets), protection des routes et uploads. Blindez votre site avant qu'il soit trop tard.",
   keywords: [
     "securite site web Paris",
     "audit securite web",
@@ -31,7 +31,7 @@ const OFFERS = [
   { name: "Audit de Securite", price: "A partir de 700 €", desc: "On identifie les failles avant les attaquants : headers, dependances, secrets exposes.", features: ["Analyse des headers de securite", "Scan des dependances vulnerables", "Detection des secrets exposes dans le code", "Verification des routes non protegees", "Rapport priorise + plan de remediation"] },
   { name: "Hardening Complet", price: "A partir de 1 500 €", desc: "Mise en securite de bout en bout de votre application et de votre plateforme.", features: ["Content Security Policy (CSP) avec nonce", "Headers securite (HSTS, X-Frame, etc.)", "Validation stricte des uploads (magic bytes)", "Protection des routes admin (role, UUID)", "Securisation des webhooks (signature)", "Rate limiting et anti-bruteforce"], popular: true },
   { name: "Rotation des Secrets", price: "A partir de 500 €", desc: "On purge les secrets exposes dans Git et on met en place une rotation propre.", features: ["Audit des secrets dans l'historique Git", "Rotation Stripe / base de donnees / APIs", "Mise en place d'un coffre (.env securise)", "Nettoyage de l'historique si necessaire", "Procedure de rotation documentee"] },
-  { name: "Monitoring & Maintenance", price: "Sur devis", desc: "Surveillance continue, mises a jour de securite et reaction aux incidents.", features: ["Surveillance des dependances (Dependabot)", "Alertes sur vulnerabilites critiques", "Mises a jour de securite regulieres", "Plan de reponse aux incidents", "Rapport de securite mensuel"] },
+  { name: "Monitoring & Maintenance", price: "Sur devis", desc: "Surveillance continue, mises à jour de sécurité et réaction aux incidents.", features: ["Surveillance des dépendances (Dependabot)", "Alertes sur vulnérabilités critiques", "Mises à jour de sécurité régulières", "Plan de réponse aux incidents", "Rapport de sécurité mensuel"] },
 ];
 
 const RESULTS = [
@@ -87,13 +87,13 @@ export default function SecuriteWebPage() {
           <nav className="mb-8 text-sm text-muted">
             <Link href="/" className="hover:text-primary">Accueil</Link><span className="mx-2">/</span>
             <Link href="/services" className="hover:text-primary">Services</Link><span className="mx-2">/</span>
-            <span className="text-dark">Securite Web</span>
+            <span className="text-dark">Sécurité Web</span>
           </nav>
           <h1 className="max-w-3xl font-sans text-4xl font-extrabold leading-tight text-dark sm:text-5xl">
-            Securite web — blindez votre site avant qu'il ne soit trop tard
+            Sécurité web — blindez votre site avant qu'il ne soit trop tard
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-muted">
-            Audit, hardening complet (CSP, headers, secrets), protection des routes et des uploads. On securise votre application de bout en bout.
+            Audit, hardening complet (CSP, headers, secrets), protection des routes et des uploads. On sécurise votre application de bout en bout.
           </p>
           <Link href="/contact" className="mt-8 inline-flex rounded-lg bg-gradient-to-r from-primary to-secondary px-8 py-4 text-base font-bold text-white transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/30">
             Audit securite gratuit

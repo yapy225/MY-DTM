@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Contact | My DTM — Agence Digitale Paris",
   description:
-    "Contactez My DTM pour un audit gratuit de votre projet digital. Reponse sous 48h. Developpement web, SEO, automatisation, marketing digital a Paris.",
+    "Contactez My DTM pour un audit gratuit de votre projet digital. Réponse sous 48h. Développement web, SEO, automatisation, marketing digital à Paris.",
   keywords: [
     "contact agence digitale Paris",
     "audit gratuit site web",

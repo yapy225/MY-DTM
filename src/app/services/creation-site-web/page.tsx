@@ -5,7 +5,7 @@ import { CheckCircle2, ArrowRight } from "lucide-react";
 export const metadata: Metadata = {
   title: "Creation Site Web Paris — Site Vitrine, E-commerce, Plateforme Sur Mesure",
   description:
-    "Agence creation site web a Paris. Sites vitrines, e-commerce Stripe, plateformes evenementielles. Next.js, performance et SEO integres. Devis gratuit.",
+    "Agence création site web à Paris. Sites vitrines, e-commerce Stripe, plateformes événementielles. Next.js, performance et SEO intégrés. Devis gratuit.",
   keywords: [
     "creation site web Paris",
     "agence creation site internet Paris",
@@ -42,7 +42,7 @@ const TECH_STACK = [
 ];
 
 const FAQ = [
-  { q: "Combien coute la creation d’un site web a Paris ?", a: "Un site vitrine professionnel demarre a partir de 1 500€, un site e-commerce avec paiement Stripe a partir de 3 000€, et une plateforme evenementielle avec billetterie a partir de 4 000€. Pour un ecosysteme digital complet (site, marketplace, billetterie, journal, annuaire interconnectes), c’est sur devis. On chiffre precisement apres avoir cerne votre projet." },
+  { q: "Combien coûte la création d’un site web à Paris ?", a: "Un site vitrine professionnel demarre a partir de 1 500€, un site e-commerce avec paiement Stripe a partir de 3 000€, et une plateforme evenementielle avec billetterie a partir de 4 000€. Pour un ecosysteme digital complet (site, marketplace, billetterie, journal, annuaire interconnectes), c’est sur devis. On chiffre precisement apres avoir cerne votre projet." },
   { q: "Combien de temps pour creer mon site ?", a: "Un site vitrine est livre en 2 semaines environ. Comptez 4 semaines pour un site e-commerce, 4 a 6 semaines pour une plateforme evenementielle, et 8 a 12 semaines pour un ecosysteme digital complet. Ces delais incluent le design, le developpement et les phases de test avant mise en ligne." },
   { q: "Quelle difference entre un site vitrine et un site e-commerce ?", a: "Le site vitrine (a partir de 1 500€) presente votre activite : design responsive, 5 a 10 pages, SEO de base et formulaire de contact. Le site e-commerce (a partir de 3 000€) ajoute un catalogue produits, le paiement Stripe securise, la gestion des stocks et un dashboard vendeur. Le choix depend de si vous vendez en ligne ou non." },
   { q: "Pourquoi choisir Next.js pour mon site ?", a: "On developpe avec Next.js, React 19, Tailwind CSS, Prisma + PostgreSQL et Stripe, le tout heberge sur Vercel. Cette stack donne des sites ultra-rapides, un SEO technique integre des le premier jour et une base scalable. Un site performant charge vite, se positionne mieux sur Google et convertit davantage." },
@@ -61,7 +61,7 @@ export default function CreationSiteWebPage() {
     "@type": "Service",
     name: "Creation Site Web Paris",
     provider: { "@type": "Organization", name: "My DTM", url: "https://my-dtm.fr" },
-    description: "Agence creation site web a Paris. Sites vitrines, e-commerce, plateformes sur mesure.",
+    description: "Agence création site web à Paris. Sites vitrines, e-commerce, plateformes sur mesure.",
     areaServed: { "@type": "City", name: "Paris" },
     offers: { "@type": "AggregateOffer", lowPrice: "1500", highPrice: "10000", priceCurrency: "EUR" },
   };
@@ -87,13 +87,13 @@ export default function CreationSiteWebPage() {
             <span className="mx-2">/</span>
             <Link href="/services" className="hover:text-primary">Services</Link>
             <span className="mx-2">/</span>
-            <span className="text-dark">Creation Site Web</span>
+            <span className="text-dark">Création Site Web</span>
           </nav>
           <h1 className="max-w-3xl font-sans text-4xl font-extrabold leading-tight text-dark sm:text-5xl">
-            Creation de site web a Paris — performant, rapide, optimise SEO
+            Création de site web à Paris — performant, rapide, optimisé SEO
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-muted">
-            On cree des sites qui convertissent, pas juste des sites qui existent. Performance, design et SEO integres des le premier jour.
+            On crée des sites qui convertissent, pas juste des sites qui existent. Performance, design et SEO intégrés dès le premier jour.
           </p>
           <Link href="/contact" className="mt-8 inline-flex rounded-lg bg-gradient-to-r from-primary to-secondary px-8 py-4 text-base font-bold text-white transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/30">
             Devis gratuit sous 48h

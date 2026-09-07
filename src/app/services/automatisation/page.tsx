@@ -5,7 +5,7 @@ import { CheckCircle2, ArrowRight } from "lucide-react";
 export const metadata: Metadata = {
   title: "Automatisation Marketing & API — WhatsApp, Facebook Leads, Stripe, Email",
   description:
-    "Agence automatisation marketing a Paris. Integration WhatsApp Business API, Facebook Leads, Stripe, emails automatiques. Audit gratuit.",
+    "Agence automatisation marketing à Paris. Intégration WhatsApp Business API, Facebook Leads, Stripe, emails automatiques. Audit gratuit.",
   keywords: [
     "automatisation marketing PME",
     "integration API entreprise",
@@ -120,7 +120,7 @@ export default function AutomatisationPage() {
               "Message WhatsApp envoye automatiquement dans la seconde",
               "Email de bienvenue envoye avec brochure PDF",
               "Notification interne → votre equipe est alertee",
-              "Relance automatique J+3 si pas de reponse",
+              "Relance automatique J+3 si pas de réponse",
             ].map((step, i) => (
               <div key={i} className="flex items-start gap-4 rounded-xl border border-border bg-white p-5">
                 <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary text-sm font-bold text-white">{i + 1}</div>
