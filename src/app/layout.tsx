@@ -20,11 +20,11 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: {
-    default: "My DTM — Agence Digitale Paris | Marketing, SEO, Developpement Web",
+    default: "My DTM — Agence Digitale Paris | Marketing, SEO, Développement Web",
     template: "%s | My DTM",
   },
   description:
-    "Agence de marketing digital a Paris. Developpement web, SEO technique, automatisation API et marketing multi-canal. Audit gratuit.",
+    "Agence de marketing digital à Paris. Développement web, SEO technique, automatisation API et marketing multi-canal. Audit gratuit.",
   keywords: [
     "agence digitale Paris",
     "marketing digital",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "My DTM — Agence Digitale Paris",
-    description: "Developpement web, SEO, automatisation et marketing digital. Audit gratuit.",
+    description: "Développement web, SEO, automatisation et marketing digital. Audit gratuit.",
     url: "https://my-dtm.fr",
     siteName: "My DTM",
     type: "website",
@@ -78,7 +78,7 @@ export default function RootLayout({
                 "https://www.facebook.com/mydreamteammedia/",
                 "https://x.com/DreamTeamAfriQ",
               ],
-              description: "Agence de marketing digital a Paris specialisee dans la creation d'ecosystemes numeriques complets.",
+              description: "Agence de marketing digital à Paris spécialisée dans la création d'écosystèmes numériques complets.",
               foundingDate: "2026",
               areaServed: { "@type": "Country", name: "France" },
               contactPoint: {
@@ -113,7 +113,7 @@ export default function RootLayout({
               "@type": "LocalBusiness",
               name: "My DTM",
               image: "https://my-dtm.fr/opengraph-image",
-              description: "Agence de marketing digital a Paris. Developpement web, SEO, automatisation, marketing multi-canal.",
+              description: "Agence de marketing digital à Paris. Développement web, SEO, automatisation, marketing multi-canal.",
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "Paris",

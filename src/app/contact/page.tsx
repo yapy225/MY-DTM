@@ -207,7 +207,7 @@ export default function ContactPage() {
             <div className="rounded-2xl border border-border bg-white p-8">
               <h3 className="font-sans text-lg font-bold text-dark">Réponse rapide</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted">
-                Pour une reponse immediate, contactez-nous directement sur WhatsApp.
+                Pour une réponse immédiate, contactez-nous directement sur WhatsApp.
               </p>
               <a
                 href="https://wa.me/33743537551?text=Bonjour%2C%20je%20souhaite%20un%20audit%20gratuit%20pour%20mon%20projet%20digital."

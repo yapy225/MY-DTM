@@ -5,7 +5,7 @@ import { CheckCircle2, ArrowRight } from "lucide-react";
 export const metadata: Metadata = {
   title: "Agence Marketing Digital Paris — Acquisition Multi-Canal, SEO, Ads, WhatsApp",
   description:
-    "Agence marketing digital a Paris. Acquisition 360 : SEO + WhatsApp + Facebook Ads + Email. Resultats mesurables, rapport mensuel. Audit gratuit.",
+    "Agence marketing digital à Paris. Acquisition 360 : SEO + WhatsApp + Facebook Ads + Email. Résultats mesurables, rapport mensuel. Audit gratuit.",
   keywords: [
     "agence marketing digital Paris",
     "marketing multi-canal PME",

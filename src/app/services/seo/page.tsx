@@ -5,7 +5,7 @@ import { CheckCircle2, ArrowRight } from "lucide-react";
 export const metadata: Metadata = {
   title: "Agence SEO Paris — Audit, Referencement Naturel, Indexation Google",
   description:
-    "Agence SEO technique a Paris. Audit, redirections 301, Schema.org, indexation Google. +8000 clics/mois recuperes pour nos clients. Audit gratuit.",
+    "Agence SEO technique à Paris. Audit, redirections 301, Schema.org, indexation Google. +8 000 clics/mois récupérés pour nos clients. Audit gratuit.",
   keywords: [
     "agence SEO Paris",
     "audit SEO gratuit",
@@ -42,7 +42,7 @@ const RESULTS = [
 ];
 
 const FAQ = [
-  { q: "Combien coute le referencement SEO a Paris ?", a: "Un audit SEO complet coute a partir de 500\u20AC. L'optimisation technique complete demarre a 1 500\u20AC. Le suivi mensuel avec creation de contenu commence a 800\u20AC/mois. Chaque projet est different, on adapte notre offre a vos besoins et votre budget." },
+  { q: "Combien coûte le référencement SEO à Paris ?", a: "Un audit SEO complet coute a partir de 500\u20AC. L'optimisation technique complete demarre a 1 500\u20AC. Le suivi mensuel avec creation de contenu commence a 800\u20AC/mois. Chaque projet est different, on adapte notre offre a vos besoins et votre budget." },
   { q: "Combien de temps pour voir des resultats SEO ?", a: "Les corrections techniques (redirections, indexation) montrent des resultats en 2 a 4 semaines. Le contenu SEO prend 3 a 6 mois pour atteindre son plein potentiel. Nos redirections 301 ont recupere +8000 clics/mois en quelques semaines." },
   { q: "Quelle est la difference entre SEO technique et SEO contenu ?", a: "Le SEO technique optimise la structure de votre site (vitesse, indexation, schema, redirections). Le SEO contenu cree des articles et pages optimises pour des mots-cles cibles. Les deux sont complementaires : un bon contenu sur un site mal structure ne rankera pas." },
   { q: "Vous travaillez avec quels types de sites ?", a: "Tous types : sites vitrines, e-commerce, plateformes evenementielles, blogs, annuaires. Que votre site soit sur WordPress, Shopify, Next.js ou autre, on s'adapte a votre stack technique." },
@@ -79,10 +79,10 @@ export default function SEOPage() {
             <span className="text-dark">SEO</span>
           </nav>
           <h1 className="max-w-3xl font-sans text-4xl font-extrabold leading-tight text-dark sm:text-5xl">
-            Agence SEO a Paris — on recupere le trafic que vous perdez
+            Agence SEO à Paris — on récupère le trafic que vous perdez
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-muted">
-            Audit technique, redirections 301, Schema.org, indexation Google forcee. Des resultats concrets, pas des promesses.
+            Audit technique, redirections 301, Schema.org, indexation Google forcée. Des résultats concrets, pas des promesses.
           </p>
           <Link href="/contact" className="mt-8 inline-flex rounded-lg bg-gradient-to-r from-primary to-secondary px-8 py-4 text-base font-bold text-white transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/30">
             Audit SEO gratuit

@@ -27,11 +27,11 @@ export const metadata: Metadata = {
 };
 
 const FEATURES = [
-  { icon: <Bot size={24} />, title: "Chatbot automatique", desc: "Reponses instantanees 24h/24 : FAQ, horaires, menu, tarifs. Vos clients n'attendent jamais." },
+  { icon: <Bot size={24} />, title: "Chatbot automatique", desc: "Réponses instantanées 24h/24 : FAQ, horaires, menu, tarifs. Vos clients n'attendent jamais." },
   { icon: <Zap size={24} />, title: "Webhooks temps reel", desc: "Lead Facebook/Instagram capture → message WhatsApp envoye dans la seconde. Zero lead perdu." },
   { icon: <MessageCircle size={24} />, title: "Templates pre-approuves", desc: "Messages de confirmation, rappel RDV, promo, relance. Valides par Meta, prets a l'emploi." },
   { icon: <Users size={24} />, title: "Multi-agents", desc: "Plusieurs collaborateurs repondent depuis le meme numero. Ideal pour les equipes." },
-  { icon: <BarChart3 size={24} />, title: "Analytics & reporting", desc: "Taux de lecture, reponse, conversion. Mesurez l'impact de chaque campagne WhatsApp." },
+  { icon: <BarChart3 size={24} />, title: "Analytics & reporting", desc: "Taux de lecture, réponse, conversion. Mesurez l'impact de chaque campagne WhatsApp." },
   { icon: <Clock size={24} />, title: "Installation 48h", desc: "Compte Business API, verification Meta, templates, webhooks. On s'occupe de tout." },
 ];
 
@@ -139,7 +139,7 @@ export default function WhatsAppBusinessPage() {
             <div className="grid grid-cols-2 gap-4">
               {[
                 { num: "98%", label: "Taux d'ouverture" },
-                { num: "45%", label: "Taux de reponse" },
+                { num: "45%", label: "Taux de réponse" },
                 { num: "10x", label: "Plus que l'email" },
                 { num: "48h", label: "Installation" },
               ].map((s) => (

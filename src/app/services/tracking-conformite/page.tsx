@@ -5,7 +5,7 @@ import { CheckCircle2, ArrowRight } from "lucide-react";
 export const metadata: Metadata = {
   title: "Tracking & Conformite RGPD Paris — Meta Pixel, Conversions API, Consentement",
   description:
-    "Agence tracking a Paris. Meta Pixel + Conversions API server-side, deduplication, Advanced Matching, consentement RGPD. Audit tracking gratuit.",
+    "Agence tracking à Paris. Meta Pixel + Conversions API server-side, déduplication, Advanced Matching, consentement RGPD. Audit tracking gratuit.",
   keywords: [
     "tracking Meta Pixel Paris",
     "Conversions API Facebook",
@@ -87,13 +87,13 @@ export default function TrackingConformitePage() {
           <nav className="mb-8 text-sm text-muted">
             <Link href="/" className="hover:text-primary">Accueil</Link><span className="mx-2">/</span>
             <Link href="/services" className="hover:text-primary">Services</Link><span className="mx-2">/</span>
-            <span className="text-dark">Tracking & Conformite</span>
+            <span className="text-dark">Tracking & Conformité</span>
           </nav>
           <h1 className="max-w-3xl font-sans text-4xl font-extrabold leading-tight text-dark sm:text-5xl">
-            Tracking & conformite RGPD — arretez de perdre vos conversions
+            Tracking & conformité RGPD — arrêtez de perdre vos conversions
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-muted">
-            Meta Pixel + Conversions API server-side, deduplication, Advanced Matching et consentement RGPD. Une mesure fiable, des campagnes mieux optimisees.
+            Meta Pixel + Conversions API server-side, déduplication, Advanced Matching et consentement RGPD. Une mesure fiable, des campagnes mieux optimisées.
           </p>
           <Link href="/contact" className="mt-8 inline-flex rounded-lg bg-gradient-to-r from-primary to-secondary px-8 py-4 text-base font-bold text-white transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/30">
             Audit tracking gratuit
