@@ -3,9 +3,9 @@ import Link from "next/link";
 import { CheckCircle2, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Tracking & Conformite RGPD Paris — Meta Pixel, Conversions API, Consentement",
+  title: "Tracking & Conformité RGPD Paris — Meta Pixel, Conversions API, Consentement",
   description:
-    "Agence tracking a Paris. Meta Pixel + Conversions API server-side, deduplication, Advanced Matching, consentement RGPD. Audit tracking gratuit.",
+    "Agence tracking à Paris. Meta Pixel + Conversions API server-side, déduplication, Advanced Matching, consentement RGPD. Audit tracking gratuit.",
   keywords: [
     "tracking Meta Pixel Paris",
     "Conversions API Facebook",
@@ -21,31 +21,31 @@ export const metadata: Metadata = {
     "server-side tagging",
   ],
   openGraph: {
-    title: "Tracking & Conformite RGPD — My DTM",
-    description: "Meta Pixel + Conversions API, deduplication, Advanced Matching, consentement RGPD. Audit tracking gratuit.",
+    title: "Tracking & Conformité RGPD — My DTM",
+    description: "Meta Pixel + Conversions API, déduplication, Advanced Matching, consentement RGPD. Audit tracking gratuit.",
   },
   alternates: { canonical: "https://my-dtm.fr/services/tracking-conformite" },
 };
 
 const OFFERS = [
-  { name: "Audit Tracking", price: "500 €", desc: "On verifie ce qui remonte vraiment dans vos plateformes pub et ce que vous perdez.", features: ["Audit Pixel + Conversions API", "Detection des doublons et evenements manquants", "Score Event Match Quality (EMQ)", "Verification consentement RGPD", "Rapport + plan d'action priorise"] },
-  { name: "Setup Pixel + Conversions API", price: "A partir de 800 €", desc: "Tracking server-side complet pour ne plus perdre de conversions a cause d'iOS et des bloqueurs.", features: ["Meta Pixel + Conversions API (server-side)", "Deduplication par event_id", "Advanced Matching (email, telephone hashes)", "Evenements e-commerce (Purchase, IC, Lead)", "external_id + parametres fbp/fbc"], popular: true },
-  { name: "Mise en Conformite RGPD", price: "A partir de 600 €", desc: "Bandeau de consentement, mode consent et tracking conforme a la CNIL.", features: ["Banniere de consentement (Consent Mode)", "Tracking conditionne au consentement", "Politique de confidentialite a jour", "Anonymisation / hash des donnees", "Documentation conformite CNIL"] },
-  { name: "Optimisation Match Quality", price: "A partir de 700 €", desc: "On pousse votre score de correspondance pour des audiences et un ROAS meilleurs.", features: ["Enrichissement Advanced Matching", "Currency uppercase + ViewContent enrichi", "Dedup Purchase / Lead / InitiateCheckout", "Backfill historique via CAPI", "Suivi EMQ avant / apres"] },
+  { name: "Audit Tracking", price: "500 €", desc: "On vérifie ce qui remonte vraiment dans vos plateformes pub et ce que vous perdez.", features: ["Audit Pixel + Conversions API", "Détection des doublons et événements manquants", "Score Event Match Quality (EMQ)", "Vérification consentement RGPD", "Rapport + plan d'action priorisé"] },
+  { name: "Setup Pixel + Conversions API", price: "À partir de 800 €", desc: "Tracking server-side complet pour ne plus perdre de conversions à cause d'iOS et des bloqueurs.", features: ["Meta Pixel + Conversions API (server-side)", "Déduplication par event_id", "Advanced Matching (email, téléphone hashes)", "Événements e-commerce (Purchase, IC, Lead)", "external_id + paramètres fbp/fbc"], popular: true },
+  { name: "Mise en Conformité RGPD", price: "À partir de 600 €", desc: "Bandeau de consentement, mode consent et tracking conforme à la CNIL.", features: ["Bannière de consentement (Consent Mode)", "Tracking conditionné au consentement", "Politique de confidentialité à jour", "Anonymisation / hash des données", "Documentation conformité CNIL"] },
+  { name: "Optimisation Match Quality", price: "À partir de 700 €", desc: "On pousse votre score de correspondance pour des audiences et un ROAS meilleurs.", features: ["Enrichissement Advanced Matching", "Currency uppercase + ViewContent enrichi", "Dedup Purchase / Lead / InitiateCheckout", "Backfill historique via CAPI", "Suivi EMQ avant / après"] },
 ];
 
 const RESULTS = [
-  { number: "95%", label: "couverture fbp", detail: "Apres fix PageView post-consentement" },
+  { number: "95%", label: "couverture fbp", detail: "Après fix PageView post-consentement" },
   { number: "+40%", label: "Match Quality moyen", detail: "Via Advanced Matching + external_id" },
-  { number: "0", label: "doublon d'evenement", detail: "Deduplication par event_id Pixel + CAPI" },
-  { number: "100%", label: "conforme RGPD", detail: "Consent Mode + tracking conditionne" },
+  { number: "0", label: "doublon d'événement", detail: "Déduplication par event_id Pixel + CAPI" },
+  { number: "100%", label: "conforme RGPD", detail: "Consent Mode + tracking conditionné" },
 ];
 
 const FAQ = [
-  { q: "Pourquoi mes conversions Facebook ne remontent plus correctement ?", a: "Depuis iOS 14.5 et la generalisation des bloqueurs de publicite, le Pixel cote navigateur perd une partie des evenements. La Conversions API (CAPI) envoie les conversions directement depuis votre serveur, ce qui recupere les evenements perdus. Combinee a la deduplication, elle restaure une mesure fiable." },
-  { q: "C'est quoi la deduplication d'evenements ?", a: "Quand vous envoyez le meme achat a la fois par le Pixel (navigateur) et par la Conversions API (serveur), Meta doit savoir qu'il s'agit du meme evenement, sinon il le compte deux fois. La deduplication par event_id permet a Meta de fusionner les deux signaux sans gonfler vos chiffres." },
-  { q: "Le tracking server-side est-il conforme au RGPD ?", a: "Oui, a condition de respecter le consentement. On met en place un Consent Mode : aucun evenement de tracking n'est envoye tant que l'utilisateur n'a pas accepte. Les donnees personnelles (email, telephone) sont hashees avant envoi. On documente le tout pour votre conformite CNIL." },
-  { q: "C'est quoi l'Event Match Quality (EMQ) ?", a: "C'est un score de 0 a 10 que Meta attribue a la qualite des informations envoyees avec vos evenements (email, telephone, nom, IP, external_id...). Plus le score est haut, mieux Meta retrouve les utilisateurs, ce qui ameliore le ciblage, les audiences similaires et le ROAS de vos campagnes." },
+  { q: "Pourquoi mes conversions Facebook ne remontent plus correctement ?", a: "Depuis iOS 14.5 et la généralisation des bloqueurs de publicité, le Pixel côté navigateur perd une partie des événements. La Conversions API (CAPI) envoie les conversions directement depuis votre serveur, ce qui récupère les événements perdus. Combinée à la déduplication, elle restaure une mesure fiable." },
+  { q: "C'est quoi la déduplication d'événements ?", a: "Quand vous envoyez le même achat à la fois par le Pixel (navigateur) et par la Conversions API (serveur), Meta doit savoir qu'il s'agit du même événement, sinon il le compte deux fois. La déduplication par event_id permet à Meta de fusionner les deux signaux sans gonfler vos chiffres." },
+  { q: "Le tracking server-side est-il conforme au RGPD ?", a: "Oui, à condition de respecter le consentement. On met en place un Consent Mode : aucun événement de tracking n'est envoyé tant que l'utilisateur n'a pas accepté. Les données personnelles (email, téléphone) sont hachées avant envoi. On documente le tout pour votre conformité CNIL." },
+  { q: "C'est quoi l'Event Match Quality (EMQ) ?", a: "C'est un score de 0 à 10 que Meta attribue à la qualité des informations envoyées avec vos événements (email, téléphone, nom, IP, external_id...). Plus le score est haut, mieux Meta retrouve les utilisateurs, ce qui améliore le ciblage, les audiences similaires et le ROAS de vos campagnes." },
 ];
 
 export default function TrackingConformitePage() {
@@ -61,9 +61,9 @@ export default function TrackingConformitePage() {
   const serviceJsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "Tracking & Conformite RGPD (Meta Pixel + Conversions API)",
+    name: "Tracking & Conformité RGPD (Meta Pixel + Conversions API)",
     provider: { "@type": "Organization", name: "My DTM", url: "https://my-dtm.fr" },
-    description: "Setup Meta Pixel + Conversions API server-side, deduplication, Advanced Matching et consentement RGPD pour fiabiliser vos conversions.",
+    description: "Setup Meta Pixel + Conversions API server-side, déduplication, Advanced Matching et consentement RGPD pour fiabiliser vos conversions.",
     areaServed: { "@type": "Country", name: "France" },
     offers: { "@type": "AggregateOffer", lowPrice: "500", highPrice: "800", priceCurrency: "EUR" },
   };
@@ -78,7 +78,7 @@ export default function TrackingConformitePage() {
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Accueil", item: "https://my-dtm.fr" },
           { "@type": "ListItem", position: 2, name: "Services", item: "https://my-dtm.fr/services" },
-          { "@type": "ListItem", position: 3, name: "Tracking & Conformite", item: "https://my-dtm.fr/services/tracking-conformite" },
+          { "@type": "ListItem", position: 3, name: "Tracking & Conformité", item: "https://my-dtm.fr/services/tracking-conformite" },
         ],
       }) }} />
 
@@ -87,13 +87,13 @@ export default function TrackingConformitePage() {
           <nav className="mb-8 text-sm text-muted">
             <Link href="/" className="hover:text-primary">Accueil</Link><span className="mx-2">/</span>
             <Link href="/services" className="hover:text-primary">Services</Link><span className="mx-2">/</span>
-            <span className="text-dark">Tracking & Conformite</span>
+            <span className="text-dark">Tracking & Conformité</span>
           </nav>
           <h1 className="max-w-3xl font-sans text-4xl font-extrabold leading-tight text-dark sm:text-5xl">
-            Tracking & conformite RGPD — arretez de perdre vos conversions
+            Tracking & conformité RGPD — arrêtez de perdre vos conversions
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-muted">
-            Meta Pixel + Conversions API server-side, deduplication, Advanced Matching et consentement RGPD. Une mesure fiable, des campagnes mieux optimisees.
+            Meta Pixel + Conversions API server-side, déduplication, Advanced Matching et consentement RGPD. Une mesure fiable, des campagnes mieux optimisées.
           </p>
           <Link href="/contact" className="mt-8 inline-flex rounded-lg bg-gradient-to-r from-primary to-secondary px-8 py-4 text-base font-bold text-white transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/30">
             Audit tracking gratuit
@@ -121,7 +121,7 @@ export default function TrackingConformitePage() {
           <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2">
             {OFFERS.map((o) => (
               <div key={o.name} className={`rounded-2xl border p-8 transition-all hover:-translate-y-1 hover:shadow-lg ${o.popular ? "border-primary bg-primary/[0.02] shadow-lg shadow-primary/10" : "border-border bg-white"}`}>
-                {o.popular && <span className="mb-4 inline-block rounded-full bg-primary px-3 py-1 text-xs font-bold text-white">Le + demande</span>}
+                {o.popular && <span className="mb-4 inline-block rounded-full bg-primary px-3 py-1 text-xs font-bold text-white">Le + demandé</span>}
                 <h3 className="text-xl font-bold text-dark">{o.name}</h3>
                 <div className="mt-2 font-sans text-3xl font-extrabold text-gradient-primary">{o.price}</div>
                 <p className="mt-3 text-sm text-muted">{o.desc}</p>
@@ -141,7 +141,7 @@ export default function TrackingConformitePage() {
       {/* FAQ */}
       <section className="bg-surface px-4 py-24 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl">
-          <h2 className="text-center font-sans text-3xl font-extrabold text-dark">Questions frequentes</h2>
+          <h2 className="text-center font-sans text-3xl font-extrabold text-dark">Questions fréquentes</h2>
           <div className="mt-14 space-y-6">
             {FAQ.map((f) => (
               <div key={f.q} className="rounded-2xl border border-border bg-white p-6">
@@ -161,7 +161,7 @@ export default function TrackingConformitePage() {
             {[
               { href: "/services/marketing-digital", label: "Marketing Digital" },
               { href: "/services/automatisation", label: "Automatisation" },
-              { href: "/services/securite-web", label: "Securite Web" },
+              { href: "/services/securite-web", label: "Sécurité Web" },
               { href: "/services/seo", label: "SEO Technique" },
             ].map((l) => (
               <Link key={l.href} href={l.href} className="flex items-center gap-1.5 rounded-lg border border-border px-5 py-2.5 text-sm font-semibold text-dark transition-all hover:border-primary hover:text-primary">

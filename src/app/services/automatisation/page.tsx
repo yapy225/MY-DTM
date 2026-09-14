@@ -5,7 +5,7 @@ import { CheckCircle2, ArrowRight } from "lucide-react";
 export const metadata: Metadata = {
   title: "Automatisation Marketing & API — WhatsApp, Facebook Leads, Stripe, Email",
   description:
-    "Agence automatisation marketing a Paris. Integration WhatsApp Business API, Facebook Leads, Stripe, emails automatiques. Audit gratuit.",
+    "Agence automatisation marketing à Paris. Intégration WhatsApp Business API, Facebook Leads, Stripe, emails automatiques. Audit gratuit.",
   keywords: [
     "automatisation marketing PME",
     "integration API entreprise",
