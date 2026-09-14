@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     "projets Next.js",
     "références agence web",
   ],
-  alternates: { canonical: "/realisations" },
+  alternates: { canonical: "https://my-dtm.fr/realisations" },
   openGraph: {
     title: "Réalisations & études de cas — My DTM",
     description:
