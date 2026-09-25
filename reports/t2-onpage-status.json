@@ -1,9 +1,11 @@
 {
-  "generatedAt": "2026-09-24T12:50:54.251Z",
+  "generatedAt": "2026-09-25T12:54:45.240Z",
   "llms_fixed": [],
   "llms_pr_open": [],
   "compliant": [
+    "my-dtm",
     "parfumsdeparis",
+    "la-plante",
     "evasionparis",
     "foiredafrique",
     "fashionweekafrica",
@@ -13,30 +15,20 @@
     "justeunedanse",
     "festivalinternationalducinemaafricain",
     "serviceathome",
+    "dreamteamafrica",
     "lafropeen",
     "eburnia",
     "lofficieldafrique"
   ],
   "skipped": [
     {
-      "brand": "my-dtm",
-      "verdict": "PR_ALREADY_OPEN"
-    },
-    {
       "brand": "sneakerslove",
-      "verdict": "PR_ALREADY_OPEN"
-    },
-    {
-      "brand": "la-plante",
-      "verdict": "PR_ALREADY_OPEN"
+      "verdict": "ALREADY_IN_REPO",
+      "note": "fichier présent, pas encore déployé"
     },
     {
       "brand": "zaouliparis",
       "verdict": "PR_ALREADY_OPEN"
-    },
-    {
-      "brand": "dreamteamafrica",
-      "reason": "onpage:false (monorepo/sensible)"
     },
     {
       "brand": "entreprise-bienetre",
