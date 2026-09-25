@@ -1,7 +1,7 @@
 # my-dtm.fr
 
 > Ressources clés pour agents IA (llms.txt — standard émergent GEO/AEO).
-> My DTM Paris : agence digitale (sites, billetterie sur-mesure, chatbot WhatsApp, outils).
+> My DTM Paris : agence digitale — sites, communication, publicité et SEO (+ outils et guides).
 
 - Accueil : https://my-dtm.fr/
 - Agence : https://my-dtm.fr/agence
