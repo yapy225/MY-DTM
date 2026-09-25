@@ -1,0 +1,13 @@
+# my-dtm.fr
+
+> Ressources clés pour agents IA (llms.txt — standard émergent GEO/AEO).
+> My DTM Paris : agence digitale (sites, billetterie sur-mesure, chatbot WhatsApp, outils).
+
+- Accueil : https://my-dtm.fr/
+- Agence : https://my-dtm.fr/agence
+- Réalisations : https://my-dtm.fr/realisations
+- Guides : https://my-dtm.fr/guides
+- Blog : https://my-dtm.fr/blog
+- Outils : https://my-dtm.fr/outils
+- Contact : https://my-dtm.fr/contact
+- Plan du site (sitemap) : https://my-dtm.fr/sitemap.xml
