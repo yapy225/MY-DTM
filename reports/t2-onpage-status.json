@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-25T12:54:45.240Z",
+  "generatedAt": "2026-09-26T12:22:36.095Z",
   "llms_fixed": [],
   "llms_pr_open": [],
   "compliant": [
@@ -36,13 +36,6 @@
     }
   ],
   "onpage_gaps": [
-    {
-      "brand": "my-dtm",
-      "domain": "my-dtm.fr",
-      "maxImagePreview": false,
-      "sameAs": true,
-      "note": "DÉTECTÉ, non auto-fixé (max-image-preview=fragile par stack ; sameAs=exige vraies URLs sociales)"
-    },
     {
       "brand": "parfumsdeparis",
       "domain": "parfumsdeparis.fr",
@@ -107,16 +100,9 @@
       "note": "DÉTECTÉ, non auto-fixé (max-image-preview=fragile par stack ; sameAs=exige vraies URLs sociales)"
     },
     {
-      "brand": "dreamteamafrica",
-      "domain": "dreamteamafrica.com",
-      "maxImagePreview": false,
-      "sameAs": true,
-      "note": "DÉTECTÉ, non auto-fixé (max-image-preview=fragile par stack ; sameAs=exige vraies URLs sociales)"
-    },
-    {
       "brand": "lafropeen",
       "domain": "lafropeen.com",
-      "maxImagePreview": false,
+      "maxImagePreview": true,
       "sameAs": false,
       "note": "DÉTECTÉ, non auto-fixé (max-image-preview=fragile par stack ; sameAs=exige vraies URLs sociales)"
     },
@@ -132,13 +118,6 @@
       "domain": "entreprise-bienetre.fr",
       "maxImagePreview": true,
       "sameAs": false,
-      "note": "DÉTECTÉ, non auto-fixé (max-image-preview=fragile par stack ; sameAs=exige vraies URLs sociales)"
-    },
-    {
-      "brand": "lofficieldafrique",
-      "domain": "lofficieldafrique.fr",
-      "maxImagePreview": false,
-      "sameAs": true,
       "note": "DÉTECTÉ, non auto-fixé (max-image-preview=fragile par stack ; sameAs=exige vraies URLs sociales)"
     }
   ],
