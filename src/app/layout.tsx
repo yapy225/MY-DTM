@@ -41,6 +41,17 @@ export const metadata: Metadata = {
     // Revendication du domaine sur Pinterest (compte My DTM Paris).
     other: { "p:domain_verify": "306c7badd695acd557743f16d44701fa" },
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
     title: "My DTM — Agence Digitale Paris",
     description: "Developpement web, SEO, automatisation et marketing digital. Audit gratuit.",
