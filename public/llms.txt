@@ -4,7 +4,6 @@
 > My DTM Paris : agence digitale — sites, communication, publicité et SEO (+ outils et guides).
 
 - Accueil : https://my-dtm.fr/
-- Agence : https://my-dtm.fr/agence
 - Réalisations : https://my-dtm.fr/realisations
 - Guides : https://my-dtm.fr/guides
 - Blog : https://my-dtm.fr/blog
