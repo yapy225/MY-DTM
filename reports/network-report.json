@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-27T11:38:46.761Z",
+  "generatedAt": "2026-09-28T13:12:54.399Z",
   "gsc": {
     "justeunedanse": {
       "property": "sc-domain:justeunedanse.fr",
@@ -959,9 +959,9 @@
         "https://dreamteamafrica.com/conte-africain-paris",
         "https://dreamteamafrica.com/plan-du-site",
         "https://dreamteamafrica.com/culture-pour-tous/fashion-week-africa",
-        "https://dreamteamafrica.com/culture-pour-tous/salon-made-in-africa",
-        "https://dreamteamafrica.com/culture-pour-tous/juste-une-danse",
         "https://dreamteamafrica.com/culture-pour-tous/festival-conte-africain",
+        "https://dreamteamafrica.com/culture-pour-tous/juste-une-danse",
+        "https://dreamteamafrica.com/culture-pour-tous/salon-made-in-africa",
         "https://dreamteamafrica.com/culture-pour-tous/foire-dafrique-paris",
         "https://dreamteamafrica.com/made-in-africa/collier-akan-or-plaque",
         "https://dreamteamafrica.com/made-in-africa/portefeuille-cuir-sahelien",
@@ -1095,13 +1095,13 @@
     },
     "juste-une-danse": {
       "name": "Juste Une Danse",
-      "sessions": 119,
-      "users": 77,
+      "sessions": 115,
+      "users": 74,
       "status": "OK"
     },
     "fica-paris": {
       "name": "fica paris  - GA4",
-      "sessions": 33,
+      "sessions": 34,
       "users": 12,
       "status": "OK"
     },
@@ -1113,38 +1113,38 @@
     },
     "festival-du-conte-africain": {
       "name": "Festival du Conte Africain",
-      "sessions": 189,
-      "users": 103,
+      "sessions": 192,
+      "users": 106,
       "status": "OK"
     },
     "zaouli-paris-": {
       "name": "Zaouli Paris ",
-      "sessions": 28,
-      "users": 15,
+      "sessions": 26,
+      "users": 13,
       "status": "OK"
     },
     "centre-culturel-africain": {
       "name": "Centre Culturel Africain",
-      "sessions": 21,
-      "users": 7,
+      "sessions": 26,
+      "users": 9,
       "status": "OK"
     },
     "salon-made-in-africa": {
       "name": "Salon Made In Africa",
-      "sessions": 88,
-      "users": 61,
+      "sessions": 94,
+      "users": 65,
       "status": "OK"
     },
     "foire-dafrique-paris": {
       "name": "Foire dAfrique Paris",
-      "sessions": 227,
-      "users": 193,
+      "sessions": 232,
+      "users": 196,
       "status": "OK"
     },
     "fashion-week-africa": {
       "name": "Fashion Week Africa",
-      "sessions": 85,
-      "users": 45,
+      "sessions": 88,
+      "users": 48,
       "status": "OK"
     },
     "parfums-de-paris": {
@@ -1161,8 +1161,8 @@
     },
     "sneakers-love": {
       "name": "Sneakers Love",
-      "sessions": 44,
-      "users": 32,
+      "sessions": 40,
+      "users": 29,
       "status": "OK"
     },
     "évasion-paris": {
@@ -1179,8 +1179,8 @@
     },
     "l'officiel-d'afrique": {
       "name": "L'officiel d'Afrique",
-      "sessions": 80,
-      "users": 56,
+      "sessions": 87,
+      "users": 61,
       "status": "OK"
     }
   },
@@ -1190,7 +1190,7 @@
       "type": "INDEXATION_LOW",
       "tier": 1,
       "brand": "entreprise-bienetre",
-      "streak": 36,
+      "streak": 37,
       "baseline": 11,
       "stagnant": true,
       "detail": "10/80 indexé (13%)",
@@ -1201,7 +1201,7 @@
       "type": "INDEXATION_LOW",
       "tier": 1,
       "brand": "centreculturelafricain",
-      "streak": 36,
+      "streak": 37,
       "baseline": 1,
       "stagnant": true,
       "detail": "1/6 indexé (17%)",
@@ -1212,7 +1212,7 @@
       "type": "INDEXATION_LOW",
       "tier": 1,
       "brand": "lofficieldafrique",
-      "streak": 25,
+      "streak": 26,
       "baseline": 15,
       "stagnant": false,
       "detail": "17/67 indexé (25%)",
@@ -1223,7 +1223,7 @@
       "type": "INDEXATION_LOW",
       "tier": 1,
       "brand": "parfumsdeparis",
-      "streak": 36,
+      "streak": 37,
       "baseline": 11,
       "stagnant": false,
       "detail": "12/51 indexé (24%)",
@@ -1262,8 +1262,8 @@
       "action": "request_indexing",
       "brand": "lofficieldafrique",
       "ok": true,
-      "detail": "50/50 URL demandées (200)",
-      "budget_left": 130
+      "detail": "1/2 URL demandées (200)",
+      "budget_left": 178
     },
     {
       "action": "resubmit_sitemap",
@@ -1276,10 +1276,9 @@
     },
     {
       "action": "request_indexing",
-      "brand": "parfumsdeparis",
-      "ok": true,
-      "detail": "39/39 URL demandées (200)",
-      "budget_left": 91
+      "brand": "(réseau)",
+      "ok": false,
+      "detail": "demandes d'indexation stoppées (HTTP 429 : quota 200/j ou API)"
     }
   ]
 }
