@@ -5,7 +5,7 @@ import ComparateurPlateformesAgreees from "@/components/outils/ComparateurPlatef
 export const metadata: Metadata = {
   title: "Comparateur de plateformes de facturation électronique (2026)",
   description:
-    "Répondez à 3 questions et trouvez la famille de plateforme de facturation électronique adaptée à votre profil, avec votre checklist personnalisée de vérification.",
+    "Trouvez la plateforme de facturation électronique adaptée à votre profil en 3 questions, avec checklist personnalisée de vérification.",
   keywords: [
     "comparateur facturation électronique",
     "quelle plateforme facturation électronique choisir",

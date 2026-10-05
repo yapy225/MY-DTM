@@ -5,7 +5,7 @@ import SimulateurFactureElectronique from "@/components/outils/SimulateurFacture
 export const metadata: Metadata = {
   title: "Simulateur facturation électronique : suis-je concerné et à quelle date ?",
   description:
-    "Répondez à 2 questions et découvrez si vous êtes concerné par la facturation électronique obligatoire et votre date exacte (réception 2026, émission 2026 ou 2027).",
+    "Découvrez si vous êtes concerné par la facturation électronique et votre date exacte (réception 2026, émission 2026 ou 2027) en 2 questions.",
   keywords: [
     "suis-je concerné facturation électronique",
     "facturation électronique à partir de quand",

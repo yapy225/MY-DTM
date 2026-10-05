@@ -54,7 +54,7 @@ const OFFERS = [
     icon: "\u2699\uFE0F",
     title: "Integration API & Automatisation",
     items: [
-      { name: "WhatsApp Business Automation", desc: "Config complete, templates, webhooks, reponses automatiques.", price: "A partir de 800\u00A0\u20AC" },
+      { name: "WhatsApp Business Automation", desc: "Config complete, templates, webhooks, r\u00E9ponses automatiques.", price: "A partir de 800\u00A0\u20AC" },
       { name: "Facebook & Instagram Leads", desc: "Formulaires Leads Ads, webhook temps reel, dashboard suivi.", price: "A partir de 500\u00A0\u20AC" },
       { name: "Paiement en Ligne Stripe", desc: "Checkout, webhooks, factures auto, dashboard revenus.", price: "A partir de 600\u00A0\u20AC" },
       { name: "Email Automatise", desc: "Emails transactionnels, sequences, templates responsive.", price: "A partir de 500\u00A0\u20AC" },

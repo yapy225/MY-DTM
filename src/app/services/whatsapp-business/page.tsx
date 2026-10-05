@@ -27,11 +27,11 @@ export const metadata: Metadata = {
 };
 
 const FEATURES = [
-  { icon: <Bot size={24} />, title: "Chatbot automatique", desc: "Reponses instantanees 24h/24 : FAQ, horaires, menu, tarifs. Vos clients n'attendent jamais." },
+  { icon: <Bot size={24} />, title: "Chatbot automatique", desc: "Réponses instantanées 24h/24 : FAQ, horaires, menu, tarifs. Vos clients n'attendent jamais." },
   { icon: <Zap size={24} />, title: "Webhooks temps reel", desc: "Lead Facebook/Instagram capture → message WhatsApp envoye dans la seconde. Zero lead perdu." },
   { icon: <MessageCircle size={24} />, title: "Templates pre-approuves", desc: "Messages de confirmation, rappel RDV, promo, relance. Valides par Meta, prets a l'emploi." },
   { icon: <Users size={24} />, title: "Multi-agents", desc: "Plusieurs collaborateurs repondent depuis le meme numero. Ideal pour les equipes." },
-  { icon: <BarChart3 size={24} />, title: "Analytics & reporting", desc: "Taux de lecture, reponse, conversion. Mesurez l'impact de chaque campagne WhatsApp." },
+  { icon: <BarChart3 size={24} />, title: "Analytics & reporting", desc: "Taux de lecture, réponse, conversion. Mesurez l'impact de chaque campagne WhatsApp." },
   { icon: <Clock size={24} />, title: "Installation 48h", desc: "Compte Business API, verification Meta, templates, webhooks. On s'occupe de tout." },
 ];
 
@@ -54,7 +54,7 @@ const PRICING = [
 
 const FAQ = [
   { q: "Quelle est la difference entre WhatsApp Business et WhatsApp Business API ?", a: "WhatsApp Business (gratuit) est une app pour petits commerces avec des fonctions limitees. WhatsApp Business API est la version professionnelle qui permet l'automatisation, les chatbots, les webhooks, le multi-agents et l'integration avec vos outils (CRM, site web, Facebook Leads). C'est cette version que nous configurons." },
-  { q: "Combien coute WhatsApp Business API par mois ?", a: "Meta facture par conversation : environ 0.05€ par conversation initiee par l'entreprise et 0.03€ par conversation initiee par le client. Les 1000 premieres conversations par mois sont gratuites. Pour la plupart des PME, le cout mensuel est entre 10€ et 50€." },
+  { q: "Combien coûte WhatsApp Business API par mois ?", a: "Meta facture par conversation : environ 0.05€ par conversation initiee par l'entreprise et 0.03€ par conversation initiee par le client. Les 1000 premieres conversations par mois sont gratuites. Pour la plupart des PME, le cout mensuel est entre 10€ et 50€." },
   { q: "Combien de temps pour installer WhatsApp Business API ?", a: "Notre equipe configure tout en 48h : creation du compte, verification Meta, templates, webhooks et tests. Vous n'avez rien a faire techniquement." },
   { q: "Puis-je garder mon numero actuel ?", a: "Oui, vous pouvez migrer votre numero existant vers WhatsApp Business API. Attention : le numero ne pourra plus etre utilise sur l'app WhatsApp classique ou WhatsApp Business app." },
   { q: "WhatsApp Business API fonctionne-t-il avec Facebook Leads ?", a: "Oui, c'est meme l'un des cas d'usage les plus puissants. Quand un prospect remplit un formulaire Facebook/Instagram Lead Ad, il recoit automatiquement un message WhatsApp dans la seconde. Le taux de conversion est 3 a 5x superieur a l'email." },
@@ -139,7 +139,7 @@ export default function WhatsAppBusinessPage() {
             <div className="grid grid-cols-2 gap-4">
               {[
                 { num: "98%", label: "Taux d'ouverture" },
-                { num: "45%", label: "Taux de reponse" },
+                { num: "45%", label: "Taux de réponse" },
                 { num: "10x", label: "Plus que l'email" },
                 { num: "48h", label: "Installation" },
               ].map((s) => (
