@@ -30,7 +30,7 @@ const INTEGRATIONS = [
 ];
 
 const FAQ = [
-  { q: "Combien coute une automatisation marketing ?", a: "Nos projets d'automatisation demarrent a partir de 500€ pour une integration simple (webhook Facebook Leads vers WhatsApp par exemple) et vont jusqu'a 3 000€ pour un workflow complet multi-outils. Le tarif depend du nombre d'outils a connecter et de la complexite des scenarios. On chiffre precisement apres un audit gratuit de vos besoins." },
+  { q: "Combien coûte une automatisation marketing ?", a: "Nos projets d'automatisation demarrent a partir de 500€ pour une integration simple (webhook Facebook Leads vers WhatsApp par exemple) et vont jusqu'a 3 000€ pour un workflow complet multi-outils. Le tarif depend du nombre d'outils a connecter et de la complexite des scenarios. On chiffre precisement apres un audit gratuit de vos besoins." },
   { q: "Combien de temps pour mettre en place une automatisation ?", a: "Une integration simple (un webhook, une sequence email) est operationnelle en quelques jours. Un workflow complet reliant Facebook Leads, WhatsApp, Stripe et vos emails demande generalement 1 a 3 semaines selon vos outils existants. On teste chaque etape avant la mise en production." },
   { q: "Quelle difference entre un webhook et une automatisation complete ?", a: "Un webhook est le declencheur technique : il capte un evenement en temps reel (un nouveau lead, un paiement Stripe). L'automatisation complete enchaine ensuite plusieurs actions : stockage en base, message WhatsApp, email de bienvenue, notification interne et relance J+3. Le webhook est la brique, le workflow est la chaine complete." },
   { q: "Pourquoi automatiser la capture de mes leads Facebook ?", a: "Un lead contacte dans la premiere minute a beaucoup plus de chances de convertir qu'une relance le lendemain. En connectant Facebook Leads a WhatsApp par webhook, chaque prospect recoit un message automatique dans la seconde, sans intervention de votre equipe. Vous ne perdez plus aucun lead par manque de reactivite." },
@@ -120,7 +120,7 @@ export default function AutomatisationPage() {
               "Message WhatsApp envoye automatiquement dans la seconde",
               "Email de bienvenue envoye avec brochure PDF",
               "Notification interne → votre equipe est alertee",
-              "Relance automatique J+3 si pas de reponse",
+              "Relance automatique J+3 si pas de réponse",
             ].map((step, i) => (
               <div key={i} className="flex items-start gap-4 rounded-xl border border-border bg-white p-5">
                 <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary text-sm font-bold text-white">{i + 1}</div>

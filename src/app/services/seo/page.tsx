@@ -42,7 +42,7 @@ const RESULTS = [
 ];
 
 const FAQ = [
-  { q: "Combien coute le referencement SEO a Paris ?", a: "Un audit SEO complet coute a partir de 500\u20AC. L'optimisation technique complete demarre a 1 500\u20AC. Le suivi mensuel avec creation de contenu commence a 800\u20AC/mois. Chaque projet est different, on adapte notre offre a vos besoins et votre budget." },
+  { q: "Combien coûte le référencement SEO à Paris ?", a: "Un audit SEO complet coûte à partir de 500\u20AC. L'optimisation technique complete demarre a 1 500\u20AC. Le suivi mensuel avec creation de contenu commence a 800\u20AC/mois. Chaque projet est different, on adapte notre offre a vos besoins et votre budget." },
   { q: "Combien de temps pour voir des resultats SEO ?", a: "Les corrections techniques (redirections, indexation) montrent des resultats en 2 a 4 semaines. Le contenu SEO prend 3 a 6 mois pour atteindre son plein potentiel. Nos redirections 301 ont recupere +8000 clics/mois en quelques semaines." },
   { q: "Quelle est la difference entre SEO technique et SEO contenu ?", a: "Le SEO technique optimise la structure de votre site (vitesse, indexation, schema, redirections). Le SEO contenu cree des articles et pages optimises pour des mots-cles cibles. Les deux sont complementaires : un bon contenu sur un site mal structure ne rankera pas." },
   { q: "Vous travaillez avec quels types de sites ?", a: "Tous types : sites vitrines, e-commerce, plateformes evenementielles, blogs, annuaires. Que votre site soit sur WordPress, Shopify, Next.js ou autre, on s'adapte a votre stack technique." },
