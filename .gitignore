@@ -56,3 +56,6 @@ next-env.d.ts
 /skills-preview.html
 .env*.local
 ga4-report.json
+
+# doc interne confidentiel (budget/marges) — ne jamais committer
+docs/salon-objectif-ia.md
