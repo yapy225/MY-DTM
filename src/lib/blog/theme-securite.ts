@@ -182,7 +182,7 @@ export const POSTS_SECURITE: Post[] = [
     slug: "securiser-wordpress-checklist",
     title: "Sécuriser WordPress : la checklist complète 2026",
     description:
-      "Pourquoi WordPress est autant ciblé, la checklist de sécurité indispensable (mises à jour, MFA, limitation des connexions, WAF, sauvegardes) et quand envisager une migration.",
+      "Sécuriser WordPress : la checklist indispensable (mises à jour, MFA, WAF, sauvegardes, limitation des connexions) et quand envisager une migration.",
     date: "2026-07-04",
     readingTime: "9 min",
     category: "Sécurité Web",
@@ -237,7 +237,7 @@ export const POSTS_SECURITE: Post[] = [
     slug: "rgpd-securite-donnees-obligations",
     title: "RGPD et sécurité des données : vos obligations en 2026",
     description:
-      "Les obligations de sécurité imposées par l'article 32 du RGPD, le rôle du chiffrement, la notification de violation sous 72 heures et les sanctions encourues.",
+      "Article 32 RGPD : obligations de sécurité, rôle du chiffrement, notification de violation sous 72 heures et sanctions encourues.",
     date: "2026-07-03",
     readingTime: "9 min",
     category: "Sécurité Web",

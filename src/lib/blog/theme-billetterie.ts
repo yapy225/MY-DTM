@@ -65,7 +65,7 @@ export const POSTS_BILLETTERIE: Post[] = [
     slug: "billetterie-comparatif-frais-plateformes",
     title: "Frais de billetterie : comparatif des plateformes (2026)",
     description:
-      "Comparatif des frais et commissions des plateformes de billetterie, qui paie quoi, impact sur la marge et quand une alternative sur-mesure devient rentable.",
+      "Frais et commissions des plateformes de billetterie : qui paie quoi, impact sur la marge et quand une alternative sur mesure est rentable.",
     date: "2026-07-18",
     readingTime: "9 min",
     category: "Événementiel",

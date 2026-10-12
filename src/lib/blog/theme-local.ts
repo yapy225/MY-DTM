@@ -5,7 +5,7 @@ export const POSTS_LOCAL: Post[] = [
     slug: "referencement-google-maps",
     title: "Référencement Google Maps : comment être bien placé dans le pack local",
     description:
-      "Les vrais facteurs de classement sur Google Maps (pertinence, distance, notoriété), comment définir sa zone de chalandise et sortir dans le pack local des trois établissements.",
+      "Classement Google Maps : pertinence, distance, notoriété. Comment définir sa zone de chalandise et sortir dans le pack local des trois.",
     date: "2026-05-18",
     readingTime: "9 min",
     category: "SEO local",
@@ -57,7 +57,7 @@ export const POSTS_LOCAL: Post[] = [
     slug: "obtenir-avis-google-clients",
     title: "Obtenir des avis Google : méthode pour en collecter sans les acheter",
     description:
-      "Comment demander des avis clients au bon moment, créer un lien direct de dépôt, gérer les avis négatifs et rester conforme aux règles Google sans jamais acheter d'avis.",
+      "Avis clients Google : les demander au bon moment, créer un lien de dépôt, gérer les négatifs et rester conforme sans jamais en acheter.",
     date: "2026-05-17",
     readingTime: "8 min",
     category: "SEO local",
@@ -113,7 +113,7 @@ export const POSTS_LOCAL: Post[] = [
     slug: "referencement-local-par-ville",
     title: "Référencement local par ville : créer des pages locales sans dupliquer",
     description:
-      "Comment construire des pages locales par ville qui rankent : contenu réellement local, éviter le doorway et le duplicate content, mailler et structurer un SEO géolocalisé.",
+      "Pages locales qui rankent : contenu vraiment local, éviter le doorway et le duplicate content, mailler et structurer le SEO géolocalisé.",
     date: "2026-05-16",
     readingTime: "9 min",
     category: "SEO local",
@@ -167,7 +167,7 @@ export const POSTS_LOCAL: Post[] = [
     slug: "citations-locales-annuaires-seo",
     title: "Citations locales et annuaires : construire un NAP cohérent",
     description:
-      "Ce que sont les citations locales, pourquoi la cohérence NAP compte pour le SEO local, quels annuaires prioriser, comment auditer et nettoyer ses mentions dispersées.",
+      "Citations locales et cohérence NAP : quels annuaires prioriser, comment auditer et nettoyer ses mentions dispersées pour le SEO local.",
     date: "2026-05-15",
     readingTime: "8 min",
     category: "SEO local",
@@ -227,7 +227,7 @@ export const POSTS_LOCAL: Post[] = [
     slug: "seo-local-multi-etablissements",
     title: "SEO local multi-établissements : gérer un réseau de points de vente",
     description:
-      "Comment référencer plusieurs points de vente : une fiche Google par établissement, pages locales dédiées, gestion en masse, cohérence de marque et pièges des réseaux.",
+      "Référencer plusieurs points de vente : fiches Google par établissement, pages locales, gestion en masse et cohérence de marque.",
     date: "2026-05-14",
     readingTime: "9 min",
     category: "SEO local",
@@ -287,7 +287,7 @@ export const POSTS_LOCAL: Post[] = [
     slug: "google-business-profile-photos-posts",
     title: "Photos et posts Google Business Profile : animer sa fiche pour convertir",
     description:
-      "Quelles photos ajouter à sa fiche Google, à quelle fréquence, comment utiliser les posts Google Business et pourquoi une fiche vivante convertit et remonte dans le pack local.",
+      "Photos et posts Google Business : quoi ajouter, à quelle fréquence et pourquoi une fiche vivante convertit et remonte dans le pack local.",
     date: "2026-05-13",
     readingTime: "8 min",
     category: "SEO local",

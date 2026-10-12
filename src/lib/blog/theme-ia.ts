@@ -73,7 +73,7 @@ export const POSTS_IA: Post[] = [
     slug: "ia-generative-contenu-entreprise",
     title: "IA générative pour produire du contenu : usages et limites (2026)",
     description:
-      "Ce que l'IA générative fait vraiment pour le contenu d'entreprise, où elle fait gagner du temps, ses limites de qualité et de conformité, et comment bien l'utiliser.",
+      "IA générative et contenu d'entreprise : où elle fait gagner du temps, ses limites de qualité et de conformité, et comment bien l'utiliser.",
     date: "2026-06-10",
     readingTime: "8 min",
     category: "IA & Automatisation",

@@ -60,7 +60,7 @@ export const POSTS_MARKETING: Post[] = [
     slug: "cout-publicite-facebook-instagram",
     title: "Combien coûte la publicité Facebook et Instagram en 2026 ?",
     description:
-      "Comment se forme le coût des publicités Facebook et Instagram : logique d'enchère, CPM, CPC, CPL, budget de départ, facteurs de prix et fourchettes réalistes.",
+      "Coût des publicités Facebook et Instagram : logique d'enchère, CPM, CPC, CPL, budget de départ et fourchettes réalistes.",
     date: "2026-07-30",
     readingTime: "8 min",
     category: "Marketing digital",
@@ -115,7 +115,7 @@ export const POSTS_MARKETING: Post[] = [
     slug: "google-ads-vs-facebook-ads",
     title: "Google Ads ou Facebook Ads : que choisir en 2026 ?",
     description:
-      "Google Ads capte l'intention, Meta Ads crée la demande par le ciblage. Comprendre la différence, choisir selon l'objectif et combiner les deux régies intelligemment.",
+      "Google Ads vs Meta Ads : comprendre la différence, choisir selon l'objectif et combiner les deux régies publicitaires intelligemment.",
     date: "2026-07-29",
     readingTime: "8 min",
     category: "Marketing digital",
@@ -164,7 +164,7 @@ export const POSTS_MARKETING: Post[] = [
     slug: "tunnel-de-conversion-optimisation",
     title: "Optimiser son tunnel de conversion : le guide (2026)",
     description:
-      "Comprendre les étapes du tunnel de conversion, identifier les points de friction et améliorer son taux de conversion par la vitesse, la preuve sociale et des CTA clairs.",
+      "Améliorer son taux de conversion : identifier les points de friction, agir sur la vitesse, la preuve sociale et des CTA clairs.",
     date: "2026-07-28",
     readingTime: "8 min",
     category: "Marketing digital",
@@ -213,7 +213,7 @@ export const POSTS_MARKETING: Post[] = [
     slug: "email-marketing-automation-guide",
     title: "Email marketing et automation : le guide complet (2026)",
     description:
-      "Collecter des adresses en opt-in, construire des séquences automatisées, soigner la délivrabilité et rester conforme au RGPD : le guide de l'email marketing qui convertit.",
+      "Email marketing qui convertit : opt-in, séquences automatisées, délivrabilité et conformité RGPD. Le guide complet pour bien démarrer.",
     date: "2026-07-27",
     readingTime: "9 min",
     category: "Marketing digital",
