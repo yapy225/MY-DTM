@@ -106,7 +106,7 @@ export const POSTS_CREATION_WEB: Post[] = [
     slug: "rediger-cahier-des-charges-site-web",
     title: "Comment rédiger le cahier des charges de son site web",
     description:
-      "Pourquoi et comment rédiger un cahier des charges de site web : objectifs, arborescence, fonctionnalités, contenus, budget et délais, avec un modèle de trame.",
+      "Rédiger un cahier des charges de site web : objectifs, arborescence, fonctionnalités, contenus, budget et délais. Un modèle de trame.",
     date: "2026-06-27",
     readingTime: "9 min",
     category: "Création & Web",

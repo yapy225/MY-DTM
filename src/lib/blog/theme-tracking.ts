@@ -8,7 +8,7 @@ export const POSTS_TRACKING: Post[] = [
     slug: "installer-google-analytics-4-rgpd",
     title: "Installer Google Analytics 4 en conformite RGPD (guide 2026)",
     description:
-      "Comment installer GA4 proprement et conforme a la CNIL : consentement prealable, anonymisation, parametrage, et alternatives quand GA4 pose probleme.",
+      "Comment installer GA4 proprement et conforme à la CNIL : consentement préalable, anonymisation, paramétrage et alternatives quand GA4 pose problème.",
     date: "2026-07-13",
     readingTime: "9 min",
     category: "Tracking & conformité",
@@ -71,7 +71,7 @@ export const POSTS_TRACKING: Post[] = [
     slug: "bandeau-cookies-conforme-cnil",
     title: "Bandeau cookies conforme CNIL : les regles a respecter en 2026",
     description:
-      "Refuser aussi simple qu'accepter, pas de depot avant consentement, CMP bien configuree : les regles CNIL d'un bandeau cookies conforme et les erreurs sanctionnees.",
+      "Bandeau cookies conforme CNIL : refus aussi simple qu'accepter, pas de dépôt avant consentement, CMP bien configurée et les erreurs sanctionnées.",
     date: "2026-07-12",
     readingTime: "8 min",
     category: "Tracking & conformité",
@@ -134,7 +134,7 @@ export const POSTS_TRACKING: Post[] = [
     slug: "server-side-tagging-gtm-guide",
     title: "Server-side tagging avec GTM : pourquoi, quand et combien ca coute",
     description:
-      "Le tagging cote serveur avec GTM server améliore la fiabilité de la mesure et la conformité. Pourquoi l'adopter, quand il devient pertinent, et ce qu'il coute vraiment.",
+      "Le tagging côté serveur avec GTM améliore la fiabilité et la conformité. Pourquoi l'adopter, quand il devient pertinent et ce qu'il coûte.",
     date: "2026-07-11",
     readingTime: "9 min",
     category: "Tracking & conformité",
@@ -197,7 +197,7 @@ export const POSTS_TRACKING: Post[] = [
     slug: "mesurer-conversions-sans-cookies-tiers",
     title: "Mesurer ses conversions sans cookies tiers : preparer l'apres-cookie",
     description:
-      "Les cookies tiers disparaissent. Comment continuer a mesurer ses conversions grace au first-party, au server-side et a la modélisation, et preparer l'avenir sereinement.",
+      "Cookies tiers en déclin : mesurer ses conversions grâce au first-party, au server-side et à la modélisation pour préparer l'avenir.",
     date: "2026-07-10",
     readingTime: "8 min",
     category: "Tracking & conformité",
@@ -258,7 +258,7 @@ export const POSTS_TRACKING: Post[] = [
     slug: "mise-en-conformite-rgpd-site-web",
     title: "Mise en conformite RGPD d'un site web : la checklist complete 2026",
     description:
-      "Registre, mentions legales, cookies, sécurité, sous-traitants : la checklist RGPD concrète pour mettre un site web en conformité et eviter les sanctions de la CNIL.",
+      "Registre, mentions légales, cookies, sécurité : la checklist RGPD concrète pour mettre un site en conformité et éviter les sanctions CNIL.",
     date: "2026-07-09",
     readingTime: "9 min",
     category: "Tracking & conformité",
@@ -330,7 +330,7 @@ export const POSTS_TRACKING: Post[] = [
     slug: "tracking-e-commerce-roas-guide",
     title: "Tracking e-commerce : mesurer un ROAS fiable en 2026",
     description:
-      "Tracker proprement les achats en ligne pour obtenir un ROAS fiable : purchase events, CAPI, déduplication et attribution. Le guide du tracking e-commerce qui pilote vraiment.",
+      "Tracking e-commerce fiable : purchase events, CAPI, déduplication et attribution pour un ROAS juste. Le guide complet du tracking d'achat.",
     date: "2026-07-08",
     readingTime: "9 min",
     category: "Tracking & conformité",

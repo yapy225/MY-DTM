@@ -9,7 +9,7 @@ export const POSTS_FACTURATION: Post[] = [
     slug: "facturation-electronique-association",
     title: "Facturation électronique et associations : qui est concerné ? (2026)",
     description:
-      "Les associations sont-elles concernées par la facturation électronique obligatoire ? Le point clair selon que votre association est assujettie ou non à la TVA, avec les dates.",
+      "Associations et facturation électronique : êtes-vous concerné selon votre assujettissement à la TVA ? Les dates et le point clair.",
     date: "2026-09-02",
     readingTime: "7 min",
     category: "Facturation électronique",
@@ -61,7 +61,7 @@ export const POSTS_FACTURATION: Post[] = [
     slug: "facturation-electronique-calendrier-dates",
     title: "Facturation électronique : le calendrier des dates (2026-2027)",
     description:
-      "Toutes les dates de la facturation électronique obligatoire : réception au 1er septembre 2026, émission en 2026 puis 2027 selon la taille. Le calendrier clair, à jour.",
+      "Dates de la facturation électronique : réception au 1er septembre 2026, émission en 2026 (grandes) et 2027 (PME/TPE). Calendrier à jour.",
     date: "2026-09-02",
     readingTime: "6 min",
     category: "Facturation électronique",
@@ -108,7 +108,7 @@ export const POSTS_FACTURATION: Post[] = [
     slug: "facturation-electronique-sci-lmnp",
     title: "Facturation électronique : SCI et LMNP sont-ils concernés ? (2026)",
     description:
-      "SCI, LMNP, loueur en meublé : êtes-vous concerné par la facturation électronique obligatoire ? La règle dépend de la TVA. Le point clair selon votre situation.",
+      "SCI, LMNP, loueur en meublé : êtes-vous concerné par la facturation électronique ? La règle dépend de la TVA. Le point clair.",
     date: "2026-09-02",
     readingTime: "7 min",
     category: "Facturation électronique",
@@ -160,7 +160,7 @@ export const POSTS_FACTURATION: Post[] = [
     slug: "facturation-electronique-auto-entrepreneur",
     title: "Facturation électronique et auto-entrepreneurs : concerné même sans TVA (2026)",
     description:
-      "Auto-entrepreneur en franchise de TVA : êtes-vous concerné par la facturation électronique obligatoire ? Oui — voici pourquoi, à quelle date, et ce qu'il faut faire.",
+      "Auto-entrepreneur en franchise de TVA : concerné par la facturation électronique ? Oui — voici pourquoi, à quelle date et ce qu'il faut faire.",
     date: "2026-09-02",
     readingTime: "7 min",
     category: "Facturation électronique",
@@ -209,7 +209,7 @@ export const POSTS_FACTURATION: Post[] = [
     slug: "facturation-electronique-gratuite-logiciel",
     title: "Facturation électronique gratuite : quelles solutions en 2026 ?",
     description:
-      "Peut-on faire sa facturation électronique gratuitement ? Ce qui est réellement gratuit, le mythe du portail public, et les pièges des offres « 0 € » à connaître.",
+      "Facturation électronique gratuite : ce qui est vraiment gratuit, le mythe du portail public et les pièges des offres « 0 € ».",
     date: "2026-09-02",
     readingTime: "6 min",
     category: "Facturation électronique",
@@ -258,7 +258,7 @@ export const POSTS_FACTURATION: Post[] = [
     slug: "plateforme-agreee-facturation-electronique",
     title: "Plateforme Agréée (PA) : comment la choisir pour vos factures électroniques",
     description:
-      "Qu'est-ce qu'une Plateforme Agréée (ex-PDP) ? À quoi sert le PPF ? Comment choisir la bonne plateforme de facturation électronique selon votre activité et vos outils.",
+      "Plateforme Agréée (ex-PDP) et PPF : comment choisir la bonne plateforme de facturation électronique selon votre activité et vos outils.",
     date: "2026-09-02",
     readingTime: "7 min",
     category: "Facturation électronique",
@@ -309,7 +309,7 @@ export const POSTS_FACTURATION: Post[] = [
     slug: "facturation-electronique-2026",
     title: "Facturation électronique 2026 : ce qui change au 1er septembre",
     description:
-      "Facturation électronique 2026 : ce qui devient obligatoire au 1er septembre (réception pour tous, émission des grandes entreprises), et ce qui attend encore 2027.",
+      "Facturation électronique 2026 : réception obligatoire pour tous au 1er septembre, émission des grandes entreprises. Ce qui attend 2027.",
     date: "2026-09-02",
     readingTime: "6 min",
     category: "Facturation électronique",
@@ -357,7 +357,7 @@ export const POSTS_FACTURATION: Post[] = [
     slug: "comparatif-plateformes-facturation-electronique",
     title: "Comparatif des plateformes de facturation électronique (2026)",
     description:
-      "Pennylane, Sage, Odoo, Qonto, Indy, Dolibarr… Comment comparer les plateformes de facturation électronique et choisir la bonne selon votre profil, sans se tromper.",
+      "Pennylane, Sage, Odoo, Qonto, Indy… Comment comparer les plateformes de facturation électronique et choisir la bonne selon votre profil.",
     date: "2026-09-02",
     readingTime: "8 min",
     category: "Facturation électronique",
@@ -410,7 +410,7 @@ export const POSTS_FACTURATION: Post[] = [
     slug: "facturation-electronique-tpe-pme",
     title: "Facturation électronique : ce que doivent faire les TPE et PME (2026-2027)",
     description:
-      "TPE et PME face à la facturation électronique : dates, réception dès 2026, émission en 2027, choix de plateforme et étapes concrètes pour se mettre en conformité.",
+      "TPE et PME : réception dès 2026, émission en 2027. Choix de plateforme et étapes pour se mettre en conformité.",
     date: "2026-09-02",
     readingTime: "6 min",
     category: "Facturation électronique",
@@ -457,7 +457,7 @@ export const POSTS_FACTURATION: Post[] = [
     slug: "factur-x-ubl-formats-facture-electronique",
     title: "Factur-X, UBL, CII : comprendre les formats de facture électronique",
     description:
-      "Factur-X, UBL, CII : quels sont les formats structurés de la facture électronique, pourquoi un simple PDF ne suffit plus, et lequel choisir. Explications claires.",
+      "Factur-X, UBL, CII : les formats structurés de la facture électronique expliqués. Pourquoi un PDF ne suffit plus et lequel choisir.",
     date: "2026-09-02",
     readingTime: "6 min",
     category: "Facturation électronique",
@@ -499,7 +499,7 @@ export const POSTS_FACTURATION: Post[] = [
     slug: "e-reporting-facturation-electronique",
     title: "E-reporting : ce que c'est et qui est concerné (2026-2027)",
     description:
-      "L'e-reporting complète la facturation électronique : transmission des données de vos ventes aux particuliers et à l'international. Ce que c'est, qui est concerné, à quelles dates.",
+      "L'e-reporting complète la facturation électronique : données sur ventes aux particuliers et à l'international. Ce que c'est et qui est concerné.",
     date: "2026-09-02",
     readingTime: "6 min",
     category: "Facturation électronique",
@@ -542,7 +542,7 @@ export const POSTS_FACTURATION: Post[] = [
     slug: "nouvelles-mentions-obligatoires-facture-electronique",
     title: "Facture électronique : les nouvelles mentions obligatoires (SIREN…)",
     description:
-      "La facturation électronique ajoute de nouvelles mentions obligatoires sur les factures : SIREN du client, type d'opération, adresse de livraison, option de paiement de la TVA. Le point complet.",
+      "Nouvelles mentions obligatoires de la facturation électronique : SIREN client, type d'opération, adresse de livraison, option TVA.",
     date: "2026-09-02",
     readingTime: "6 min",
     category: "Facturation électronique",
@@ -584,7 +584,7 @@ export const POSTS_FACTURATION: Post[] = [
     slug: "facturation-electronique-professions-liberales",
     title: "Facturation électronique et professions libérales de santé (2026)",
     description:
-      "Médecin, infirmière, kiné, ostéo, orthophoniste : êtes-vous concerné par la facturation électronique ? La plupart des soins sont exonérés de TVA — voici ce que ça change.",
+      "Professions de santé et facturation électronique : la plupart des soins sont exonérés de TVA. Ce que ça change pour médecins, kinés, ostéos.",
     date: "2026-09-02",
     readingTime: "7 min",
     category: "Facturation électronique",
@@ -627,7 +627,7 @@ export const POSTS_FACTURATION: Post[] = [
     slug: "facturation-electronique-avocats",
     title: "Facturation électronique pour les avocats : ce qu'il faut savoir (2026)",
     description:
-      "Les avocats sont assujettis à la TVA : la facturation électronique s'applique à leur cabinet. Dates, obligations, plateformes et spécificités du barreau. Le point complet.",
+      "Avocats et facturation électronique : assujettis à la TVA, elle s'applique au cabinet. Dates, obligations et spécificités du barreau.",
     date: "2026-09-02",
     readingTime: "7 min",
     category: "Facturation électronique",
@@ -675,7 +675,7 @@ export const POSTS_FACTURATION: Post[] = [
     slug: "chorus-pro-facturation-electronique",
     title: "Chorus Pro et facturation électronique : quelle différence ? (2026)",
     description:
-      "Chorus Pro (factures au secteur public) existe déjà. En quoi diffère-t-il de la nouvelle facturation électronique B2B obligatoire en 2026-2027 ? Explications.",
+      "Chorus Pro (B2G, déjà obligatoire) vs facturation électronique B2B 2026-2027 : en quoi diffèrent-ils et ce que ça change.",
     date: "2026-09-02",
     readingTime: "6 min",
     category: "Facturation électronique",
@@ -717,7 +717,7 @@ export const POSTS_FACTURATION: Post[] = [
     slug: "facturation-electronique-sanctions-amende",
     title: "Facturation électronique : quelles sanctions en cas de non-conformité ?",
     description:
-      "Amendes, factures rejetées, retards de paiement : ce que vous risquez à ne pas respecter la facturation électronique obligatoire, et comment éviter les sanctions.",
+      "Facturation électronique : amendes, factures rejetées, retards de paiement. Ce que vous risquez et comment éviter les sanctions.",
     date: "2026-09-02",
     readingTime: "6 min",
     category: "Facturation électronique",

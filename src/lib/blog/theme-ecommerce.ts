@@ -62,7 +62,7 @@ export const POSTS_ECOMMERCE: Post[] = [
     slug: "shopify-vs-site-sur-mesure",
     title: "Shopify ou site sur mesure : quelle solution pour votre e-commerce ?",
     description:
-      "Comparatif honnête entre Shopify et un site e-commerce sur mesure : coûts réels, liberté, limites et seuils à partir desquels le sur-mesure devient rentable.",
+      "Shopify ou sur mesure : coûts réels, liberté, limites et seuils à partir desquels le sur-mesure devient rentable pour votre boutique.",
     date: "2026-05-29",
     readingTime: "8 min",
     category: "E-commerce",
@@ -112,7 +112,7 @@ export const POSTS_ECOMMERCE: Post[] = [
     slug: "paiement-en-ligne-stripe-paypal",
     title: "Paiement en ligne : Stripe, PayPal, comment bien choisir ?",
     description:
-      "Comparatif des solutions de paiement e-commerce : Stripe, PayPal et les wallets, leurs frais réels, leur impact sur la conversion et comment les intégrer proprement.",
+      "Stripe, PayPal ou wallets : frais réels, impact sur la conversion et comment intégrer la solution de paiement idéale pour votre boutique.",
     date: "2026-05-28",
     readingTime: "8 min",
     category: "E-commerce",
@@ -162,7 +162,7 @@ export const POSTS_ECOMMERCE: Post[] = [
     slug: "reduire-abandon-panier",
     title: "Réduire l'abandon de panier : les leviers qui marchent vraiment",
     description:
-      "Pourquoi les paniers sont abandonnés et comment y remédier : optimiser le checkout, lever les freins au paiement et relancer efficacement les paniers abandonnés.",
+      "Réduire l'abandon de panier : optimiser le checkout, lever les freins au paiement et relancer efficacement les acheteurs indécis.",
     date: "2026-05-27",
     readingTime: "8 min",
     category: "E-commerce",
@@ -215,7 +215,7 @@ export const POSTS_ECOMMERCE: Post[] = [
     slug: "livraison-logistique-e-commerce",
     title: "Livraison et logistique e-commerce : bien gérer ses expéditions",
     description:
-      "Options de livraison, transporteurs, frais de port et gestion des expéditions : comment structurer la logistique de votre boutique en ligne sans exploser les coûts.",
+      "Livraison e-commerce : transporteurs, frais de port et gestion des expéditions pour structurer votre logistique sans exploser les coûts.",
     date: "2026-05-26",
     readingTime: "8 min",
     category: "E-commerce",
@@ -265,7 +265,7 @@ export const POSTS_ECOMMERCE: Post[] = [
     slug: "click-and-collect-mise-en-place",
     title: "Click and collect : comment le mettre en place efficacement",
     description:
-      "Mettre en place le click and collect pour son commerce : fonctionnement, avantages, étapes techniques et bonnes pratiques pour réussir le retrait en magasin.",
+      "Click and collect : fonctionnement, avantages, étapes techniques et bonnes pratiques pour réussir le retrait en magasin.",
     date: "2026-05-25",
     readingTime: "8 min",
     category: "E-commerce",

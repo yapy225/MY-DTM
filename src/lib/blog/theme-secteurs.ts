@@ -5,7 +5,7 @@ export const POSTS_SECTEURS: Post[] = [
     slug: "creation-site-web-restaurant",
     title: "Création d'un site web pour restaurant : le guide complet (2026)",
     description:
-      "Menu en ligne, réservation, click and collect, avis, SEO local : ce que doit contenir un vrai site de restaurant, les fonctionnalités qui rapportent et le budget à prévoir.",
+      "Site de restaurant : menu en ligne, réservation, avis, SEO local. Les fonctionnalités qui rapportent et le budget à prévoir.",
     date: "2026-06-17",
     readingTime: "9 min",
     category: "Création & Web",
@@ -60,7 +60,7 @@ export const POSTS_SECTEURS: Post[] = [
     slug: "site-internet-association",
     title: "Créer un site internet pour une association loi 1901 (2026)",
     description:
-      "Site associatif : présenter la mission, collecter des dons en ligne, gérer les adhésions et les bénévoles, communiquer sans budget. Fonctionnalités clés et budget réaliste.",
+      "Site associatif : présenter la mission, collecter des dons, gérer les adhésions et les bénévoles. Fonctionnalités clés et budget réaliste.",
     date: "2026-06-16",
     readingTime: "8 min",
     category: "Création & Web",
@@ -113,7 +113,7 @@ export const POSTS_SECTEURS: Post[] = [
     slug: "site-web-artisan-btp",
     title: "Site web pour artisan et BTP : attirer des chantiers en 2026",
     description:
-      "Site vitrine artisan, portfolio de réalisations, demande de devis, SEO local, avis clients : comment un artisan du bâtiment transforme son site en machine à générer des chantiers.",
+      "Site artisan : portfolio, demande de devis, SEO local et avis clients. Comment générer des chantiers grâce à un site vitrine efficace.",
     date: "2026-06-15",
     readingTime: "8 min",
     category: "Création & Web",
@@ -166,7 +166,7 @@ export const POSTS_SECTEURS: Post[] = [
     slug: "site-web-coach-therapeute",
     title: "Site web pour coach et thérapeute : remplir son agenda (2026)",
     description:
-      "Prise de rendez-vous en ligne, présentation de la méthode, tarifs, avis, rappels automatiques : le site qui transforme les praticiens du bien-être en agenda plein.",
+      "Site praticien bien-être : prise de rendez-vous en ligne, méthode, tarifs, avis et rappels automatiques pour un agenda toujours plein.",
     date: "2026-06-14",
     readingTime: "8 min",
     category: "Création & Web",
@@ -219,7 +219,7 @@ export const POSTS_SECTEURS: Post[] = [
     slug: "site-web-agence-immobiliere",
     title: "Site web pour agence immobilière : générer des mandats (2026)",
     description:
-      "Portail d'annonces, recherche par critères, estimation en ligne, captation de vendeurs, SEO immobilier : le site qui apporte des acquéreurs et surtout des mandats.",
+      "Site immobilier : annonces, recherche par critères, estimation en ligne, SEO immobilier. Apporter des acquéreurs et des mandats.",
     date: "2026-06-13",
     readingTime: "9 min",
     category: "Création & Web",
@@ -272,7 +272,7 @@ export const POSTS_SECTEURS: Post[] = [
     slug: "site-web-profession-liberale",
     title: "Site web pour profession libérale : avocat, expert-comptable, médecin",
     description:
-      "Le site qui installe la crédibilité d'un professionnel libéral : présentation des compétences, prise de contact, conformité déontologique, prise de rendez-vous et budget réaliste.",
+      "Site professionnel libéral : compétences, conformité déontologique, prise de contact et rendez-vous en ligne. Budget réaliste.",
     date: "2026-06-12",
     readingTime: "8 min",
     category: "Création & Web",

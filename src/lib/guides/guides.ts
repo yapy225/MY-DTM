@@ -731,7 +731,7 @@ export const GUIDES: Guide[] = [
     slug: "facturation-electronique-obligatoire",
     title: "Facturation électronique obligatoire : le guide complet (2026-2027)",
     description:
-      "Facturation électronique obligatoire en France : ce que c'est, qui est concerné, les dates (réception 2026, émission 2026-2027), les plateformes agréées et les formats. Le guide clair pour se mettre en conformité.",
+      "Facturation électronique obligatoire : dates, qui est concerné, plateformes agréées et formats structurés. Le guide pour se mettre en conformité.",
     date: "2026-09-02",
     readingTime: "10 min",
     category: "Facturation électronique",
@@ -947,7 +947,7 @@ export const GUIDES: Guide[] = [
     slug: "server-side-tracking-gtm",
     title: "Server-Side Tracking avec GTM : le guide complet (2026)",
     description:
-      "Implémenter le server-side tracking avec Google Tag Manager Server-Side : architecture, avantages RGPD, déploiement sur Cloud Run et connexion GA4 et Conversions API Meta.",
+      "Server-side tracking avec GTM Server-Side : architecture, avantages RGPD, déploiement sur Cloud Run et connexion GA4 et Conversions API Meta.",
     date: "2026-09-03",
     readingTime: "10 min",
     category: "Tracking & RGPD",

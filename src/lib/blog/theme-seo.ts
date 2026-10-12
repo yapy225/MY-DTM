@@ -8,7 +8,7 @@ export const POSTS_SEO: Post[] = [
     slug: "comment-faire-audit-seo",
     title: "Comment faire un audit SEO complet (méthode et checklist 2026)",
     description:
-      "Les étapes concrètes d'un audit SEO : technique, on-page, contenu, netlinking et Search Console. Les outils à utiliser et comment prioriser les corrections.",
+      "Audit SEO : étapes concrètes (technique, on-page, contenu, netlinking, Search Console), outils à utiliser et comment prioriser.",
     date: "2026-06-23",
     readingTime: "9 min",
     category: "SEO & Web",
@@ -66,7 +66,7 @@ export const POSTS_SEO: Post[] = [
     slug: "seo-local-attirer-clients-proximite",
     title: "SEO local : comment attirer des clients près de chez vous",
     description:
-      "Les leviers du référencement local pour être visible sur Google Maps et dans le pack local : fiche Google Business Profile, NAP, avis, pages locales et citations.",
+      "Référencement local : être visible sur Google Maps et dans le pack local. Fiche Google Business Profile, NAP, avis et pages locales.",
     date: "2026-06-22",
     readingTime: "8 min",
     category: "SEO & Web",
@@ -120,7 +120,7 @@ export const POSTS_SEO: Post[] = [
     slug: "netlinking-backlinks-strategie",
     title: "Netlinking et backlinks : bâtir une stratégie de liens qui tient",
     description:
-      "Pourquoi les backlinks font l'autorité d'un site, comment obtenir des liens propres (contenu, relations presse, partenaires, annuaires) et éviter les liens toxiques.",
+      "Backlinks et autorité d'un site : obtenir des liens propres (contenu, presse, partenaires) et éviter les liens toxiques. La méthode.",
     date: "2026-06-21",
     readingTime: "8 min",
     category: "SEO & Web",
@@ -176,7 +176,7 @@ export const POSTS_SEO: Post[] = [
     slug: "rediger-article-optimise-seo",
     title: "Comment rédiger un article optimisé SEO (sans écrire pour les robots)",
     description:
-      "Intention de recherche, structure Hn, mots-clés et sémantique, maillage interne, FAQ, longueur et EEAT : la méthode pour un article qui plaît à Google et aux lecteurs.",
+      "Rédiger un article qui ranke : intention, structure Hn, mots-clés, maillage interne, FAQ, longueur et E-E-A-T. La méthode complète.",
     date: "2026-06-20",
     readingTime: "8 min",
     category: "SEO & Web",
@@ -226,7 +226,7 @@ export const POSTS_SEO: Post[] = [
     slug: "seo-e-commerce-fiches-produits",
     title: "SEO e-commerce : optimiser fiches produits et catégories",
     description:
-      "Architecture des catégories, fiches produit uniques, Product schema, gestion des facettes et de la duplication, images et avis : le SEO d'une boutique en ligne.",
+      "SEO e-commerce : catégories, fiches produit, Product schema, gestion des facettes et de la duplication, images et avis client.",
     date: "2026-06-19",
     readingTime: "9 min",
     category: "SEO & Web",
@@ -288,7 +288,7 @@ export const POSTS_SEO: Post[] = [
     slug: "donnees-structurees-schema-org-seo",
     title: "Données structurées et Schema.org : le guide pour les rich results",
     description:
-      "Ce que sont les données structurées, les types utiles (FAQ, Product, Article, Breadcrumb, LocalBusiness), les rich results qu'elles débloquent et comment les tester.",
+      "Données structurées : types utiles (FAQ, Product, Article, Breadcrumb, LocalBusiness), rich results débloqués et comment les tester.",
     date: "2026-06-18",
     readingTime: "8 min",
     category: "SEO & Web",

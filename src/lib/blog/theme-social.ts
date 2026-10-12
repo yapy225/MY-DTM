@@ -5,7 +5,7 @@ export const POSTS_SOCIAL: Post[] = [
     slug: "strategie-instagram-entreprise",
     title: "Stratégie Instagram pour entreprise : le guide complet (2026)",
     description:
-      "Construire une stratégie Instagram qui fait vraiment vendre : positionnement, formats, cadence, Reels, boutique et mesure des résultats pour une entreprise.",
+      "Stratégie Instagram pour vendre : positionnement, formats, cadence, Reels, boutique et mesure des résultats pour une entreprise.",
     date: "2026-06-05",
     readingTime: "9 min",
     category: "Réseaux sociaux",
@@ -129,7 +129,7 @@ export const POSTS_SOCIAL: Post[] = [
     slug: "calendrier-editorial-reseaux-sociaux",
     title: "Calendrier éditorial des réseaux sociaux : la méthode complète",
     description:
-      "Construire un calendrier éditorial social media qui tient dans le temps : piliers de contenu, cadence, planification par lots et outils pour ne plus improviser.",
+      "Calendrier éditorial social media : piliers de contenu, cadence, planification par lots et outils pour ne plus improviser.",
     date: "2026-06-03",
     readingTime: "8 min",
     category: "Réseaux sociaux",
@@ -245,7 +245,7 @@ export const POSTS_SOCIAL: Post[] = [
     slug: "automatiser-publication-reseaux-sociaux",
     title: "Automatiser la publication sur les réseaux sociaux : le guide",
     description:
-      "Programmer et automatiser ses publications sur les réseaux sociaux : ce qu'on peut automatiser sans risque, ce qu'il faut garder humain, outils et bonnes pratiques.",
+      "Automatiser ses publications sur les réseaux sociaux : ce qu'on peut déléguer sans risque, ce qu'il faut garder humain et les outils.",
     date: "2026-06-01",
     readingTime: "8 min",
     category: "Réseaux sociaux",
