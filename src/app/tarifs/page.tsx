@@ -3,9 +3,9 @@ import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Tarifs — Site Web, SEO, WhatsApp, Marketing, Tracking & Securite",
+  title: "Tarifs — Site Web, SEO, WhatsApp, Marketing, Tracking & Sécurité",
   description:
-    "Tarifs transparents : creation site web a partir de 1 500\u20AC, audit SEO 500\u20AC, WhatsApp Business 800\u20AC, marketing multi-canal 1 000\u20AC/mois. Devis gratuit.",
+    "Tarifs transparents : cr\u00E9ation site web \u00E0 partir de 1 500\u20AC, audit SEO 500\u20AC, WhatsApp Business 800\u20AC, marketing multi-canal 1 000\u20AC/mois. Devis gratuit.",
   keywords: [
     "tarif agence web Paris",
     "prix creation site web",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://my-dtm.fr/tarifs" },
   openGraph: {
     title: "Tarifs — My DTM",
-    description: "Tarifs transparents : site web a partir de 1 500€, SEO 500€, WhatsApp Business 800€. Devis gratuit.",
+    description: "Tarifs transparents : site web à partir de 1 500€, SEO 500€, WhatsApp Business 800€. Devis gratuit.",
     url: "https://my-dtm.fr/tarifs",
     type: "website",
     locale: "fr_FR",
@@ -28,13 +28,13 @@ export const metadata: Metadata = {
 
 const CATEGORIES = [
   {
-    title: "Creation Site Web",
+    title: "Création de site web",
     href: "/services/creation-site-web",
     items: [
       { name: "Site Vitrine Pro", price: "1 500 \u20AC", desc: "5-10 pages, responsive, SEO de base" },
       { name: "Site E-commerce", price: "3 000 \u20AC", desc: "Stripe, gestion stocks, dashboard" },
-      { name: "Plateforme Evenementielle", price: "4 000 \u20AC", desc: "Billetterie, QR codes, exposants" },
-      { name: "Ecosysteme Complet", price: "Sur devis", desc: "Multi-modules interconnectes" },
+      { name: "Plateforme \u00E9v\u00E9nementielle", price: "4 000 \u20AC", desc: "Billetterie, QR codes, exposants" },
+      { name: "\u00C9cosyst\u00E8me complet", price: "Sur devis", desc: "Multi-modules interconnect\u00E9s" },
     ],
   },
   {
@@ -43,7 +43,7 @@ const CATEGORIES = [
     items: [
       { name: "Audit SEO Complet", price: "500 \u20AC", desc: "Analyse + rapport + call" },
       { name: "SEO Technique", price: "1 500 \u20AC", desc: "Schema.org, redirections, indexation" },
-      { name: "Recuperation Trafic", price: "1 000 \u20AC", desc: "Redirections 301, nettoyage" },
+      { name: "R\u00E9cup\u00E9ration de trafic", price: "1 000 \u20AC", desc: "Redirections 301, nettoyage" },
       { name: "SEO Contenu Mensuel", price: "800 \u20AC/mois", desc: "4 articles + maillage + rapport" },
     ],
   },
@@ -62,7 +62,7 @@ const CATEGORIES = [
     items: [
       { name: "Acquisition 360\u00B0", price: "1 000 \u20AC/mois", desc: "SEO + WhatsApp + Ads + Email" },
       { name: "Lancement Evenement", price: "2 000 \u20AC", desc: "Landing + Ads + WhatsApp + email" },
-      { name: "Reseaux Sociaux", price: "800 \u20AC/mois", desc: "12 posts/mois + community management" },
+      { name: "R\u00E9seaux sociaux", price: "800 \u20AC/mois", desc: "12 posts/mois + community management" },
       { name: "Newsletter", price: "400 \u20AC/mois", desc: "2-4 envois + segmentation + A/B" },
     ],
   },
@@ -77,13 +77,13 @@ const CATEGORIES = [
     ],
   },
   {
-    title: "Securite & Infra",
+    title: "Sécurité & Infra",
     href: "/services/securite-web",
     items: [
-      { name: "Audit de Securite", price: "700 \u20AC", desc: "Headers, dependances, secrets, routes" },
+      { name: "Audit de s\u00E9curit\u00E9", price: "700 \u20AC", desc: "Headers, d\u00E9pendances, secrets, routes" },
       { name: "Hardening Complet", price: "1 500 \u20AC", desc: "CSP, uploads, routes, webhooks signes" },
-      { name: "Rotation des Secrets", price: "500 \u20AC", desc: "Audit Git, rotation, coffre securise" },
-      { name: "Infra & Crons", price: "Sur devis", desc: "Cloudflare Workers, monitoring, couts" },
+      { name: "Rotation des Secrets", price: "500 \u20AC", desc: "Audit Git, rotation, coffre s\u00E9curis\u00E9" },
+      { name: "Infra & Crons", price: "Sur devis", desc: "Cloudflare Workers, monitoring, co\u00FBts" },
     ],
   },
 ];
@@ -97,7 +97,7 @@ export default function TarifsPage() {
             Tarifs clairs. Pas de surprises.
           </h1>
           <p className="mt-4 max-w-xl text-lg text-muted">
-            Tous les prix sont HT. Chaque projet est unique — contactez-nous pour un devis adapte.
+            Tous les prix sont HT. Chaque projet est unique — contactez-nous pour un devis adapté.
           </p>
         </div>
       </section>
@@ -107,7 +107,7 @@ export default function TarifsPage() {
           <section key={cat.title}>
             <div className="flex items-center justify-between">
               <h2 className="font-sans text-2xl font-extrabold text-dark">{cat.title}</h2>
-              <Link href={cat.href} className="text-sm font-semibold text-primary hover:underline">Voir le detail</Link>
+              <Link href={cat.href} className="text-sm font-semibold text-primary hover:underline">Voir le détail</Link>
             </div>
             <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {cat.items.map((item) => (
@@ -123,7 +123,7 @@ export default function TarifsPage() {
 
         <div className="rounded-2xl bg-gradient-to-br from-primary to-secondary p-10 text-center text-white">
           <h2 className="font-sans text-3xl font-extrabold">Besoin d&apos;un devis sur mesure ?</h2>
-          <p className="mt-3 text-white/80">Chaque projet est unique. On vous repond sous 48h.</p>
+          <p className="mt-3 text-white/80">Chaque projet est unique. On vous répond sous 48h.</p>
           <Link href="/contact" className="mt-8 inline-flex rounded-lg bg-white px-10 py-4 text-base font-bold text-primary transition-all hover:-translate-y-1 hover:shadow-xl">
             Demander un devis gratuit
           </Link>

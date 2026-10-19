@@ -3,9 +3,9 @@ import Link from "next/link";
 import CTA from "@/components/sections/CTA";
 
 export const metadata: Metadata = {
-  title: "Services — Web, SEO, Marketing, Tracking & Securite | My DTM Paris",
+  title: "Services — Web, SEO, Marketing, Tracking & Sécurité | My DTM Paris",
   description:
-    "Tous nos services : creation site web, SEO, automatisation, marketing multi-canal, tracking RGPD et securite. Devis gratuit sous 48h.",
+    "Tous nos services : création site web, SEO, automatisation, marketing multi-canal, tracking RGPD et sécurité. Devis gratuit sous 48h.",
   keywords: [
     "services agence digitale Paris",
     "creation site web prix",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://my-dtm.fr/services" },
   openGraph: {
     title: "Services — My DTM",
-    description: "Developpement web, SEO, automatisation, marketing, tracking et securite. 24 offres adaptees.",
+    description: "Développement web, SEO, automatisation, marketing, tracking et sécurité. 24 offres adaptées.",
     url: "https://my-dtm.fr/services",
     type: "website",
     locale: "fr_FR",
@@ -30,12 +30,12 @@ const OFFERS = [
   {
     id: "dev",
     icon: "\u{1F680}",
-    title: "Developpement Web Full-Stack",
+    title: "Développement Web Full-Stack",
     items: [
-      { name: "Site Vitrine Pro", desc: "Next.js performant, responsive, SEO integre. Pour restaurants, freelances, associations.", price: "A partir de 1 500\u00A0\u20AC" },
+      { name: "Site Vitrine Pro", desc: "Next.js performant, responsive, SEO intégré. Pour restaurants, freelances, associations.", price: "À partir de 1 500\u00A0\u20AC" },
       { name: "Plateforme E-commerce", desc: "Marketplace complete avec Stripe, gestion stocks, dashboard vendeur.", price: "A partir de 3 000\u00A0\u20AC" },
       { name: "Plateforme Evenementielle", desc: "Billetterie en ligne, QR codes, reservation exposants, dashboard admin.", price: "A partir de 4 000\u00A0\u20AC" },
-      { name: "Ecosysteme Digital Complet", desc: "Site + marketplace + billetterie + journal + annuaire. Tout interconnecte.", price: "Sur devis" },
+      { name: "Écosystème Digital Complet", desc: "Site + marketplace + billetterie + journal + annuaire. Tout interconnecté.", price: "Sur devis" },
     ],
   },
   {
@@ -45,7 +45,7 @@ const OFFERS = [
     items: [
       { name: "Audit SEO Complet", desc: "Analyse technique, mots-cles, concurrence, Search Console. Rapport + plan d'action.", price: "A partir de 500\u00A0\u20AC" },
       { name: "Optimisation SEO Technique", desc: "Schema.org JSON-LD, redirections 301, sitemap, Core Web Vitals, indexation.", price: "A partir de 1 500\u00A0\u20AC" },
-      { name: "Recuperation de Trafic Perdu", desc: "Mapping ancien \u2192 nouveau site, redirections en masse, nettoyage Search Console.", price: "A partir de 1 000\u00A0\u20AC" },
+      { name: "R\u00E9cup\u00E9ration de trafic perdu", desc: "Mapping ancien \u2192 nouveau site, redirections en masse, nettoyage Search Console.", price: "\u00C0 partir de 1 000\u00A0\u20AC" },
       { name: "SEO Contenu", desc: "Recherche mots-cles, articles optimises, maillage interne, FAQ structurees.", price: "A partir de 800\u00A0\u20AC/mois" },
     ],
   },
@@ -54,7 +54,7 @@ const OFFERS = [
     icon: "\u2699\uFE0F",
     title: "Integration API & Automatisation",
     items: [
-      { name: "WhatsApp Business Automation", desc: "Config complete, templates, webhooks, reponses automatiques.", price: "A partir de 800\u00A0\u20AC" },
+      { name: "WhatsApp Business Automation", desc: "Config compl\u00E8te, templates, webhooks, r\u00E9ponses automatiques.", price: "\u00C0 partir de 800\u00A0\u20AC" },
       { name: "Facebook & Instagram Leads", desc: "Formulaires Leads Ads, webhook temps reel, dashboard suivi.", price: "A partir de 500\u00A0\u20AC" },
       { name: "Paiement en Ligne Stripe", desc: "Checkout, webhooks, factures auto, dashboard revenus.", price: "A partir de 600\u00A0\u20AC" },
       { name: "Email Automatise", desc: "Emails transactionnels, sequences, templates responsive.", price: "A partir de 500\u00A0\u20AC" },
@@ -67,7 +67,7 @@ const OFFERS = [
     items: [
       { name: "Acquisition Client 360\u00B0", desc: "SEO + WhatsApp + Ads + Email. Tableau de bord unifie, rapport mensuel.", price: "A partir de 1 000\u00A0\u20AC/mois" },
       { name: "Pack Lancement Evenement", desc: "Landing page + Facebook Ads + WhatsApp + email blast. Cle en main.", price: "A partir de 2 000\u00A0\u20AC" },
-      { name: "Gestion Reseaux Sociaux", desc: "Calendrier editorial, creation contenu, publication, community management.", price: "A partir de 800\u00A0\u20AC/mois" },
+      { name: "Gestion R\u00E9seaux Sociaux", desc: "Calendrier \u00E9ditorial, cr\u00E9ation contenu, publication, community management.", price: "\u00C0 partir de 800\u00A0\u20AC/mois" },
       { name: "Newsletter & Fidelisation", desc: "Setup, templates, segmentation, A/B testing, suivi performance.", price: "A partir de 400\u00A0\u20AC/mois" },
     ],
   },
@@ -85,12 +85,12 @@ const OFFERS = [
   {
     id: "securite",
     icon: "\u{1F6E1}\uFE0F",
-    title: "Securite & Infra",
+    title: "Sécurité & Infra",
     items: [
-      { name: "Audit de Securite", desc: "Headers, dependances vulnerables, secrets exposes, routes non protegees. Rapport + remediation.", price: "A partir de 700\u00A0\u20AC" },
+      { name: "Audit de s\u00E9curit\u00E9", desc: "Headers, d\u00E9pendances vuln\u00E9rables, secrets expos\u00E9s, routes non prot\u00E9g\u00E9es. Rapport + rem\u00E9diation.", price: "\u00C0 partir de 700\u00A0\u20AC" },
       { name: "Hardening Complet", desc: "CSP avec nonce, headers, validation des uploads, protection des routes, webhooks signes.", price: "A partir de 1 500\u00A0\u20AC" },
-      { name: "Rotation des Secrets", desc: "Audit des secrets dans Git, rotation Stripe/DB/APIs, coffre securise, procedure documentee.", price: "A partir de 500\u00A0\u20AC" },
-      { name: "Infra & Orchestration Crons", desc: "Cloudflare Workers, jobs planifies, monitoring, optimisation des couts Vercel/Neon.", price: "Sur devis" },
+      { name: "Rotation des Secrets", desc: "Audit des secrets dans Git, rotation Stripe/DB/APIs, coffre s\u00E9curis\u00E9, proc\u00E9dure document\u00E9e.", price: "\u00C0 partir de 500\u00A0\u20AC" },
+      { name: "Infra & Orchestration Crons", desc: "Cloudflare Workers, jobs planifiés, monitoring, optimisation des coûts Vercel/Neon.", price: "Sur devis" },
     ],
   },
 ];
@@ -107,7 +107,7 @@ export default function ServicesPage() {
             Des solutions pour chaque besoin digital.
           </h1>
           <p className="mt-4 max-w-xl text-lg text-muted">
-            6 piliers, des offres claires, des resultats mesurables.
+            6 piliers, des offres claires, des résultats mesurables.
           </p>
         </div>
       </section>

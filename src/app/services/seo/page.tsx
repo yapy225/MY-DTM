@@ -3,9 +3,9 @@ import Link from "next/link";
 import { CheckCircle2, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Agence SEO Paris — Audit, Referencement Naturel, Indexation Google",
+  title: "Agence SEO Paris — Audit, Référencement Naturel, Indexation Google",
   description:
-    "Agence SEO technique a Paris. Audit, redirections 301, Schema.org, indexation Google. +8000 clics/mois recuperes pour nos clients. Audit gratuit.",
+    "Agence SEO technique à Paris. Audit, redirections 301, Schema.org, indexation Google. +8000 clics/mois récupérés pour nos clients. Audit gratuit.",
   keywords: [
     "agence SEO Paris",
     "audit SEO gratuit",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Agence SEO Paris — My DTM",
-    description: "Audit SEO, referencement naturel, indexation Google. +8000 clics/mois recuperes. Audit gratuit.",
+    description: "Audit SEO, référencement naturel, indexation Google. +8000 clics/mois récupérés. Audit gratuit.",
   },
   alternates: { canonical: "https://my-dtm.fr/services/seo" },
 };
@@ -30,22 +30,22 @@ export const metadata: Metadata = {
 const OFFERS = [
   { name: "Audit SEO Complet", price: "500 \u20AC", desc: "Analyse technique, mots-cles, concurrence, Search Console. Rapport PDF + call.", features: ["Analyse technique complete (vitesse, structure, erreurs)", "Audit mots-cles vs concurrence", "Analyse Search Console", "Rapport PDF actionnable", "Call de restitution 45min"] },
   { name: "SEO Technique", price: "A partir de 1 500 \u20AC", desc: "Implementation complete : Schema.org, redirections, sitemap, Core Web Vitals.", features: ["Schema.org JSON-LD (FAQ, Event, Product, Article)", "Redirections 301 (migration WordPress)", "Sitemap XML dynamique", "Canonical URLs + OpenGraph", "Connexion Search Console + Indexing API", "Optimisation Core Web Vitals"] },
-  { name: "Recuperation Trafic Perdu", price: "A partir de 1 000 \u20AC", desc: "On recupere les clics que vous perdez depuis votre migration ou refonte.", features: ["Mapping ancien → nouveau site", "Redirections 301 en masse", "Nettoyage pages en erreur", "Indexation forcee Google Indexing API", "Suivi avant/apres"], popular: true },
+  { name: "Récupération de trafic perdu", price: "À partir de 1 000 \u20AC", desc: "On recupere les clics que vous perdez depuis votre migration ou refonte.", features: ["Mapping ancien → nouveau site", "Redirections 301 en masse", "Nettoyage pages en erreur", "Indexation forcee Google Indexing API", "Suivi avant/apres"], popular: true },
   { name: "SEO Contenu Mensuel", price: "A partir de 800 \u20AC/mois", desc: "Articles optimises, maillage interne, FAQ structurees. Croissance organique durable.", features: ["4 articles/mois optimises SEO", "Recherche mots-cles longue traine", "Maillage interne strategique", "FAQ avec schema FAQPage", "Rapport mensuel positions + trafic"] },
 ];
 
 const RESULTS = [
-  { number: "+8 000", label: "clics/mois recuperes", detail: "Via 239 redirections 301 sur Dream Team Africa" },
+  { number: "+8 000", label: "clics/mois récupérés", detail: "Via 239 redirections 301 sur Dream Team Africa" },
   { number: "119", label: "URLs dans le sitemap", detail: "Pages dynamiques indexees automatiquement" },
   { number: "11", label: "pages forcees via Indexing API", detail: "Indexation Google en quelques heures" },
   { number: "100%", label: "score Schema.org", detail: "FAQPage, Event, NewsArticle, BreadcrumbList" },
 ];
 
 const FAQ = [
-  { q: "Combien coute le referencement SEO a Paris ?", a: "Un audit SEO complet coute a partir de 500\u20AC. L'optimisation technique complete demarre a 1 500\u20AC. Le suivi mensuel avec creation de contenu commence a 800\u20AC/mois. Chaque projet est different, on adapte notre offre a vos besoins et votre budget." },
-  { q: "Combien de temps pour voir des resultats SEO ?", a: "Les corrections techniques (redirections, indexation) montrent des resultats en 2 a 4 semaines. Le contenu SEO prend 3 a 6 mois pour atteindre son plein potentiel. Nos redirections 301 ont recupere +8000 clics/mois en quelques semaines." },
-  { q: "Quelle est la difference entre SEO technique et SEO contenu ?", a: "Le SEO technique optimise la structure de votre site (vitesse, indexation, schema, redirections). Le SEO contenu cree des articles et pages optimises pour des mots-cles cibles. Les deux sont complementaires : un bon contenu sur un site mal structure ne rankera pas." },
-  { q: "Vous travaillez avec quels types de sites ?", a: "Tous types : sites vitrines, e-commerce, plateformes evenementielles, blogs, annuaires. Que votre site soit sur WordPress, Shopify, Next.js ou autre, on s'adapte a votre stack technique." },
+  { q: "Combien co\u00FBte le r\u00E9f\u00E9rencement SEO \u00E0 Paris ?", a: "Un audit SEO complet co\u00FBte \u00E0 partir de 500\u20AC. L'optimisation technique compl\u00E8te d\u00E9marre \u00E0 1 500\u20AC. Le suivi mensuel avec cr\u00E9ation de contenu commence \u00E0 800\u20AC/mois. Chaque projet est diff\u00E9rent, on adapte notre offre \u00E0 vos besoins et votre budget." },
+  { q: "Combien de temps pour voir des résultats SEO ?", a: "Les corrections techniques (redirections, indexation) montrent des résultats en 2 à 4 semaines. Le contenu SEO prend 3 à 6 mois pour atteindre son plein potentiel. Nos redirections 301 ont récupéré +8000 clics/mois en quelques semaines." },
+  { q: "Quelle est la différence entre SEO technique et SEO contenu ?", a: "Le SEO technique optimise la structure de votre site (vitesse, indexation, schéma, redirections). Le SEO contenu crée des articles et pages optimisés pour des mots-clés cibles. Les deux sont complémentaires : un bon contenu sur un site mal structuré ne rankera pas." },
+  { q: "Vous travaillez avec quels types de sites ?", a: "Tous types : sites vitrines, e-commerce, plateformes événementielles, blogs, annuaires. Que votre site soit sur WordPress, Shopify, Next.js ou autre, on s'adapte à votre stack technique." },
 ];
 
 export default function SEOPage() {
