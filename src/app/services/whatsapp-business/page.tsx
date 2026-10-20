@@ -129,7 +129,7 @@ export default function WhatsAppBusinessPage() {
                 <Link href="/contact" className="rounded-lg bg-white px-8 py-4 text-base font-bold text-[#075E54] transition-all hover:-translate-y-1 hover:shadow-xl">
                   Audit gratuit
                 </Link>
-                <Link href="https://wa.me/33782801852?text=Bonjour%2C%20je%20souhaite%20configurer%20WhatsApp%20Business%20pour%20mon%20entreprise." target="_blank" className="rounded-lg border border-white/30 px-8 py-4 text-base font-semibold text-white transition-all hover:bg-white/10">
+                <Link href="https://wa.me/33782801852?text=(My%20DTM)%20Bonjour%2C%20je%20souhaite%20configurer%20WhatsApp%20Business%20pour%20mon%20entreprise." target="_blank" className="rounded-lg border border-white/30 px-8 py-4 text-base font-semibold text-white transition-all hover:bg-white/10">
                   Discuter sur WhatsApp
                 </Link>
               </div>
