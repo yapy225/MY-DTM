@@ -191,11 +191,11 @@ export default function ContactPage() {
                   hello@my-dtm.fr
                 </a>
                 <a
-                  href="tel:+33743537551"
+                  href="tel:+33782801852"
                   className="flex items-center gap-3 text-sm text-muted transition-colors hover:text-primary"
                 >
                   <Phone size={18} className="text-primary" />
-                  +33 7 43 53 75 51
+                  +33 7 82 80 18 52
                 </a>
                 <div className="flex items-center gap-3 text-sm text-muted">
                   <MapPin size={18} className="text-primary" />
@@ -210,7 +210,7 @@ export default function ContactPage() {
                 Pour une reponse immediate, contactez-nous directement sur WhatsApp.
               </p>
               <a
-                href="https://wa.me/33743537551?text=Bonjour%2C%20je%20souhaite%20un%20audit%20gratuit%20pour%20mon%20projet%20digital."
+                href="https://wa.me/33782801852?text=Bonjour%2C%20je%20souhaite%20un%20audit%20gratuit%20pour%20mon%20projet%20digital."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-4 inline-flex items-center gap-2 rounded-lg bg-[#25D366] px-6 py-2.5 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:shadow-lg"

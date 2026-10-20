@@ -95,7 +95,7 @@ export default function RootLayout({
               contactPoint: {
                 "@type": "ContactPoint",
                 contactType: "Customer Service",
-                telephone: "+33743537551",
+                telephone: "+33782801852",
                 email: "hello@my-dtm.fr",
                 areaServed: "FR",
                 availableLanguage: ["French"],
@@ -131,7 +131,7 @@ export default function RootLayout({
                 addressRegion: "Île-de-France",
                 addressCountry: "FR",
               },
-              telephone: "+33743537551",
+              telephone: "+33782801852",
               email: "hello@my-dtm.fr",
               url: "https://my-dtm.fr",
               priceRange: "€€",

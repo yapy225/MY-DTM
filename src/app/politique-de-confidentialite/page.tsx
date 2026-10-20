@@ -17,7 +17,7 @@ export default function PolitiqueConfidentialite() {
           <h2>1. Responsable du traitement</h2>
           <p>
             My DTM, micro-entreprise basee en Ile-de-France.
-            Contact : hello@my-dtm.fr | +33 7 43 53 75 51.
+            Contact : hello@my-dtm.fr | +33 7 82 80 18 52.
           </p>
         </div>
 

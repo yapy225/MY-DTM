@@ -20,7 +20,7 @@ export default function MentionsLegales() {
           <ul className="mt-2 list-inside list-disc space-y-1">
             <li>Responsable de la publication : My DTM</li>
             <li>Email : hello@my-dtm.fr</li>
-            <li>Telephone : +33 7 43 53 75 51</li>
+            <li>Telephone : +33 7 82 80 18 52</li>
             <li>Adresse : Paris, France</li>
           </ul>
         </div>
