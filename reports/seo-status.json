@@ -1,19 +1,7 @@
 {
   "contract_version": "seo_status@v1",
-  "last_run_at": "2026-11-02T15:01:23.518Z",
-  "events": [
-    {
-      "event_id": "seo:festivalduconteafricain:INDEXATION_STAGNANTE",
-      "event_type": "INDEXATION_STAGNANTE",
-      "severity": "P1",
-      "action_required": true,
-      "brand_id": "festivalduconteafricain",
-      "business_object_ref": "sc-domain:festivalduconteafricain.fr",
-      "occurrence_count": 20,
-      "novelty": "RECURRING",
-      "state": "CONFIRMED"
-    }
-  ],
+  "last_run_at": "2026-11-03T13:54:01.101Z",
+  "events": [],
   "coverage": {
     "gsc_properties": 23,
     "ga4_with_data": 12,
